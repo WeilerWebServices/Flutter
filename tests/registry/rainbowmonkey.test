@@ -1,0 +1,9 @@
+# Rainbow Monkey
+# From http://seamonkeysocial.cruises/rainbowmonkey
+
+contact=ian@hixie.ch
+fetch=git clone https://github.com/seamonkeysocial/rainbowmonkey.git tests
+fetch=git -C tests checkout e644f4e1d6bfb8298d094f4c3ae716a505a30a98
+update=.
+test=flutter analyze
+test=flutter test

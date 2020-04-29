@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://codelabs.developers.google.com/codelabs/flutter-firebase/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Firebase for Flutter</title>
+  <link rel="stylesheet" href="./Firebase for Flutter_files/css">
+  <link rel="stylesheet" href="./Firebase for Flutter_files/icon">
+  <link rel="stylesheet" href="./Firebase for Flutter_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Firebase for Flutter_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="flutter-firebase" environment="web" feedback-link="https://github.com/flutter/flutter/issues" selected="0" google-codelab-ready="" codelab-title="Firebase for Flutter" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>61 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#0"><span class="step"><span>Prerequisites</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#1"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#2"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#3"><span class="step"><span>Create a new Flutter app &amp; update dependencies</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#4"><span class="step"><span>Add the user interface</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#5"><span class="step"><span>Create a Firebase project</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#6"><span class="step"><span>Platform-specific Firebase configuration</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#7"><span class="step"><span>Create your Cloud Firestore database</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#8"><span class="step"><span>Connect your Flutter app to Cloud Firestore</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#9"><span class="step"><span>Add interactivity</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#10"><span class="step"><span>Update data atomically</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#11"><span class="step"><span>Next steps</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/flutter/flutter/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Firebase for Flutter</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>61 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Prerequisites" duration="1" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Prerequisites</h2>
+        <p>If you're familiar with object-oriented programming concepts, you should be able to complete this codelab. You don't need previous experience with Dart, mobile programming, or Firebase; although completing an <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1" target="_blank">introductory Flutter codelab</a> first can be helpful.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Introduction" duration="3" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Introduction</h2>
+        <p>Flutter and Firebase work hand-in-hand to help you build mobile apps in record time. <a href="https://flutter.io/" target="_blank">Flutter</a> is Google's SDK for building mobile apps for iOS and Android. <a href="https://firebase.google.com/" target="_blank">Firebase</a> gives you access to backend services for mobile applications—including authentication, storage, database, and hosting—without maintaining your own servers.</p>
+<p>In this codelab, you'll learn how to create a Flutter app that uses Firebase. The app helps new parents choose baby names by letting friends and family vote for their favorites. Specifically, the app accesses a <a href="https://firebase.google.com/products/firestore/" target="_blank">Cloud Firestore</a> database, and a user action in your app (i.e., tapping a name option) updates the database atomically.</p>
+<p>Here's what the final app will look like, <strong><em>on both iOS and Android</em></strong>.  Yes, you read that right!  With Flutter, when you build your app, you can use the same code for <strong><em>both iOS and Android!</em></strong></p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 259.50px" src="./Firebase for Flutter_files/ad06089a8d7af1ee.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 250.80px" src="./Firebase for Flutter_files/4b4ed368a0b7c3a.png"></p>
+</td></tr>
+</tbody></table>
+<p>You might want to watch the 11-minute <a href="https://www.youtube.com/watch?v=DqJ_KjFzL9I&amp;feature=youtu.be&amp;list=PLOU2XLYxmsIJ7dsVN4iRuA7BT8XHzGtCr" target="_blank">Using Firestore as a back-end to your Flutter app</a> video that demonstrates building a similar app in real time. It provides a good overview of the steps you'll complete in this codelab.</p>
+<google-codelab-survey survey-id="flutter-firebase-1" upgraded="">
+
+
+<div class="survey-questions" survey-name="flutter-firebase-1"><div class="survey-question-wrapper"><h4>What is your level of experience with building mobile apps?</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps-label" for="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps"><span class="option-text">Never built mobile apps</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only"><span class="option-text">Built apps for the mobile web only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only"><span class="option-text">Built apps for Android only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only"><span class="option-text">Built apps for iOS only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios"><span class="option-text">Built apps for Android and iOS</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios"><span class="option-text">Built apps for mobile web, Android, and iOS</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="15" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Set up your Flutter environment</h2>
+        <p>You need the following software to complete this codelab:</p>
+<ul>
+<li>The <a href="https://flutter.io/get-started/install/" target="_blank">Flutter SDK</a> (includes Flutter's command-line tools)</li>
+<li><a href="https://flutter.io/get-started/editor/" target="_blank">An editor</a> (you can use your preferred editor)</li>
+<li>Xcode (for iOS development)</li>
+<li>Android Studio (for Android development)</li>
+</ul>
+<p>You can run this codelab using one or more of the following devices:</p>
+<ul>
+<li>A physical device (i.e., mobile phone):  <a href="https://flutter.io/setup-macos/#set-up-your-android-device" target="_blank">Android</a> or <a href="https://flutter.io/setup-macos/#deploy-to-ios-devices" target="_blank">iOS</a></li>
+<li>The <a href="https://flutter.io/setup-macos/#set-up-the-ios-simulator" target="_blank">iOS simulator</a> (requires installing Xcode tools)</li>
+<li>The <a href="https://flutter.io/setup-macos/#set-up-the-android-emulator" target="_blank">Android emulator</a> (requires installing and setup in Android Studio)</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create a new Flutter app &amp; update dependencies" duration="6" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Create a new Flutter app &amp; update dependencies</h2>
+        <ol type="1" start="1">
+<li>Follow the <a href="https://flutter.io/get-started/test-drive/" target="_blank">Get Started: Test Drive</a> guide to create a new Flutter app. Name the app <code>baby_names</code> instead of <code>flutter_app</code>. The instructions for creating a new Flutter app differ depending on your editor. If you're using an IDE, a new app is usually called a <strong>project</strong>.</li>
+</ol>
+<aside class="special"><p><strong>Note:</strong> If you don't see "New Flutter Project" as an option in your IDE, make sure that you have the <a href="https://flutter.io/get-started/editor/#androidstudio" target="_blank">plugins installed for Flutter and Dart</a>.</p>
+</aside>
+<ol type="1" start="2">
+<li>If your app is running in your emulator or device, close it before continuing.</li>
+<li>In your IDE or editor, open the <code>pubspec.yaml</code> file.  Add a dependency for <code>cloud_firestore</code>, then save the file.</li>
+</ol>
+<pre><code><span class="pln">dependencies</span><span class="pun">:</span><span class="pln">
+  flutter</span><span class="pun">:</span><span class="pln">
+    sdk</span><span class="pun">:</span><span class="pln"> flutter
+  cloud_firestore</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.13.0+1</span><span class="pln">     </span><span class="com"># new</span></code></pre>
+<aside class="special"><p><strong>Note</strong>: You can get the <a href="https://pub.dartlang.org/packages/cloud_firestore" target="_blank">current version number</a> of the Cloud Firestore plugin from <a href="https://pub.dev/flutter" target="_blank">pub.dev</a>, Dart's and Flutter's package repository.  Read more detailed information about pub dependencies in <a href="https://dart.dev/tools/pub/dependencies" target="_blank">package dependencies</a> on dart.dev.</p>
+</aside>
+<ol type="1" start="4">
+<li>In your IDE, run <code>flutter packages get</code>. Or, from the command line at the top of the project, run <code>flutter packages get</code> to add the Flutter packages.</li>
+</ol>
+<p>If you get an error, make sure that the indentation in your <code>dependencies</code> block is exactly as shown above, using two spaces (<em>not</em> a tab).</p>
+<aside class="warning"><p><strong>Troubleshooting Android build fail:</strong></p>
+<p>If you're planning to develop using an Android device or emulator, you'll need to handle multidex support -- otherwise, your build will fail with <strong>"Cannot fit requested classes in a single dex file."</strong></p>
+<p>By default, Flutter supports Android SDK v16 (Jelly Bean, released 2012), but multidex doesn't really work with Jelly Bean (though, it's <a href="https://developer.android.com/studio/build/multidex" target="_blank">possible</a>).  Configuring Jelly Bean to work is beyond the scope of this codelab, so we'll change the minimum target SDK version from v16 to v21 (Lollipop, released 2014).</p>
+<p>To change the minimum target SDK version:</p>
+<ol type="1" start="1">
+<li>Open <code>android/app/build.gradle</code>, then find the line that says <code>minSdkVersion 16</code>.</li>
+<li>Change that line to <code>minSdkVersion 21</code>.</li>
+<li>Save the file.</li>
+</ol>
+</aside>
+<aside class="warning"><p><strong>Troubleshooting Xcode build fail:</strong></p>
+<p>If you're planning to develop using an iOS device or simulator, you'll need to resolve the <strong>"Multiple commands produce .../Flutter.framework"</strong> error.</p>
+<ol type="1" start="1">
+<li>In the command line tool, go to the top-level directory of your Flutter app</li>
+<li>Run the command <code>open ios/Runner.xcworkspace</code> to open Xcode.</li>
+<li>In Xcode, go to <strong>File &gt; Workspace Settings</strong>, then select <strong>Legacy Build System</strong> (see screencap below).</li>
+<li>Click <strong>Done</strong>, then quit Xcode.</li>
+</ol>
+<p>Your iOS build should now succeed.</p>
+<p class="image-container"><img style="width: 525.00px" src="./Firebase for Flutter_files/3aa45ff0ecba5d46.png"></p>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add the user interface" duration="4" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add the user interface</h2>
+        <ol type="1" start="1">
+<li>Using the <a href="https://flutter.io/get-started/test-drive/" target="_blank">Get Started: Test Drive</a> page as a guide, run the default app in an emulator or on a device.</li>
+</ol>
+<p>Flutter takes about a minute to build the app. The good news is that this is the last time you'll wait for compilation in this codelab—the rest of your changes will be <strong><em>hot-reloaded</em></strong>.</p>
+<p>When your app is finished building, you should see the following app:</p>
+<p class="image-container"><img style="width: 278.50px" src="./Firebase for Flutter_files/d16b77d1563cfc87.png"></p>
+<ol type="1" start="2">
+<li>Using your IDE or editor, open <code>lib/main.dart</code>. This file currently contains the entire code for the default Flutter app.</li>
+<li>Delete all of the code in <code>main.dart</code>, then replace it with the following:</li>
+</ol>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:cloud_firestore/cloud_firestore.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">MyApp</span><span class="pun">());</span><span class="pln">
+
+</span><span class="kwd">final</span><span class="pln"> dummySnapshot </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+ </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Filip"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"votes"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">15</span><span class="pun">},</span><span class="pln">
+ </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Abraham"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"votes"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">14</span><span class="pun">},</span><span class="pln">
+ </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Richard"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"votes"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">11</span><span class="pun">},</span><span class="pln">
+ </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Ike"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"votes"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">},</span><span class="pln">
+ </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Justin"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"votes"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">},</span><span class="pln">
+</span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+     title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Baby Names'</span><span class="pun">,</span><span class="pln">
+     home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MyHomePage</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyHomePage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">_MyHomePageState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">_MyHomePageState</span><span class="pun">();</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_MyHomePageState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">MyHomePage</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+     appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Baby Name Votes'</span><span class="pun">)),</span><span class="pln">
+     body</span><span class="pun">:</span><span class="pln"> _buildBody</span><span class="pun">(</span><span class="pln">context</span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+
+ </span><span class="typ">Widget</span><span class="pln"> _buildBody</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="com">// TODO: get actual snapshot from Cloud Firestore</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> _buildList</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> dummySnapshot</span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+
+ </span><span class="typ">Widget</span><span class="pln"> _buildList</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Map</span><span class="pun">&gt;</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">20.0</span><span class="pun">),</span><span class="pln">
+     children</span><span class="pun">:</span><span class="pln"> snapshot</span><span class="pun">.</span><span class="pln">map</span><span class="pun">((</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _buildListItem</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)).</span><span class="pln">toList</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+
+ </span><span class="typ">Widget</span><span class="pln"> _buildListItem</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Map</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">final</span><span class="pln"> record </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromMap</span><span class="pun">(</span><span class="pln">data</span><span class="pun">);</span><span class="pln">
+
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+     key</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ValueKey</span><span class="pun">(</span><span class="pln">record</span><span class="pun">.</span><span class="pln">name</span><span class="pun">),</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">,</span><span class="pln"> vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+       decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+         border</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Border</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">grey</span><span class="pun">),</span><span class="pln">
+         borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderRadius</span><span class="pun">.</span><span class="pln">circular</span><span class="pun">(</span><span class="lit">5.0</span><span class="pun">),</span><span class="pln">
+       </span><span class="pun">),</span><span class="pln">
+       child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+         title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">record</span><span class="pun">.</span><span class="pln">name</span><span class="pun">),</span><span class="pln">
+         trailing</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">record</span><span class="pun">.</span><span class="pln">votes</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">()),</span><span class="pln">
+         onTap</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">record</span><span class="pun">),</span><span class="pln">
+       </span><span class="pun">),</span><span class="pln">
+     </span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Record</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> votes</span><span class="pun">;</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">DocumentReference</span><span class="pln"> reference</span><span class="pun">;</span><span class="pln">
+
+ </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromMap</span><span class="pun">(</span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> map</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">})</span><span class="pln">
+     </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">map</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+       </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">map</span><span class="pun">[</span><span class="str">'votes'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+       name </span><span class="pun">=</span><span class="pln"> map</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">],</span><span class="pln">
+       votes </span><span class="pun">=</span><span class="pln"> map</span><span class="pun">[</span><span class="str">'votes'</span><span class="pun">];</span><span class="pln">
+
+ </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromSnapshot</span><span class="pun">(</span><span class="typ">DocumentSnapshot</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln">
+     </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">fromMap</span><span class="pun">(</span><span class="pln">snapshot</span><span class="pun">.</span><span class="pln">data</span><span class="pun">,</span><span class="pln"> reference</span><span class="pun">:</span><span class="pln"> snapshot</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">);</span><span class="pln">
+
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">String</span><span class="pln"> toString</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">"Record&lt;$name:$votes&gt;"</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<ol type="1" start="4">
+<li>Save the file, then hot-reload your app.</li>
+</ol>
+<ul>
+<li>If you're using an IDE, just saving the file automatically performs hot-reload.</li>
+<li>If you're using an editor, enter <code>r</code> in the command line at the same directory location that you ran <code>flutter run</code>.</li>
+</ul>
+<p>You should see the following app:</p>
+<p class="image-container"><img style="width: 327.69px" src="./Firebase for Flutter_files/c75eeba53b572de9.png"><br></p>
+<p>The app is currently just a mock.  Clicking on names only prints to the console.</p>
+<p>The next step is to connect this app to Cloud Firestore.  Before doing that, you can read about how the code in <code>main.dart</code> is structured.</p>
+<aside class="special"><p><strong>Optional:</strong> Read below to learn about the code that you just copy-pasted into <code>main.dart</code>.</p>
+<p>The first half of this program is fairly straightforward:</p>
+<ul>
+<li>You imported <code>cloud_firestore.dart,</code> a plugin for communicating with the Cloud Firestore.</li>
+<li>You added some dummy data (soon to be replaced by a Cloud Firestore instance).</li>
+<li>You set the app's title to <strong>Baby Names</strong>.</li>
+</ul>
+<p>The interesting part of the code is in <code>_MyHomePageState</code>.  The <code>build</code> method in this block defines the <a href="https://flutter.io/widgets-intro/" target="_blank">widget hierarchy</a> that Flutter uses to create the display for your app.</p>
+<ul>
+<li>The app has an <code>AppBar</code> (with a title of <strong>Baby Name Votes</strong>).</li>
+<li>The app's body contains a <code>ListView</code>, which renders each of the dummy data points as individual list items.</li>
+</ul>
+<p>The longest method by far is <code>_buildListItem</code>, which tells Flutter how to build each item in the list (displayed as the rounded rectangles with baby names and the number of votes).</p>
+<p>Lastly, you have <code>Record</code>, the convenience class that holds a single record for a name.  You don't strictly need this class for a simple app like this to function, but it makes the code a bit cleaner.</p>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create a Firebase project" duration="5" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Create a Firebase project</h2>
+        <ol type="1" start="1">
+<li>If you have a Firebase account, <a href="https://firebase.google.com/" target="_blank">sign in to it</a>.</li>
+</ol>
+<p>If you don't have one, you'll need to <a href="https://firebase.google.com/pricing/" target="_blank">create a Firebase account</a>.  A free plan is sufficient for this codelab (and most development for most apps).</p>
+<ol type="1" start="2">
+<li>In the <a href="https://console.firebase.google.com/" target="_blank">Firebase console</a>, click <strong>Add project</strong>.<br><img style="width: 251.00px" src="./Firebase for Flutter_files/14da8a378fd40320.png"></li>
+<li>As shown in the screencap below, enter a name for your Firebase project (for example, "baby names app db"), then set the country/region to the location of your company or organization.  Click <strong>Create project</strong>.</li>
+<li>After a minute or so, your Firebase project will be ready.  Click <strong>Continue</strong>.</li>
+</ol>
+<p class="image-container"><img style="width: 563.00px" src="./Firebase for Flutter_files/6597181fa1abdcaa.png"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Platform-specific Firebase configuration" duration="10" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Platform-specific Firebase configuration</h2>
+        <p>After you've created a Firebase project, you can configure one (or more) apps to use that Firebase project. All you need to do is:</p>
+<ul>
+<li>Register your app's platform-specific ID with Firebase</li>
+<li>Generate configuration files for your app, then add them to your project folders</li>
+</ul>
+<p class="image-container"><img style="width: 618.00px" src="./Firebase for Flutter_files/7a645a16be6c2530.png"></p>
+<p>If you're developing your Flutter app for both iOS and Android, you need to register both the iOS and Android versions within the <em>same</em> Firebase project. If you're just developing for one platform, just skip the unneeded section.</p>
+<aside class="special"><p><strong>Tip:</strong> To save time, we recommend setting up Firebase with only one of the platforms for now. You can always add the other one later.</p>
+</aside>
+<p>In the top-level directory of your Flutter app, there are subdirectories called <code>ios</code> and <code>android</code>. These directories hold the platform-specific configuration files for iOS and Android, respectively.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><h3 is-upgraded=""><img style="width: 46.00px" src="./Firebase for Flutter_files/a35458e5c0dd0acf.png"></h3>
+</td><td colspan="1" rowspan="1"><h2 is-upgraded="">Configure iOS</h2>
+</td></tr>
+</tbody></table>
+<ol type="1" start="1">
+<li>In the <a href="https://console.firebase.google.com/" target="_blank">Firebase console</a>, select <strong>Project Overview</strong> in the left nav, then click the iOS button under "Get started by adding Firebase to your app".</li>
+</ol>
+<p>You'll see the dialog shown in the following screencap:</p>
+<p class="image-container"><img style="width: 624.00px" src="./Firebase for Flutter_files/c42139f18fb9a2ee.png"></p>
+<ol type="1" start="2">
+<li>The important value to provide is the <strong>iOS bundle ID</strong>, which you'll obtain using the following three steps.</li>
+</ol>
+<aside class="special"><p><strong>Tip</strong>:  Read <a href="https://cocoacasts.com/what-are-app-ids-and-bundle-identifiers/" target="_blank">What are App IDs and Bundle Identifiers</a> for more information about iOS bundle IDs.</p>
+</aside>
+<ol type="1" start="3">
+<li>In the command line tool, go to the top-level directory of your Flutter app.</li>
+<li>Run the command <code>open ios/Runner.xcworkspace</code> to open Xcode.</li>
+</ol>
+<aside class="special"><p><strong>Tip</strong>: Read <a href="https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html" target="_blank">About Information Property List Files</a> for more information about Xcode property lists.</p>
+</aside>
+<ol type="1" start="5">
+<li>In Xcode, click the top-level <strong>Runner</strong> in the left pane to show the <strong>General</strong> tab in the right pane, as shown in the screencap below. Copy the <strong>Bundle Identifier</strong> value.</li>
+</ol>
+<p class="image-container"><img style="width: 577.90px" src="./Firebase for Flutter_files/9733e26be329f329.png"></p>
+<ol type="1" start="6">
+<li>Back in the Firebase dialog, paste the copied <strong>Bundle Identifier</strong> into the <strong>iOS bundle ID</strong> field, then click <strong>Register App</strong>.</li>
+</ol>
+<aside class="special"><p><strong>Note</strong>: The actual values of <code>yourcompany</code> and <code>yourproject</code> depend on what you named your Flutter app.</p>
+</aside>
+<ol type="1" start="7">
+<li>Continuing in Firebase, follow the instructions to download the config file <code>GoogleService-Info.plist</code>.</li>
+<li>Go back to Xcode. Notice that <strong>Runner</strong> has a subfolder also called <strong>Runner</strong> (as shown in the screencap above).</li>
+<li>Drag the <code>GoogleService-Info.plist</code> file (that you just downloaded) into that <strong>Runner </strong><em>subfolder</em>.</li>
+<li>In the dialog that appears in Xcode, click <strong>Finish</strong>.</li>
+<li>Go back to the Firebase console. In the setup step, click <strong>Next</strong>, then skip the remaining steps and go back to the main page of the Firebase console.</li>
+</ol>
+<p><br>You're done configuring your Flutter app for iOS!</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 49.50px" src="./Firebase for Flutter_files/84e0b3199bef6d8a.png"></p>
+</td><td colspan="1" rowspan="1"><h2 is-upgraded="">Configure Android</h2>
+</td></tr>
+</tbody></table>
+<ol type="1" start="1">
+<li>In the <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a>, select <strong>Project Overview</strong> in the left nav, then click the Android button under "Get started by adding Firebase to your app".</li>
+</ol>
+<aside class="special"><p><strong>Note</strong>: If you've already added an app (for example, the iOS app from the preceding section), click <strong>Add app</strong>.</p>
+</aside>
+<p>You'll see the dialog shown in the following screencap:<br><img style="width: 624.00px" src="./Firebase for Flutter_files/8254fc299e82f528.png"></p>
+<ol type="1" start="2">
+<li>The important value to provide is the <strong>Android package name</strong>, which you'll obtain using the following two steps.</li>
+</ol>
+<aside class="special"><p><strong>Tip</strong>: Read <a href="https://developer.android.com/studio/build/application-id.html" target="_blank">Set the application ID</a> for more information about package and application IDs.</p>
+</aside>
+<ol type="1" start="3">
+<li>In your Flutter app directory, open the file <code>android/app/src/main/AndroidManifest.xml</code>.</li>
+<li>In the <code>manifest</code> element, find the string value of the <code>package</code> attribute.  This value is the Android package name (something like <code>com.yourcompany.yourproject</code>).  Copy this value.</li>
+<li>In the Firebase dialog, paste the copied package name into the <strong>Android package name</strong> field.</li>
+<li><em>(Optional)  </em>If you plan to use <a href="https://firebase.google.com/docs/auth/" target="_blank">Google Sign In</a> or <a href="https://firebase.google.com/products/dynamic-links/" target="_blank">Firebase Dynamic Links</a> (note that these are not part of this codelab), you need to provide the <strong>Debug signing certificate SHA-1</strong> value.  Follow the instructions in the <a href="https://developers.google.com/android/guides/client-auth" target="_blank">Authenticating Your Client</a> guide to find the <strong>debug certificate fingerprint</strong> value to paste into that field.</li>
+<li>Click <strong>Register App</strong>.</li>
+<li>Continuing in Firebase, follow the instructions to download the config file <code>google-services.json</code>.</li>
+<li>Go to your Flutter app directory, then move the <code>google-services.json</code> file (that you just downloaded) into the <code>android/app</code> directory.</li>
+<li>Back in the Firebase console, skip the remaining steps and go back to the main page of the Firebase console.</li>
+<li>Finally, you need the <a href="https://developers.google.com/android/guides/google-services-plugin" target="_blank">Google Services Gradle plugin</a> to read the <code>google-services.json</code> file that was generated by Firebase.</li>
+<li>In your IDE or editor, open <code>android/app/build.gradle</code>, then add the following line as the <em>last</em> line in the file:</li>
+</ol>
+<pre><code><span class="pln">apply plugin</span><span class="pun">:</span><span class="pln"> </span><span class="str">'com.google.gms.google-services'</span></code></pre>
+<ol type="1" start="13">
+<li>Open <code>android/build.gradle</code>, then inside the <code>buildscript</code> tag, add a new dependency:</li>
+</ol>
+<pre><code><span class="pln">buildscript </span><span class="pun">{</span><span class="pln">
+   repositories </span><span class="pun">{</span><span class="pln">
+       </span><span class="com">// ...</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+
+   dependencies </span><span class="pun">{</span><span class="pln">
+       </span><span class="com">// ...</span><span class="pln">
+       classpath </span><span class="str">'com.google.gms:google-services:4.3.3'</span><span class="pln">   </span><span class="com">// new</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Note</strong>: The "new" comment indicates that the line that was added. Make sure that the new dependency lines up exactly with the other <code>classpath</code>.</p>
+<p>For more information, see the <strong>Add the SDK</strong> section of the <a href="https://firebase.google.com/docs/android/setup#manually_add_firebase" target="_blank"><strong>Add Firebase to Your Android Project</strong></a> documentation. </p>
+</aside>
+<ol type="1" start="14">
+<li>If your app is still running, close and rebuild it to allow gradle to install dependencies.</li>
+</ol>
+<p>You're done configuring your Flutter app for Android!</p>
+<h2 is-upgraded="">FlutterFire plugins</h2>
+<p>Your Flutter app should now be connected to Firebase.</p>
+<p>Flutter provides access to a wide range of platform-specific services, including Firebase APIs <a href="https://pub.dartlang.org/flutter" target="_blank">and plugins</a>.  Plugins include platform-specific code to access services and APIs on iOS and Android.</p>
+<p>Firebase is accessed through a number of different libraries, one for each Firebase product (for example, databases, authentication, analytics, storage).  Flutter provides its own set of plugins to access each Firebase product, collectively called <strong>FlutterFire</strong>.  Be sure to check the <a href="https://github.com/flutter/plugins/blob/master/FlutterFire.md" target="_blank">FlutterFire GitHub page</a> for the most up-to-date list of FlutterFire plugins.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create your Cloud Firestore database" duration="7" step="8"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">8. Create your Cloud Firestore database</h2>
+        <p>Your Firebase-Flutter setup is finished, and you're ready to start building your app!</p>
+<p>You'll start by setting up Cloud Firestore and initializing it with some values.</p>
+<ol type="1" start="1">
+<li>Open the <a href="https://console.firebase.google.com/" target="_blank">Firebase console</a>, then select the Firebase project that you created during setup.</li>
+<li>From the left nav <strong>Develop </strong>section<strong>,</strong> select <strong>Database</strong>.<br><img style="width: 191.00px" src="./Firebase for Flutter_files/5d432b9641f7459e.png"></li>
+<li>In the <strong>Cloud Firestore</strong> pane, click <strong>Create database</strong>.</li>
+<li>In the <strong>Security rules for Cloud Firestore</strong> dialog, select <strong>Start in test mode</strong>, then click <strong>Enable</strong>.</li>
+</ol>
+<aside class="warning"><p><strong>Important</strong>: Test mode allows any user to read and write to your database, which is convenient during development.  However, this can be a security risk.  <strong><em>Before releasing any app to production, you should add </em></strong><a href="https://firebase.google.com/docs/firestore/reference/security/" target="_blank"><strong><em>security rules</em></strong></a><strong><em>.</em></strong></p>
+</aside>
+<p>Our database will have one collection, that we'll name "baby". In the collection is where the names and votes are stored.</p>
+<ol type="1" start="5">
+<li>Click <strong>Add Collection</strong>, set the collection's name to <code>baby</code>, then click <strong>Next</strong>.</li>
+</ol>
+<p>You can now add documents to your collection. Each document has a <strong>Document ID</strong>, and we'll need to have <strong>name</strong> and <strong>votes</strong> fields (as shown in the screencap below).</p>
+<ol type="1" start="6">
+<li>Enter a baby name using all lowercase letters. In this example, we used <code>dana</code>.</li>
+</ol>
+<aside class="special"><p><strong>Note</strong>: Using an actual baby name for each Document ID ensures that the documents are displayed alphabetically by baby name. By default, Document IDs are auto-generated timestamps, and documents are displayed in the order that they were created.</p>
+</aside>
+<ol type="1" start="7">
+<li>For the existing <strong>Field</strong>, enter the value of  <code>name</code>, select <code>string</code> for the <strong>Type</strong>, then enter the <strong>Value</strong> of <code>Dana</code>.</li>
+<li>Click the <strong>Add Field</strong> icon to add a second field to contain the number of <code>votes</code>. Select <code>number</code> for the <strong>Type</strong>, then initialize the <strong>Value</strong> as <code>0</code>.</li>
+<li>Click <strong>Save</strong>.<br><img style="width: 624.00px" src="./Firebase for Flutter_files/ce38e532b6334543.png"></li>
+<li>Add additional baby names by clicking <strong>Add Document</strong>.</li>
+</ol>
+<p>After adding several documents to your collection, your database should look something like this:</p>
+<p class="image-container"><img style="width: 624.00px" src="./Firebase for Flutter_files/b6b26a29dc612386.png"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Connect your Flutter app to Cloud Firestore" duration="5" step="9"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">9. Connect your Flutter app to Cloud Firestore</h2>
+        <p>Our app is now connected to Cloud Firestore!</p>
+<p>It's time to fetch our collection (<code>baby</code>) and use it instead of our <code>dummySnapshot</code> object.</p>
+<p>From Dart, you get the reference to Cloud Firestore by calling <code>Firestore.instance</code>. Specifically for our collection of baby names, call <code>Firestore.instance.collection('baby').snapshots()</code> to return a <a href="https://www.dartlang.org/tutorials/language/streams" target="_blank"><code>stream</code></a> of snapshots.</p>
+<p>Let's plug that stream of data into our Flutter UI using a <a href="https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html" target="_blank"><code>StreamBuilder</code></a> widget.</p>
+<ol type="1" start="1">
+<li>In your IDE or editor, open <code>lib/main.dart</code>, then find the <code>_buildBody</code> method.</li>
+<li>Replace the entire method with the following code:</li>
+</ol>
+<pre><code><span class="typ">Widget</span><span class="pln"> _buildBody</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">StreamBuilder</span><span class="pun">&lt;</span><span class="typ">QuerySnapshot</span><span class="pun">&gt;(</span><span class="pln">
+   stream</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Firestore</span><span class="pun">.</span><span class="pln">instance</span><span class="pun">.</span><span class="pln">collection</span><span class="pun">(</span><span class="str">'baby'</span><span class="pun">).</span><span class="pln">snapshots</span><span class="pun">(),</span><span class="pln">
+   builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(!</span><span class="pln">snapshot</span><span class="pun">.</span><span class="pln">hasData</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">LinearProgressIndicator</span><span class="pun">();</span><span class="pln">
+
+     </span><span class="kwd">return</span><span class="pln"> _buildList</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> snapshot</span><span class="pun">.</span><span class="pln">data</span><span class="pun">.</span><span class="pln">documents</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">},</span><span class="pln">
+ </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Note</strong>: The <code>StreamBuilder</code> widget listens for updates to the database and refreshes the list whenever the data changes. When there's no data, it shows a progress indicator.</p>
+</aside>
+<ol type="1" start="3">
+<li>The code that you just copy-pasted has a type error.  It's trying to pass a list of <code>DocumentSnapshot</code> to a method that expects something else.  Find <code>_buildList</code> and change its signature to this:</li>
+</ol>
+<pre><code><span class="typ">Widget</span><span class="pln"> _buildList</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">DocumentSnapshot</span><span class="pun">&gt;</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln"> </span></code></pre>
+<p>Instead of a list of <code>Map</code>, it now takes a list of <code>DocumentSnapshot</code>.</p>
+<ol type="1" start="4">
+<li>We're almost there.  The method <code>_buildListItem</code> still thinks it's getting a <code>Map</code>.  Find the start of the method, then replace it with this:</li>
+</ol>
+<pre><code><span class="typ">Widget</span><span class="pln"> _buildListItem</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">DocumentSnapshot</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> record </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromSnapshot</span><span class="pun">(</span><span class="pln">data</span><span class="pun">);</span></code></pre>
+<p>Instead of a <code>Map</code>, you're now taking a <code>DocumentSnapshot</code>, and using the <code>Record.fromSnapshot()</code> named constructor to build the <code>Record</code>.</p>
+<ol type="1" start="5">
+<li><em>(Optional)</em>  Remove the <code>dummySnapshot</code> field from the top of <code>lib/main.dart</code>.  It's not needed anymore.</li>
+<li>Save the file, then hot-reload your app.</li>
+</ol>
+<ul>
+<li>If you're using an IDE, just saving the file automatically performs hot-reload.</li>
+<li>If you're using an editor, enter <code>r</code> in the command line at the same location that you ran <code>flutter run</code>.</li>
+</ul>
+<p>After about a second, your app should look like this:</p>
+<p class="image-container"><img style="width: 236.38px" src="./Firebase for Flutter_files/adc0c9037cc640cf.png"></p>
+<p>You've just read from the database that you created! </p>
+<p>If you want, you can go to the Firebase console and change the database.  Your app will reflect the changes almost immediately (after all Cloud Firestore is a real-time database!).</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add interactivity" duration="1" step="10"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">10. Add interactivity</h2>
+        <p>Next you will allow users to actually vote! </p>
+<ol type="1" start="1">
+<li>In <code>lib/main.dart</code>, find the line that says <code>onTap: () =&gt; print(record)</code>.  Change it to this:</li>
+</ol>
+<pre><code><span class="pln">onTap</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> record</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">.</span><span class="pln">updateData</span><span class="pun">({</span><span class="str">'votes'</span><span class="pun">:</span><span class="pln"> record</span><span class="pun">.</span><span class="pln">votes </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pun">})</span></code></pre>
+<p>Instead of just printing the record to the console, this new line updates the baby name's database reference by incrementing the vote count by one.</p>
+<ol type="1" start="2">
+<li>Save the file, then hot-reload your app.</li>
+</ol>
+<p>Voting is now functional, including the update to the user interface. </p>
+<p class="image-container"><img style="width: 203.00px" src="./Firebase for Flutter_files/d8ffd2442e224e4e.gif"></p>
+<p>How does this work?  When the user taps the tile containing a name, you are telling Cloud Firestore to update the data of that reference.  In turn, this causes Cloud Firestore to notify all listeners with the updated snapshot.  As your app is listening through the <code>StreamBuilder</code> implemented above, it's updated with the new data.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Update data atomically" duration="3" step="11"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">11. Update data atomically</h2>
+        <p>It's hard to spot when testing on a single device, but our current code creates a subtle <em>race condition</em>.  If two people with your app vote at the <em>same time</em>, then the value of the <strong>votes</strong> field would increase by only one -- even though <em>two</em> people voted for the name.  This is because both apps would read the current value at the same time, add one, then write the same value back to the database.  Neither user would notice anything wrong because they would both see the value of <strong>votes</strong> increase.  It's extremely difficult to detect this problem through testing because triggering the error depends on doing two things inside a very small time window.</p>
+<p>The value of <strong>votes</strong> is a <em>shared resource</em>, and any time that you update a shared resource (especially when the new value depends on the old value) there is a risk of creating a race condition.  Instead, we can add votes using <a href="https://firebase.googleblog.com/2019/03/increment-server-side-cloud-firestore.html" target="_blank">atomic increment</a>.</p>
+<ol type="1" start="1">
+<li>In <code>lib/main.dart</code>, find the line that says <code>onTap: () =&gt; record.reference.updateData({'votes': record.votes + 1})</code>. Replace it with this:</li>
+</ol>
+<pre><code><span class="pln">onTap</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> record</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">.</span><span class="pln">updateData</span><span class="pun">({</span><span class="str">'votes'</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FieldValue</span><span class="pun">.</span><span class="pln">increment</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)})</span></code></pre>
+<ol type="1" start="2">
+<li>Save the file, then hot-reload your app.</li>
+</ol>
+<p>Now each vote counts—you removed the race condition.</p>
+<aside class="special"><p><strong>Note</strong>: You can also make atomic changes to data using <a href="https://firebase.google.com/docs/firestore/manage-data/transactions" target="_blank">transactions</a>. While this is a bit heavy-handed for incrementing a vote total, it is the right approach for more complex changes. Here is what a transaction that updated the votes count might look like.<br><br><code>onTap: () =&gt; Firestore.</code><em><code>instance</code></em><code>.runTransaction((transaction) </code><strong><code>async </code></strong><code>{</code></p>
+<p><strong><code>final </code></strong><code>freshSnapshot = </code><strong><code>await </code></strong><code>transaction.get(record.</code><strong><code>reference</code></strong><code>);</code></p>
+<p><strong><code>final </code></strong><code>fresh = Record.fromSnapshot(freshSnapshot);</code></p>
+<p><strong><code>await </code></strong><code>transaction</code></p>
+<p><code>         .update(record.</code><strong><code>reference</code></strong><code>, {</code><strong><code>'votes'</code></strong><code>: fresh.</code><strong><code>votes </code></strong><code>+ 1});</code></p>
+<p><code>   }),</code><br><br>How does this work?  By wrapping the read and write operations in one transaction, you're telling Cloud Firestore to only commit a change if there was no <em>external</em> change to the underlying data while the transaction was running.  If two users aren't concurrently voting on that particular name, the transaction runs exactly once.  But if the number of votes changes between the <code>transaction.get(...)</code> and the <code>transaction.update(...)</code> calls, the current run isn't committed, and the transaction is retried.  After 5 failed retries, the transaction fails.</p>
+</aside>
+<aside class="special"><p><strong>Note</strong>:  There is another way to solve this problem without using a transaction.  In general terms, you would use a stream containing each individual vote.  Each vote would be represented by the number 1.  The current displayed value for <strong>votes</strong> would then be the sum of the values in the stream.  In Firebase, you could (for example) use a collection to hold the votes and an <a href="https://firebase.google.com/docs/firestore/solutions/aggregation" target="_blank">aggregation query</a> to sum them.</p>
+</aside>
+<p>Here are the final contents of <code>lib/main.dart</code>.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:cloud_firestore/cloud_firestore.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">MyApp</span><span class="pun">());</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+     title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Baby Names'</span><span class="pun">,</span><span class="pln">
+     home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MyHomePage</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyHomePage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">_MyHomePageState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">_MyHomePageState</span><span class="pun">();</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_MyHomePageState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">MyHomePage</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+     appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Baby Name Votes'</span><span class="pun">)),</span><span class="pln">
+     body</span><span class="pun">:</span><span class="pln"> _buildBody</span><span class="pun">(</span><span class="pln">context</span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+
+ </span><span class="typ">Widget</span><span class="pln"> _buildBody</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">StreamBuilder</span><span class="pun">&lt;</span><span class="typ">QuerySnapshot</span><span class="pun">&gt;(</span><span class="pln">
+     stream</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Firestore</span><span class="pun">.</span><span class="pln">instance</span><span class="pun">.</span><span class="pln">collection</span><span class="pun">(</span><span class="str">'baby'</span><span class="pun">).</span><span class="pln">snapshots</span><span class="pun">(),</span><span class="pln">
+     builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+       </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(!</span><span class="pln">snapshot</span><span class="pun">.</span><span class="pln">hasData</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">LinearProgressIndicator</span><span class="pun">();</span><span class="pln">
+
+       </span><span class="kwd">return</span><span class="pln"> _buildList</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> snapshot</span><span class="pun">.</span><span class="pln">data</span><span class="pun">.</span><span class="pln">documents</span><span class="pun">);</span><span class="pln">
+     </span><span class="pun">},</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+
+ </span><span class="typ">Widget</span><span class="pln"> _buildList</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">DocumentSnapshot</span><span class="pun">&gt;</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">20.0</span><span class="pun">),</span><span class="pln">
+     children</span><span class="pun">:</span><span class="pln"> snapshot</span><span class="pun">.</span><span class="pln">map</span><span class="pun">((</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _buildListItem</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)).</span><span class="pln">toList</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+
+ </span><span class="typ">Widget</span><span class="pln"> _buildListItem</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">DocumentSnapshot</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">final</span><span class="pln"> record </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromSnapshot</span><span class="pun">(</span><span class="pln">data</span><span class="pun">);</span><span class="pln">
+
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+     key</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ValueKey</span><span class="pun">(</span><span class="pln">record</span><span class="pun">.</span><span class="pln">name</span><span class="pun">),</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">,</span><span class="pln"> vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+       decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+         border</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Border</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">grey</span><span class="pun">),</span><span class="pln">
+         borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderRadius</span><span class="pun">.</span><span class="pln">circular</span><span class="pun">(</span><span class="lit">5.0</span><span class="pun">),</span><span class="pln">
+       </span><span class="pun">),</span><span class="pln">
+       child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+         title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">record</span><span class="pun">.</span><span class="pln">name</span><span class="pun">),</span><span class="pln">
+         trailing</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">record</span><span class="pun">.</span><span class="pln">votes</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">()),</span><span class="pln">
+         onTap</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> record</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">.</span><span class="pln">updateData</span><span class="pun">({</span><span class="str">'votes'</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FieldValue</span><span class="pun">.</span><span class="pln">increment</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)}),</span><span class="pln">       </span><span class="pun">),</span><span class="pln">
+     </span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Record</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> votes</span><span class="pun">;</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">DocumentReference</span><span class="pln"> reference</span><span class="pun">;</span><span class="pln">
+
+ </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromMap</span><span class="pun">(</span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> map</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">})</span><span class="pln">
+     </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">map</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+       </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">map</span><span class="pun">[</span><span class="str">'votes'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+       name </span><span class="pun">=</span><span class="pln"> map</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">],</span><span class="pln">
+       votes </span><span class="pun">=</span><span class="pln"> map</span><span class="pun">[</span><span class="str">'votes'</span><span class="pun">];</span><span class="pln">
+
+ </span><span class="typ">Record</span><span class="pun">.</span><span class="pln">fromSnapshot</span><span class="pun">(</span><span class="typ">DocumentSnapshot</span><span class="pln"> snapshot</span><span class="pun">)</span><span class="pln">
+     </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">fromMap</span><span class="pun">(</span><span class="pln">snapshot</span><span class="pun">.</span><span class="pln">data</span><span class="pun">,</span><span class="pln"> reference</span><span class="pun">:</span><span class="pln"> snapshot</span><span class="pun">.</span><span class="pln">reference</span><span class="pun">);</span><span class="pln">
+
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">String</span><span class="pln"> toString</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">"Record&lt;$name:$votes&gt;"</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span></code></pre>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Next steps" duration="1" step="12"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">12. Next steps</h2>
+        <p><strong>Congratulations!</strong></p>
+<p>You now know the basics of integrating Flutter apps with Firebase.</p>
+<h3 is-upgraded=""><strong>You've learned</strong></h3>
+<ul>
+<li>How to add Firebase functionality to a Flutter app.</li>
+<li>How to connect your app to Cloud Firestore for data syncing.</li>
+<li>How to update a Cloud Firestore database atomically.</li>
+</ul>
+<p>Ready to share your new app with friends?  Check out how you can generate platform-specific binaries for your Flutter app (an <a href="https://flutter.io/ios-release/" target="_blank">IPA file for iOS</a> and an <a href="https://flutter.io/android-release/" target="_blank">APK file for Android</a>).</p>
+<h2 is-upgraded="">Additional resources</h2>
+<p>For more information on Firebase, see:</p>
+<ul>
+<li><a href="https://firebase.google.com/" target="_blank">Firebase website</a></li>
+<li><a href="https://youtu.be/v_hR4K4auoQ" target="_blank">Cloud Firestore video</a></li>
+<li><a href="https://firebase.google.com/docs/firestore/" target="_blank">Cloud Firestore documentation</a> </li>
+<li>Introductory Firebase codelab (for <a href="https://codelabs.developers.google.com/codelabs/firebase-ios-swift" target="_blank">iOS/Swift</a>) (for <a href="https://codelabs.developers.google.com/codelabs/firebase-android" target="_blank">Android</a>)</li>
+</ul>
+<p>You might also find these developer resources useful as you continue working with the Flutter framework:</p>
+<ul>
+<li><a href="https://flutter.io/" target="_blank">Flutter website</a></li>
+<li><a href="https://www.udacity.com/course/ud905" target="_blank">Flutter course</a></li>
+<li>"<a href="https://hackernoon.com/whats-revolutionary-about-flutter-946915b09514" target="_blank">What's Revolutionary about Flutter</a>"</li>
+<li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1" target="_blank">Write your first Flutter app</a> codelab</li>
+<li><a href="http://docs.flutter.io/flutter/" target="_blank">Flutter API reference</a></li>
+<li>Additional <a href="https://github.com/flutter/flutter/tree/master/examples" target="_blank">Flutter sample apps</a> with source code</li>
+</ul>
+<p>Here are some ways to get the latest news about Flutter:</p>
+<ul>
+<li>Join the <a href="https://groups.google.com/forum/#!forum/flutter-dev" target="_blank">flutter-dev</a> and <a href="https://groups.google.com/forum/#!forum/flutter-announce" target="_blank">flutter-announce</a> mailing lists</li>
+<li>Join the Flutter community on <a href="https://discord.gg/N7Yshp4" target="_blank">Discord</a></li>
+<li>Follow <a href="https://twitter.com/flutterdev" target="_blank">@flutter.dev</a> on Twitter</li>
+<li>Check out the <a href="https://www.youtube.com/flutterdev" target="_blank">flutterdev</a> channel on Youtube</li>
+<li>Check out the <a href="https://medium.com/flutter" target="_blank">Flutter publication</a> on Medium</li>
+<li>Check out the Flutter tag on <a href="https://stackoverflow.com/tags/flutter" target="_blank">Stack Overflow</a></li>
+<li>Star Flutter on <a href="https://github.com/flutter/flutter" target="_blank">GitHub</a> </li>
+</ul>
+<h2 is-upgraded="">Tell us how we're doing</h2>
+<google-codelab-survey survey-id="flutter-firebase-2" upgraded="">
+
+
+<div class="survey-questions" survey-name="flutter-firebase-2"><div class="survey-question-wrapper"><h4>How likely are you to recommend trying Flutter to your friends and colleagues? (from 1="Very unlikely" to 5="Very likely")</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--1-label" for="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--1"><span class="option-text">1</span><input type="radio" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--1" name="How likely are you to recommend trying Flutter to your friends and colleagues? (from 1=&quot;Very unlikely&quot; to 5=&quot;Very likely&quot;)"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--2-label" for="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--2"><span class="option-text">2</span><input type="radio" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--2" name="How likely are you to recommend trying Flutter to your friends and colleagues? (from 1=&quot;Very unlikely&quot; to 5=&quot;Very likely&quot;)"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--3-label" for="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--3"><span class="option-text">3</span><input type="radio" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--3" name="How likely are you to recommend trying Flutter to your friends and colleagues? (from 1=&quot;Very unlikely&quot; to 5=&quot;Very likely&quot;)"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--4-label" for="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--4"><span class="option-text">4</span><input type="radio" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--4" name="How likely are you to recommend trying Flutter to your friends and colleagues? (from 1=&quot;Very unlikely&quot; to 5=&quot;Very likely&quot;)"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--5-label" for="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--5"><span class="option-text">5</span><input type="radio" id="how-likely-are-you-to-recommend-trying-flutter-to-your-friends-and-colleagues-from-1very-unlikely-to-5very-likely--5" name="How likely are you to recommend trying Flutter to your friends and colleagues? (from 1=&quot;Very unlikely&quot; to 5=&quot;Very likely&quot;)"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Firebase for Flutter_files/native-shim.js"></script>
+  <script src="./Firebase for Flutter_files/custom-elements.min.js"></script>
+  <script src="./Firebase for Flutter_files/prettify.js"></script>
+  <script src="./Firebase for Flutter_files/codelab-elements.js"></script>
+
+
+
+</body></html>

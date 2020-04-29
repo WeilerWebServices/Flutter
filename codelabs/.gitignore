@@ -1,0 +1,11 @@
+.DS_Store
+pubspec.lock
+.packages
+
+# */**/android
+# */**/ios
+# */**/.gitignore
+*/**/.metadata
+*/**/README.md
+
+.dart_tool/

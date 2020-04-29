@@ -1,0 +1,16 @@
+name: simple
+description: A simple example of how to use the diagram_capture library.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  diagram_capture:
+    path: ..
+  path_provider: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

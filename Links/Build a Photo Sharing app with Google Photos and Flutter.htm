@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://codelabs.developers.google.com/codelabs/google-photos-sharing/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Build a Photo Sharing app with Google Photos and Flutter</title>
+  <link rel="stylesheet" href="./Build a Photo Sharing app with Google Photos and Flutter_files/css">
+  <link rel="stylesheet" href="./Build a Photo Sharing app with Google Photos and Flutter_files/icon">
+  <link rel="stylesheet" href="./Build a Photo Sharing app with Google Photos and Flutter_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Build a Photo Sharing app with Google Photos and Flutter_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="google-photos-sharing" environment="web" feedback-link="https://github.com/googlecodelabs/photos-sharing/issues" selected="0" google-codelab-ready="" codelab-title="Build a Photo Sharing app with Google Photos and Flutter" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>44 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#1"><span class="step"><span>Download the Code</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#2"><span class="step"><span>Run the App</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#3"><span class="step"><span>Set up the Google Photos Library API</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#4"><span class="step"><span>Create an album</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#5"><span class="step"><span>Only show your app's albums</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#6"><span class="step"><span>Upload Photos</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#7"><span class="step"><span>Share albums with non-app users</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#8"><span class="step"><span>Share albums inside your app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#9"><span class="step"><span>Summary</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/googlecodelabs/photos-sharing/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Build a Photo Sharing app with Google Photos and Flutter</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>44 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="1" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <h2 is-upgraded=""><strong>What you will build</strong></h2>
+<p>In this codelab, you'll  build a field trip app, Field Trippa, that enables users to share photos. </p>
+<p>Learn how to use the Google Photos Library API to back a media sharing experience in your own application.</p>
+<p class="image-container"><img style="width: 312.36px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/6571e359f222ccf6.png"></p>
+<h2 class="checklist" is-upgraded=""><strong>What you'll learn</strong></h2>
+<ul class="checklist">
+<li>How to use the <a href="https://developers.google.com/photos" target="_blank">Google Photos Library API</a> to upload media and share albums</li>
+<li>How to use <a href="https://developers.google.com/identity/" target="_blank">Google Sign-In</a> in Flutter</li>
+<li>How to make Google API calls from Flutter</li>
+</ul>
+<h2 is-upgraded=""><strong>What you'll need</strong></h2>
+<ul>
+<li>Flutter development environment</li>
+<li><strong>Two</strong> Google user accounts set up on different emulators or devices that have access to <a href="https://photos.google.com/" target="_blank">Google Photos</a>, so you can test sharing between users</li>
+</ul>
+<h2 is-upgraded="">Overview over the Field Trip Gallery App - "Field Trippa"</h2>
+<p>In this codelab you will build an app to share photos for an excursion or field trip, built using the Google Photos Library API.</p>
+<p>The user logs in using Google Sign-In and authorizes the application to use the Google Photos Library API.</p>
+<p>Then, the user can create a <code>trip</code> for uploading photos with a description. Each <code>trip</code> can be shared with other members of the application, who can also contribute photos.</p>
+<p class="image-container"><img style="width: 298.00px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/146953eced1f4f92.png"></p>
+<p>Under the hood, each <code>trip</code> is stored as a <em>shared album</em> inside Google Photos. The app handles sharing and uploading to this album, but you can also share the album with others who do not have the app directly through a URL to Google Photos.</p>
+<p class="image-container"><img style="width: 317.74px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/c4af82aa4bf8cc31.png"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Download the Code" duration="4" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Download the Code</h2>
+        <p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png">Download the source code for this codelab:</p>
+<p><a href="https://github.com/googlecodelabs/photos-sharing/archive/master.zip" target="_blank"><paper-button class="colored" raised=""><iron-icon icon="file-download"></iron-icon>Download source code</paper-button></a> <a href="https://github.com/googlecodelabs/photos-sharing/tree/master" target="_blank"><paper-button class="colored" raised="">Browse on GitHub</paper-button></a></p>
+<p>(The starting app code is available in the <code>master</code> branch in <a href="https://github.com/googlecodelabs/photos-sharing/tree/master" target="_blank">the repository</a>.)</p>
+<p>Unpack the downloaded zip file. This creates a root folder, <code>photos-sharing-master</code>, that contains all the code and resources you need to get started.</p>
+<p>Open the extracted folder in your preferred Flutter IDE, for example VSCode or Android Studio with the Dart and Flutter plugins installed.</p>
+<h2 is-upgraded=""><strong>Final Implementation Code</strong></h2>
+<p>The following link points to the final version of the application that is fully implemented. You can use this if you get stuck or to compare your implementation:</p>
+<p><a href="https://github.com/googlecodelabs/photos-sharing/archive/final.zip" target="_blank"><paper-button class="colored" raised=""><iron-icon icon="file-download"></iron-icon>Download final source code</paper-button></a> <a href="https://github.com/googlecodelabs/photos-sharing/tree/final" target="_blank"><paper-button class="colored" raised="">Browse final source code on GitHub</paper-button></a></p>
+<p>(The final app code is available in the <code>final</code> branch in <a href="https://github.com/googlecodelabs/photos-sharing/tree/final" target="_blank">the repository</a>.)</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Run the App" duration="2" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Run the App</h2>
+        <p>Follow <a href="https://flutter.dev/docs/get-started/editor" target="_blank">these steps to get your development environment set up</a>, if you haven't developed with Flutter before.</p>
+<p>To run the "Field Trippa" app click the "run" button in your development IDE, or use the following command from the root directory of the source code:</p>
+<pre>flutter run</pre>
+<p>You should see the "<strong>Connect with Google Photos</strong>" screen:</p>
+<p class="image-container"><img style="width: 313.24px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/6bfc7e3fab746b8d.png"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up the Google Photos Library API" duration="8" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Set up the Google Photos Library API</h2>
+        <p>The Google Photos Library API requires you to authenticate your users using OAuth 2.0. Users sign into the application and authorize it to interact with the API on their behalf. </p>
+<p>You can find some additional troubleshooting tips at the end of this step.</p>
+<h2 is-upgraded=""><strong>Create a new Firebase project and register your app</strong></h2>
+<aside class="warning"><p>Only create a new Firebase project and download the Android or iOS configuration files as described in this codelab. </p>
+<p>(The required Firebase SDK is already included by the Flutter package that handles sign in.)</p>
+<p><strong>You do not need to add the Firebase SDK or add any dependencies to the project. Skip these steps in the Firebase console.</strong></p>
+</aside>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Go to the <a href="https://console.firebase.google.com/" target="_blank">Firebase console</a> and select "<strong>+ Add Project</strong>". Enter a project name and select "<strong>Create Project</strong>" to continue. Do not follow any other steps in the Firebase console. Instead, return to this codelab and continue to the "Android" or "iOS" parts below to configure the application.</p>
+<h3 is-upgraded=""><strong>Android only: If you are running the app on Android, register an Android app:</strong></h3>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Click the <strong>Android icon</strong> to open the Android app registration screen.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> For <strong>package</strong>, enter: <code>com.google.codelab.photos.sharing</code></p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Retrieve the <strong>signing certificate SHA-1</strong> from your machine: Run the following command:</p>
+<pre>keytool -alias androiddebugkey -keystore ~/.android/debug.keystore -list -v -storepass android</pre>
+<aside class="special"><p>The signing certificate is used to sign the Android application. The debug certificate is usually located at <code>&lt;home&gt;/.android/debug.keystore</code>. You can also retrieve the certificate by running this command from inside the <code>android/</code> directory: <code>./gradlew signingReport</code></p>
+<p>See <a href="https://developers.google.com/android/guides/client-auth" target="_blank">here</a> for more detail on finding the SHA1.</p>
+</aside>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Click "<strong>next</strong>" to continue.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Download the <code>google-service.json</code> file to your computer and move it into the directory "<code>android/app/</code>". (Tip: In Android Studio, you can drag the downloaded file directly into the correct location in the <strong>project</strong> side panel.)</p>
+<p>This file contains the project configuration for the Firebase and Google Developers project you have just set up. </p>
+<p>(See the documentation for the <a href="https://pub.dartlang.org/packages/google_sign_in" target="_blank">package google_sign_in</a> for details.)</p>
+<h3 is-upgraded="">iOS only: <strong>If you are running the app on iOS, register an iOS app in Firebase:</strong></h3>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Click the <strong>iOS icon</strong> to open the iOS app registration screen.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> For <strong>iOS bundle ID</strong>, enter: <code>com.google.codelab.photos.sharing</code></p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Click "<strong>next</strong>" to continue.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Download the <code>GoogleService-Info.plist</code> file to your computer.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Open the Flutter project in Xcode</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Right click on <strong>Runner</strong> directory, select "<strong>Add Files to Runner</strong>" and select the <code>GoogleService-Info.plist</code> file you have downloaded to add it to the <strong>Runner</strong> module.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Edit the source code of the file  <code>ios/Runner/Info.plist</code> and add the value of the property <code>REVERSED_CLIENT_ID</code> from the file <code>GoogleService-Info.plist</code>. Replace the entry at the bottom of the file:</p>
+<h3 is-upgraded="">ios/Runner/Info.plist</h3>
+<pre><code><span class="com">&lt;!-- Google Sign-in Section --&gt;</span><span class="pln">
+</span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleURLTypes</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+</span><span class="tag">&lt;array&gt;</span><span class="pln">
+  </span><span class="tag">&lt;dict&gt;</span><span class="pln">
+    </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleTypeRole</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+    </span><span class="tag">&lt;string&gt;</span><span class="pln">Editor</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+    </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleURLSchemes</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+    </span><span class="tag">&lt;array&gt;</span><span class="pln">
+      </span><span class="tag">&lt;string&gt;</span><span class="pln">COPY_REVERSED_CLIENT_ID_HERE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/array&gt;</span><span class="pln">
+  </span><span class="tag">&lt;/dict&gt;</span><span class="pln">
+</span><span class="tag">&lt;/array&gt;</span><span class="pln">
+</span><span class="com">&lt;!-- End of the Google Sign-in Section --&gt;</span></code></pre>
+<p>(See the documentation for the <a href="https://pub.dartlang.org/packages/google_sign_in" target="_blank">package google_sign_in</a> for more details.)</p>
+<h2 is-upgraded=""><strong>Enable the Google Photos Library API</strong></h2>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Open the <a href="https://console.developers.google.com/apis/library/photoslibrary.googleapis.com" target="_blank">API screen in the Google Developers console</a> and enable the "<strong>Google Photos Library API</strong>". (You may have to select the Firebase project at the top of the screen first if the "<strong>enable</strong>" button is disabled.)</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Open the <a href="https://console.developers.google.com/apis/credentials/consent" target="_blank">OAuth consent screen configuration in the Google Developers</a> console to add the Google Photos Library API scopes and your email address. (This configuration is required for the OAuth verification review for any scopes used by the Google Photos Library API.)</p>
+<ul>
+<li>Enter the <strong>Application Name"</strong>, for example <code>Field Trippa Codelab</code></li>
+<li>Select "<strong>Add Scope</strong>", then "<strong>manually paste scopes"</strong> to enter the following scopes:</li>
+</ul>
+<pre>https://www.googleapis.com/auth/photoslibrary
+https://www.googleapis.com/auth/photoslibrary.sharing</pre>
+<ul>
+<li>Select a "<strong>support email address</strong>"</li>
+<li>Select <strong>Save</strong></li>
+</ul>
+<h2 is-upgraded=""><strong>Run the app and sign in</strong></h2>
+<p>Google Sign-In has already been implemented using the <a href="https://pub.dartlang.org/packages/google_sign_in" target="_blank">google_sign_in flutter package</a>. This package requires the <code>google-services.json</code> or <code>GoogleService-Info.plist</code> files that you have already copied into the project. </p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Run the application again and select "<strong>Connect to Google Photos</strong>".  You'll be prompted to select a user account and accept the authentication scopes.</p>
+<p>If everything has been set up successfully, you'll see an empty list on the next screen. </p>
+<p class="image-container"><img style="width: 306.96px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/9f3bcae1f8e7cd0d.png"></p>
+<h2 is-upgraded="">Troubleshooting sign in</h2>
+<p>If you are having trouble signing into the application, here are a few things you can check:</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> If  you receive the error <code>PlatformException(sign_in_failed, com.google.android.gms.common.api.ApiException: 10: , null)</code>, make sure that you have followed all steps in the section <em>Enable the Google Photos Library API</em>. You must add the <strong>Google Photos Library API scopes</strong>, enter a <strong>support email address</strong> and select <strong>save</strong>.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Check the <strong>signing certificate SHA-1</strong> that is configured in the Firebase console. Does it match the output from the keytool command from the first step? Does it match the output from the command <code>./gradlew signingReport</code> when run in the <code>android/</code> project? </p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Check the <strong>package name</strong> and <strong>iOS bundle ID </strong>that are configured in the Firebase console. This should be set to <code>com.google.codelab.photos.sharing</code></p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Check the location of the configuration files you have downloaded from the Firebase console. For Android, the file should be copied to <code>android/app/google-service.json</code>. For iOS it should be added to the <strong>Runner</strong> module.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> You may need to enable <strong>Google</strong> as a sign-in provider for your Firebase project. Open the <a href="https://console.firebase.google.com/" target="_blank">Firebase console</a> and navigate to <strong>Authentication</strong> and <strong>Sign-in method</strong>. Ensure that <strong>Google</strong> is enabled.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create an album" duration="5" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Create an album</h2>
+        <p>Before you implement the first API call to the Google Photos Library API, let's walk through the data architecture that the "Field Trippa" app uses.</p>
+<h2 is-upgraded=""><strong>App Architecture</strong></h2>
+<ul>
+<li>Each screen is implemented as a separate page: <br><img style="width: 344.50px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/96716bddd8effd4.png"></li>
+<li>The <code>PhotosLibraryApiModel</code> describes the data model of the application and abstracts the Google Photos Library API calls away.</li>
+<li>The HTTPS REST calls to the Library API are implemented in the <code>PhotosLibraryApiClient</code>. Each call provided by this class takes a <code>*Request</code> object where you specify parameters and options for a call.</li>
+<li>The Library API requires user authentication via OAuth2. The access token required to be included in all API calls is set directly by the google_sign_in package on the <code>PhotosLibraryApiClient</code>.</li>
+</ul>
+<h2 is-upgraded=""><strong>Implement the create albums API call</strong></h2>
+<p>Each trip is stored as an album in Google Photos. When you select the <strong>"CREATE A TRIP ALBUM" </strong>button, you should prompt the user for the name of the trip and create a new album with this name as its title.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png">  In  <code>create_trip_page.dart</code>, write the logic that makes a request to the Library API to create the album.  Implement the <code>_createTrip(...)</code> method at the end of the file to call the <code>PhotosLibraryApiModel</code> with the name of the trip the user entered.</p>
+<h3 is-upgraded="">lib/pages/create_trip_page.dart</h3>
+<pre><code><span class="typ">Future</span><span class="str">&lt;void&gt;</span><span class="pln"> _createTrip</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Display the loading indicator.</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _isLoading </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+  await </span><span class="typ">ScopedModel</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">PhotosLibraryApiModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">createAlbum</span><span class="pun">(</span><span class="pln">tripNameFormController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="kwd">then</span><span class="pun">((</span><span class="typ">Album</span><span class="pln"> album</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">// Hide the loading indicator.</span><span class="pln">
+    setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _isLoading </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">pop</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the call to the Library API that creates the album. In the API model, implement the <code>createAlbum(...)</code>  method that takes the title of the album as a parameter. It makes a call to the <code>PhotosLibraryApiClient</code> where the actual REST call is made.</p>
+<h3 is-upgraded=""><strong>lib/model/photos_library_api_model.dart</strong></h3>
+<pre><code><span class="typ">Future</span><span class="pun">&lt;</span><span class="typ">Album</span><span class="pun">&gt;</span><span class="pln"> createAlbum</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> title</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> client
+      </span><span class="pun">.</span><span class="pln">createAlbum</span><span class="pun">(</span><span class="typ">CreateAlbumRequest</span><span class="pun">.</span><span class="pln">fromTitle</span><span class="pun">(</span><span class="pln">title</span><span class="pun">))</span><span class="pln">
+      </span><span class="pun">.</span><span class="kwd">then</span><span class="pun">((</span><span class="typ">Album</span><span class="pln"> album</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    updateAlbums</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> album</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the REST call to create the album in <code>photos_library_api_client.dart</code>. Remember that the <code>CreateAlbumRequest</code> already contains the <code>title</code> property- required for this call. </p>
+<p>The following encodes it as JSON and adds the authentication headers to authorize the request. Finally, return the album created by the API.</p>
+<h3 is-upgraded="">lib/photos_library_api/photos_library_api_client.dart</h3>
+<pre><code><span class="typ">Future</span><span class="pun">&lt;</span><span class="typ">Album</span><span class="pun">&gt;</span><span class="pln"> createAlbum</span><span class="pun">(</span><span class="typ">CreateAlbumRequest</span><span class="pln"> request</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> http
+      </span><span class="pun">.</span><span class="pln">post</span><span class="pun">(</span><span class="pln">
+    </span><span class="str">'https://photoslibrary.googleapis.com/v1/albums'</span><span class="pun">,</span><span class="pln">
+    body</span><span class="pun">:</span><span class="pln"> jsonEncode</span><span class="pun">(</span><span class="pln">request</span><span class="pun">),</span><span class="pln">
+    headers</span><span class="pun">:</span><span class="pln"> await _authHeaders</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="kwd">then</span><span class="pun">(</span><span class="pln">
+    </span><span class="pun">(</span><span class="typ">Response</span><span class="pln"> response</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">statusCode </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">200</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">reasonPhrase</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">body</span><span class="pun">);</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+      </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Album</span><span class="pun">.</span><span class="pln">fromJson</span><span class="pun">(</span><span class="pln">jsonDecode</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">body</span><span class="pun">));</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p>All other REST calls required for the Library API are implemented for you. This is the only place where you need to update the <code>PhotosLibraryApiClient</code> and the model. </p>
+<p>You can find the rest of the implementation in the <code>lib/photos_library_api/photos_library_api_client.dart</code> and <code>lib/model/photos_library_api_model.dart</code> files.</p>
+</aside>
+<h2 is-upgraded=""><strong>Try it out!</strong></h2>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Deploy the app and select  "<strong>+ Create Trip</strong>".</p>
+<p class="image-container"><img style="width: 259.59px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/3a5a17dc202ec715.gif"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Only show your app&#39;s albums" duration="4" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Only show your app's albums</h2>
+        <p>You may have noticed that the trips list shows other albums from Google Photos that were not created by your app. (If you do not have any other albums in Google Photos and want to see this behaviour,  open the Google Photos app and create an album. However, this is not required to continue in this codelab.)</p>
+<p>Remember that each trip is stored as an album in Google Photos. However, it does not make sense to show any other albums from Google Photos that were created through other means - Field Trippa should only show trips that the app has created.</p>
+<p>You can use the API to restrict the list of trips that are displayed to show only those created by the app.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Modify the method <code>listAlbums()</code> method (NOT <code>listSharedAlbums()</code>!)  in <code>photos_library_api_client.dart</code>. This method makes the REST call to retrieve a list of albums. Add the parameter <code>excludeNonAppCreatedData=true</code> that restricts the returned data to exclude albums that were not created by this app.</p>
+<h3 is-upgraded=""><strong>lib/photos_library_api/photos_library_api_client.dart</strong></h3>
+<pre><code><span class="typ">Future</span><span class="pun">&lt;</span><span class="typ">ListAlbumsResponse</span><span class="pun">&gt;</span><span class="pln"> listAlbums</span><span class="pun">()</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> http
+      </span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">
+          </span><span class="str">'https://photoslibrary.googleapis.com/v1/albums?'</span><span class="pln">
+          </span><span class="str">'excludeNonAppCreatedData=true&amp;pageSize=50'</span><span class="pun">,</span><span class="pln">
+          headers</span><span class="pun">:</span><span class="pln"> await _authHeaders</span><span class="pun">)</span><span class="pln">
+       </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Try it out!</strong></h2>
+<p>The first page now only shows trips that were created by the app.</p>
+<p class="image-container"><img style="width: 280.50px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/c7c20b76dcbfbfea.png"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Upload Photos" duration="7" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Upload Photos</h2>
+        <p>The next step is to upload photos to a trip. The data is stored in your user's Google Photos account, so you don't have to worry about storage or processing the data yourself. </p>
+<h2 is-upgraded=""><strong>Taking a photo in Flutter</strong></h2>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> First, implement the method <code>_getImage(...)</code> in the contribute photo dialog. This method is called when the user clicks the "<strong>+ADD PHOTO</strong>" button. </p>
+<p>The following code uses the <code>image_picker</code> package to take a photo, update the UI and call the API model to upload the image. (You'll implement this in the next step.) The <code>_getImage(...)</code> call stores an upload token needed later to create the photo in Google Photos.</p>
+<h3 is-upgraded=""><strong>lib/components/contribute_photo_dialog.dart</strong></h3>
+<pre><code><span class="typ">Future</span><span class="pln"> _getImage</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Use the image_picker package to prompt the user for a photo from their</span><span class="pln">
+  </span><span class="com">// device.</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">File</span><span class="pln"> image </span><span class="pun">=</span><span class="pln"> await </span><span class="typ">ImagePicker</span><span class="pun">.</span><span class="pln">pickImage</span><span class="pun">(</span><span class="pln">
+    source</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ImageSource</span><span class="pun">.</span><span class="pln">camera</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Store the image that was selected.</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _image </span><span class="pun">=</span><span class="pln"> image</span><span class="pun">;</span><span class="pln">
+    _isUploading </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  </span><span class="com">// Make a request to upload the image to Google Photos once it was selected.</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> uploadToken </span><span class="pun">=</span><span class="pln">
+      await </span><span class="typ">ScopedModel</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">PhotosLibraryApiModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">)</span><span class="pln">
+          </span><span class="pun">.</span><span class="pln">uploadMediaItem</span><span class="pun">(</span><span class="pln">image</span><span class="pun">);</span><span class="pln">
+
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Once the upload process has completed, store the upload token.</span><span class="pln">
+    </span><span class="com">// This token is used together with the description to create the media</span><span class="pln">
+    </span><span class="com">// item later.</span><span class="pln">
+    _uploadToken </span><span class="pun">=</span><span class="pln"> uploadToken</span><span class="pun">;</span><span class="pln">
+    _isUploading </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Implement Library API call to upload the image to get an upload token</strong></h2>
+<p>Uploading photos and videos to the Library API is done in two steps:</p>
+<ol type="1" start="1">
+<li>Upload the media bytes to receive an <em>upload token</em></li>
+<li>Create a <em>media item</em> in the user's library from the <em>upload token</em></li>
+</ol>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the REST request to upload media. You need to set some headers to specify the type of upload request and the filename. In the  file <code>photos_library_api_client.dart</code> implement the method <code>uploadMediaItem(...)</code> where the file is uploaded, returning the <em>upload token</em> that the HTTP call returns:</p>
+<h3 is-upgraded="">lib/photos_library_api/photos_library_api_client.dart</h3>
+<pre><code><span class="typ">Future</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">&gt;</span><span class="pln"> uploadMediaItem</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> image</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Get the filename of the image</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> filename </span><span class="pun">=</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">basename</span><span class="pun">(</span><span class="pln">image</span><span class="pun">.</span><span class="pln">path</span><span class="pun">);</span><span class="pln">
+  </span><span class="com">// Set up the headers required for this request.</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pun">&gt;</span><span class="pln"> headers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="typ">String</span><span class="pun">&gt;{};</span><span class="pln">
+  headers</span><span class="pun">.</span><span class="pln">addAll</span><span class="pun">(</span><span class="pln">await _authHeaders</span><span class="pun">);</span><span class="pln">
+  headers</span><span class="pun">[</span><span class="str">'Content-type'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">'application/octet-stream'</span><span class="pun">;</span><span class="pln">
+  headers</span><span class="pun">[</span><span class="str">'X-Goog-Upload-Protocol'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">'raw'</span><span class="pun">;</span><span class="pln">
+  headers</span><span class="pun">[</span><span class="str">'X-Goog-Upload-File-Name'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> filename</span><span class="pun">;</span><span class="pln">
+  </span><span class="com">// Make the HTTP request to upload the image. The file is sent in the body.</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> http
+      </span><span class="pun">.</span><span class="pln">post</span><span class="pun">(</span><span class="pln">
+    </span><span class="str">'https://photoslibrary.googleapis.com/v1/uploads'</span><span class="pun">,</span><span class="pln">
+    body</span><span class="pun">:</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">readAsBytesSync</span><span class="pun">(),</span><span class="pln">
+    headers</span><span class="pun">:</span><span class="pln"> await _authHeaders</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="kwd">then</span><span class="pun">((</span><span class="typ">Response</span><span class="pln"> response</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">statusCode </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">200</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">reasonPhrase</span><span class="pun">);</span><span class="pln">
+      </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">body</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> response</span><span class="pun">.</span><span class="pln">body</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Create a media item from an upload token</strong></h2>
+<p>Next, implement the creation of a media item in the user's library from the upload token.</p>
+<p>Creating a media item requires the upload token, an optional description (for example, the caption of the photo or video) and the optional identifier of an album. Field Trippa always adds the uploaded photo directly to a trip album.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the call to the <code>photos_library_api_client</code> that calls <code>mediaItems.batchCreate</code> with the upload token, description, and album ID. In the API model, implement the method <code>createMediaItem(...)</code> that calls the Library API. This method returns a media item.</p>
+<p>(The <code>photos_library_client</code> for this call is already implemented.)</p>
+<h3 is-upgraded=""><strong>lib/model/photos_library_api_model.dart</strong></h3>
+<pre><code><span class="typ">Future</span><span class="pun">&lt;</span><span class="typ">BatchCreateMediaItemsResponse</span><span class="pun">&gt;</span><span class="pln"> createMediaItem</span><span class="pun">(</span><span class="pln">
+    </span><span class="typ">String</span><span class="pln"> uploadToken</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> albumId</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> description</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Construct the request with the token, albumId and description.</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">BatchCreateMediaItemsRequest</span><span class="pln"> request </span><span class="pun">=</span><span class="pln">
+      </span><span class="typ">BatchCreateMediaItemsRequest</span><span class="pun">.</span><span class="pln">inAlbum</span><span class="pun">(</span><span class="pln">uploadToken</span><span class="pun">,</span><span class="pln"> albumId</span><span class="pun">,</span><span class="pln"> description</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Make the API call to create the media item. The response contains a</span><span class="pln">
+  </span><span class="com">// media item.</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> client
+      </span><span class="pun">.</span><span class="pln">batchCreateMediaItems</span><span class="pun">(</span><span class="pln">request</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="kwd">then</span><span class="pun">((</span><span class="typ">BatchCreateMediaItemsResponse</span><span class="pln"> response</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Print and return the response.</span><span class="pln">
+    </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">newMediaItemResults</span><span class="pun">[</span><span class="lit">0</span><span class="pun">].</span><span class="pln">toJson</span><span class="pun">());</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> response</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Try it out!</strong></h2>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png">Open the app and select a trip. Click <strong>contribute</strong> and select a photo that you have taken previously. Enter a description and select <strong>upload</strong>. The image should appear in the trip after a few seconds.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Open the album in the Google Photos app - you'll see the new image in the album of this trip.</p>
+<p class="image-container"><img style="width: 281.94px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/96059fa9e335f234.gif"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Share albums with non-app users" duration="6" step="8"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">8. Share albums with non-app users</h2>
+        <p>So far you have implemented the functionality to create a trip and upload photos with a description into it. In the backend, each trip is stored as an album in Google Photos. </p>
+<p>Next, you will share a trip with others who are not using your application.</p>
+<p>Each trip is backed by an album in Google Photos, therefore you can 'share' an album via a URL and make it available to anyone who has this URL. </p>
+<h2 is-upgraded=""><strong>Implement the call to share an album</strong></h2>
+<p>Albums are shared from the trip page when a <strong>share</strong> button at the top of the album is pressed. </p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the asynchronous call <code>_shareAlbum(...)</code> that calls to the model to share the album and then reloads the displayed album. By reloading the album, the <code>shareInfo</code> property is propagated which contains the <code>shareableUrl</code> that you'll show the user in a dialog later.</p>
+<h3 is-upgraded="">lib/pages/trip_page.dart</h3>
+<pre><code><span class="typ">Future</span><span class="str">&lt;void&gt;</span><span class="pln"> _shareAlbum</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Show the loading indicator</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _inSharingApiCall </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">SnackBar</span><span class="pln"> snackBar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">SnackBar</span><span class="pun">(</span><span class="pln">
+    duration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Duration</span><span class="pun">(</span><span class="pln">seconds</span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pun">),</span><span class="pln">
+    content</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Sharing Album...'</span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+  </span><span class="typ">Scaffold</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">showSnackBar</span><span class="pun">(</span><span class="pln">snackBar</span><span class="pun">);</span><span class="pln">
+  </span><span class="com">// Share the album and update the local model</span><span class="pln">
+  await </span><span class="typ">ScopedModel</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">PhotosLibraryApiModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">shareAlbum</span><span class="pun">(</span><span class="pln">album</span><span class="pun">.</span><span class="pln">id</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Album</span><span class="pln"> updatedAlbum </span><span class="pun">=</span><span class="pln">
+      await </span><span class="typ">ScopedModel</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">PhotosLibraryApiModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">getAlbum</span><span class="pun">(</span><span class="pln">album</span><span class="pun">.</span><span class="pln">id</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">print</span><span class="pun">(</span><span class="str">'Album has been shared.'</span><span class="pun">);</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    album </span><span class="pun">=</span><span class="pln"> updatedAlbum</span><span class="pun">;</span><span class="pln">
+    </span><span class="com">// Hide the loading indicator</span><span class="pln">
+    _inSharingApiCall </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the method <code>_showShareableUrl(...)</code> that is called when the user clicks the "<strong>SHARE WITH ANYONE</strong>" button at the top of the page. First, check if the album has already been shared and call the method <code>_showUrlDialog(...)</code> once it has been shared.</p>
+<h3 is-upgraded="">lib/pages/trip_page.dart</h3>
+<pre><code><span class="kwd">void</span><span class="pln"> _showShareableUrl</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">album</span><span class="pun">.</span><span class="pln">shareInfo </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">null</span><span class="pln"> </span><span class="pun">||</span><span class="pln"> album</span><span class="pun">.</span><span class="pln">shareInfo</span><span class="pun">.</span><span class="pln">shareableUrl </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">print</span><span class="pun">(</span><span class="str">'Not shared, sharing album first.'</span><span class="pun">);</span><span class="pln">
+    </span><span class="com">// Album is not shared yet, share it first, then display dialog</span><span class="pln">
+    _shareAlbum</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="kwd">then</span><span class="pun">((</span><span class="pln">_</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _showUrlDialog</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Album is already shared, display dialog with URL</span><span class="pln">
+    _showUrlDialog</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the method <code>_showUrlDialog(...)</code> that shows the <code>shareableUrl</code> in a dialog.</p>
+<h3 is-upgraded="">lib/pages/trip_page.dart</h3>
+<pre><code><span class="kwd">void</span><span class="pln"> _showUrlDialog</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">print</span><span class="pun">(</span><span class="str">'This is the shareableUrl:\n${album.shareInfo.shareableUrl}'</span><span class="pun">);</span><span class="pln">
+
+  _showShareDialog</span><span class="pun">(</span><span class="pln">
+      context</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">'Share this URL with anyone. '</span><span class="pln">
+      </span><span class="str">'Anyone with this URL can access all items.'</span><span class="pun">,</span><span class="pln">
+      album</span><span class="pun">.</span><span class="pln">shareInfo</span><span class="pun">.</span><span class="pln">shareableUrl</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Try it out!</strong></h2>
+<p>The app only lists trips that are <strong>not</strong> shared yet on the main screen. Don't worry, we'll implement that in the next step. For now, you can simply create a new trip if you navigate away from the screen.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Open the app and select a trip. Select "<strong>SHARE WITH ANYONE</strong>" at the top of the screen and open the returned URL in your browser. (Tip: the URL is also printed to the log, so you can easily copy it on your computer. In Android Studio, the log is displayed in the "<strong>Run</strong>" tab.)</p>
+<p class="image-container"><img style="width: 316.34px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/f1b3bcc7ef33b746.gif"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Share albums inside your app" duration="6" step="9"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">9. Share albums inside your app</h2>
+        <p>In Google Photos, albums can be shared via a URL that anyone with access to the URL can access. Through the Library API you can also share albums via <em>share tokens</em>. A share token is a string that is used inside your application to join users to a shared album via the API.</p>
+<p>The process for sharing an album by your application via the Library API looks like this:</p>
+<ol type="1" start="1">
+<li>User A logs into your application and authorizes the Library API</li>
+<li>Create the album</li>
+<li>Share the album using the identifier of the album</li>
+<li>Transfer the <em>share token</em> to another User</li>
+</ol>
+<p>The joining process is similar:</p>
+<ol type="1" start="5">
+<li>User B logs into your application and authorizes the Library API</li>
+<li>Retrive the <em>share token</em> for the album the user should join</li>
+<li>Join the album using the <em>share token</em></li>
+</ol>
+<aside class="special"><p>How <em>share tokens </em>are exchanged between users to join them to an album depends on your application architecture and backend.</p>
+<p>In this codelab, the token is displayed on screen and the app asks the user to copy and paste it from the log output. In a real world application you might consider sharing tokens via URLs to your app, or via other means inside your application.</p>
+</aside>
+<p>Shared albums are shown inside Google Photos on the "sharing" tab.</p>
+<h2 is-upgraded="">Display the share token</h2>
+<p>In the previous step you already implemented the method <code>_shareAlbum(...)</code> that shares an album. <br>The <code>shareInfo</code> property also contains the "<em>share token</em>" that will be shown on screen. </p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> On the trip page, implement the method <code>_showShareToken(...)</code> that is called when the user presses the "<strong>SHARE WITH FIELD TRIPPA</strong>" button on screen.</p>
+<h3 is-upgraded=""><strong>lib/pages/trip_page.dart</strong></h3>
+<pre><code><span class="kwd">void</span><span class="pln"> _showShareToken</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">album</span><span class="pun">.</span><span class="pln">shareInfo </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">print</span><span class="pun">(</span><span class="str">"Not shared, sharing album first."</span><span class="pun">);</span><span class="pln">
+    </span><span class="com">// Album is not shared yet, share it first, then display dialog</span><span class="pln">
+    _shareAlbum</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="kwd">then</span><span class="pun">((</span><span class="pln">_</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _showTokenDialog</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Album is already shared, display dialog with token</span><span class="pln">
+    _showTokenDialog</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Next, implement the display of the "share token" in the method <code>_showTokenDialog(...)</code>. The token is part of the <code>shareInfo</code> property of an album.</p>
+<h3 is-upgraded=""><strong>lib/pages/trip_page.dart</strong></h3>
+<pre><code><span class="kwd">void</span><span class="pln"> _showTokenDialog</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">print</span><span class="pun">(</span><span class="str">'This is the shareToken:\n${album.shareInfo.shareToken}'</span><span class="pun">);</span><span class="pln">
+
+  _showShareDialog</span><span class="pun">(</span><span class="pln">
+      context</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Use this token to share'</span><span class="pun">,</span><span class="pln"> album</span><span class="pun">.</span><span class="pln">shareInfo</span><span class="pun">.</span><span class="pln">shareToken</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded="">List shared albums</h2>
+<p>The application currently only lists albums that are <em>owned</em> by the user, but not shared albums. </p>
+<p>Only albums that the user has created or explicitly added to their Google Photos library are shown on the "Albums" screen inside the Google Photos app. Only these albums are returned when calling albums.list in the Library API. However, in our app the user can join other user's shared albums, which are only returned in the call to list shared albums. You need to change the way the list of trips (albums) are retrieved from the Library API to include both <em>owned</em> and <em>shared</em> albums. </p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Albums are loaded and cached in the API Model. Change the implementation of <code>updateAlbums()</code> in the model to load albums and shared albums, before storing them as one list.</p>
+<p>This implementation uses <a href="https://www.dartlang.org/tutorials/language/futures" target="_blank">multiple Futures</a> to list the albums asynchronously before combining them into the list of cached albums. Delete the old implementation and comment out the new code. </p>
+<h3 is-upgraded="">lib/model/photos_library_api_model.dart </h3>
+<pre><code><span class="kwd">void</span><span class="pln"> updateAlbums</span><span class="pun">()</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Reset the flag before loading new albums</span><span class="pln">
+  hasAlbums </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+  </span><span class="com">// Clear all albums</span><span class="pln">
+  _albums</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+  </span><span class="com">// Add albums from the user's Google Photos account</span><span class="pln">
+  </span><span class="com">// var ownedAlbums = await _loadAlbums();</span><span class="pln">
+  </span><span class="com">// if (ownedAlbums != null) {</span><span class="pln">
+  </span><span class="com">//   _albums.addAll(ownedAlbums);</span><span class="pln">
+  </span><span class="com">// }</span><span class="pln">
+
+  </span><span class="com">// Load albums from owned and shared albums</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Album</span><span class="pun">&gt;&gt;</span><span class="pln"> list </span><span class="pun">=</span><span class="pln">
+      await </span><span class="typ">Future</span><span class="pun">.</span><span class="pln">wait</span><span class="pun">([</span><span class="pln">_loadSharedAlbums</span><span class="pun">(),</span><span class="pln"> _loadAlbums</span><span class="pun">()]);</span><span class="pln">
+
+  _albums</span><span class="pun">.</span><span class="pln">addAll</span><span class="pun">(</span><span class="pln">list</span><span class="pun">.</span><span class="pln">expand</span><span class="pun">((</span><span class="pln">a</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> a </span><span class="pun">??</span><span class="pln"> </span><span class="pun">[]));</span><span class="pln">
+
+  notifyListeners</span><span class="pun">();</span><span class="pln">
+  hasAlbums </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded="">Join a shared album</h2>
+<p>You can join users of your application to an album by using the share token. This is done through a simple text dialog in this codelab. </p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Implement the <code>_joinTrip</code> method on the join trip page that calls the API model with the share token the user has entered. First, display the loading indicator, then make the call to join the shared album with the input from the text form, before hiding the loading indicator and returning back to the previous screen.</p>
+<h3 is-upgraded=""><strong>lib/pages/join_trip_page.dart</strong></h3>
+<pre><code><span class="typ">Future</span><span class="str">&lt;void&gt;</span><span class="pln"> _joinTrip</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Show loading indicator</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _isLoading </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Call the API to join an album with the entered share token</span><span class="pln">
+  await </span><span class="typ">ScopedModel</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">PhotosLibraryApiModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">joinSharedAlbum</span><span class="pun">(</span><span class="pln">shareTokenFormController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Hide loading indicator</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _isLoading </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Return to the previous screen</span><span class="pln">
+  </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">pop</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Try it out!</strong></h2>
+<p>You need a second device or emulator with a different user account to try out this part of the codelab.</p>
+<p><img style="width: 23.73px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/a3c16fc17be25f6c.png"> Create and share a trip under one user, then select the "<strong>SHARE IN FIELD TRIPPA</strong>" option to retrieve the <em>share token</em>. Copy this share token to the other device or emulator and enter it via the "<strong>JOIN A TRIP ALBUM</strong>" option on the home page. (Tip: The clipboard between your emulators and your host computer is shared.)</p>
+<p class="image-container"><img style="width: 324.52px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/6a8b55f2f35d70d0.gif"> <img style="width: 324.50px" src="./Build a Photo Sharing app with Google Photos and Flutter_files/c9b38c2182b71e18.gif"></p>
+<h2 is-upgraded=""><strong>Real world implementation tips</strong></h2>
+<p>When you implement sharing in a real world application (and not a codelab), you should think carefully about how you can use <em>share tokens</em> to join users to albums. Consider storing them in your secure backend and using your relationships between users to create and join albums.</p>
+<p>For example - a soccer club meet up application could keep track of attendees to particular scheduled events and only join the attendees to the album after prompting them. </p>
+<p>Before making any changes in your user's Google Photos account, it is important to give your users notice and ask for consent. Review the <a href="https://developers.google.com/photos/library/guides/ux-guidelines" target="_blank">Google Photos Library API UX guidelines</a> for more information.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Summary" duration="1" step="10"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">10. Summary</h2>
+        <h2 is-upgraded=""><strong>What you have built</strong></h2>
+<ul>
+<li>Implemented sharing functionality into your application, backed by Google Photos</li>
+<li>Create your own photo and video sharing experiences on top of the Google Photos Library API, without having to worry about infrastructure or storage</li>
+<li>Using the sharing functionality that is part of the API in interesting and novel ways to share content directly to your users.</li>
+<li>Used some key parts of the Library API:</li>
+<li>Created new albums and uploaded new photos</li>
+<li>Listed shared albums, limited to albums created by your application</li>
+</ul>
+<h2 is-upgraded=""><strong>Where to go next</strong></h2>
+<p>See the developer documentation for the Google Photos APIs at <a href="https://developers.google.com/photos" target="_blank">https://developers.google.com/photos</a> to find out more about <a href="https://developers.google.com/photos/library/guides/share-media" target="_blank">sharing media</a> and other parts of the Library API. For example <a href="https://developers.google.com/photos/library/guides/apply-filters" target="_blank">smart content filters</a> powered by machine learning to help you find the right photos and videos.</p>
+<p> When you are getting ready to launch your integration, join the <a href="https://developers.google.com/photos/partner-program" target="_blank">Google Photos partner program</a>.</p>
+<p>Don't forget to review the <a href="https://developers.google.com/photos/library/guides/ux-guidelines" target="_blank">UX guidelines</a> and <a href="https://developers.google.com/photos/library/guides/best-practices" target="_blank">technical best practices</a>. To help you get started, <a href="https://developers.google.com/photos/library/guides/client-libraries" target="_blank">client libraries</a> are also available for some languages.</p>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/google-photos-sharing/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Build a Photo Sharing app with Google Photos and Flutter_files/native-shim.js"></script>
+  <script src="./Build a Photo Sharing app with Google Photos and Flutter_files/custom-elements.min.js"></script>
+  <script src="./Build a Photo Sharing app with Google Photos and Flutter_files/prettify.js"></script>
+  <script src="./Build a Photo Sharing app with Google Photos and Flutter_files/codelab-elements.js"></script>
+
+
+
+</body></html>

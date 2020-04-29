@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://flutter.dev/docs/codelabs/layout-basics -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basic Flutter layout concepts  - Flutter </title>
+  <link rel="shortcut icon" href="https://flutter.dev/images/favicon.png">
+
+  <!-- Google Optimize -->
+  <script async="" src="./Basic Flutter layout concepts - Flutter_files/analytics.js"></script><script async="" src="./Basic Flutter layout concepts - Flutter_files/gtm.js"></script><script src="./Basic Flutter layout concepts - Flutter_files/optimize.js"></script>
+  <!-- End Google Optimize -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-ND4LWWZ');</script>
+  <!-- End Google Tag Manager -->
+
+  
+  <meta name="description" content="A codelab that teaches basic Flutter layout concepts through DartPad examples and exercises.">
+  <meta name="keywords" content=" ">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@flutterdev">
+
+  <meta property="og:title" content="Basic Flutter layout concepts">
+  <meta property="og:url" content="https://flutter.dev/docs/codelabs/layout-basics">
+  <meta property="og:description" content="A codelab that teaches basic Flutter layout concepts through DartPad examples and exercises.">
+  
+  <meta property="og:image" content="https://flutter.dev/images/flutter-logo-sharing.png">
+
+  <link href="./Basic Flutter layout concepts - Flutter_files/css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./Basic Flutter layout concepts - Flutter_files/main-094812bce4cc4b3c1ece24851a2ac506e83ffa17701779ac96ca5c4d659423e5.css" integrity="sha256-CUgSvOTMSzweziSFGirFBug/+hdwF3mslspcTWWUI+U=" crossorigin="anonymous">
+  
+  <script src="./Basic Flutter layout concepts - Flutter_files/clipboard.min.js"></script>
+  <script src="./Basic Flutter layout concepts - Flutter_files/main-19728c3bc90c91b99b0a44c295d6a18fcf4a8333bed7d7517d611043c6d16948.js" type="text/javascript" integrity="sha256-GXKMO8kMkbmbCkTCldahj89KgzO+19dRfWEQQ8bRaUg=" crossorigin="anonymous"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67589403-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <meta name="google-site-verification" content="HFqxhSbf9YA_0rBglNLzDiWnrHiK_w4cqDh2YD2GEY4">
+  <meta name="google-site-verification" content="Zom-prnFykfYycmI_nzRWYx5r6Z9OwR-yEsgElRz_Ug">
+</head>
+<body class=" hasGoogleVoiceExt">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND4LWWZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="overlay-under-drawer"></div>
+
+    <header class="site-header">
+  <nav class="navbar navbar-expand-md justify-content-start justify-content-md-between">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="material-icons">menu</i>
+    </button>
+
+    <a class="navbar-brand" href="https://flutter.dev/">
+      <img alt="Flutter logo" height="37" width="129" class="align-middle" src="./Basic Flutter layout concepts - Flutter_files/flutter-lockup-c13da9c9303e26b8d5fc208d2a1fa20c1ef47eb021ecadf27046dea04c0cebf6.png" integrity="sha256-wT2pyTA+JrjV/CCNKh+iDB70frAh7K3ycEbeoEwM6/Y=" crossorigin="anonymous">
+    </a>
+
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div class="site-header__sheet-bg" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></div>
+      <div class="site-header__sheet">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://flutter.dev/docs">Docs</a>
+          </li>
+          <div class="site-sidebar site-sidebar--header d-md-none">
+            <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-1" role="button" aria-expanded="false" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-2" role="button" aria-expanded="true" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/showcase">Showcase</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/community">Community</a>
+          </li>
+        </ul>
+        <form action="https://flutter.dev/search/" class="site-header__search form-inline">
+          <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+    <div class="site-header__social navbar-nav flex-row">
+      <a class="nav-item nav-link" href="https://twitter.com/flutterdev" aria-label="Twittter"><i class="fab fa-twitter fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://www.youtube.com/flutterdev" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://github.com/flutter" aria-label="Github"><i class="fab fa-github fa-lg"></i></a>
+    </div>
+    <a class="site-header__cta btn btn-primary" href="https://flutter.dev/docs/get-started/install/">Get started</a>
+    </nav>
+</header>
+<!---->
+  <div class="site-banner site-banner--default" role="alert">
+    Learn Flutter in this <a href="https://www.appbrewery.co/p/intro-to-flutter?utm_source=google&amp;utm_medium=website%20banner&amp;utm_campaign=app_brewery">online class by the App Brewery</a>.
+    If you sign up by July 8, it's free.<br>
+    Do you design UIs for your Flutter apps?
+    We're excited to announce that
+    <a href="https://medium.com/flutter/announcing-codepen-support-for-flutter-bb346406fe50?utm_source=google&amp;utm_medium=website%20banner&amp;utm_campaign=codepen">CodePen now supports Flutter</a>.
+  </div>
+<div class="container-fluid position-relative">
+  <div class="row flex-xl-nowrap">
+    <div class="fixed-col site-sidebar site-sidebar--fixed col-12 col-md-3 col-xl-2 d-none d-md-block" data-fixed-column="" style="position: fixed; max-height: 516.578px; top: 72px;">
+      <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-1" role="button" aria-expanded="false" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-2" role="button" aria-expanded="true" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/layout-basics#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+    </div>
+    <div id="site-toc--side" class="site-toc site-toc--side fixed-col col-xl-2 order-3" data-fixed-column="" style="position: fixed; max-height: 516.578px; top: 72px;">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    </header>
+  <ul class="section-nav nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#row-and-column-classes">Row and Column classes</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#axis-size-and-alignment">Axis size and alignment</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#mainaxissize-property">mainAxisSize property</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#mainaxisalignment-property">mainAxisAlignment property</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#crossaxisalignment-property">crossAxisAlignment property</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#flexible-widget">Flexible widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#expanded-widget">Expanded widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#sizedbox-widget">SizedBox widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#spacer-widget">Spacer widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#text-widget">Text widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#icon-widget">Icon widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#image-widget">Image widget</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/layout-basics#putting-it-all-together">Putting it all together</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link active" href="https://flutter.dev/docs/codelabs/layout-basics#whats-next">What’s next?</a></li>
+</ul>
+</div>
+<main class="site-content col-12 col-md-9 offset-md-3 col-xl-8 offset-xl-2 col-xxl-8 offset-xxl-2" role="main">
+      <div class="container">
+        
+        
+        <header class="site-content__title">
+          <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/flutter/website/tree/master/src/docs/codelabs/layout-basics.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/flutter/website/issues/new?title=%27Basic%20Flutter%20layout%20concepts%27%20page%20issue&amp;body=Page%20URL:%20https://flutter.dev/docs/codelabs/layout-basics.html%0D%0APage%20source:%20https://github.com/flutter/website/tree/master/src/docs/codelabs/layout-basics.md%0D%0A%0D%0AFound%20a%20typo?%20You%20can%20fix%20it%20yourself%20by%20going%20to%20the%20page%20source%20and%20clicking%20the%20pencil%20icon.%20Or%20finish%20creating%20this%20issue.%0D%0A%0D%0ADescription%20of%20issue:" class="btn no-automatic-external" title="Report an issue with this page" target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+          <h1>Basic Flutter layout concepts</h1>
+          </header>
+        <div id="site-toc--inline" class="site-toc site-toc--inline ">
+  <header class="site-toc__title">
+    Contents
+    </header>
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#row-and-column-classes">Row and Column classes</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#axis-size-and-alignment">Axis size and alignment</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/layout-basics#mainaxissize-property">mainAxisSize property</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/layout-basics#mainaxisalignment-property">mainAxisAlignment property</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/layout-basics#crossaxisalignment-property">crossAxisAlignment property</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#flexible-widget">Flexible widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#expanded-widget">Expanded widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#sizedbox-widget">SizedBox widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#spacer-widget">Spacer widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#text-widget">Text widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#icon-widget">Icon widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#image-widget">Image widget</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#putting-it-all-together">Putting it all together</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/layout-basics#whats-next">What’s next?</a></li>
+</ul>
+</div>
+<p>Welcome to the Flutter layout codelab,
+where you learn how to build a Flutter UI without
+downloading and installing Flutter or Dart!</p>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="fas fa-exclamation-circle"></i> <strong>Important:</strong>
+  This codelab covers basic Flutter layout concepts using an
+  experimental code editor called DartPad.
+  DartPad hasn’t been fully tested on all browsers.
+  If you experience any difficulties while using DartPad
+  on a specific browser, please create a <a href="https://github.com/dart-lang/dart-pad/issues/new">DartPad issue</a>
+  and specify which browser you’re using in the issue title.</p>
+</aside>
+
+<p>Flutter is different from other frameworks because its UI
+is built in code, not (for example) in an XML file or similar.
+Widgets are the basic building blocks of a Flutter UI.
+As you progress through this codelab,
+you’ll learn that almost everything in Flutter is a widget.
+A widget is an immutable object that describes a specific part of a UI.
+You’ll also learn that Flutter widgets are composable, meaning,
+that you can combine existing widgets to make more sophisticated widgets.
+At the end of this codelab,
+you’ll get to apply what you’ve learned
+into building a Flutter UI that displays a business card.</p>
+
+<p><strong>Estimated time to complete this codelab: 45-60 minutes.</strong></p>
+
+<h2 id="row-and-column-classes">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#row-and-column-classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Row and Column classes</h2>
+<p><code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> are classes that contain and lay out widgets.
+Widgets inside of a <code class="highlighter-rouge">Row</code> or <code class="highlighter-rouge">Column</code> are called <em>children</em>,
+and <code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> are referred to as <em>parents</em>.
+<code class="highlighter-rouge">Row</code> lays out its widgets horizontally,
+and <code class="highlighter-rouge">Column</code> lays out its widgets vertically.</p>
+
+<h4 class="no_toc" id="example-creating-a-column">Example: Creating a Column</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p class="no_toc">The following example displays the differences between
+  a <code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code>.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> In the code, change the <code class="highlighter-rouge">Row</code> to a <code class="highlighter-rouge">Column</code>, and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter.html" width="100%" height="400px"></iframe>
+
+<h2 id="axis-size-and-alignment">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#axis-size-and-alignment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Axis size and alignment</h2>
+
+<p>So far, the <code class="highlighter-rouge">BlueBox</code> widgets have been squished together
+(either to the left or at the top of the UI Output).
+You can change how the <code class="highlighter-rouge">BlueBox</code> widgets are spaced
+out using the axis size and alignment properties.</p>
+
+<h3 id="mainaxissize-property">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#mainaxissize-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>mainAxisSize property</h3>
+
+<p><code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> occupy different main axes.
+A <code class="highlighter-rouge">Row</code>’s main axis is horizontal,
+and a <code class="highlighter-rouge">Column</code>’s main axis is vertical.
+The <code class="highlighter-rouge">mainAxisSize</code> property determines how much
+space a <code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> can occupy on their main axes.
+The <code class="highlighter-rouge">mainAxisSize</code> property has two possible values:</p>
+
+<dl>
+  <dt><code class="highlighter-rouge">MainAxisSize.max</code></dt>
+  <dd>
+<code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> occupy all of the space on their main axes.
+If the combined width of their children is
+less than the total space on their main axes,
+their children are laid out with extra space.</dd>
+  <dt><code class="highlighter-rouge">MainAxisSize.min</code></dt>
+  <dd>
+<code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> only occupy enough space on their main axes
+for their children. Their children are laid out without extra space
+and at the middle of their main axes.</dd>
+</dl>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  <code class="highlighter-rouge">MainAxisSize.max</code> is the <code class="highlighter-rouge">mainAxisSize</code> property’s default value.
+  If you don’t specify another value,
+  the default value is used,
+  as shown in the previous example.</p>
+</aside>
+
+<h4 class="no_toc" id="example-modifying-axis-size">Example: Modifying axis size</h4>
+<aside class="alert alert-secondary" role="alert">
+
+  <p>The following example explicitly sets <code class="highlighter-rouge">mainAxisSize</code>
+  to its default value, <code class="highlighter-rouge">MainAxisSize.max</code>.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Change <code class="highlighter-rouge">MainAxisSize.max</code> to <code class="highlighter-rouge">MainAxisSize.min</code>,
+         and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(1).html" width="100%" height="400px"></iframe>
+
+<h3 id="mainaxisalignment-property">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#mainaxisalignment-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>mainAxisAlignment property</h3>
+
+<p>When <code class="highlighter-rouge">mainAxisSize</code> is set to <code class="highlighter-rouge">MainAxisSize.max</code>,
+<code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> might lay out their children with extra space.
+The <code class="highlighter-rouge">mainAxisAlignment</code> property determines how <code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code>
+can position their children in that extra space.
+<code class="highlighter-rouge">mainAxisAlignment</code> has six possible values:</p>
+
+<dl>
+  <dt><code class="highlighter-rouge">MainAxisAlignment.start</code></dt>
+  <dd>Positions children near the beginning of the main axis.
+(Left for <code class="highlighter-rouge">Row</code>, top for <code class="highlighter-rouge">Column</code>)</dd>
+  <dt><code class="highlighter-rouge">MainAxisAlignment.end</code></dt>
+  <dd>Positions children near the end of the main axis.
+(Right for <code class="highlighter-rouge">Row</code>, bottom for <code class="highlighter-rouge">Column</code>)</dd>
+  <dt><code class="highlighter-rouge">MainAxisAlignment.center</code></dt>
+  <dd>Positions children at the middle of the main axis.</dd>
+  <dt><code class="highlighter-rouge">MainAxisAlignment.spaceBetween</code></dt>
+  <dd>Divides the extra space evenly between children.</dd>
+  <dt><code class="highlighter-rouge">MainAxisAlignment.spaceEvenly</code></dt>
+  <dd>Divides the extra space evenly between children
+and before and after the children.</dd>
+  <dt><code class="highlighter-rouge">MainAxisAlignment.spaceAround</code></dt>
+  <dd>Similar to <code class="highlighter-rouge">MainAxisAlignment.spaceEvenly</code>,
+but reduces half of the space before the first
+child and after the last child
+to half of the width between the children.</dd>
+</dl>
+
+<h4 class="no_toc" id="example-modifying-main-axis-alignment">Example: Modifying main axis alignment</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example explicitly sets
+  <code class="highlighter-rouge">mainAxisAlignment</code> to its default value,
+  <code class="highlighter-rouge">MainAxisAlignment.start</code>.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Change <code class="highlighter-rouge">MainAxisAlignment.start</code> to
+         <code class="highlighter-rouge">MainAxisAlignment.end</code>, and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(2).html" width="100%" height="400px"></iframe>
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  Before moving to the next section,
+  change <code class="highlighter-rouge">MainAxisAlignment.end</code> to another value.</p>
+</aside>
+
+<h3 id="crossaxisalignment-property">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#crossaxisalignment-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>crossAxisAlignment property</h3>
+
+<p>The <code class="highlighter-rouge">crossAxisAlignment</code> property determines
+how <code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> can position their children
+on their cross axes.
+A <code class="highlighter-rouge">Row</code>’s cross axis is vertical,
+and a <code class="highlighter-rouge">Column</code>’s cross axis is horizontal.
+The <code class="highlighter-rouge">crossAxisAlignment</code> property has five possible values:</p>
+
+<dl>
+  <dt><code class="highlighter-rouge">CrossAxisAlignment.start</code></dt>
+  <dd>Positions children near the start of the cross axis. (Top for <code class="highlighter-rouge">Row</code>, Left for <code class="highlighter-rouge">Column</code>)</dd>
+  <dt><code class="highlighter-rouge">CrossAxisAlignment.end</code></dt>
+  <dd>Positions children near the end of the cross axis. (Bottom for <code class="highlighter-rouge">Row</code>, Right for <code class="highlighter-rouge">Column</code>)</dd>
+  <dt><code class="highlighter-rouge">CrossAxisAlignment.center</code></dt>
+  <dd>Positions children at the middle of the cross axis. (Middle for <code class="highlighter-rouge">Row</code>, Center for <code class="highlighter-rouge">Column</code>)</dd>
+  <dt><code class="highlighter-rouge">CrossAxisAlignment.stretch</code></dt>
+  <dd>Stretches children across the cross axis.
+(Top-to-bottom for <code class="highlighter-rouge">Row</code>, left-to-right for <code class="highlighter-rouge">Column</code>)</dd>
+  <dt><code class="highlighter-rouge">CrossAxisAlignment.baseline</code></dt>
+  <dd>Aligns children by their character baselines.
+(<code class="highlighter-rouge">Text</code> class only, and requires that the
+<code class="highlighter-rouge">textBaseline</code> property is set to
+<code class="highlighter-rouge">TextBaseline.alphabetic</code>.  See the
+<a href="https://flutter.dev/docs/codelabs/layout-basics#text-widget">Text widget</a> section for an example.)</dd>
+</dl>
+
+<h4 class="no_toc" id="example-modifying-cross-axis-alignment">Example: Modifying cross axis alignment</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example explicitly sets <code class="highlighter-rouge">crossAxisAlignment</code>
+  to its default value, <code class="highlighter-rouge">CrossAxisAlignment.center</code>.</p>
+
+  <p>To demonstrate cross axis alignment,
+  <code class="highlighter-rouge">mainAxisAlignment</code> is set to
+ <code class="highlighter-rouge">MainAxisAlignment.spaceAround</code>,
+  and <code class="highlighter-rouge">Row</code> now contains a <code class="highlighter-rouge">BiggerBlueBox</code> widget
+  that is taller than the <code class="highlighter-rouge">BlueBox</code> widgets.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Change <code class="highlighter-rouge">CrossAxisAlignment.center</code> to
+         <code class="highlighter-rouge">CrossAxisAlignment.start</code>, and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(3).html" width="100%" height="400px"></iframe>
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  Before moving to the next section,
+  change <code class="highlighter-rouge">CrossAxisAlignment.start</code> to another value.</p>
+</aside>
+
+<h2 id="flexible-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#flexible-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flexible widget</h2>
+
+<p>As you’ve seen, the <code class="highlighter-rouge">mainAxisAlignment</code> and
+<code class="highlighter-rouge">crossAxisAlignment</code> properties determine
+how <code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> position widgets along both axes.
+<code class="highlighter-rouge">Row</code> and <code class="highlighter-rouge">Column</code> first lay out widgets of a fixed size.
+Fixed size widgets are considered <em>inflexible</em> because
+they can’t resize themselves after they’ve been laid out.</p>
+
+<p>The <code class="highlighter-rouge">Flexible</code> widget wraps a widget,
+so the widget becomes resizable.
+When the <code class="highlighter-rouge">Flexible</code> widget wraps a widget,
+the widget becomes the <code class="highlighter-rouge">Flexible</code> widget’s child
+and is considered <em>flexible</em>.
+After inflexible widgets are laid out,
+the widgets are resized according to their
+<code class="highlighter-rouge">flex</code> and <code class="highlighter-rouge">fit</code> properties.:</p>
+
+<dl>
+  <dt><code class="highlighter-rouge">flex</code></dt>
+  <dd>Compares itself against other <code class="highlighter-rouge">flex</code>
+properties before determining what fraction of the
+total remaining space each <code class="highlighter-rouge">Flexible</code> widget receives.</dd>
+  <dt><code class="highlighter-rouge">fit</code></dt>
+  <dd>Determines whether a <code class="highlighter-rouge">Flexible</code> widget
+fills all of its extra space.</dd>
+</dl>
+
+<h4 class="no_toc" id="example-changing-fit-properties">Example: Changing fit properties</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example demonstrates the <code class="highlighter-rouge">fit</code> property,
+  which can have one of two values:</p>
+
+  <dl>
+    <dt><code class="highlighter-rouge">FlexFit.loose</code></dt>
+    <dd>The widget’s preferred size is used. (Default)</dd>
+    <dt><code class="highlighter-rouge">FlexFit.tight</code></dt>
+    <dd>Forces the widget to fill all of its extra space.</dd>
+  </dl>
+
+  <p>In this example, change the <code class="highlighter-rouge">fit</code> properties to
+  make the <code class="highlighter-rouge">Flexible</code> widgets fill the extra space.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Change both <code class="highlighter-rouge">fit</code> values to <code class="highlighter-rouge">FlexFit.tight</code>,
+         and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(4).html" width="100%" height="400px"></iframe>
+
+<h4 class="no_toc" id="example-testing-flex-values">Example: Testing flex values</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>In the following example,
+  <code class="highlighter-rouge">Row</code> contains one <code class="highlighter-rouge">BlueBox</code> widget
+  and two <code class="highlighter-rouge">Flexible</code> widgets that wrap two
+  <code class="highlighter-rouge">BlueBox</code> widgets.  The <code class="highlighter-rouge">Flexible</code> widgets
+  contain <code class="highlighter-rouge">flex</code> properties with <code class="highlighter-rouge">flex</code>
+  values set to 1 (the default value).</p>
+
+  <p>When <code class="highlighter-rouge">flex</code> properties are compared against one another,
+  the ratio between their <code class="highlighter-rouge">flex</code> values determines
+  what fraction of the total remaining space each
+  <code class="highlighter-rouge">Flexible</code> widget receives.</p>
+
+  <p><!-- skip --></p>
+  <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-0" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-0"><pre class="highlight"><code>  <span class="n">remainingSpace</span> <span class="o">*</span> <span class="o">(</span><span class="n">flex</span> <span class="o">/</span> <span class="n">totalOfAllFlexValues</span><span class="o">)</span>
+</code></pre></div></div></div>  </div>
+
+  <p>In this example, the sum of the <code class="highlighter-rouge">flex</code> values (2),
+  determines that both <code class="highlighter-rouge">Flexible</code> widgets receive
+  half of the total remaining space.
+  The <code class="highlighter-rouge">BlueBox</code> widget (or fixed-size widget)
+  remains the same size.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(5).html" width="100%" height="400px"></iframe>
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  Before moving to the next example,
+  try changing the <code class="highlighter-rouge">flex</code> properties to other values,
+  such as 2 and 1.</p>
+</aside>
+
+<h2 id="expanded-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#expanded-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Expanded widget</h2>
+
+<p>Similar to <code class="highlighter-rouge">Flexible</code>, the <code class="highlighter-rouge">Expanded</code> widget can
+wrap a widget and force the widget to fill extra space.</p>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  <strong>What’s the difference between Flexible and Expanded?</strong>
+  Use <code class="highlighter-rouge">Flexible</code> to resize widgets in a <code class="highlighter-rouge">Row</code> or <code class="highlighter-rouge">Column</code>.
+  That way, you can adjust a child widget’s spacing
+  while keeping its size in relation to its parent widget.
+  <code class="highlighter-rouge">Expanded</code> changes the constraints of a child widget,
+  so it fills any empty space.</p>
+</aside>
+
+<h4 class="no_toc" id="example-filling-extra-space">Example: Filling extra space</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example demonstrates how the
+  <code class="highlighter-rouge">Expanded</code> widget forces its child widget to
+  fill extra space.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Wrap the second <code class="highlighter-rouge">BlueBox</code> widget in an <code class="highlighter-rouge">Expanded</code> widget.</p>
+
+  <p>For example:</p>
+
+  <p><!-- skip --></p>
+  <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-1" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-1"><pre class="highlight"><code>  <span class="n">Expanded</span><span class="o">(</span><span class="nl">child:</span> <span class="n">BlueBox</span><span class="o">(),),</span>
+</code></pre></div></div></div>  </div>
+  <p><strong>3.</strong> Select the <strong>Format</strong> button to properly format the code,
+         and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(6).html" width="100%" height="400px"></iframe>
+
+<h2 id="sizedbox-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#sizedbox-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>SizedBox widget</h2>
+
+<p>The <code class="highlighter-rouge">SizedBox</code> widget can be used in one of two ways when
+creating exact dimensions.
+When <code class="highlighter-rouge">SizedBox</code> wraps a widget, it resizes the widget
+using the <code class="highlighter-rouge">height</code> and <code class="highlighter-rouge">width</code> properties.
+When it doesn’t wrap a widget,
+it uses the <code class="highlighter-rouge">height</code> and <code class="highlighter-rouge">width</code> properties to
+create empty space.</p>
+
+<h4 class="no_toc" id="example-resizing-a-widget">Example: Resizing a widget</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example wraps the middle <code class="highlighter-rouge">BlueBox</code> widget inside of a
+  <code class="highlighter-rouge">SizedBox</code> widget and sets the <code class="highlighter-rouge">BlueBox</code>’s width to 100 logical pixels.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Add a <code class="highlighter-rouge">height</code> property equal to 100 logical pixels
+         inside the <code class="highlighter-rouge">SizedBox</code> widget, and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(7).html" width="100%" height="400px"></iframe>
+
+<h4 class="no_toc" id="example-creating-space">Example: Creating space</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example contains three <code class="highlighter-rouge">BlueBox</code> widgets
+  and one <code class="highlighter-rouge">SizedBox</code> widget that separates the first
+  and second <code class="highlighter-rouge">BlueBox</code> widgets. The <code class="highlighter-rouge">SizedBox</code> widget
+  contains a <code class="highlighter-rouge">width</code> property equal to 50 logical pixels.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Create more space by adding another
+         <code class="highlighter-rouge">SizedBox</code> widget (25 logical pixels wide)
+         between the second and third <code class="highlighter-rouge">BlueBox</code> widgets,
+         and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(8).html" width="100%" height="400px"></iframe>
+
+<h2 id="spacer-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#spacer-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spacer widget</h2>
+
+<p>Similar to <code class="highlighter-rouge">SizedBox</code>, the <code class="highlighter-rouge">Spacer</code> widget also
+can create space between widgets.</p>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  <strong>What’s the difference between SizedBox and Spacer?</strong>
+  Use <code class="highlighter-rouge">Spacer</code> when you want to create space using a <code class="highlighter-rouge">flex</code> property.
+  Use <code class="highlighter-rouge">SizedBox</code> when you want to create space
+  using a specific number of logical pixels.</p>
+</aside>
+
+<h4 class="no_toc" id="example-creating-more-space">Example: Creating more space</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example separates the first two
+  <code class="highlighter-rouge">BlueBox</code> widgets using a <code class="highlighter-rouge">Spacer</code> widget with
+  a <code class="highlighter-rouge">flex</code> value of 1.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Add another <code class="highlighter-rouge">Spacer</code> widget (also with a <code class="highlighter-rouge">flex</code> value of 1)
+         between the second and third <code class="highlighter-rouge">BlueBox</code> widgets.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(9).html" width="100%" height="400px"></iframe>
+
+<h2 id="text-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#text-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text widget</h2>
+
+<p>The <code class="highlighter-rouge">Text</code> widget displays text and can be configured
+for different fonts, sizes, and colors.</p>
+
+<h4 class="no_toc" id="example-aligning-text">Example: Aligning text</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example displays “Hey!” three times,
+  but at different font sizes and in different colors.
+  <code class="highlighter-rouge">Row</code> specifies the <code class="highlighter-rouge">crossAxisAlignment</code>
+  and <code class="highlighter-rouge">textBaseline</code> properties.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Change <code class="highlighter-rouge">CrossAxisAlignment.center</code> to
+         <code class="highlighter-rouge">CrossAxisAlignment.baseline</code>, and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(10).html" width="100%" height="400px"></iframe>
+
+<h2 id="icon-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#icon-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Icon widget</h2>
+
+<p>The <code class="highlighter-rouge">Icon</code> widget displays a graphical symbol
+that represents an aspect of the UI.
+Flutter is preloaded with icon packages for
+<a href="https://api.flutter.dev/flutter/material/MaterialApp-class.html">Material</a> and <a href="https://api.flutter.dev/flutter/cupertino/CupertinoApp-class.html">Cupertino</a> applications.</p>
+
+<h4 class="no_toc" id="example-creating-an-icon">Example: Creating an Icon</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example displays the widget <code class="highlighter-rouge">Icons.widget</code>
+  from the <a href="https://api.flutter.dev/flutter/material/Icons-class.html">Material Icon library</a> in red and blue.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Add another <code class="highlighter-rouge">Icon</code> from the
+         <a href="https://api.flutter.dev/flutter/material/Icons-class.html">Material Icon library</a>
+         with a size of 50.</p>
+
+  <p><strong>3.</strong> Give the <code class="highlighter-rouge">Icon</code> a color of <code class="highlighter-rouge">Colors.amber</code> from the
+         <a href="https://api.flutter.dev/flutter/material/Colors-class.html">Material Color palette</a>, and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(11).html" width="100%" height="400px"></iframe>
+
+<h2 id="image-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#image-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Image widget</h2>
+
+<p>The <code class="highlighter-rouge">Image</code> widget displays an image.
+You either can reference images using a URL,
+or you can include images inside your app package.
+Since DartPad can’t package an image,
+the following example uses an image from the network.</p>
+
+<h4 class="no_toc" id="example-displaying-an-image">Example: Displaying an image</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>The following example displays an image that’s
+  stored remotely on <a href="https://github.com/flutter/website/tree/master/examples/layout/sizing/images">GitHub</a>.
+  The <code class="highlighter-rouge">Image.network</code> method takes a string
+  parameter that contains an image’s URL.</p>
+
+  <p>In this example, <code class="highlighter-rouge">Image.network</code> contains a short URL.</p>
+
+  <p><strong>1.</strong> Click the <strong>Run</strong> button.</p>
+
+  <p><strong>2.</strong> Change the short URL to the actual URL:</p>
+
+  <p><code class="highlighter-rouge">https://github.com/flutter/website/blob/master/examples/layout/sizing/images/pic3.jpg?raw=true</code></p>
+
+  <p><strong>3.</strong> Then change <code class="highlighter-rouge">pic3.jpg</code> to <code class="highlighter-rouge">pic1.jpg</code> or <code class="highlighter-rouge">pic2.jpg</code>,
+         and run again.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(12).html" width="100%" height="400px"></iframe>
+
+<h2 id="putting-it-all-together">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#putting-it-all-together" aria-hidden="true"><span class="octicon octicon-link"></span></a>Putting it all together</h2>
+
+<p>You’re almost at the end of this codelab.
+If you’d like to test your knowledge of the
+techniques that you’ve learned, why not apply
+those skills into building a Flutter UI that
+displays a business card!</p>
+
+<p><img src="./Basic Flutter layout concepts - Flutter_files/businesscarddisplay1-b2ec84b9f214cd47e98017e933752f116c8e05fb5427a1c9d26bea9a0ff6d1e7.png" alt="Completed business card" width="400px" class="text-center"></p>
+
+<p>You’ll break down Flutter’s layout into parts,
+which is how you’d create a Flutter UI in the real world.</p>
+
+<p>In <a href="https://flutter.dev/docs/codelabs/layout-basics#part-1">Part 1</a>,
+you’ll implement a <code class="highlighter-rouge">Column</code> that contains the name and title.
+Then you’ll wrap the <code class="highlighter-rouge">Column</code> in a <code class="highlighter-rouge">Row</code> that contains the icon,
+which is positioned to the left of the name and title.</p>
+
+<p><img src="./Basic Flutter layout concepts - Flutter_files/businesscarddisplay2-1bb7a0433c21b296fc8215f50cbe4886613922c3dbdb7b520a8409dcb50d4dd5.png" alt="Completed business card" width="400px" class="text-center"></p>
+
+<p>In <a href="https://flutter.dev/docs/codelabs/layout-basics#part-2">Part 2</a>, you’ll wrap the <code class="highlighter-rouge">Row</code> in a <code class="highlighter-rouge">Column</code>,
+so the code contains a <code class="highlighter-rouge">Column</code> within a <code class="highlighter-rouge">Row</code> within a <code class="highlighter-rouge">Column</code>.
+Then you’ll tweak the outermost <code class="highlighter-rouge">Column</code>’s layout,
+so it looks nice.
+Finally, you’ll add the contact information
+to the outermost <code class="highlighter-rouge">Column</code>’s list of children,
+so it’s displayed below the name, title, and icon.</p>
+
+<p><img src="./Basic Flutter layout concepts - Flutter_files/businesscarddisplay3-ebeaaddebd0bcb6eef8ab019a9ba13a505033740b5ad74fd966eb9af14246a69.png" alt="Completed business card" width="400px" class="text-center"></p>
+
+<p>In <a href="https://flutter.dev/docs/codelabs/layout-basics#part-3">Part 3</a>, you’ll finish building
+the business card display by adding four more icons,
+which are positioned below the contact information.</p>
+
+<p><img src="./Basic Flutter layout concepts - Flutter_files/businesscarddisplay4-777b6c4997a21f7ee58b1f25e2c415a55255ed065cfd97daaec18ade5ddae6aa.png" alt="Completed business card" width="400px" class="text-center"></p>
+
+<h3 class="no_toc" id="part-1">Part 1</h3>
+
+<h4 class="no_toc" id="exercise-create-the-name-and-title">Exercise: Create the name and title</h4>
+<aside class="alert alert-secondary" role="alert">
+
+  <p>Implement a <code class="highlighter-rouge">Column</code> that contains two text widgets:</p>
+
+  <ul>
+  <li>
+      <p>The first <code class="highlighter-rouge">Text</code> widget has the name <code class="highlighter-rouge">Flutter McFlutter</code> and
+  the <code class="highlighter-rouge">style</code> property set to <code class="highlighter-rouge">Theme.of(context).textTheme.headline</code>.</p>
+    </li>
+  <li>
+      <p>The second <code class="highlighter-rouge">Text</code> widget contains the title <code class="highlighter-rouge">Experienced Developer</code>.</p>
+    </li>
+</ul>
+
+  <p>For the <code class="highlighter-rouge">Column</code>,
+  set <code class="highlighter-rouge">mainAxisSize</code> to <code class="highlighter-rouge">MainAxisSize.min</code>
+  and <code class="highlighter-rouge">crossAxisAlignment</code> to <code class="highlighter-rouge">CrossAxisAlignment.start</code>.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(13).html" width="100%" height="400px"></iframe>
+
+<h4 class="no_toc" id="exercise-wrap-the-column-in-a-row">Exercise: Wrap the Column in a Row</h4>
+<aside class="alert alert-secondary" role="alert">
+
+  <p>Wrap the <code class="highlighter-rouge">Column</code> you implemented in a
+  <code class="highlighter-rouge">Row</code> that contains the following widgets:</p>
+
+  <ul>
+  <li>
+      <p>An <code class="highlighter-rouge">Icon</code> widget set to <code class="highlighter-rouge">Icons.account_circle</code>
+  and with a size of 50 pixels.</p>
+
+    </li>
+  <li>
+      <p>A <code class="highlighter-rouge">Padding</code> widget that creates a space of 8
+  pixels around the <code class="highlighter-rouge">Icon</code> widget.</p>
+
+      <p>To do this, you can specify <code class="highlighter-rouge">const EdgeInsets.all(8.0)</code>
+  for the <code class="highlighter-rouge">padding</code> property.</p>
+
+      <p>The <code class="highlighter-rouge">Row</code> should look like this:</p>
+    </li>
+</ul>
+
+  <p><!-- skip --></p>
+  <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-2" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-2"><pre class="highlight"><code>     <span class="n">Row</span><span class="o">(</span>
+       <span class="nl">children:</span> <span class="o">[</span>
+        <span class="n">Padding</span><span class="o">(</span>
+          <span class="nl">padding:</span> <span class="kd">const</span> <span class="n">EdgeInsets</span><span class="o">.</span><span class="na">all</span><span class="o">(</span><span class="mf">8.0</span><span class="o">),</span>
+          <span class="nl">child:</span> <span class="n">Icon</span><span class="o">(</span><span class="n">Icons</span><span class="o">.</span><span class="na">account_circle</span><span class="o">,</span> <span class="nl">size:</span> <span class="mi">50</span><span class="o">),</span>
+        <span class="o">),</span>
+        <span class="n">Column</span><span class="o">(</span> <span class="o">...</span> <span class="o">),</span> <span class="c1">// &lt;--- The Column you first implemented</span>
+      <span class="o">],</span>
+     <span class="o">);</span>
+</code></pre></div></div></div>  </div>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(14).html" width="100%" height="400px"></iframe>
+
+<h3 class="no_toc" id="part-2">Part 2</h3>
+
+<h4 class="no_toc" id="exercise-tweak-the-layout">Exercise: Tweak the layout</h4>
+<aside class="alert alert-secondary" role="alert">
+
+  <p>Wrap the <code class="highlighter-rouge">Row</code> in a <code class="highlighter-rouge">Column</code> that has a <code class="highlighter-rouge">mainAxisSize</code>
+  property set to <code class="highlighter-rouge">MainAxisSize.min</code> and a
+  <code class="highlighter-rouge">crossAxisAlignment</code> property set to <code class="highlighter-rouge">CrossAxisAlignment.stretch</code>.
+  The <code class="highlighter-rouge">Column</code> contains the following widgets:</p>
+
+  <ul>
+    <li>
+      <p>A <code class="highlighter-rouge">SizedBox</code> widget with a height of 8.</p>
+    </li>
+    <li>
+      <p>An empty <code class="highlighter-rouge">Row</code> where you’ll add the contact information in
+a later step.</p>
+    </li>
+    <li>
+      <p>A second <code class="highlighter-rouge">SizedBox</code> widget with a height of 16.</p>
+    </li>
+    <li>
+      <p>A second empty <code class="highlighter-rouge">Row</code> where you’ll add
+four icons (Part 3).</p>
+    </li>
+  </ul>
+
+  <p>The <code class="highlighter-rouge">Column</code>’s list of widgets should be formatted as follows,
+  so the contact information and icons are displayed below the
+  name and title:</p>
+
+  <p><!-- skip --></p>
+  <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-3" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-3"><pre class="highlight"><code>     <span class="o">],</span>
+    <span class="o">),</span> <span class="c1">// &lt;--- Closing parenthesis for the Row</span>
+    <span class="n">SizedBox</span><span class="o">(),</span>
+    <span class="n">Row</span><span class="o">(),</span> <span class="c1">// First empty Row</span>
+    <span class="n">SizedBox</span><span class="o">(),</span>
+    <span class="n">Row</span><span class="o">(),</span> <span class="c1">// Second empty Row</span>
+   <span class="o">],</span>
+  <span class="o">);</span> <span class="c1">// &lt;--- Closing parenthesis for the Column that wraps the Row</span>
+
+</code></pre></div></div></div>  </div>
+
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(15).html" width="100%" height="400px"></iframe>
+
+<h4 class="no_toc" id="exercise-enter-contact-information">Exercise: Enter contact information</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>Enter two <code class="highlighter-rouge">Text</code> widgets inside the first empty <code class="highlighter-rouge">Row</code> :</p>
+
+  <ul>
+  <li>
+      <p>The first <code class="highlighter-rouge">Text</code> widget contains the address <code class="highlighter-rouge">123 Main Street</code>.</p>
+    </li>
+  <li>
+      <p>The second <code class="highlighter-rouge">Text</code> widget contains the phone number <code class="highlighter-rouge"><span id="gc-number-0" class="gc-cs-link" title="Call with Google Voice">(415) 555-0198</span></code>.</p>
+    </li>
+</ul>
+
+  <p>For the first empty <code class="highlighter-rouge">Row</code>,
+  set the <code class="highlighter-rouge">mainAxisAlignment</code> property to
+  <code class="highlighter-rouge">MainAxisAlignment.spaceBetween</code>.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(16).html" width="100%" height="400px"></iframe>
+
+<h3 class="no_toc" id="part-3">Part 3</h3>
+<h4 class="no_toc" id="exercise-add-four-icons">Exercise: Add four icons</h4>
+<aside class="alert alert-secondary" role="alert">
+  <p>Enter the following <code class="highlighter-rouge">Icon</code> widgets inside the second empty <code class="highlighter-rouge">Row</code>:</p>
+
+  <ul>
+    <li><code class="highlighter-rouge">Icons.accessibility</code></li>
+    <li><code class="highlighter-rouge">Icons.timer</code></li>
+    <li><code class="highlighter-rouge">Icons.phone_android</code></li>
+    <li><code class="highlighter-rouge">Icons.phone_iphone</code></li>
+  </ul>
+
+  <p>For the second empty <code class="highlighter-rouge">Row</code>,
+  set the <code class="highlighter-rouge">mainAxisAlignment</code> property to
+  <code class="highlighter-rouge">MainAxisAlignment.spaceAround</code>.</p>
+</aside>
+
+<iframe src="./Basic Flutter layout concepts - Flutter_files/embed-flutter(17).html" width="100%" height="400px"></iframe>
+
+<h2 id="whats-next">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/layout-basics#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s next?</h2>
+
+<p>Congratulations, you’ve finished this codelab!
+If you’d like to know more about Flutter,
+here are a few suggestions for resources worth exploring:</p>
+
+<ul>
+  <li>Learn more about layouts in Flutter by
+visiting the <a href="https://flutter.dev/docs/development/ui/layout">Building layouts</a> page.</li>
+  <li>Check out the <a href="https://github.com/flutter/samples/blob/master/INDEX.md">sample apps</a>.</li>
+  <li>Visit <a href="https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw">Flutter’s YouTube channel</a>,
+where you can watch a variety videos from
+videos that focus on individual widgets
+to videos of developers building apps.</li>
+</ul>
+
+<p>You can download Flutter from the <a href="https://flutter.dev/docs/get-started/install">install</a> page.</p>
+
+
+        
+      </div>
+    </main>
+  </div>
+</div>
+
+
+    <footer class="site-footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 site-footer__wrapper">
+        <div class="site-footer__logo">
+          <img src="./Basic Flutter layout concepts - Flutter_files/flutter-mono-81x100.png" alt="Flutter Logo" width="81" height="100">
+        </div>
+        <div class="site-footer__content">
+          <ul class="site-footer__link-list">
+              <li><a href="https://groups.google.com/forum/#!forum/flutter-dev">flutter-dev@</a></li>
+              <li><a href="https://flutter.dev/tos">terms</a></li>
+              <li><a href="https://flutter.dev/security">security</a></li>
+              <li><a href="https://www.google.com/intl/en/policies/privacy">privacy</a></li>
+              <li><a href="https://flutter-es.io/">español</a></li>
+              <li><a href="https://flutter.cn/" class="text-nowrap">社区中文资源</a></li>
+          </ul>
+
+          <p class="licenses">
+            Except as otherwise noted,
+            this work is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0">Creative
+            Commons Attribution 4.0 International License</a>,
+            and code samples are licensed under the BSD License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    <script async="" defer="" src="./Basic Flutter layout concepts - Flutter_files/f.txt"></script>
+  
+
+</body></html>

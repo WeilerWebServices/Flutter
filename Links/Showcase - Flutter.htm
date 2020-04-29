@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://flutter.dev/showcase -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Showcase  - Flutter </title>
+  <link rel="shortcut icon" href="https://flutter.dev/images/favicon.png">
+
+  <!-- Google Optimize -->
+  <script type="text/javascript" id="www-widgetapi-script" src="./Showcase - Flutter_files/www-widgetapi.js" async=""></script><script src="./Showcase - Flutter_files/iframe_api"></script><script async="" src="./Showcase - Flutter_files/analytics.js"></script><script async="" src="./Showcase - Flutter_files/gtm.js"></script><script src="./Showcase - Flutter_files/optimize.js"></script>
+  <!-- End Google Optimize -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-ND4LWWZ');</script>
+  <!-- End Google Tag Manager -->
+
+  
+  <meta name="description" content="Apps take flight with Flutter See how customers are using Flutter to make beautiful apps in record time ">
+  <meta name="keywords" content=" ">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@flutterdev">
+
+  <meta property="og:title" content="Showcase">
+  <meta property="og:url" content="https://flutter.dev/showcase">
+  <meta property="og:description" content="Apps take flight with Flutter See how customers are using Flutter to make beautiful apps in record time ">
+  
+  <meta property="og:image" content="https://flutter.dev/images/flutter-logo-sharing.png">
+
+  <link href="./Showcase - Flutter_files/css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./Showcase - Flutter_files/main-094812bce4cc4b3c1ece24851a2ac506e83ffa17701779ac96ca5c4d659423e5.css" integrity="sha256-CUgSvOTMSzweziSFGirFBug/+hdwF3mslspcTWWUI+U=" crossorigin="anonymous">
+  
+  <script src="./Showcase - Flutter_files/clipboard.min.js"></script>
+  <script src="./Showcase - Flutter_files/main-19728c3bc90c91b99b0a44c295d6a18fcf4a8333bed7d7517d611043c6d16948.js" type="text/javascript" integrity="sha256-GXKMO8kMkbmbCkTCldahj89KgzO+19dRfWEQQ8bRaUg=" crossorigin="anonymous"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67589403-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <meta name="google-site-verification" content="HFqxhSbf9YA_0rBglNLzDiWnrHiK_w4cqDh2YD2GEY4">
+  <meta name="google-site-verification" content="Zom-prnFykfYycmI_nzRWYx5r6Z9OwR-yEsgElRz_Ug">
+</head>
+<body class="showcase hasGoogleVoiceExt">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND4LWWZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="overlay-under-drawer"></div>
+
+    <header class="site-header">
+  <nav class="navbar navbar-expand-md justify-content-start justify-content-md-between">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="material-icons">menu</i>
+    </button>
+
+    <a class="navbar-brand" href="https://flutter.dev/">
+      <img alt="Flutter logo" height="37" width="129" class="align-middle" src="./Showcase - Flutter_files/flutter-lockup-c13da9c9303e26b8d5fc208d2a1fa20c1ef47eb021ecadf27046dea04c0cebf6.png" integrity="sha256-wT2pyTA+JrjV/CCNKh+iDB70frAh7K3ycEbeoEwM6/Y=" crossorigin="anonymous">
+    </a>
+
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div class="site-header__sheet-bg" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></div>
+      <div class="site-header__sheet">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/docs">Docs</a>
+          </li>
+          <div class="site-sidebar site-sidebar--header d-md-none">
+            <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-1" role="button" aria-expanded="false" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/showcase#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-2" role="button" aria-expanded="false" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/showcase#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://flutter.dev/showcase">Showcase</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/community">Community</a>
+          </li>
+        </ul>
+        <form action="https://flutter.dev/search/" class="site-header__search form-inline">
+          <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+    <div class="site-header__social navbar-nav flex-row">
+      <a class="nav-item nav-link" href="https://twitter.com/flutterdev" aria-label="Twittter"><i class="fab fa-twitter fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://www.youtube.com/flutterdev" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://github.com/flutter" aria-label="Github"><i class="fab fa-github fa-lg"></i></a>
+    </div>
+    <a class="site-header__cta btn btn-primary" href="https://flutter.dev/docs/get-started/install/">Get started</a>
+    </nav>
+</header>
+<div class="container">
+  <div class="row">
+    <main class="col-12" role="main">
+      <section class="showcase__hero showcase__section">
+    <h1 class="animate heading step-1">Apps take flight with <span class="highlight-brand">Flutter</span></h1>
+    <p class="animate subheading step-2">See how customers are using Flutter to make beautiful apps in record time</p>
+</section>
+
+<section class="showcase__featured-company-cases showcase__section">
+    <div class="row mb-n8">
+        
+        
+            <div class="col-12 col-lg-6 px-4 mb-8 mb-md-10">
+                <div class="card animate step-3">
+                    
+                    
+                    
+
+                    
+
+                    <img class="card-img-top" src="./Showcase - Flutter_files/realtor-top-1200-cf6901af86f207b690c1c2e0defa375cd0b3b3e993fc825e6fc592da33e50c49.jpg" aria-hidden="true" srcset="
+                            /assets/showcase/cards/realtor-top-400-b55fa0ed107f981e996e63a51d771cc6c48b99766e0c1b290fba5a74d3a8e957.jpg 400w,
+                            /assets/showcase/cards/realtor-top-600-fa4dcfb61468fef208857f74123a56d09358e0b9cc3efa112d11c77d885e3a0b.jpg 600w
+                            
+                              , /assets/showcase/cards/realtor-top-1200-cf6901af86f207b690c1c2e0defa375cd0b3b3e993fc825e6fc592da33e50c49.jpg 1200w
+                            ">
+                    <div class="card-body">
+                        <div class="card-title">
+                            
+                                <img class="logo" alt="Realtor.com" src="./Showcase - Flutter_files/realtor-logo-659d8956c3ab8dc87bdadd5b4f7cead19f3952de4bc2086759eb1d3e21f00b93.png" integrity="sha256-ZZ2JVsOrjch72t1bT3zq0Z85Ut5LwghnWesdPiHwC5M=" crossorigin="anonymous">
+                                
+                        </div>
+                        <p class="card-text">With listings updated in real time, Realtor.com’s award-winning app helps users find the home of their dreams.
+</p>
+                    </div>
+                    
+                        <div class="card-footer card-footer--transparent card-footer--links">
+                            
+                            
+                            
+                                <span class="dropdown">
+                                    <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="featuredShowcasesDropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Download
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="featuredShowcasesDropdownMenuButton1">
+                                        <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.move.realtor" target="_blank" rel="noopener">Android</a>
+                                        <a class="dropdown-item" href="https://apps.apple.com/us/app/realtor-com-real-estate-search/id336698281" target="_blank" rel="noopener">iOS</a>
+                                    </div>
+                                </span>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+        
+            <div class="col-12 col-lg-6 px-4 mb-8 mb-md-10">
+                <div class="card animate step-4">
+                    
+                    
+                    
+
+                    
+
+                    <img class="card-img-top" src="./Showcase - Flutter_files/tencent-top-1200-158ecac1430380119d57cb2074a303f8de3c1a348449c7da47a76d9308fdda17.jpg" aria-hidden="true" srcset="
+                            /assets/showcase/cards/tencent-top-400-49135f5e33ed54a47548b12bcf9be1b638ded344ab9faf280e6419338f8b3ea3.jpg 400w,
+                            /assets/showcase/cards/tencent-top-600-48b54447d1562dc90c69b730bb78c230ab265a68da889924d306a94708ebac94.jpg 600w
+                            
+                              , /assets/showcase/cards/tencent-top-1200-158ecac1430380119d57cb2074a303f8de3c1a348449c7da47a76d9308fdda17.jpg 1200w
+                            ">
+                    <div class="card-body">
+                        <div class="card-title">
+                            
+                                <img class="logo" alt="Tencent" src="./Showcase - Flutter_files/tencent-logo-7440945ec7429afea7b048707f8c58218a1cd2ccf55aa60e05c28e9ecfeeb0d7.png" integrity="sha256-dECUXsdCmv6nsEhwf4xYIYoc0sz1WqYOBcKOns/usNc=" crossorigin="anonymous">
+                                
+                        </div>
+                        <p class="card-text">Tencent uses Flutter throughout the company for several apps including AITeacher, Now Live, K12, Mr. Translator, QiDian, and DingDang.
+</p>
+                    </div>
+                    
+                        <div class="card-footer card-footer--transparent card-footer--links">
+                            
+                            <a href="https://flutter.dev/showcase#" class="video-link" data-video="DVGIBU109nI" data-toggle="modal" data-target="#videoModal"><i class="fas fa-play-circle"></i>&nbsp;Watch video</a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+        
+            <div class="col-12 col-lg-4 px-4 mb-8 mb-md-10">
+                <div class="card animate step-last">
+                    
+                    
+                    
+
+                    
+
+                    <img class="card-img-top" src="./Showcase - Flutter_files/tnyt-top-600-968508f1be4477f4ca96d84541dc8807c5b31b0153cb776e680be60ba6affbd6.jpg" aria-hidden="true" srcset="
+                            /assets/showcase/cards/tnyt-top-400-a9cf9c22bed8dc36d70d70af47479dc1dd1442c6a14394b9964b2f69d04949d2.jpg 400w,
+                            /assets/showcase/cards/tnyt-top-600-968508f1be4477f4ca96d84541dc8807c5b31b0153cb776e680be60ba6affbd6.jpg 600w
+                            ">
+                    <div class="card-body">
+                        <div class="card-title">
+                            
+                                <img class="logo" alt="The New York Times" src="./Showcase - Flutter_files/tnyt-logo-d7441de091eb910f1723ec728e2aa8c2954d5c09502ab6cbe6b3b47f13eb837b.png" integrity="sha256-10Qd4JHrkQ8XI+xyjiqowpVNXAlQKrbL5rO0fxPrg3s=" crossorigin="anonymous">
+                                
+                        </div>
+                        <p class="card-text">Flutter helps bring the popular Ken Ken puzzle to life on Android, iOS, Mac, Windows, and the web.
+</p>
+                    </div>
+                    
+                        <div class="card-footer card-footer--transparent card-footer--links">
+                            <a href="https://www.nytimes.com/games/prototype/kenken#/" class="link" target="_blank" rel="noopener">Try it now<i class="fas fa-external-link-alt"></i></a>
+                            
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+        
+            <div class="col-12 col-lg-4 px-4 mb-8 mb-md-10">
+                <div class="card animate step-last">
+                    
+                    
+                    
+
+                    
+
+                    <img class="card-img-top" src="./Showcase - Flutter_files/square-top-600-4d9a8b91cbfb78a3064854f880076c449995cb52631efa617357555bf3494f18.jpg" aria-hidden="true" srcset="
+                            /assets/showcase/cards/square-top-400-2269b45abb8bea96cf9394611635299742f168fc045b770c641b59974f9da458.jpg 400w,
+                            /assets/showcase/cards/square-top-600-4d9a8b91cbfb78a3064854f880076c449995cb52631efa617357555bf3494f18.jpg 600w
+                            ">
+                    <div class="card-body">
+                        <div class="card-title">
+                            
+                                <img class="logo" alt="Square" src="./Showcase - Flutter_files/square-logo-9b704a4b677484dee9bee70f5930c3fa1b073da2fd2d86720f19d3745320a211.png" integrity="sha256-m3BKS2d0hN7pvucPWTDD+hsHPaL9LYZyDxnTdFMgohE=" crossorigin="anonymous">
+                                
+                        </div>
+                        <p class="card-text">The Flutter plugin for our Square Reader SDK enables developers to build apps for merchants that take in-person payments.
+</p>
+                    </div>
+                    
+                        <div class="card-footer card-footer--transparent card-footer--links">
+                            <a href="https://squareup.com/us/en/flutter" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                            
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+        
+            <div class="col-12 col-lg-4 px-4 mb-8 mb-md-10">
+                <div class="card animate step-last">
+                    
+                    
+                    
+
+                    
+
+                    <img class="card-img-top" src="./Showcase - Flutter_files/g_assistant-top-600-2aacbf12ddbfb05990d97cfe92ef6df79482f54524e25f9d6a59060f463e5d85.png" aria-hidden="true" srcset="
+                            /assets/showcase/cards/g_assistant-top-400-a9b9968096b5e43f4a64144adfdffcda5833241be12f5c9331648521bc66fa7c.png 400w,
+                            /assets/showcase/cards/g_assistant-top-600-2aacbf12ddbfb05990d97cfe92ef6df79482f54524e25f9d6a59060f463e5d85.png 600w
+                            ">
+                    <div class="card-body">
+                        <div class="card-title">
+                            
+                                <img class="logo" alt="Google Assistant" src="./Showcase - Flutter_files/g_assistant-logo-a77962bdbe1aad5b708737fdc3b20e8efa693c9c8ec3093921aac6062f62c132.png" integrity="sha256-p3livb4arVtwhzf9w7IOjvppPJyOwwk5IarGBi9iwTI=" crossorigin="anonymous">
+                                 <span class="name" aria-hidden="true">Google Assistant</span>
+                        </div>
+                        <p class="card-text">Flutter helps power an ever-growing number of Google Assistant apps.
+</p>
+                    </div>
+                    
+                        <div class="card-footer card-footer--transparent card-footer--links">
+                            <a href="https://developers.googleblog.com/2019/05/Flutter-io19.html" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                            
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</section>
+
+<section class="showcase__logos-garden showcase__section animate step-last">
+    <p class="intro">Join the growing list of organizations working with Flutter.</p>
+    <div class="row">
+        <ul class="logo-list col-12 col-lg-10 d-flex flex-wrap mb-n8">
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Google logo" src="./Showcase - Flutter_files/google-087684b63e9ca0c30c154fc94385cff22df702ceea5a321fe457b6c332852105.svg" integrity="sha256-CHaEtj6coMMMFU/JQ4XP8i33As7qWjIf5Fe2wzKFIQU=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Groupon logo" src="./Showcase - Flutter_files/groupon-2337a93aa1c77f0138106e7098a0b596b7599179a6964e555fadb807f30d5b62.svg" integrity="sha256-IzepOqHHfwE4EG5wmKC1lrdZkXmmlk5VX624B/MNW2I=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Alibaba logo" src="./Showcase - Flutter_files/alibaba-614200512ac597e11ab9ad7592b0b03732da4ea441dce13a67b7ab3aeae084ae.svg" integrity="sha256-YUIAUSrFl+Eaua11krCwNzLaTqRB3OE6Z7erOurghK4=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Capital one logo" src="./Showcase - Flutter_files/capital-one-0ded9e1b5d8c176bedc02044db3f1d36327e511af23dac429bc45224d73c4dcd.svg" integrity="sha256-De2eG12MF2vtwCBE2z8dNjJ+URryPaxCm8RSJNc8Tc0=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Tencent logo" src="./Showcase - Flutter_files/tencent-7a56456f660d0329305e577384acd8f96fb8e3557adfe229df8ec6bf876df7c9.svg" integrity="sha256-elZFb2YNAykwXldzhKzY+W+441V63+Ip347Gv4dt98k=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Square logo" src="./Showcase - Flutter_files/square-f5cc2f79189bc5730af46d331a0566262d1bcf0372c820002ae4e9bf0415ae3a.svg" integrity="sha256-9cwveRibxXMK9G0zGgVmJi0bzwNyyCAAKuTpvwQVrjo=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Ebay logo" src="./Showcase - Flutter_files/ebay-847c72e2e22a280d0447d0c16a8edc13118a7a820fc08c3c4bda0894c250a29d.svg" integrity="sha256-hHxy4uIqKA0ER9DBao7cExGKeoIPwIw8S9oIlMJQop0=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="BMW logo" src="./Showcase - Flutter_files/bmw-75c1e3d80dfcac710e5160b44009cc0d8fb8688a695504d5aec5f2cbdd676536.svg" integrity="sha256-dcHj2A38rHEOUWC0QAnMDY+4aIppVQTVrsXyy91nZTY=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Dream 11 logo" src="./Showcase - Flutter_files/dream11-1b1ff24106a264eb064f8c38aa5a16761fed43f8dc2b319ccfd956fa628fc749.svg" integrity="sha256-Gx/yQQaiZOsGT4w4qloWdh/tQ/jcKzGcz9lW+mKPx0k=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Sonos logo" src="./Showcase - Flutter_files/sonos-6bcec95eb30b704ecb84bd3105b5380d94c2d6111417a1a8adc2f278722382f0.svg" integrity="sha256-a87JXrMLcE7LhL0xBbU4DZTC1hEUF6GorcLyeHIjgvA=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="NuBank logo" src="./Showcase - Flutter_files/nubank-94b3ba310eb775bf272b5f87ef868aabe2294bc9e4fcb0b9497447fa3c4207a3.svg" integrity="sha256-lLO6MQ63db8nK1+H74aKq+IpS8nk/LC5SXRH+jxCB6M=" crossorigin="anonymous">
+                </li>
+            
+                <li class="logo-item col-6 col-md-3 mb-8 mb-lg-10">
+                    <img class="logo-image" alt="Emaar logo" src="./Showcase - Flutter_files/emaar-57b30d6e62a2f7813a7d558adf9e173d74e8d4f8833a1c7d4eb0054f48bfb194.svg" integrity="sha256-V7MNbmKi94E6fVWK354XPXTo1PiDOhx9TrAFT0i/sZQ=" crossorigin="anonymous">
+                </li>
+            
+        </ul>
+    </div>
+</section>
+
+<section class="showcase__carousel showcase__section animate step-last">
+  
+  <div class="showcase__carousel__texture" style="background-image: url(/assets/showcase/video-frames/bg_texture-39d9fd0e87d88ad252b182fa606cb1246f7988368e1c5d539ea6763339e10b8d.svg)"></div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      <h2 class="showcase__carousel__title">Hear it from the developers</h2>
+
+      <div id="showcaseCarousel" class="carousel slide w-100" data-ride="carousel">
+          <div class="carousel-inner">
+            
+              <div class="carousel-item">
+                <div class="showcase__carousel__item">
+                  <div class="image">
+                    
+                    
+                    
+                    <img class="card-img-top" src="./Showcase - Flutter_files/tencent-1200-3938a979359e5e8c6e761a713776782313fc1214a2d5717f718a78fab89edb35.jpg" alt="" srcset="/assets/showcase/video-frames/tencent-400-f1f75d56ffdfd2e4d7f4fb75fb28e03ff135f2862089ccbf5b73373ca0daeacf.jpg 400w, /assets/showcase/video-frames/tencent-800-7c2d9e9c6a7a0a693bac004e6539a72f9c1ec6ee93bc58c36c0d2b27cba56da6.jpg 800w, /assets/showcase/video-frames/tencent-1200-3938a979359e5e8c6e761a713776782313fc1214a2d5717f718a78fab89edb35.jpg 1200w">
+                    <button class="image-button btn btn-primary" data-video="DVGIBU109nI" data-toggle="modal" data-target="#videoModal"><i class="material-icons" aria-hidden="true">play_circle_filled</i>&nbsp;Watch the video</button>
+                  </div>
+                  <blockquote class="quote">
+                    <p class="copy">When using Flutter, 90% of the code became multi-platform and only needed to be updated once.
+</p>
+                    <footer class="copy-footer">Fei Song, Senior Software Engineer<cite class="copy-author" title="Tencent">Tencent</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            
+              <div class="carousel-item active">
+                <div class="showcase__carousel__item">
+                  <div class="image">
+                    
+                    
+                    
+                    <img class="card-img-top" src="./Showcase - Flutter_files/reflectly-1200-07c10784b3ed54877fcab7806909370e841803719e74db6a172268e345272e09.jpg" alt="" srcset="/assets/showcase/video-frames/reflectly-400-2af4cbb10262389606bc6fb7b221947d869a5464f12e484432d9572c6df92fdf.jpg 400w, /assets/showcase/video-frames/reflectly-800-06157cd9a21476b8a93d3412263d3b065713f8d27b5661e4cf7ff33dcafe7f09.jpg 800w, /assets/showcase/video-frames/reflectly-1200-07c10784b3ed54877fcab7806909370e841803719e74db6a172268e345272e09.jpg 1200w">
+                    <button class="image-button btn btn-primary" data-video="6ZpETbJjipQ" data-toggle="modal" data-target="#videoModal"><i class="material-icons" aria-hidden="true">play_circle_filled</i>&nbsp;Watch the video</button>
+                  </div>
+                  <blockquote class="quote">
+                    <p class="copy">Getting started with Flutter was truly awesome. The huge power and productivity you get with instant stateful Hot Reload was mind-blowing.
+</p>
+                    <footer class="copy-footer">Jacob Kristensen, Co-Founder<cite class="copy-author" title="Reflectly">Reflectly</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            
+              <div class="carousel-item">
+                <div class="showcase__carousel__item">
+                  <div class="image">
+                    
+                    
+                    
+                    <img class="card-img-top" src="./Showcase - Flutter_files/abbey_road-1200-8df80f3fbcafe38e976b5150150ea1e13820026635f60c7db3a368c258fcf3c1.jpg" alt="" srcset="/assets/showcase/video-frames/abbey_road-400-2387e200a93524b2dc5248f2eb4be3b09ad7cca0e23045dd66c0432b5faf5bcf.jpg 400w, /assets/showcase/video-frames/abbey_road-800-e4edfe37144beffc646c398cc2e119bcca822a8b37cc951ca880ea2dc60d38cc.jpg 800w, /assets/showcase/video-frames/abbey_road-1200-8df80f3fbcafe38e976b5150150ea1e13820026635f60c7db3a368c258fcf3c1.jpg 1200w">
+                    <button class="image-button btn btn-primary" data-video="_ACWeGGBP4E" data-toggle="modal" data-target="#videoModal"><i class="material-icons" aria-hidden="true">play_circle_filled</i>&nbsp;Watch the video</button>
+                  </div>
+                  <blockquote class="quote">
+                    <p class="copy">We wanted to democratize music making. It was really important for us to have both versions of the app available as soon as possible.
+</p>
+                    <footer class="copy-footer">Dom Dronska, Creative Tech-Digital Lead<cite class="copy-author" title="Abbey Road Studios">Abbey Road Studios</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            
+              <div class="carousel-item">
+                <div class="showcase__carousel__item">
+                  <div class="image">
+                    
+                    
+                    
+                    <img class="card-img-top" src="./Showcase - Flutter_files/alibaba-1200-6ac7dc17f3971b0b58457d550f71ff574901c25a600ba56fd52c6965994dd2a2.jpg" alt="" srcset="/assets/showcase/video-frames/alibaba-400-2b1f95b8e29a48147d75297f6b743f249442e59e99c1858b61f8d5d85f084a40.jpg 400w, /assets/showcase/video-frames/alibaba-800-4052e704f861d370cb897664a0d99cbe5a5966f2566c2565b87c3b41746c5c1f.jpg 800w, /assets/showcase/video-frames/alibaba-1200-6ac7dc17f3971b0b58457d550f71ff574901c25a600ba56fd52c6965994dd2a2.jpg 1200w">
+                    <button class="image-button btn btn-primary" data-video="jtYk3gWRSw0" data-toggle="modal" data-target="#videoModal"><i class="material-icons" aria-hidden="true">play_circle_filled</i>&nbsp;Watch the video</button>
+                  </div>
+                  <blockquote class="quote">
+                    <p class="copy">Flutter significantly reduced the time we need to develop for new feature from 1 month down to 2 weeks.
+</p>
+                    <footer class="copy-footer">Bruce Chen, Senior Development Engineer<cite class="copy-author" title="Alibaba">Alibaba</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            
+              <div class="carousel-item">
+                <div class="showcase__carousel__item">
+                  <div class="image">
+                    
+                    
+                    
+                    <img class="card-img-top" src="./Showcase - Flutter_files/dream11-1200-59ddc2f99277ac71a1375e5349c252d6faae36f1c1b310c9c1c9d1f8169ae96c.jpg" alt="" srcset="/assets/showcase/video-frames/dream11-400-1ab62813099260970d7204de67fbd1b11e5ea83561cef47f7cb88e4bbc8ec69a.jpg 400w, /assets/showcase/video-frames/dream11-800-7c7d767907093e3d15bd8c5699859757850ff006ed65bb1ad156e3dc33ef2c42.jpg 800w, /assets/showcase/video-frames/dream11-1200-59ddc2f99277ac71a1375e5349c252d6faae36f1c1b310c9c1c9d1f8169ae96c.jpg 1200w">
+                    <button class="image-button btn btn-primary" data-video="lCeRZhoqEP8" data-toggle="modal" data-target="#videoModal"><i class="material-icons" aria-hidden="true">play_circle_filled</i>&nbsp;Watch the video</button>
+                  </div>
+                  <blockquote class="quote">
+                    <p class="copy">With flutter, the iOS version of our app was up and running in two days, which was really amazing.
+</p>
+                    <footer class="copy-footer">Amit Sharma, CTO<cite class="copy-author" title="Dream 11">Dream 11</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            
+              <div class="carousel-item">
+                <div class="showcase__carousel__item">
+                  <div class="image">
+                    
+                    
+                    
+                    <img class="card-img-top" src="./Showcase - Flutter_files/hamilton-1200-557c4fc0ac00c9480d2aea2887cc0787c479db9af9aae5ffe4584d3e49b8b894.jpg" alt="" srcset="/assets/showcase/video-frames/hamilton-400-565792b704b81cf283a49eb5fb12796bf64bcf668ff682a6805baa4ed64577ba.jpg 400w, /assets/showcase/video-frames/hamilton-800-565792b704b81cf283a49eb5fb12796bf64bcf668ff682a6805baa4ed64577ba.jpg 800w, /assets/showcase/video-frames/hamilton-1200-557c4fc0ac00c9480d2aea2887cc0787c479db9af9aae5ffe4584d3e49b8b894.jpg 1200w">
+                    <button class="image-button btn btn-primary" data-video="kfd-oLypqFI" data-toggle="modal" data-target="#videoModal"><i class="material-icons" aria-hidden="true">play_circle_filled</i>&nbsp;Watch the video</button>
+                  </div>
+                  <blockquote class="quote">
+                    <p class="copy">We knew that this app needed to be rock solid both in terms of performance and visual fidelity, and really represent the amazing experience that the Hamilton show itself provides.
+</p>
+                    <footer class="copy-footer">Jessica Wagner, Manager, Posse<cite class="copy-author" title="Hamilton">Hamilton</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            
+          </div>
+          <ol class="carousel-indicators">
+            
+              <li data-target="#showcaseCarousel" data-slide-to="0" class=""></li>
+            
+              <li data-target="#showcaseCarousel" data-slide-to="1" class="active"></li>
+            
+              <li data-target="#showcaseCarousel" data-slide-to="2"></li>
+            
+              <li data-target="#showcaseCarousel" data-slide-to="3"></li>
+            
+              <li data-target="#showcaseCarousel" data-slide-to="4"></li>
+            
+              <li data-target="#showcaseCarousel" data-slide-to="5"></li>
+            
+          </ol>
+          <a class="carousel-control-prev" href="https://flutter.dev/showcase#showcaseCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="https://flutter.dev/showcase#showcaseCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="showcase__company-cases showcase__section animate step-last">
+    <h2 class="title">More apps made with Flutter</h2>
+    <div class="row mb-n8 mb-md-n10">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/reflectly-top-600-ff39e99ba14b8091d07e7ce0b57d29871598e6ed23d403e118b913353c3f9908.jpg" aria-hidden="true" srcset="/assets/showcase/cards/reflectly-top-400-af28ad552c6330c254de479ae905dbbd04bcd7cc04e8a897eaedcc8f95f3f77c.jpg 400w, /assets/showcase/cards/reflectly-top-600-ff39e99ba14b8091d07e7ce0b57d29871598e6ed23d403e118b913353c3f9908.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Reflectly" src="./Showcase - Flutter_files/reflectly-logo-c7514ad77ca4cd50912768e7c4c19379576e8fcb8b5158b5b6a3f80577a7b0f2.png" integrity="sha256-x1FK13ykzVCRJ2jnxMGTeVduj8uLUVi1tqP4BXensPI=" crossorigin="anonymous">
+                             <span class="name" aria-hidden="true">Reflectly</span>
+                    </div>
+                    <p class="card-text">An award-winning mindfulness app built with Flutter. It was featured on the Apple App Store as 'app of the day'.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        <a href="https://medium.com/reflectly-engineering/reflectly-from-react-native-to-flutter-2e3dffced2ea" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton6">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.reflectlyApp&amp;e=-EnableAppDetailsPageRedesign" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://itunes.apple.com/us/app/reflectly-mindfulness-journal/id1241229134" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/g_ads-top-600-6397ae0fe54fcfa18b226e232abacb7e5f78b3fe0e583d24fbbf5966174ec9be.jpg" aria-hidden="true" srcset="/assets/showcase/cards/g_ads-top-400-1afc1962827120526d99e7a5bc4b5a22a879638bc8c71b2427e5e615afe829ea.jpg 400w, /assets/showcase/cards/g_ads-top-600-6397ae0fe54fcfa18b226e232abacb7e5f78b3fe0e583d24fbbf5966174ec9be.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Google Ads" src="./Showcase - Flutter_files/g_ads-logo-ce30b22b42d1ddd0f03fce6131ce15336257f36746242c7bde6bba3a86200bd7.png" integrity="sha256-zjCyK0LR3dDwP85hMc4VM2JX82dGJCx73mu6OoYgC9c=" crossorigin="anonymous">
+                             <span class="name" aria-hidden="true">Google Ads</span>
+                    </div>
+                    <p class="card-text">The Google Ads app helps users manage, optimize and track ad campaigns all from the convenience of an android device.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton7">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.google.android.apps.adwords" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://itunes.apple.com/us/app/google-ads/id1037457231?mt=8" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/insight_timer-top-600-009487a0531b655e12c8fa1aed635f7050ef420d69e9256d3c92d92d3e946df0.jpg" aria-hidden="true" srcset="/assets/showcase/cards/insight_timer-top-400-681c0275c694b6d85ff85ed791cceeab29d1916f21692cc8023df4185fdd85e6.jpg 400w, /assets/showcase/cards/insight_timer-top-600-009487a0531b655e12c8fa1aed635f7050ef420d69e9256d3c92d92d3e946df0.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Insight Timer" src="./Showcase - Flutter_files/insight_timer-logo-089535d8e6b1c7d73f7e6676bb80a6a13e3fe91cb65507418591815e91a3d94a.png" integrity="sha256-CJU12Oaxx9c/fmZ2u4CmoT4/6Ry2VQdBhZGBXpGj2Uo=" crossorigin="anonymous">
+                             <span class="name" aria-hidden="true">Insight Timer</span>
+                    </div>
+                    <p class="card-text">The Insight timer app used by 9M+ people provides access to the largest free library of guided meditations on earth.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        <a href="https://insighttimer.com/" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                        
+                        
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/stadia-top-600-14a306639309fdfbecd35a2a07d33a271f2f496d947ce74392065a632502bad4.jpg" aria-hidden="true" srcset="/assets/showcase/cards/stadia-top-400-43cf977b42e2f3ab739f58f6d7bca3fab1b3684d91b4668508f120fc440ba04d.jpg 400w, /assets/showcase/cards/stadia-top-600-14a306639309fdfbecd35a2a07d33a271f2f496d947ce74392065a632502bad4.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Stadia" src="./Showcase - Flutter_files/stadia-logo-71215577cfeb6240497f321eeb0e7cec047e9c1be1ea060645059e36fa0ce30a.png" integrity="sha256-cSFVd8/rYkBJfzIe6w587AR+nBvh6gYGRQWeNvoM4wo=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Google's Stadia app is built using Flutter for both iOS and Android.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton9">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.google.stadia.android&amp;hl=en_US" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://apps.apple.com/us/app/google-stadia/id1471900213" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/grab-top-600-09596940935d712172edcdfb83729010dedf225bda71e113c22f4888dbdee089.jpg" aria-hidden="true" srcset="/assets/showcase/cards/grab-top-400-a1fa8b2aa5b1f0ffecd6998489aed2b1a40a82492a87e821f8188cc66892367a.jpg 400w, /assets/showcase/cards/grab-top-600-09596940935d712172edcdfb83729010dedf225bda71e113c22f4888dbdee089.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Grab" src="./Showcase - Flutter_files/grab-logo-280b38f8134b1aba95a696ee9d33ee56b4811f7c36a24fa926c8a98d64eeeb09.png" integrity="sha256-KAs4+BNLGrqVppbunTPuVrSBH3w2ok+pJsipjWTu6wk=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Flutter helped Grab build the merchant app for its fast-growing food delivery business.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton10">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.grab.merchant&amp;hl=en" target="_blank" rel="noopener">Android</a>
+                                    
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/abbey_road-top-600-ac05dc83d8e8e56466123c0cca569918142bf2571c9bd50da813c01efd57047e.jpg" aria-hidden="true" srcset="/assets/showcase/cards/abbey_road-top-400-1546243fe154bca118552be3b39945ee98c785007abe5e49be694d898e361795.jpg 400w, /assets/showcase/cards/abbey_road-top-600-ac05dc83d8e8e56466123c0cca569918142bf2571c9bd50da813c01efd57047e.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Abbey Road Studios" src="./Showcase - Flutter_files/abbey_road-logo-479479e687b44d7196cb1163f26609b6e3a037db1a1053b2c8f9e4cf20db23fd.png" integrity="sha256-R5R55oe0TXGWyxFj8mYJtuOgN9saEFOyyPnkzyDbI/0=" crossorigin="anonymous">
+                             <span class="name" aria-hidden="true">Abbey Road Studios</span>
+                    </div>
+                    <p class="card-text">Abbey Road Studio’s Topline app continues the studio’s tradition of innovation.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton11">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.abbeyroadandroid&amp;hl=en_US&amp;e=-EnableAppDetailsPageRedesign" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://itunes.apple.com/us/app/topline/id1270125833?mt=8" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/alibaba-top-600-81362c6f60196e4f951fde34212013136f905be6026e7c4d485d8e403323e345.jpg" aria-hidden="true" srcset="/assets/showcase/cards/alibaba-top-400-184644a3e4b854028730bd72a2d63a41707eb9d115f7a162f5963bda6934e664.jpg 400w, /assets/showcase/cards/alibaba-top-600-81362c6f60196e4f951fde34212013136f905be6026e7c4d485d8e403323e345.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Alibaba" src="./Showcase - Flutter_files/alibaba-logo-72d4ec23a26b239dbdfa7e592b6a921884bb8ec6cd84ad6f3a482075ea7039f5.png" integrity="sha256-ctTsI6JrI529+n5ZK2qSGIS7jsbNhK1vOkggdepwOfU=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Flutter helped bring a new app for the world’s biggest online marketplace to life.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        <a href="https://www.youtube.com/watch?v=jtYk3gWRSw0" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton12">
+                                    
+                                    <a class="dropdown-item" href="https://itunes.apple.com/cn/app/%E9%97%B2%E9%B1%BC-%E6%8C%82%E9%97%B2%E9%B1%BC-%E9%97%B2%E7%BD%AE%E8%83%BD%E6%8D%A2%E9%92%B1/id510909506?mt=8" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/baidu-top-600-2628576e3d1999ea934a2cf68564d714efcaa90b7504022552225f2c266c2f7d.jpg" aria-hidden="true" srcset="/assets/showcase/cards/baidu-top-400-2228f379850fad0b424b8e2ab72dc6efd78596d317031fa1a38627efeeac4535.jpg 400w, /assets/showcase/cards/baidu-top-600-2628576e3d1999ea934a2cf68564d714efcaa90b7504022552225f2c266c2f7d.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Baidu" src="./Showcase - Flutter_files/baidu-logo-eb630b0d31ba060e025542b2501a7fc3f11e49119a6209443626b4ad2d0fb94e.png" integrity="sha256-62MLDTG6Bg4CVUKyUBp/w/EeSRGaYglENia0rS0PuU4=" crossorigin="anonymous">
+                             <span class="name" aria-hidden="true">Baidu</span>
+                    </div>
+                    <p class="card-text">Baidu Tieba is the largest Chinese communication platform hosted by Chinese search engine company Baidu.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton13" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton13">
+                                    
+                                    <a class="dropdown-item" href="https://apps.apple.com/cn/app/id1464625444" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/byte_dance-top-600-d9acc402c4b8eaaa8305ec1243cd5f9560e656dff8e6cfa7b39efda3bed68da0.jpg" aria-hidden="true" srcset="/assets/showcase/cards/byte_dance-top-400-d3c5e2c59522b43f536621895178714879e44e9119846a29af6cb0dbac6c0fd1.jpg 400w, /assets/showcase/cards/byte_dance-top-600-d9acc402c4b8eaaa8305ec1243cd5f9560e656dff8e6cfa7b39efda3bed68da0.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Byte Dance" src="./Showcase - Flutter_files/byte_dance-logo-e2c68fd5d000d9d54fd1d1318f4527059f000dec67caca248ec9275bf88347b9.png" integrity="sha256-4saP1dAA2dVP0dExj0UnBZ8ADexnysokjsknW/iDR7k=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Toutiao, Xigua Video, Helo, Topbuzz, and many other apps used by hundreds of millions of users have been developed with Flutter.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton14" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton14">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.ss.android.article.master&amp;hl=en_US" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://apps.apple.com/cn/app/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1/id529092160?l=en" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/dream11-top-600-4ad4b2e7294974aa82258ab4818302d93402b261258e665e036e5da9c54c5e41.jpg" aria-hidden="true" srcset="/assets/showcase/cards/dream11-top-400-dffbcb95919d3435297c7fdb74a504c39d9ec73bb1870ca711d6c4323c1504fc.jpg 400w, /assets/showcase/cards/dream11-top-600-4ad4b2e7294974aa82258ab4818302d93402b261258e665e036e5da9c54c5e41.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Dream 11" src="./Showcase - Flutter_files/dream11-logo-57e5e373ce9dc1dc60fb700f65b43eef846bf3a88bc353bbac298fc11b45560a.png" integrity="sha256-V+Xjc86dwdxg+3APZbQ+74Rr86iLw1O7rCmPwRtFVgo=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">India’s largest fantasy sports company with 50M+ users made its fantasy sports app a reality with Flutter.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        <a href="https://www.dream11.com/download-app" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                        
+                        
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/groupon-top-600-a9be5110b01e09352742063e9bb0463ec50a0245d4fa19a040765b3d4c07372a.png" aria-hidden="true" srcset="/assets/showcase/cards/groupon-top-400-fb4d3ab19ed87d3e4f9d1fde272830549fb745a051e659e971e2dfcbe0edc060.png 400w, /assets/showcase/cards/groupon-top-600-a9be5110b01e09352742063e9bb0463ec50a0245d4fa19a040765b3d4c07372a.png 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Groupon" src="./Showcase - Flutter_files/groupon-logo-31a8b58dee57da272c79d3ffdc07c4002683e2ded61bcc961cd1a496f27f6463.png" integrity="sha256-Mai1je5X2icsedP/3AfEACaD4t7WG8yWHNGklvJ/ZGM=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Groupon uses Flutter to help hundreds of thousands of merchants track campaign performance, manage customer satisfaction, and get efficient support.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton16" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton16">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.groupon.redemption" target="_blank" rel="noopener">Android</a>
+                                    
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/hamilton-top-600-929932565120fdebd8fae2480c879ff37c539dc19f43a717d949b1b4bc55d054.jpg" aria-hidden="true" srcset="/assets/showcase/cards/hamilton-top-400-5750c3800e5bf5fc67da4e4cccff5fea0b7db6e8b498a66d343f2b7824723e72.jpg 400w, /assets/showcase/cards/hamilton-top-600-929932565120fdebd8fae2480c879ff37c539dc19f43a717d949b1b4bc55d054.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Hamilton" src="./Showcase - Flutter_files/hamilton-logo-811ce4aaabbfdb6fa0039ec08353ca2f12d5cbbe961070a4cffb34b591d93f83.png" integrity="sha256-gRzkqqu/22+gA57Ag1PKLxLVy76WEHCkz/s0tZHZP4M=" crossorigin="anonymous">
+                             <span class="name" aria-hidden="true">Hamilton</span>
+                    </div>
+                    <p class="card-text">Official app of the hit Broadway musical serves up daily lotteries, exclusive news, a trivia game a merchandise store, and more.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        <a href="https://blog.goposse.com/rise-up-the-story-of-how-the-hamilton-app-uses-flutter-to-do-more-for-its-fans-1d9cd76f95f1" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton17" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton17">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.hamilton.app&amp;e=-EnableAppDetailsPageRedesign" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://itunes.apple.com/us/app/hamilton-the-official-app/id1255231054?mt=8" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/nubank-top-600-0efd4909e02049b057c38cbedbe3213d217550273ab36bdcdefae378f268be80.jpg" aria-hidden="true" srcset="/assets/showcase/cards/nubank-top-400-b67c04d8600a0fdbffcd14fd4d4edfb2ab76fad2e7ae97a8dd6a121d9b604464.jpg 400w, /assets/showcase/cards/nubank-top-600-0efd4909e02049b057c38cbedbe3213d217550273ab36bdcdefae378f268be80.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Nubank" src="./Showcase - Flutter_files/nubank-logo-7a098a88498ba7c6d49569cc5dca48d87649058539994dc16096f5dc0d93ad5d.png" integrity="sha256-egmKiEmLp8bUlWnMXcpI2HZJBYU5mU3BYJb13A2TrV0=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Flutter helped Nubank in its mission to end the complexity of traditional banks and put financial control back in the hands of the user.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        <a href="https://medium.com/building-nubank/https-medium-com-freire-why-nubank-chose-flutter-61b80b568772" class="link" target="_blank" rel="noopener">Learn more<i class="fas fa-external-link-alt"></i></a>
+                        
+                        
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/philips_hue-top-600-81f12cbd590d3b22c467e64e4dca4c012fe6e74172348513f8985d631787595d.jpg" aria-hidden="true" srcset="/assets/showcase/cards/philips_hue-top-400-6bab4d5cf0e7da8611e7383889745651ad871eca63b5dbaf0a8ff21943e0d7e4.jpg 400w, /assets/showcase/cards/philips_hue-top-600-81f12cbd590d3b22c467e64e4dca4c012fe6e74172348513f8985d631787595d.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Philips Hue" src="./Showcase - Flutter_files/philips_hue-logo-b8febf4e60e7c69d1f93af2f63643bc198258e86d446e9f5879d6e68c753d7e8.png" integrity="sha256-uP6/TmDnxp0fk68vY2Q7wZgljobURun1h51uaMdT1+g=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Flutter brought intuitive controls to Philips Hue apps, allowing users to set the mood and sync their smart lights to their media quickly and easily.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesLearnMoreDropdownMenuButton19" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Learn more
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesLearnMoreDropdownMenuButton19">
+                                    
+                                        <a class="dropdown-item" href="https://www2.meethue.com/en-us/entertainment/sync-with-tv#get-the-app" target="_blank" rel="noopener">Hue Sync app</a>
+                                    
+                                        <a class="dropdown-item" href="https://www2.meethue.com/en-us/app/bluetooth#download-bluetooth-app" target="_blank" rel="noopener">Hue Bluetooth app</a>
+                                    
+                                </div>
+                            </span>
+                        
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/emaar-top-600-8f9f669c01bf63a8de079f0a6996540b369f6a025da47cc365592e9b318359c4.jpg" aria-hidden="true" srcset="/assets/showcase/cards/emaar-top-400-dd598a39e3dc8e43de7a2ea08d25aef448cc325809fc2aabbe624c1d57118e09.jpg 400w, /assets/showcase/cards/emaar-top-600-8f9f669c01bf63a8de079f0a6996540b369f6a025da47cc365592e9b318359c4.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Emaar" src="./Showcase - Flutter_files/emaar-logo-f2dc43d2c00ee8a5bd0731c82e9a1c5eabc6d6cf0f7828201d5d4988ed766946.png" integrity="sha256-8txD0sAO6KW9BzHILpocXqvG1s8PeCggHV1JiO12aUY=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">Global property developer, Emaar built a new app designed for mobile-first interaction with unique blockchain-based features.
+</p>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/green_tea-top-600-cbcc8947558a6adc58a48041898508f3ca0065d8006fa9c12146a4018962bbfd.jpg" aria-hidden="true" srcset="/assets/showcase/cards/green_tea-top-400-a728c16e439b46b8d80267ab83237d3126f444e5f3bb03985586cc04a0ef2bb2.jpg 400w, /assets/showcase/cards/green_tea-top-600-cbcc8947558a6adc58a48041898508f3ca0065d8006fa9c12146a4018962bbfd.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Green Tea" src="./Showcase - Flutter_files/green_tea-logo-6a40f7ce535bb6e196bcf2a02a77b97a6b8e73f5a2d132ae08bb26a7692adcf2.png" integrity="sha256-akD3zlNbtuGWvPKgKne5emuOc/Wi0TKuCLsmp2kq3PI=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">An internal customer management app used widely by Google sales that provides rich visualizations for tracking sales targets.
+</p>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-12 col-md-6 col-xl-3 px-4 mb-8 mb-md-10 showcase__card">
+            <div class="card">
+                
+                
+                <img class="card-img-top" src="./Showcase - Flutter_files/ebay-top-600-71aae7abe65ee75074efe65c0a97603c99fd698febe155026d9d3a657821a700.jpg" aria-hidden="true" srcset="/assets/showcase/cards/ebay-top-400-0d5b467f41b77f74872af8919febc211be4f77c3f04d8bbbdf24badf2d4db283.jpg 400w, /assets/showcase/cards/ebay-top-600-71aae7abe65ee75074efe65c0a97603c99fd698febe155026d9d3a657821a700.jpg 600w">
+                <div class="card-body">
+                    <div class="card-title">
+                        
+                            <img class="logo" alt="Ebay" src="./Showcase - Flutter_files/ebay-logo-e01c0f34ffa8f8d7bf4c13cf513889932e207794a5cf14fc6e0ddaef082a6e20.png" integrity="sha256-4BwPNP+o+Ne/TBPPUTiJky4gd5SlzxT8bg3a7wgqbiA=" crossorigin="anonymous">
+                            
+                    </div>
+                    <p class="card-text">The eBay Motors app is a powerful tool for browsing, buying, and selling vehicles directly from consumers’ phones.
+</p>
+                </div>
+                
+                    <div class="card-footer card-footer--transparent card-footer--links">
+                        
+                        
+                        
+                        
+                            <span class="dropdown">
+                                <a href="https://flutter.dev/showcase#" class="dropdown-toggle" id="showcasesDropdownMenuButton22" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Download
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="showcasesDropdownMenuButton22">
+                                    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.ebay.motorsapp" target="_blank" rel="noopener">Android</a>
+                                    <a class="dropdown-item" href="https://apps.apple.com/us/app/ebay-motors/id1456156090" target="_blank" rel="noopener">iOS</a>
+                                </div>
+                            </span>
+                        
+                    </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+    <a class="cta d-block text-center" href="https://itsallwidgets.com/" target="_blank" rel="noopener">
+        Explore more Flutter-powered apps<i class="fas fa-external-link-alt"></i>
+    </a>
+</section>
+
+<section class="showcase__learn-more card showcase__section mx-n2 animate step-last">
+  <div class="card-body">
+    <h2 class="showcase__learn-more__title">Ready to take flight?</h2>
+    <a class="showcase__learn-more__cta btn btn-primary btn-cta px-12" href="https://flutter.dev/docs/get-started/install">Get Started</a>
+    <a class="d-block font-weight-bold" href="https://flutter.dev/docs">Read documentation</a>
+  </div>
+</section>
+
+<div class="modal fade" data-video-modal="" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="embedded-video-wrapper">
+          <iframe id="video-player-iframe" class="embedded-video-wrapper__frame" width="auto" height="auto" src="./Showcase - Flutter_files/jtYk3gWRSw0.html" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </main>
+  </div>
+</div>
+
+
+    <footer class="site-footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 site-footer__wrapper">
+        <div class="site-footer__logo">
+          <img src="./Showcase - Flutter_files/flutter-mono-81x100.png" alt="Flutter Logo" width="81" height="100">
+        </div>
+        <div class="site-footer__content">
+          <ul class="site-footer__link-list">
+              <li><a href="https://groups.google.com/forum/#!forum/flutter-dev">flutter-dev@</a></li>
+              <li><a href="https://flutter.dev/tos">terms</a></li>
+              <li><a href="https://flutter.dev/security">security</a></li>
+              <li><a href="https://www.google.com/intl/en/policies/privacy">privacy</a></li>
+              <li><a href="https://flutter-es.io/">español</a></li>
+              <li><a href="https://flutter.cn/" class="text-nowrap">社区中文资源</a></li>
+          </ul>
+
+          <p class="licenses">
+            Except as otherwise noted,
+            this work is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0">Creative
+            Commons Attribution 4.0 International License</a>,
+            and code samples are licensed under the BSD License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    <script async="" defer="" src="./Showcase - Flutter_files/f.txt"></script>
+  
+
+</body></html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Write Your First Flutter App, part 2</title>
+  <link rel="stylesheet" href="./Write Your First Flutter App, part 2_files/css">
+  <link rel="stylesheet" href="./Write Your First Flutter App, part 2_files/icon">
+  <link rel="stylesheet" href="./Write Your First Flutter App, part 2_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Write Your First Flutter App, part 2_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="first-flutter-app-pt2" environment="web" feedback-link="https://github.com/flutter/flutter/issues" selected="0" google-codelab-ready="" codelab-title="Write Your First Flutter App, part 2" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>43 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#2"><span class="step"><span>Get the Starting App</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#3"><span class="step"><span>Add icons to the list</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#4"><span class="step"><span>Add interactivity</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#5"><span class="step"><span>Navigate to a new screen</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#6"><span class="step"><span>Change the UI using Themes</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#7"><span class="step"><span>Well done!</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#8"><span class="step"><span>Next steps</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/flutter/flutter/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Write Your First Flutter App, part 2</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>43 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="1" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <p>Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.</p>
+<p>In this codelab, you'll extend a basic Flutter mobile app to include interactivity. You'll also create a second page (called a <em>route</em>) that the user can navigate to. Finally, you'll modify the app's theme (color). This codelab extends part 1, <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/" target="_blank">Create a Lazily Loaded List</a>, but we'll provide the starting code, if you'd like to start with part 2.</p>
+<h3 is-upgraded=""><strong>What you'll learn in part 2</strong></h3>
+<ul>
+<li>How to write a Flutter app that looks natural on both iOS and Android.</li>
+<li>Using hot reload for a quicker development cycle.</li>
+<li>How to add interactivity to a stateful widget.</li>
+<li>How to create and navigate to a second screen.</li>
+<li>How to change the look of an app using themes.</li>
+</ul>
+<h3 is-upgraded=""><strong>What you'll build in part 2</strong></h3>
+<p>You'll start with a simple mobile app that generates an endless list of proposed names for a startup company. By the end of this codelab, the user can select and unselect names, saving the best ones. Tapping the list icon in the upper right of the app bar navigates to a new page (called a  <em>route</em>) that lists only the favorited names.</p>
+<p>The animated GIF shows how the finished app works.</p>
+<p class="image-container"><img style="width: 454.00px" src="./Write Your First Flutter App, part 2_files/b17de15fa7831a1c.gif"></p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="10" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <p>If you haven't completed Part 1, see <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#1" target="_blank">Set up Your Flutter Environment</a>, in <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/" target="_blank">Write Your First Flutter App, part 1</a>, to set up your environment for Flutter development.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Get the Starting App" duration="5" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Get the Starting App</h2>
+        <p>If you have worked through part 1 of this codelab, you already have the starting app, <strong>startup_namer</strong>. You can proceed to the next step.</p>
+<p>If you don't have <strong>startup_namer</strong>, no fear, you can get it using the following instructions.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png">Create a simple templated Flutter app using the instructions in <a href="https://flutter.io/get-started/test-drive/#create-app" target="_blank">Getting Started with your first Flutter app</a>. Name the project <strong>startup_namer</strong> (instead of <em>myapp</em>).</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Delete all of the code from <strong><code>lib/main.dart</code></strong>. Replace with the code from <a href="https://github.com/flutter/codelabs/blob/b3293b5bb0c0187bdbe8112f7759f4d75f4c040a/startup_namer/step4_infinite_list/lib/main.dart" target="_blank">this file</a>, which displays an infinite, lazily loaded list of proposed startup names.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Update <code>pubspec.yaml</code> by adding the English Words package, as shown below:</p>
+<pre><code><span class="pln">dependencies</span><span class="pun">:</span><span class="pln">
+  flutter</span><span class="pun">:</span><span class="pln">
+    sdk</span><span class="pun">:</span><span class="pln"> flutter
+
+  cupertino_icons</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.1</span><span class="pun">.</span><span class="lit">2</span><span class="pln">
+  english_words</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">3.1</span><span class="pun">.</span><span class="lit">0</span><span class="pln">    </span><span class="com">// Add this line.</span></code></pre>
+<p>The English Words package generates pairs of random words, which are used as potential startup names.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> While viewing the pubspec in Android Studio's editor view, click <strong>Packages get</strong> upper right. This pulls the package into your project. You should see the following in the console:</p>
+<pre><code><span class="pln">flutter packages </span><span class="kwd">get</span><span class="pln">
+</span><span class="typ">Running</span><span class="pln"> </span><span class="str">"flutter packages get"</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> startup_namer</span><span class="pun">...</span><span class="pln">
+</span><span class="typ">Process</span><span class="pln"> finished </span><span class="kwd">with</span><span class="pln"> </span><span class="kwd">exit</span><span class="pln"> code </span><span class="lit">0</span></code></pre>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Run the app. Scroll as far as you want, viewing a continual supply of proposed startup names.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add icons to the list" duration="7" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Add icons to the list</h2>
+        <p>In this step, you'll add heart icons to each row. In the next step, you'll make them tappable and save the favorites..</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Add a <code>_saved</code> Set to RandomWordsState. This Set stores the word pairings that the user favorited. Set is preferred to List because a properly implemented Set does not allow duplicate entries.</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">RandomWordsState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">RandomWords</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">WordPair</span><span class="pun">&gt;</span><span class="pln"> _suggestions </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">WordPair</span><span class="pun">&gt;[];</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Set</span><span class="pun">&lt;</span><span class="typ">WordPair</span><span class="pun">&gt;</span><span class="pln"> _saved </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Set</span><span class="pun">&lt;</span><span class="typ">WordPair</span><span class="pun">&gt;();</span><span class="pln">   </span><span class="com">// Add this line.</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pln"> _biggerFont </span><span class="pun">=</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pun">(</span><span class="pln">fontSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">18.0</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> In the <code>_buildRow</code> function, add an <code>alreadySaved</code> check to ensure that a word pairing has not already been added to favorites.</p>
+<pre><code><span class="typ">Widget</span><span class="pln"> _buildRow</span><span class="pun">(</span><span class="typ">WordPair</span><span class="pln"> pair</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">bool</span><span class="pln"> alreadySaved </span><span class="pun">=</span><span class="pln"> _saved</span><span class="pun">.</span><span class="pln">contains</span><span class="pun">(</span><span class="pln">pair</span><span class="pun">);</span><span class="pln">  </span><span class="com">// Add this line.</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>In <code>_buildRow()</code> you'll also add heart-shaped icons to the ListTile objects to enable favoriting. In the next step, you'll add the ability to interact with the heart icons.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Add the icons, as shown below:</p>
+<pre><code><span class="typ">Widget</span><span class="pln"> _buildRow</span><span class="pun">(</span><span class="typ">WordPair</span><span class="pln"> pair</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">bool</span><span class="pln"> alreadySaved </span><span class="pun">=</span><span class="pln"> _saved</span><span class="pun">.</span><span class="pln">contains</span><span class="pun">(</span><span class="pln">pair</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+    title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+      pair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">,</span><span class="pln">
+      style</span><span class="pun">:</span><span class="pln"> _biggerFont</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+    trailing</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">   </span><span class="com">// Add the lines from here... </span><span class="pln">
+      alreadySaved </span><span class="pun">?</span><span class="pln"> </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">favorite </span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">favorite_border</span><span class="pun">,</span><span class="pln">
+      color</span><span class="pun">:</span><span class="pln"> alreadySaved </span><span class="pun">?</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">red </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">                </span><span class="com">// ... to here.</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Hot reload the app. You should now see open hearts on each row, but they are not yet interactive.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 289.50px" src="./Write Your First Flutter App, part 2_files/b01521bf7a6e9f61.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write Your First Flutter App, part 2_files/eca56f73115e3550.png"></p>
+</td></tr>
+</tbody></table>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, you can use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/master/startup_namer/step5_add_icons/lib/main.dart" target="_blank">lib/main.dart</a> </li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add interactivity" duration="5" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add interactivity</h2>
+        <p>In this step, you'll make the heart icons tappable. When the user taps an entry in the list, toggling its "favorited" state, that word pairing is added or removed from a set of saved favorites.</p>
+<p>To do this, you'll modify the <code>_buildRow</code> function. If a word entry has already been added to favorites, tapping it again removes it from favorites. When a tile has been tapped, the function calls  <code>setState()</code> to notify the framework that state has changed.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Add <code>onTap</code>, as shown below:</p>
+<pre><code><span class="typ">Widget</span><span class="pln"> _buildRow</span><span class="pun">(</span><span class="typ">WordPair</span><span class="pln"> pair</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> alreadySaved </span><span class="pun">=</span><span class="pln"> _saved</span><span class="pun">.</span><span class="pln">contains</span><span class="pun">(</span><span class="pln">pair</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+    title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+      pair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">,</span><span class="pln">
+      style</span><span class="pun">:</span><span class="pln"> _biggerFont</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+    trailing</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+      alreadySaved </span><span class="pun">?</span><span class="pln"> </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">favorite </span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">favorite_border</span><span class="pun">,</span><span class="pln">
+      color</span><span class="pun">:</span><span class="pln"> alreadySaved </span><span class="pun">?</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">red </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+    onTap</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">      </span><span class="com">// Add 9 lines from here...</span><span class="pln">
+      setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">alreadySaved</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          _saved</span><span class="pun">.</span><span class="pln">remove</span><span class="pun">(</span><span class="pln">pair</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
+          _saved</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">pair</span><span class="pun">);</span><span class="pln"> 
+        </span><span class="pun">}</span><span class="pln"> 
+      </span><span class="pun">});</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">               </span><span class="com">// ... to here.</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Tip</strong>: In Flutter's reactive style framework, calling <code>setState()</code> triggers a call to the <strong>build() </strong>method for the State object, resulting in an update to the UI.</p>
+</aside>
+<p>Hot reload the app. You should be able to tap any tile to favorite, or unfavorite, the entry. Tapping a tile generates an implicit ink splash animation emanating from the tap point.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 294.52px" src="./Write Your First Flutter App, part 2_files/8caedd467e066f03.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 315.50px" src="./Write Your First Flutter App, part 2_files/9d55495e865ccdaf.png"></p>
+</td></tr>
+</tbody></table>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, you can use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/master/startup_namer/step6_add_interactivity/lib/main.dart" target="_blank">lib/main.dart</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Navigate to a new screen" duration="10" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Navigate to a new screen</h2>
+        <p>In this step, you'll add a new page (called a <em>route</em> in Flutter) that displays the favorites. You'll learn how to navigate between the home route and the new route.</p>
+<p>In Flutter, the Navigator manages a stack containing the app's routes. Pushing a route onto the Navigator's stack, updates the display to that route. Popping a route from the Navigator's stack, returns the display to the previous route.</p>
+<p>Next, you'll add a list icon to the AppBar in the build method for RandomWordsState. When the user clicks the list icon, a new route that contains the saved favorites is pushed to the Navigator, displaying the icon.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Add the icon and its corresponding action to the <code>build</code> method:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">RandomWordsState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">RandomWords</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+        title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Startup Name Generator'</span><span class="pun">),</span><span class="pln">
+        actions</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">      </span><span class="com">// Add 3 lines from here...</span><span class="pln">
+          </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">list</span><span class="pun">),</span><span class="pln"> onPressed</span><span class="pun">:</span><span class="pln"> _pushSaved</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">                      </span><span class="com">// ... to here.</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      body</span><span class="pun">:</span><span class="pln"> _buildSuggestions</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p> Tip: Some widget properties take a single widget (<code>child</code>), and other properties, such as action, take an array of widgets (<code>children</code>), as indicated by the square brackets (<code>[]</code>).</p>
+</aside>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png">Add a <code>_pushSaved()</code> function to the RandomWordsState class.</p>
+<pre><code><span class="pln">  </span><span class="kwd">void</span><span class="pln"> _pushSaved</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Hot reload the app. The list icon ( <img style="width: 32.00px" src="./Write Your First Flutter App, part 2_files/e401ba8d3a9e2379.png"> ) appears in the app bar. Tapping it does nothing yet, because the <code>_pushSaved</code> function is empty.</p>
+<p>Next, you'll build a route and push it to the Navigator's stack. This action changes the screen to display the new route. The content for the new page is built in MaterialPageRoute's <code>builder</code> property, in an anonymous function.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Call  <code>Navigator.push</code>, as shown below, which pushes the route to the Navigator's stack. The IDE will complain about invalid code, but you will fix that in the next section.</p>
+<pre><code><span class="kwd">void</span><span class="pln"> _pushSaved</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">push</span><span class="pun">(</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Next, you'll add the MaterialPageRoute and its builder. For now, add the code that generates the ListTile rows. The <code>divideTiles()</code> method of ListTile adds horizontal spacing between each ListTile. The <code>divided</code> variable holds the final rows, converted to a list by the convenience function, <code>toList()</code>.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png">Add the code, as shown below:</p>
+<pre><code><span class="kwd">void</span><span class="pln"> _pushSaved</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">push</span><span class="pun">(</span><span class="pln">
+    </span><span class="typ">MaterialPageRoute</span><span class="str">&lt;void&gt;</span><span class="pun">(</span><span class="pln">   </span><span class="com">// Add 20 lines from here...</span><span class="pln">
+      builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Iterable</span><span class="pun">&lt;</span><span class="typ">ListTile</span><span class="pun">&gt;</span><span class="pln"> tiles </span><span class="pun">=</span><span class="pln"> _saved</span><span class="pun">.</span><span class="pln">map</span><span class="pun">(</span><span class="pln">
+          </span><span class="pun">(</span><span class="typ">WordPair</span><span class="pln"> pair</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+              title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                pair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">,</span><span class="pln">
+                style</span><span class="pun">:</span><span class="pln"> _biggerFont</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;</span><span class="pln"> divided </span><span class="pun">=</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pln">
+          </span><span class="pun">.</span><span class="pln">divideTiles</span><span class="pun">(</span><span class="pln">
+            context</span><span class="pun">:</span><span class="pln"> context</span><span class="pun">,</span><span class="pln">
+            tiles</span><span class="pun">:</span><span class="pln"> tiles</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">)</span><span class="pln">
+          </span><span class="pun">.</span><span class="pln">toList</span><span class="pun">();</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">                       </span><span class="com">// ... to here.</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>The builder property returns a Scaffold, containing the app bar for the new route, named "Saved Suggestions." The body of the new route consists of a ListView containing the ListTiles rows; each row is separated by a divider.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Add horizontal dividers, as shown below:</p>
+<pre><code><span class="kwd">void</span><span class="pln"> _pushSaved</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">push</span><span class="pun">(</span><span class="pln">
+    </span><span class="typ">MaterialPageRoute</span><span class="str">&lt;void&gt;</span><span class="pun">(</span><span class="pln">
+      builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Iterable</span><span class="pun">&lt;</span><span class="typ">ListTile</span><span class="pun">&gt;</span><span class="pln"> tiles </span><span class="pun">=</span><span class="pln"> _saved</span><span class="pun">.</span><span class="pln">map</span><span class="pun">(</span><span class="pln">
+          </span><span class="pun">(</span><span class="typ">WordPair</span><span class="pln"> pair</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+              title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                pair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">,</span><span class="pln">
+                style</span><span class="pun">:</span><span class="pln"> _biggerFont</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;</span><span class="pln"> divided </span><span class="pun">=</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pln">
+          </span><span class="pun">.</span><span class="pln">divideTiles</span><span class="pun">(</span><span class="pln">
+            context</span><span class="pun">:</span><span class="pln"> context</span><span class="pun">,</span><span class="pln">
+            tiles</span><span class="pun">:</span><span class="pln"> tiles</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">)</span><span class="pln">
+              </span><span class="pun">.</span><span class="pln">toList</span><span class="pun">();</span><span class="pln">
+
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">         </span><span class="com">// Add 6 lines from here...</span><span class="pln">
+          appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Saved Suggestions'</span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">children</span><span class="pun">:</span><span class="pln"> divided</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">                       </span><span class="com">// ... to here.</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Hot reload the app. Favorite some of the selections and tap the list icon in the app bar. The new route appears containing the favorites. Note that the Navigator adds a "Back" button to the app bar. You did not have to explicitly implement Navigator.pop. Tap the back button to return to the home route.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>iOS - Main route</p>
+</td><td colspan="1" rowspan="1"><p>iOS - Saved suggestions route</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write Your First Flutter App, part 2_files/6e06cd704eec2745.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write Your First Flutter App, part 2_files/a9f9050220d86dad.png"></p>
+</td></tr>
+</tbody></table>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, you can use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/master/startup_namer/step7_navigate_route/lib/main.dart" target="_blank">lib/main.dart</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Change the UI using Themes" duration="5" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Change the UI using Themes</h2>
+        <p>In this step, you'll modify the app's theme. The <em>theme</em> controls the look and feel of your app. You can either use the default theme, which is dependent on the physical device or emulator, or customize the theme to reflect your branding.</p>
+<p>You can easily change an app's theme by configuring the <a href="https://docs.flutter.io/flutter/material/ThemeData-class.html" target="_blank">ThemeData</a> class. This app currently uses the default theme, but you'll change the app's primary color to white.</p>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Change the color in the MyApp class:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Startup Name Generator'</span><span class="pun">,</span><span class="pln">
+      theme</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ThemeData</span><span class="pun">(</span><span class="pln">          </span><span class="com">// Add the 3 lines from here... </span><span class="pln">
+        primaryColor</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">white</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">                         </span><span class="com">// ... to here.</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">RandomWords</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write Your First Flutter App, part 2_files/a3c16fc17be25f6c.png"> Hot reload the app. The entire background is now white, even the app bar.</p>
+<p>As an exercise for the reader, use ThemeData to change other aspects of the UI. The <a href="https://docs.flutter.io/flutter/material/Colors-class.html" target="_blank">Colors</a> class in the Material library provides many color constants you can play with, and hot reload makes experimenting with the UI quick and easy.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write Your First Flutter App, part 2_files/a8a58e812150f3c.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write Your First Flutter App, part 2_files/2ae336b38fe4c72a.png"></p>
+</td></tr>
+</tbody></table>
+<p><strong>Problems?</strong></p>
+<p>If you've gotten off track, use the code from the following link to see the code for the final app.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/master/startup_namer/step8_themes/lib/main.dart" target="_blank">lib/main.dart</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Well done!" duration="0" step="8"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">8. Well done!</h2>
+        <p>You've written an interactive Flutter app that runs on both iOS and Android. In this codelab, you've:</p>
+<ul>
+<li>Written Dart code.</li>
+<li>Used hot reload for a faster development cycle.</li>
+<li>Implemented a stateful widget, adding interactivity to your app.</li>
+<li>Created a route and added logic for moving between the home route and the new route.</li>
+<li>Learned about changing the look of your app's UI using themes.</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Next steps" duration="0" step="9"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">9. Next steps</h2>
+        <p>Learn more about the Flutter SDK:</p>
+<ul>
+<li><a href="https://flutter.dev/docs/development/ui/layout" target="_blank">Building layouts in Flutter</a> tutorial</li>
+<li><a href="https://flutter.dev/docs/development/ui/interactive" target="_blank">Add interactivity</a> tutorial</li>
+<li><a href="https://flutter.dev/docs/development/ui/widgets-intro" target="_blank">Introduction to widgets</a></li>
+<li><a href="https://flutter.dev/docs/get-started/flutter-for/android-devs" target="_blank">Flutter for Android developers</a></li>
+<li><a href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs" target="_blank">Flutter for React Native developers</a></li>
+<li><a href="https://flutter.dev/docs/get-started/flutter-for/web-devs" target="_blank">Flutter for web developers</a></li>
+<li><a href="https://www.youtube.com/flutterdev" target="_blank">Flutter's Youtube channel</a></li>
+</ul>
+<p>Other resources include:</p>
+<ul>
+<li><a href="https://www.udacity.com/course/build-native-mobile-apps-with-flutter--ud905" target="_blank">Build Native Mobile Apps with Flutter</a> (a free Udacity course)</li>
+<li><a href="https://flutter.dev/docs/cookbook/" target="_blank">Flutter cookbook</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/from-java-to-dart/#0" target="_blank">From Java to Dart</a> codelab</li>
+<li><a href="https://flutter.dev/docs/resources/bootstrap-into-dart" target="_blank">Bootstrap into Dart: learn more about the language</a></li>
+</ul>
+<p>Please reach out to us at our <a href="mailto:flutter-dev@googlegroups.com" target="_blank">mailing list</a>. We'd love to hear from you!</p>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Write Your First Flutter App, part 2_files/native-shim.js"></script>
+  <script src="./Write Your First Flutter App, part 2_files/custom-elements.min.js"></script>
+  <script src="./Write Your First Flutter App, part 2_files/prettify.js"></script>
+  <script src="./Write Your First Flutter App, part 2_files/codelab-elements.js"></script>
+
+
+
+</body></html>

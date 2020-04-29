@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://codelabs.developers.google.com/codelabs/flutter-cupertino/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Building a Cupertino app with Flutter</title>
+  <link rel="stylesheet" href="./Building a Cupertino app with Flutter_files/css">
+  <link rel="stylesheet" href="./Building a Cupertino app with Flutter_files/icon">
+  <link rel="stylesheet" href="./Building a Cupertino app with Flutter_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Building a Cupertino app with Flutter_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="flutter-cupertino" environment="web" feedback-link="https://github.com/flutter/website/issues" selected="0" google-codelab-ready="" codelab-title="Building a Cupertino app with Flutter" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>51 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#2"><span class="step"><span>Create the initial Cupertino app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#3"><span class="step"><span>Create structure for a 3-tab app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#4"><span class="step"><span>Add state management</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#5"><span class="step"><span>List products for sale</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#6"><span class="step"><span>Add product search</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#7"><span class="step"><span>Add customer info</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#8"><span class="step"><span>Add date picker</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#9"><span class="step"><span>Add selected items for purchase</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#10"><span class="step"><span>Next steps</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/flutter/website/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Building a Cupertino app with Flutter</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>51 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="1" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <p>Welcome to the Flutter Cupertino codelab! </p>
+<p>In this codelab, you'll create a Cupertino (iOS-style) app using Flutter. The Flutter SDK ships with two styled widget libraries (in addition to the basic <a href="https://docs.flutter.io/flutter/widgets/widgets-library.html" target="_blank">widget library</a>): </p>
+<ul>
+<li><a href="https://docs.flutter.io/flutter/material/material-library.html" target="_blank">Material widgets</a> implements the Material design language for iOS, Android, and web.</li>
+<li><a href="https://docs.flutter.io/flutter/cupertino/cupertino-library.html" target="_blank">Cupertino widgets</a> implements the current iOS design language based on Apple's Human Interface Guidelines.</li>
+</ul>
+<p>Why write a Cupertino app? The Material design language was created for any platform, not just Android. When you write a Material app in Flutter, it has the Material look and feel on all devices, even iOS. If you want your app to <em>look</em> like a standard iOS-styled app, then you would use the Cupertino library.</p>
+<p>You can technically run a Cupertino app on either Android or iOS, but (due to licensing issues) Cupertino won't have the correct fonts on Android. For this reason, use an iOS-specific device when writing a Cupertino app.</p>
+<p>You'll implement a Cupertino style shopping app containing three tabs: one for the product list, one for a product search, and one for the shopping cart.</p>
+<p class="image-container"><img style="width: 300.50px" src="./Building a Cupertino app with Flutter_files/f104a94356854c24.png"><img style="width: 300.38px" src="./Building a Cupertino app with Flutter_files/6f345bfa17663f9a.png"></p>
+<p class="image-container"><img style="width: 295.50px" src="./Building a Cupertino app with Flutter_files/daf61aa9d823646a.png"></p>
+<h3 is-upgraded=""><strong>What you'll learn in this codelab</strong></h3>
+<ul>
+<li>How to build a Flutter app with an iOS style look and feel.</li>
+<li>How to create multiple tabs and navigate between them.</li>
+<li>How to use the <code>provider</code> package to manage state between screens.</li>
+</ul>
+<google-codelab-survey survey-id="flutter-cupertino-1" upgraded="">
+
+
+<div class="survey-questions" survey-name="flutter-cupertino-1"><div class="survey-question-wrapper"><h4>What is your goal?</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="what-is-your-goal--im-an-android-developer-who-wants-to-learn-how-to-build-for-ios-label" for="what-is-your-goal--im-an-android-developer-who-wants-to-learn-how-to-build-for-ios"><span class="option-text">I'm an Android developer who wants to learn how to build for iOS.</span><input type="radio" id="what-is-your-goal--im-an-android-developer-who-wants-to-learn-how-to-build-for-ios" name="What is your goal?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-goal--im-an-ios-developer-who-wants-to-build-with-flutter-label" for="what-is-your-goal--im-an-ios-developer-who-wants-to-build-with-flutter"><span class="option-text">I'm an iOS developer who wants to build with Flutter.</span><input type="radio" id="what-is-your-goal--im-an-ios-developer-who-wants-to-build-with-flutter" name="What is your goal?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-goal--im-a-web-developer-who-wants-to-see-what-flutter-can-do-label" for="what-is-your-goal--im-a-web-developer-who-wants-to-see-what-flutter-can-do"><span class="option-text">I'm a web developer who wants to see what Flutter can do.</span><input type="radio" id="what-is-your-goal--im-a-web-developer-who-wants-to-see-what-flutter-can-do" name="What is your goal?"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="10" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <p>You need two pieces of software to complete this lab: the <a href="https://flutter.dev/get-started/install/" target="_blank">Flutter SDK</a> and <a href="https://flutter.dev/get-started/editor/" target="_blank">an editor</a>. You can use your preferred editor, such as Android Studio or IntelliJ with the Flutter and Dart plugins installed, or Visual Studio Code with the <a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code" target="_blank">Dart Code and Flutter extensions</a>.</p>
+<p>You can run this codelab using one of the following devices:</p>
+<ul>
+<li>A physical <a href="https://flutter.dev/setup-macos/#deploy-to-ios-devices" target="_blank">iOS</a> device connected to your computer.</li>
+<li>The<a href="https://flutter.dev/setup-macos/#set-up-the-ios-simulator" target="_blank"> iOS simulator</a>.</li>
+</ul>
+<p>You'll also need:</p>
+<ul>
+<li>A Mac configured with Xcode.</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create the initial Cupertino app" duration="5" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Create the initial Cupertino app</h2>
+        <p>Create the initial app using a  <code>CupertinoPageScaffold</code>.</p>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png">Create a simple templated Flutter app, using the instructions in <a href="https://flutter.dev/get-started/test-drive/#androidstudio" target="_blank">Getting Started with your first Flutter app</a>. Name the project <strong>cupertino_store</strong> (instead of <em>myapp</em>). You'll be modifying this starter app to create the finished app.</p>
+<aside class="special"><p><strong>Tip:</strong> If you don't see "New Flutter Project" as an option in your IDE, make sure you have the <a href="https://flutter.dev/get-started/editor/#androidstudio" target="_blank">plugins installed for Flutter and Dart</a>.</p>
+</aside>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Replace the contents of <code>lib/main.dart</code>.<br>Delete all of the code from <code>lib/main.dart</code>, which creates a Material-themed button counting app. Replace with the following code, which initializes a Cupertino app.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/services.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'app.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// This app is designed only to work vertically, so we limit</span><span class="pln">
+  </span><span class="com">// orientations to portrait up and down.</span><span class="pln">
+  </span><span class="typ">SystemChrome</span><span class="pun">.</span><span class="pln">setPreferredOrientations</span><span class="pun">(</span><span class="pln">
+      </span><span class="pun">[</span><span class="typ">DeviceOrientation</span><span class="pun">.</span><span class="pln">portraitUp</span><span class="pun">,</span><span class="pln"> </span><span class="typ">DeviceOrientation</span><span class="pun">.</span><span class="pln">portraitDown</span><span class="pun">]);</span><span class="pln">
+
+  </span><span class="kwd">return</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">CupertinoStoreApp</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>Import the Cupertino package. This makes all the Cupertino widgets and constants available to your app.</li>
+<li>Import the <a href="https://docs.flutter.io/flutter/services/services-library.html" target="_blank">services library</a>. This makes the platform services, like the clipboard and setting the device orientation, available to your app.</li>
+<li>The app is designed to only work vertically, so the device orientation is limited to portrait.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Create <code>lib/styles.dart</code>.<br>Add a file to the <code>lib</code> directory called <code>styles.dart</code>.  The <code>Styles</code> class defines the text and color styling to customize the app. Here is a sample of the file, but you can get the full content on GitHub: <a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-00/lib/styles.dart" target="_blank"><code>lib/styles.dart</code></a>. </p>
+<pre><code><span class="com">// THIS IS A SAMPLE FILE. Get the full content at the link above.</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/widgets.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">abstract</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Styles</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pln"> productRowItemName </span><span class="pun">=</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pun">(</span><span class="pln">
+    color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Color</span><span class="pun">.</span><span class="pln">fromRGBO</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.8</span><span class="pun">),</span><span class="pln">
+    fontSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">18</span><span class="pun">,</span><span class="pln">
+    fontStyle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FontStyle</span><span class="pun">.</span><span class="pln">normal</span><span class="pun">,</span><span class="pln">
+    fontWeight</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FontWeight</span><span class="pun">.</span><span class="pln">normal</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pln"> productRowTotal </span><span class="pun">=</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pun">(</span><span class="pln">
+    color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Color</span><span class="pun">.</span><span class="pln">fromRGBO</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.8</span><span class="pun">),</span><span class="pln">
+    fontSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">18</span><span class="pun">,</span><span class="pln">
+    fontStyle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FontStyle</span><span class="pun">.</span><span class="pln">normal</span><span class="pun">,</span><span class="pln">
+    fontWeight</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FontWeight</span><span class="pun">.</span><span class="pln">bold</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+
+
+
+ </span><span class="com">// ...</span><span class="pln">
+</span><span class="com">// THIS IS A SAMPLE FILE. Get the full content at the link above.</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>We can centralize style definitions in a way that is similar to how web developers centralize their style markup in CSS files by grouping all of our definitions in a single file. This gives us the easiest way to reuse and redefine styles across the whole app.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Create <code>lib/app.dart</code> and add the <code>CupertinoStoreApp</code> class.<br>Add the following <code>CupertinoStoreApp</code> class to <code>lib/app.dart</code>.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'styles.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">CupertinoStoreApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoApp</span><span class="pun">(</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoStoreHomePage</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>Instantiates <code>CupertinoApp</code>, which provides theming, navigation, text direction, and other defaults required to create an app that an iOS user expects.</li>
+<li>Instantiates a <code>CupertinoStoreHomePage</code> as the homepage.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add the <code>CupertinoStoreHomePage</code> class.<br>Add the following <code>CupertinoStoreHomePage</code> class to <code>lib/app.dart</code> to create the layout for the homepage.</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">CupertinoStoreHomePage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoPageScaffold</span><span class="pun">(</span><span class="pln">
+      navigationBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoNavigationBar</span><span class="pun">(</span><span class="pln">
+        middle</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Cupertino Store'</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>The Cupertino package provides two types of page scaffolds. <code>CupertinoPageScaffold</code> supports single pages and accepts a Cupertino-style navigation bar, background color, and holds the widget tree for the page. You'll learn about the second type of scaffold in the next step.</li>
+<li>This page has a title, and the widget tree contains a single empty container.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update the <code>pubspec.yaml</code> file.<br>At the top of the project, edit the <code>pubspec.yaml</code> file. Add the libraries that you will need, and a list of the image assets. Here is a sample of the file, find the full content on GitHub: <a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-00/pubspec.yaml" target="_blank"><code>pubspec.yaml</code></a>.</p>
+<pre><code><span class="com"># THIS IS A SAMPLE OF THE FILE. Get the full file at the link above.</span><span class="pln">
+name</span><span class="pun">:</span><span class="pln"> cupertino_store
+description</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Creating</span><span class="pln"> a </span><span class="typ">Store</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> </span><span class="typ">Cupertino</span><span class="pln"> widgets
+
+environment</span><span class="pun">:</span><span class="pln">
+ sdk</span><span class="pun">:</span><span class="pln"> </span><span class="str">"&gt;=2.2.0 &lt;3.0.0"</span><span class="pln">
+
+dependencies</span><span class="pun">:</span><span class="pln">
+ flutter</span><span class="pun">:</span><span class="pln">
+   sdk</span><span class="pun">:</span><span class="pln"> flutter
+
+ cupertino_icons</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.1</span><span class="pun">.</span><span class="lit">2</span><span class="pln">
+ intl</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.15</span><span class="pun">.</span><span class="lit">7</span><span class="pln">
+ provider</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">2.0.0+1</span><span class="pln">
+ shrine_images</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">1.0</span><span class="pun">.</span><span class="lit">0</span><span class="pln">
+
+dev_dependencies</span><span class="pun">:</span><span class="pln">
+ pedantic</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">1.4</span><span class="pun">.</span><span class="lit">0</span><span class="pln">
+
+flutter</span><span class="pun">:</span><span class="pln">
+ 
+ assets</span><span class="pun">:</span><span class="pln">
+   </span><span class="pun">-</span><span class="pln"> packages</span><span class="pun">/</span><span class="pln">shrine_images</span><span class="pun">/</span><span class="lit">0</span><span class="pun">-</span><span class="lit">0.jpg</span><span class="pln">
+</span><span class="com"># THIS IS A SAMPLE OF THE FILE. Get the full file at the link above.</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>This pulls in several packages, including <a href="https://pub.dev/packages/shrine_images" target="_blank">shrine_images</a>, containing products for populating the store.</li>
+<li>The <a href="https://pub.dev/packages/provider" target="_blank">provider</a> package provides a simple way to manage state across screens.</li>
+<li>The <a href="https://pub.dev/packages/intl" target="_blank">intl</a> package provides internationalization and localization facilities.</li>
+<li>The <a href="https://pub.dev/packages/cupertino_icons" target="_blank">cupertino_icon</a> package contains icon assets for the Cupertino widgets.</li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>.  You should see the following white screen containing the Cupertino navbar and a title:</p>
+<p class="image-container"><img style="width: 292.93px" src="./Building a Cupertino app with Flutter_files/5705e4da178665a5.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following links to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-00/pubspec.yaml" target="_blank"><code>pubspec.yaml</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-00/lib/app.dart" target="_blank"><code>lib/app.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-00/lib/main.dart" target="_blank"><code>lib/main.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-00/lib/styles.dart" target="_blank"><code>lib/styles.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create structure for a 3-tab app" duration="5" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Create structure for a 3-tab app</h2>
+        <p>The final app features 3 tabs:</p>
+<ul>
+<li>Product list</li>
+<li>Product search</li>
+<li>Shopping cart</li>
+</ul>
+<p>In this step, you'll update the home page with three tabs using a <code>CupertinoTabScaffold</code>. You'll also add a data source that provides the list of items for sale, with photos and prices.</p>
+<p>In the previous step, you created a <code>CupertinoStoreHomePage</code> class using a <code>CupertinoPageScaffold</code>. Use this scaffold for pages that have no tabs. The final app has three tabs, so swap out the <code>CupertinoPageScaffold</code> for a <code>CupertinoTabScaffold</code>.</p>
+<p>Cupertino tab has a separate scaffold because on iOS, the bottom tab is commonly persistent above nested routes rather than inside pages. </p>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update <code>lib/app.dart</code>.<br>Replace the <code>CupertinoStoreHomePage</code> class with the following, which sets up a 3-tab scaffold:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">CupertinoStoreHomePage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoTabScaffold</span><span class="pun">(</span><span class="pln">
+      tabBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoTabBar</span><span class="pun">(</span><span class="pln">
+        items</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">BottomNavigationBarItem</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="typ">BottomNavigationBarItem</span><span class="pun">(</span><span class="pln">
+            icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">home</span><span class="pun">),</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Products'</span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">BottomNavigationBarItem</span><span class="pun">(</span><span class="pln">
+            icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">search</span><span class="pun">),</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Search'</span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">BottomNavigationBarItem</span><span class="pun">(</span><span class="pln">
+            icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">shopping_cart</span><span class="pun">),</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Cart'</span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      tabBuilder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">switch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoTabView</span><span class="pun">(</span><span class="pln">builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+              </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoPageScaffold</span><span class="pun">(</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ProductListTab</span><span class="pun">(),</span><span class="pln">
+              </span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">});</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">1</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoTabView</span><span class="pun">(</span><span class="pln">builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+              </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoPageScaffold</span><span class="pun">(</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SearchTab</span><span class="pun">(),</span><span class="pln">
+              </span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">});</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">2</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoTabView</span><span class="pun">(</span><span class="pln">builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+              </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoPageScaffold</span><span class="pun">(</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ShoppingCartTab</span><span class="pun">(),</span><span class="pln">
+              </span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">});</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li><code>CupertinoTabBar</code> requires at least two items, or you will see errors at run-time.</li>
+<li>The <code>tabBuilder:</code> is responsible for making sure the specified tab is built. In this case, it calls a class constructor to set up each respective tab, wrapping all three in <code>CupertinoTabView</code> and <code>CupertinoPageScaffold</code>.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add stub classes for the content of the new tabs.<br>Create a <code>lib/product_list_tab.dart</code> file for the first tab that compiles cleanly, but only displays a white screen. Use the following content:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:provider/provider.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductListTab</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">
+      builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> model</span><span class="pun">,</span><span class="pln"> child</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CustomScrollView</span><span class="pun">(</span><span class="pln">
+          slivers</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="typ">CupertinoSliverNavigationBar</span><span class="pun">(</span><span class="pln">
+              largeTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Cupertino Store'</span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>The product list tab is a stateless widget.</li>
+<li>The <code>Consumer</code>, from the <code>provider</code> package, assists with state management. More about the model later.</li>
+<li>There are 2 variants of the navigation bar on iOS. The common short static type seen since iOS 1, and the tall scrollable large title type introduced in iOS 11. This page implements the latter inside a <code>CustomScrollView</code> with a <code>CupertinoSliverNavigationBar</code> widget.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a search page stub.<br>Create a <code>lib/search_tab.dart</code> file that compiles cleanly, but only displays a white screen. Use the following content:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">SearchTab</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">_SearchTabState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">_SearchTabState</span><span class="pun">();</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_SearchTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">SearchTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CustomScrollView</span><span class="pun">(</span><span class="pln">
+      slivers</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="typ">CupertinoSliverNavigationBar</span><span class="pun">(</span><span class="pln">
+          largeTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Search'</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>The search tab is a stateful widget because, as the user performs searches, the list of results changes.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a shopping cart page stub.<br>Create a <code>lib/shopping_cart_tab.dart</code> file that compiles cleanly, but only displays a white screen. Use the following content:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:provider/provider.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ShoppingCartTab</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">_ShoppingCartTabState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">_ShoppingCartTabState</span><span class="pun">();</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_ShoppingCartTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ShoppingCartTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">
+      builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> model</span><span class="pun">,</span><span class="pln"> child</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CustomScrollView</span><span class="pun">(</span><span class="pln">
+          slivers</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="typ">CupertinoSliverNavigationBar</span><span class="pun">(</span><span class="pln">
+              largeTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Shopping Cart'</span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>The shopping cart tab is a stateful widget because it maintains the list of purchases and the customer's info.</li>
+<li>This page also uses a <code>CustomScrollView</code>.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update lib/app.dart.<br>Update the import statements in <code>lib/app.dart</code> to pull in the new tab widgets:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'product_list_tab.dart'</span><span class="pun">;</span><span class="pln">   </span><span class="com">// NEW</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'search_tab.dart'</span><span class="pun">;</span><span class="pln">         </span><span class="com">// NEW</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'shopping_cart_tab.dart'</span><span class="pun">;</span><span class="pln">  </span><span class="com">// NEW</span></code></pre>
+<p>In the second part of this step, continued on the next page, you'll add code for managing and sharing state across the tabs.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add state management" duration="5" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add state management</h2>
+        <p>The app has some common data that needs to be shared across multiple screens, so you need a simple way to flow the data to each of the objects that need it. The <a href="https://pub.dartlang.org/packages/scoped_model" target="_blank"><code>scoped_model</code></a> package provides an easy way to do that. In <code>scoped_model</code>, you define the data model used to pass data from the parent widget to its descendants. Wrapping the model in a <code>ScopedModel</code> widget makes the model available to all descendant widgets. The <code>ScopedModelDescendant</code> widget finds the correct <code>ScopedModel</code> in the widget tree.</p>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Create the data model classes.<br>Create a <code>model</code> directory under <code>lib</code>. Add a <code>lib/model/product.dart</code> file that defines the product data coming from the data source:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/foundation.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">enum</span><span class="pln"> </span><span class="typ">Category</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  all</span><span class="pun">,</span><span class="pln">
+  accessories</span><span class="pun">,</span><span class="pln">
+  clothing</span><span class="pun">,</span><span class="pln">
+  home</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Product</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">({</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">category</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">id</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">isFeatured</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">name</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">price</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">})</span><span class="pln">  </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">category </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">id </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">isFeatured </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">name </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">price </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Category</span><span class="pln"> category</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> id</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">bool</span><span class="pln"> isFeatured</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> price</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="typ">String</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> assetName </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">'$id-0.jpg'</span><span class="pun">;</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> assetPackage </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">'shrine_images'</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> toString</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">'$name (id=$id)'</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong> Observations</strong></p>
+<ul>
+<li>Each instance of the Product class describes a product for sale.</li>
+</ul>
+<p>The <code>ProductsRepository</code> class contains the full list of products for sale, along with their price, title text, and a category. Our app won't do anything with the <code>isFeatured</code> property. The class also includes a <code>loadProducts()</code> method that returns either all products, or all products in a given category.</p>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Create the products repository.<br>Create a <code>lib/model/products_repository.dart</code> file. This file contains all products for sale. Each product belongs to a category. Here is a sample of the file, but you can get the entire contents on GitHub: <a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/model/products_repository.dart" target="_blank"><code>products_repository.dart</code></a>.</p>
+<pre><code><span class="com">// THIS IS A SAMPLE FILE. Get the full content at the link above.</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'product.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductsRepository</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> _allProducts </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;[</span><span class="pln">
+   </span><span class="typ">Product</span><span class="pun">(</span><span class="pln">
+     category</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">accessories</span><span class="pun">,</span><span class="pln">
+     id</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+     isFeatured</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+     name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Vagabond sack'</span><span class="pun">,</span><span class="pln">
+     price</span><span class="pun">:</span><span class="pln"> </span><span class="lit">120</span><span class="pun">,</span><span class="pln">
+   </span><span class="pun">),</span><span class="pln">
+   </span><span class="typ">Product</span><span class="pun">(</span><span class="pln">
+     category</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">home</span><span class="pun">,</span><span class="pln">
+     id</span><span class="pun">:</span><span class="pln"> </span><span class="lit">9</span><span class="pun">,</span><span class="pln">
+     isFeatured</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+     name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Gilt desk trio'</span><span class="pun">,</span><span class="pln">
+     price</span><span class="pun">:</span><span class="pln"> </span><span class="lit">58</span><span class="pun">,</span><span class="pln">
+   </span><span class="pun">),</span><span class="pln">
+   </span><span class="typ">Product</span><span class="pun">(</span><span class="pln">
+     category</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">clothing</span><span class="pun">,</span><span class="pln">
+     id</span><span class="pun">:</span><span class="pln"> </span><span class="lit">33</span><span class="pun">,</span><span class="pln">
+     isFeatured</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+     name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Cerise scallop tee'</span><span class="pun">,</span><span class="pln">
+     price</span><span class="pun">:</span><span class="pln"> </span><span class="lit">42</span><span class="pun">,</span><span class="pln">
+   </span><span class="pun">),</span><span class="pln">
+   </span><span class="com">// THIS IS A SAMPLE FILE. Get the full content at the link above.</span><span class="pln">
+ </span><span class="pun">];</span><span class="pln">
+
+ </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;</span><span class="pln"> loadProducts</span><span class="pun">(</span><span class="typ">Category</span><span class="pln"> category</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">category </span><span class="pun">==</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">all</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="kwd">return</span><span class="pln"> _allProducts</span><span class="pun">;</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="kwd">return</span><span class="pln"> _allProducts</span><span class="pun">.</span><span class="kwd">where</span><span class="pun">((</span><span class="pln">p</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> p</span><span class="pun">.</span><span class="pln">category </span><span class="pun">==</span><span class="pln"> category</span><span class="pun">).</span><span class="pln">toList</span><span class="pun">();</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>In this case we are making a mock product database for ease of development, but this should be served to the app as an API. An easy way to do this that deals with the partially disconnected reality of mobile phones is <a href="https://firebase.google.com/docs/firestore/" target="_blank">Cloud Firestore</a>.</li>
+</ul>
+<p>You are now ready to define the model. Create a <code>lib/model/app_state_model.dart</code> file. In the <code>AppStateModel</code> class, provide methods for accessing data from the model. For example, add a method for accessing the shopping cart total, another for a list of selected products to purchase, another for the shipping cost, and so on.</p>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Create the model class.<br>Here is the list of method signatures provided by this class. Get the full content on GitHub: <a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/model/app_state_model.dart" target="_blank"><code>lib/model/app_state_model.dart</code></a>.</p>
+<pre><code><span class="com">// THIS IS A SAMPLE FILE ONLY. Get the full content at the link above.</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/foundation.dart'</span><span class="pln"> </span><span class="kwd">as</span><span class="pln"> foundation</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'product.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'products_repository.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">double</span><span class="pln"> _salesTaxRate </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0.06</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">double</span><span class="pln"> _shippingCostPerItem </span><span class="pun">=</span><span class="pln"> </span><span class="lit">7</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">AppStateModel</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> foundation</span><span class="pun">.</span><span class="typ">ChangeNotifier</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;</span><span class="pln"> _availableProducts</span><span class="pun">;</span><span class="pln">
+ </span><span class="typ">Category</span><span class="pln"> _selectedCategory </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">all</span><span class="pun">;</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> _productsInCart </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="kwd">int</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pun">&gt;{};</span><span class="pln">
+
+ </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="kwd">int</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> productsInCart
+ </span><span class="kwd">int</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> totalCartQuantity 
+ </span><span class="typ">Category</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> selectedCategory
+ </span><span class="kwd">double</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> subtotalCost
+ </span><span class="kwd">double</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> shippingCost
+
+ </span><span class="kwd">double</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> tax
+ </span><span class="kwd">double</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> totalCost
+ </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;</span><span class="pln"> getProducts</span><span class="pun">()</span><span class="pln">
+ </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;</span><span class="pln"> search</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> searchTerms</span><span class="pun">)</span><span class="pln">
+ </span><span class="kwd">void</span><span class="pln"> addProductToCart</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> productId</span><span class="pun">)</span><span class="pln">
+ </span><span class="kwd">void</span><span class="pln"> removeItemFromCart</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> productId</span><span class="pun">)</span><span class="pln">
+ </span><span class="typ">Product</span><span class="pln"> getProductById</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> id</span><span class="pun">)</span><span class="pln">
+ </span><span class="kwd">void</span><span class="pln"> clearCart</span><span class="pun">()</span><span class="pln">
+ </span><span class="kwd">void</span><span class="pln"> loadProducts</span><span class="pun">()</span><span class="pln">
+ </span><span class="kwd">void</span><span class="pln"> setCategory</span><span class="pun">(</span><span class="typ">Category</span><span class="pln"> newCategory</span><span class="pun">)</span><span class="pln">
+</span><span class="com">// THIS IS A SAMPLE FILE ONLY. Get the full content at the link above.</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>Our <code>AppStateModel</code> shows a way of centralizing the state of the application, and making the state available throughout the whole application. In later steps we will use this state to drive our Search and Shopping Cart functionality.</li>
+</ul>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update <code>lib/main.dart</code>.<br>In the <code>main()</code>method, initialize the model. Add the lines marked with NEW.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/services.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:provider/provider.dart'</span><span class="pun">;</span><span class="pln">         </span><span class="com">// NEW</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'app.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">             </span><span class="com">// NEW</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="typ">SystemChrome</span><span class="pun">.</span><span class="pln">setPreferredOrientations</span><span class="pun">(</span><span class="pln">
+     </span><span class="pun">[</span><span class="typ">DeviceOrientation</span><span class="pun">.</span><span class="pln">portraitUp</span><span class="pun">,</span><span class="pln"> </span><span class="typ">DeviceOrientation</span><span class="pun">.</span><span class="pln">portraitDown</span><span class="pun">]);</span><span class="pln">
+
+ </span><span class="kwd">return</span><span class="pln"> runApp</span><span class="pun">(</span><span class="pln">
+   </span><span class="typ">ChangeNotifierProvider</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">        </span><span class="com">// NEW</span><span class="pln">
+     model</span><span class="pun">:</span><span class="pln"> model</span><span class="pun">,</span><span class="pln">                               </span><span class="com">// NEW</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoStoreApp</span><span class="pun">(),</span><span class="pln">                 </span><span class="com">// NEW</span><span class="pln">
+   </span><span class="pun">),</span><span class="pln">
+ </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>We are wiring the <code>AppStateModel</code> at the top of the widget tree to make it available throughout the entire app.</li>
+<li>We are using <a href="https://pub.dev/documentation/provider/latest/provider/ChangeNotifierProvider-class.html" target="_blank"><code>ChangeNotifierProvider</code></a> from the <a href="https://pub.dev/packages/provider" target="_blank">provider</a> package, which monitors AppStateModel for change notifications.</li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>.  You should see the following white screen containing the Cupertino navbar, a title, and a drawer with 3 labeled icons representing the three tabs. You can switch between the tabs, but all three pages are currently blank.</p>
+<p class="image-container"><img style="width: 319.35px" src="./Building a Cupertino app with Flutter_files/35520995039d98a6.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following links to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/app.dart" target="_blank"><code>lib/app.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/main.dart" target="_blank"><code>lib/main.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/commit/3fe9137022bdab646688ad35b03d7dfbaa13743a" target="_blank"><code>lib/product_list_tab.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/search_tab.dart" target="_blank"><code>lib/search_tab.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/shopping_cart_tab.dart" target="_blank"><code>lib/shopping_cart_tab.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/model/app_state_model.dart" target="_blank"><code>lib/model/app_state_model.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/model/product.dart" target="_blank"><code>lib/model/product.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-01/lib/model/products_repository.dart" target="_blank"><code>lib/model/products_repository.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="List products for sale" duration="5" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. List products for sale</h2>
+        <p>In this step, display the products for sale in the product list tab.</p>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add <code>lib/product_row_item.dart</code> to display the products.<br>Create the <code>lib/product_row_item.dart file</code>, with the following content:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:provider/provider.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'styles.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductRowItem</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">ProductRowItem</span><span class="pun">({</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">index</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">product</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">lastItem</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Product</span><span class="pln"> product</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> index</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">bool</span><span class="pln"> lastItem</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> row </span><span class="pun">=</span><span class="pln"> </span><span class="typ">SafeArea</span><span class="pun">(</span><span class="pln">
+      top</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+      bottom</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+      minimum</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">
+        left</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">,</span><span class="pln">
+        top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln">
+        bottom</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln">
+        right</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="typ">ClipRRect</span><span class="pun">(</span><span class="pln">
+            borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderRadius</span><span class="pun">.</span><span class="pln">circular</span><span class="pun">(</span><span class="lit">4</span><span class="pun">),</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Image</span><span class="pun">.</span><span class="pln">asset</span><span class="pun">(</span><span class="pln">
+              product</span><span class="pun">.</span><span class="pln">assetName</span><span class="pun">,</span><span class="pln">
+              </span><span class="kwd">package</span><span class="pun">:</span><span class="pln"> product</span><span class="pun">.</span><span class="pln">assetPackage</span><span class="pun">,</span><span class="pln">
+              fit</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BoxFit</span><span class="pun">.</span><span class="pln">cover</span><span class="pun">,</span><span class="pln">
+              width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">76</span><span class="pun">,</span><span class="pln">
+              height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">76</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">Expanded</span><span class="pun">(</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">12</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+                mainAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MainAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+                crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+                children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+                  </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                    product</span><span class="pun">.</span><span class="pln">name</span><span class="pun">,</span><span class="pln">
+                    style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">productRowItemName</span><span class="pun">,</span><span class="pln">
+                  </span><span class="pun">),</span><span class="pln">
+                  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">)),</span><span class="pln">
+                  </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                    </span><span class="str">'\$${product.price}'</span><span class="pun">,</span><span class="pln">
+                    style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">productRowItemPrice</span><span class="pun">,</span><span class="pln">
+                  </span><span class="pun">)</span><span class="pln">
+                </span><span class="pun">],</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">CupertinoButton</span><span class="pun">(</span><span class="pln">
+            padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">zero</span><span class="pun">,</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+              </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">plus_circled</span><span class="pun">,</span><span class="pln">
+              semanticLabel</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Add'</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+              </span><span class="kwd">final</span><span class="pln"> model </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Provider</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+              model</span><span class="pun">.</span><span class="pln">addProductToCart</span><span class="pun">(</span><span class="pln">product</span><span class="pun">.</span><span class="pln">id</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">lastItem</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">return</span><span class="pln"> row</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        row</span><span class="pun">,</span><span class="pln">
+        </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+          padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">
+            left</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span><span class="pun">,</span><span class="pln">
+            right</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+            height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+            color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">productRowDivider</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li><a href="https://docs.flutter.io/flutter/cupertino/CupertinoSliverNavigationBar-class.html" target="_blank"><code>CupertinoSliverNavigationBar</code></a> is how we get iOS 11 style expanding titles in the navigation bar. This is important to make an iOS user feel at home in the app.</li>
+<li>There is a lot of complexity in this file, as we emulate the highly refined look and feel of iOS applications. Flutter's strength is that we can make these changes in an editor and see them change in near real time thanks to Stateful Hot Reload.</li>
+</ul>
+<p><img style="width: 23.82px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> In <code>lib/product_list_tab.dart</code>, import the <code>product_row_item.dart</code> file.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:provider/provider.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'product_row_item.dart'</span><span class="pun">;</span><span class="pln">      </span><span class="com">// NEW</span></code></pre>
+<p><img style="width: 24.50px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> In the <code>build()</code> method for <code>ProductRowTab</code>, get the product list and the number of products. Add the new lines indicated below:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductListTab</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoPageScaffold</span><span class="pun">(</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">
+       builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> child</span><span class="pun">,</span><span class="pln"> model</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+         </span><span class="kwd">final</span><span class="pln"> products </span><span class="pun">=</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">getProducts</span><span class="pun">();</span><span class="pln">  </span><span class="com">// NEW</span><span class="pln">
+         </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CustomScrollView</span><span class="pun">(</span><span class="pln">
+           semanticChildCount</span><span class="pun">:</span><span class="pln"> products</span><span class="pun">.</span><span class="pln">length</span><span class="pun">,</span><span class="pln"> </span><span class="com">// NEW</span><span class="pln">
+           slivers</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+             </span><span class="typ">CupertinoSliverNavigationBar</span><span class="pun">(</span><span class="pln">
+               largeTitle</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Cupertino Store'</span><span class="pun">),</span><span class="pln">
+             </span><span class="pun">),</span><span class="pln">
+           </span><span class="pun">],</span><span class="pln">
+         </span><span class="pun">);</span><span class="pln">
+       </span><span class="pun">},</span><span class="pln">
+     </span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 23.73px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Also in the <code>build()</code> method, add a new sliver to the sliver widgets list to hold the product list. Add the new lines indicated below:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductListTab</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoPageScaffold</span><span class="pun">(</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">
+       builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> child</span><span class="pun">,</span><span class="pln"> model</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+         </span><span class="kwd">final</span><span class="pln"> products </span><span class="pun">=</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">getProducts</span><span class="pun">();</span><span class="pln">
+         </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CustomScrollView</span><span class="pun">(</span><span class="pln">
+           semanticChildCount</span><span class="pun">:</span><span class="pln"> products</span><span class="pun">.</span><span class="pln">length</span><span class="pun">,</span><span class="pln">
+           slivers</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+             </span><span class="typ">CupertinoSliverNavigationBar</span><span class="pun">(</span><span class="pln">
+               largeTitle</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Cupertino Store'</span><span class="pun">),</span><span class="pln">
+             </span><span class="pun">),</span><span class="pln">
+             </span><span class="typ">SliverSafeArea</span><span class="pun">(</span><span class="pln">      </span><span class="com">// BEGINNING OF NEW CONTENT</span><span class="pln">
+               top</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+               minimum</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">),</span><span class="pln">
+               sliver</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SliverList</span><span class="pun">(</span><span class="pln">
+                 </span><span class="kwd">delegate</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+                   </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                     </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index </span><span class="pun">&lt;</span><span class="pln"> products</span><span class="pun">.</span><span class="pln">length</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                       </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ProductRowItem</span><span class="pun">(</span><span class="pln">
+                         index</span><span class="pun">:</span><span class="pln"> index</span><span class="pun">,</span><span class="pln">
+                         product</span><span class="pun">:</span><span class="pln"> products</span><span class="pun">[</span><span class="pln">index</span><span class="pun">],</span><span class="pln">
+                         lastItem</span><span class="pun">:</span><span class="pln"> index </span><span class="pun">==</span><span class="pln"> products</span><span class="pun">.</span><span class="pln">length </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+                       </span><span class="pun">);</span><span class="pln">
+                     </span><span class="pun">}</span><span class="pln">
+                     </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+                   </span><span class="pun">},</span><span class="pln">
+                 </span><span class="pun">),</span><span class="pln">
+               </span><span class="pun">),</span><span class="pln">
+             </span><span class="pun">)</span><span class="pln">                  </span><span class="com">// END OF NEW CONTENT</span><span class="pln">
+           </span><span class="pun">],</span><span class="pln">
+         </span><span class="pun">);</span><span class="pln">
+       </span><span class="pun">},</span><span class="pln">
+     </span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>The notch is accounted for by the first sliver (the <code>CupertinoSliverNavigationBar</code>).</li>
+<li>The new sliver and the first sliver are siblings (not parent-child), so the first sliver has no way to communicate that it has already consumed the notch. Therefore the second sliver sets <code>SliverSafeArea</code>'s <code>top</code> property to <code>false</code> so that it ignores the notch.</li>
+<li>The <code>SliverSafeArea</code>'s <code>left</code> and <code>right</code> properties still default to <code>true</code> in case the phone is rotated, and it still accounts for the <code>bottom</code> so that the sliver can scroll past the bottom home bar to avoid obstruction when it's scrolled to the end.</li>
+<li>This logic is not specifically required here due to the app being restricted to portrait only, but including it means this code is safe to re-use in apps that handle horizontal presentation. </li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>. In the product tab, you should see a list of products with images, prices, and a button with a plus sign that adds the product to the shopping cart. The button will be implemented later, in the step where you'll build out the shopping cart.</p>
+<p class="image-container"><img style="width: 327.50px" src="./Building a Cupertino app with Flutter_files/f104a94356854c24.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following links to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-02/lib/product_list_tab.dart" target="_blank"><code>lib/product_list_tab.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-02/lib/product_row_item.dart" target="_blank"><code>lib/product_row_item.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add product search" duration="5" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Add product search</h2>
+        <p>In this step, you'll build out the search tab and add the ability to search through the products.</p>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update the imports in <code>lib/search_tab.dart</code>.</p>
+<p>Add imports for the classes that the search tab will use:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:provider/provider.dart'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'product_row_item.dart'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'search_bar.dart'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'styles.dart'</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update the <code>build()</code> method in <code>_SearchTabState</code>.</p>
+<p>Initialize the model and replace the <code>CustomScrollView</code> with individual components for searching and listing.</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">_SearchTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">SearchTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+</span><span class="com">// ...</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> model </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Provider</span><span class="pun">.</span><span class="pln">of</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">   
+    </span><span class="kwd">final</span><span class="pln"> results </span><span class="pun">=</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">search</span><span class="pun">(</span><span class="pln">_terms</span><span class="pun">);</span><span class="pln">                
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">DecoratedBox</span><span class="pun">(</span><span class="pln">
+      decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">scaffoldBackground</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SafeArea</span><span class="pun">(</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+            _buildSearchBox</span><span class="pun">(),</span><span class="pln">
+            </span><span class="typ">Expanded</span><span class="pun">(</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">.</span><span class="pln">builder</span><span class="pun">(</span><span class="pln">
+                itemBuilder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">ProductRowItem</span><span class="pun">(</span><span class="pln">
+                      index</span><span class="pun">:</span><span class="pln"> index</span><span class="pun">,</span><span class="pln">
+                      product</span><span class="pun">:</span><span class="pln"> results</span><span class="pun">[</span><span class="pln">index</span><span class="pun">],</span><span class="pln">
+                      lastItem</span><span class="pun">:</span><span class="pln"> index </span><span class="pun">==</span><span class="pln"> results</span><span class="pun">.</span><span class="pln">length </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+                    </span><span class="pun">),</span><span class="pln">
+                itemCount</span><span class="pun">:</span><span class="pln"> results</span><span class="pun">.</span><span class="pln">length</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>We are re-creating an iOS style search experience, but we have a lot of latitude to customise the user experience.</li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add supporting variables, functions, and methods to the <code>_SearchTabState</code> class.</p>
+<p>These include <code>initState()</code>, <code>dispose()</code>, <code>_onTextChanged()</code>, and <code>_buildSearchBox()</code>, as shown below:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">_SearchTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">SearchTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">TextEditingController</span><span class="pln"> _controller</span><span class="pun">;</span><span class="pln">
+  </span><span class="typ">FocusNode</span><span class="pln"> _focusNode</span><span class="pun">;</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> _terms </span><span class="pun">=</span><span class="pln"> </span><span class="str">''</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="kwd">void</span><span class="pln"> initState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">initState</span><span class="pun">();</span><span class="pln">
+    _controller </span><span class="pun">=</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">()..</span><span class="pln">addListener</span><span class="pun">(</span><span class="pln">_onTextChanged</span><span class="pun">);</span><span class="pln">
+    _focusNode </span><span class="pun">=</span><span class="pln"> </span><span class="typ">FocusNode</span><span class="pun">();</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="kwd">void</span><span class="pln"> dispose</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _focusNode</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">
+    _controller</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">void</span><span class="pln"> _onTextChanged</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _terms </span><span class="pun">=</span><span class="pln"> _controller</span><span class="pun">.</span><span class="pln">text</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="typ">Widget</span><span class="pln"> _buildSearchBox</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+      padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="lit">8</span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SearchBar</span><span class="pun">(</span><span class="pln">
+        controller</span><span class="pun">:</span><span class="pln"> _controller</span><span class="pun">,</span><span class="pln">
+        focusNode</span><span class="pun">:</span><span class="pln"> _focusNode</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">                                     </span><span class="com">// TO HERE</span><span class="pln">
+
+ </span><span class="lit">@override</span><span class="pln">
+ </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li><code>_SearchTabState</code> is where we keep state specific to searching. In this implementation we store what the search terms are, and we hook into the <code>AppStateModel</code> to fulfill the search capability. In the case where we implement an API back end, here is a good place to do network access for Search.</li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a <code>SearchBar</code> class.</p>
+<p>Create a new file, <code>lib/search_bar.dart</code>. The <code>SearchBar</code> class handles the actual search in the product list. Seed the file with the following content:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/widgets.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'styles.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">SearchBar</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">SearchBar</span><span class="pun">({</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">controller</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">focusNode</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pln"> controller</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">FocusNode</span><span class="pln"> focusNode</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">DecoratedBox</span><span class="pun">(</span><span class="pln">
+      decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">searchBackground</span><span class="pun">,</span><span class="pln">
+        borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderRadius</span><span class="pun">.</span><span class="pln">circular</span><span class="pun">(</span><span class="lit">10</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+        padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">
+          horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln">
+          vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+            </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+              </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">search</span><span class="pun">,</span><span class="pln">
+              color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">searchIconColor</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">Expanded</span><span class="pun">(</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoTextField</span><span class="pun">(</span><span class="pln">
+                controller</span><span class="pun">:</span><span class="pln"> controller</span><span class="pun">,</span><span class="pln">
+                focusNode</span><span class="pun">:</span><span class="pln"> focusNode</span><span class="pun">,</span><span class="pln">
+                style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">searchText</span><span class="pun">,</span><span class="pln">
+                cursorColor</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">searchCursorColor</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">GestureDetector</span><span class="pun">(</span><span class="pln">
+              onTap</span><span class="pun">:</span><span class="pln"> controller</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">,</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+                </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">clear_thick_circled</span><span class="pun">,</span><span class="pln">
+                color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">searchIconColor</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>Search interfaces on iOS are interesting in that there is reasonably wide variation in implementations. Flutter gives you the ability to tune the layout and color of the implementation quickly and easily. </li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>. Select the <strong>search</strong> tab and enter "shirt" into the text field. You should see a list of 5 products that contain "shirt" in the name.</p>
+<p class="image-container"><img style="width: 349.91px" src="./Building a Cupertino app with Flutter_files/6f345bfa17663f9a.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following links to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-03/lib/search_bar.dart" target="_blank"><code>lib/search_bar.dart</code></a></li>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-03/lib/search_tab.dart" target="_blank"><code>lib/search_tab.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add customer info" duration="5" step="8"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">8. Add customer info</h2>
+        <p>In the next three steps, you'll build out the shopping cart tab. In this first step, you'll add fields for capturing customer info.</p>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update the <code>lib/shopping_cart_tab.dart</code> file.</p>
+<p>Add private methods for building the name, email, and location fields. Then add a <code>_buildSliverChildBuildDelegate()</code> method that build out parts of the user interface.</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">_ShoppingCartTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ShoppingCartTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">      </span><span class="com">// ADD FROM HERE</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> email</span><span class="pun">;</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> location</span><span class="pun">;</span><span class="pln">
+  </span><span class="typ">String</span><span class="pln"> pin</span><span class="pun">;</span><span class="pln">
+  </span><span class="typ">DateTime</span><span class="pln"> dateTime </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">.</span><span class="pln">now</span><span class="pun">();</span><span class="pln">
+
+  </span><span class="typ">Widget</span><span class="pln"> _buildNameField</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CupertinoTextField</span><span class="pun">(</span><span class="pln">
+      prefix</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+        </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">person_solid</span><span class="pun">,</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">lightBackgroundGray</span><span class="pun">,</span><span class="pln">
+        size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">28</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">12</span><span class="pun">),</span><span class="pln">
+      clearButtonMode</span><span class="pun">:</span><span class="pln"> </span><span class="typ">OverlayVisibilityMode</span><span class="pun">.</span><span class="pln">editing</span><span class="pun">,</span><span class="pln">
+      textCapitalization</span><span class="pun">:</span><span class="pln"> </span><span class="typ">TextCapitalization</span><span class="pun">.</span><span class="pln">words</span><span class="pun">,</span><span class="pln">
+      autocorrect</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+      decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+        border</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Border</span><span class="pun">(</span><span class="pln">
+          bottom</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderSide</span><span class="pun">(</span><span class="pln">
+            width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+            color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">inactiveGray</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      placeholder</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Name'</span><span class="pun">,</span><span class="pln">
+      onChanged</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">newName</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          name </span><span class="pun">=</span><span class="pln"> newName</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">});</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="typ">Widget</span><span class="pln"> _buildEmailField</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">CupertinoTextField</span><span class="pun">(</span><span class="pln">
+      prefix</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+        </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">mail_solid</span><span class="pun">,</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">lightBackgroundGray</span><span class="pun">,</span><span class="pln">
+        size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">28</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">12</span><span class="pun">),</span><span class="pln">
+      clearButtonMode</span><span class="pun">:</span><span class="pln"> </span><span class="typ">OverlayVisibilityMode</span><span class="pun">.</span><span class="pln">editing</span><span class="pun">,</span><span class="pln">
+      keyboardType</span><span class="pun">:</span><span class="pln"> </span><span class="typ">TextInputType</span><span class="pun">.</span><span class="pln">emailAddress</span><span class="pun">,</span><span class="pln">
+      autocorrect</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+      decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+        border</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Border</span><span class="pun">(</span><span class="pln">
+          bottom</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderSide</span><span class="pun">(</span><span class="pln">
+            width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+            color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">inactiveGray</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      placeholder</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Email'</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="typ">Widget</span><span class="pln"> _buildLocationField</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">CupertinoTextField</span><span class="pun">(</span><span class="pln">
+      prefix</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+        </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">location_solid</span><span class="pun">,</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">lightBackgroundGray</span><span class="pun">,</span><span class="pln">
+        size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">28</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">12</span><span class="pun">),</span><span class="pln">
+      clearButtonMode</span><span class="pun">:</span><span class="pln"> </span><span class="typ">OverlayVisibilityMode</span><span class="pun">.</span><span class="pln">editing</span><span class="pun">,</span><span class="pln">
+      textCapitalization</span><span class="pun">:</span><span class="pln"> </span><span class="typ">TextCapitalization</span><span class="pun">.</span><span class="pln">words</span><span class="pun">,</span><span class="pln">
+      decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+        border</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Border</span><span class="pun">(</span><span class="pln">
+          bottom</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderSide</span><span class="pun">(</span><span class="pln">
+            width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+            color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">inactiveGray</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      placeholder</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Location'</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="typ">SliverChildBuilderDelegate</span><span class="pln"> _buildSliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+      </span><span class="typ">AppStateModel</span><span class="pln"> model</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">SliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+      </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">switch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildNameField</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">1</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildEmailField</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">2</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildLocationField</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">
+          </span><span class="com">// Do nothing. For now.</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">                  </span><span class="com">// TO HERE</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>A key way that Flutter differs from more traditional User Interface design environments is that you have the full power of a proper programming language to introduce abstractions. You can add functions to group functionality, or turn it into a stand alone Widget if you want easy re-use. As the programmer, the choice in how to lay out functionality is yours to make.</li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Update the <code>build()</code> method in the <code>_SearchTabState</code> class.</p>
+<p>Add a <code>SliverSafeArea</code> that calls the <code>_buildSliverChildBuildingDelegate</code> method:</p>
+<pre><code><span class="pln">  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="typ">AppStateModel</span><span class="pun">&gt;(</span><span class="pln">
+      builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> model</span><span class="pun">,</span><span class="pln"> child</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">CustomScrollView</span><span class="pun">(</span><span class="pln">
+          slivers</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">CupertinoSliverNavigationBar</span><span class="pun">(</span><span class="pln">
+              largeTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Shopping Cart'</span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">SliverSafeArea</span><span class="pun">(</span><span class="pln">
+              top</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+              minimum</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4</span><span class="pun">),</span><span class="pln">
+              sliver</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SliverList</span><span class="pun">(</span><span class="pln">
+                </span><span class="kwd">delegate</span><span class="pun">:</span><span class="pln"> _buildSliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">model</span><span class="pun">),</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">)</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>With all of the user interface defined in builder functions, the build method can be quite small. </li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>. Select the <strong>shopping cart</strong> tab. You should see three text fields for gathering customer information:</p>
+<p class="image-container"><img style="width: 323.35px" src="./Building a Cupertino app with Flutter_files/bcb97c1aff65d3d7.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-04/lib/shopping_cart_tab.dart" target="_blank"><code>lib/shopping_cart_tab.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add date picker" duration="5" step="9"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">9. Add date picker</h2>
+        <p>In this step, add a <code>CupertinoDatePicker</code> to the shopping cart so the user can select a preferred shipping date.</p>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add imports and a <code>const</code> to <code>lib/shopping_cart_tab.dart</code>.</p>
+<p>Add the new lines, as shown:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:intl/intl.dart'</span><span class="pun">;</span><span class="pln">            </span><span class="com">// NEW</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:scoped_model/scoped_model.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'styles.dart'</span><span class="pun">;</span><span class="pln">                       </span><span class="com">// NEW</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> _kDateTimePickerHeight </span><span class="pun">=</span><span class="pln"> </span><span class="lit">216</span><span class="pun">;</span><span class="pln">  </span><span class="com">// NEW</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a <code>_buildDateAndTimePicker()</code> function to the <code>_ShoppingCartTab</code> widget.</p>
+<p>Add the function, as follows:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">_ShoppingCartTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ShoppingCartTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// ...</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> _buildDateAndTimePicker</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// NEW FROM HERE</span><span class="pln">
+ </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+   children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+     </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+       mainAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MainAxisAlignment</span><span class="pun">.</span><span class="pln">spaceBetween</span><span class="pun">,</span><span class="pln">
+       children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+         </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+           mainAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MainAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+           children</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+             </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+               </span><span class="typ">CupertinoIcons</span><span class="pun">.</span><span class="pln">clock</span><span class="pun">,</span><span class="pln">
+               color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoColors</span><span class="pun">.</span><span class="pln">lightBackgroundGray</span><span class="pun">,</span><span class="pln">
+               size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">28</span><span class="pun">,</span><span class="pln">
+             </span><span class="pun">),</span><span class="pln">
+             </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">6</span><span class="pun">),</span><span class="pln">
+             </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+               </span><span class="str">'Delivery time'</span><span class="pun">,</span><span class="pln">
+               style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">deliveryTimeLabel</span><span class="pun">,</span><span class="pln">
+             </span><span class="pun">),</span><span class="pln">
+           </span><span class="pun">],</span><span class="pln">
+         </span><span class="pun">),</span><span class="pln">
+         </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+           </span><span class="typ">DateFormat</span><span class="pun">.</span><span class="pln">yMMMd</span><span class="pun">().</span><span class="pln">add_jm</span><span class="pun">().</span><span class="pln">format</span><span class="pun">(</span><span class="pln">dateTime</span><span class="pun">),</span><span class="pln">
+           style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">deliveryTime</span><span class="pun">,</span><span class="pln">
+         </span><span class="pun">),</span><span class="pln">
+       </span><span class="pun">],</span><span class="pln">
+     </span><span class="pun">),</span><span class="pln">
+     </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+       height</span><span class="pun">:</span><span class="pln"> _kDateTimePickerHeight</span><span class="pun">,</span><span class="pln">
+       child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoDatePicker</span><span class="pun">(</span><span class="pln">
+         mode</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CupertinoDatePickerMode</span><span class="pun">.</span><span class="pln">dateAndTime</span><span class="pun">,</span><span class="pln">
+         initialDateTime</span><span class="pun">:</span><span class="pln"> dateTime</span><span class="pun">,</span><span class="pln">
+         onDateTimeChanged</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">newDateTime</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+           setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+             dateTime </span><span class="pun">=</span><span class="pln"> newDateTime</span><span class="pun">;</span><span class="pln">
+           </span><span class="pun">});</span><span class="pln">
+         </span><span class="pun">},</span><span class="pln">
+       </span><span class="pun">),</span><span class="pln">
+     </span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">],</span><span class="pln">
+ </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">                                                </span><span class="com">// TO HERE</span><span class="pln">
+
+</span><span class="typ">SliverChildBuilderDelegate</span><span class="pln"> _buildSliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+   </span><span class="typ">AppStateModel</span><span class="pln"> model</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// ...</span></code></pre>
+<p><img style="width: 27.00px" src="./Building a Cupertino app with Flutter_files/71dd22da186608e5.png"><strong><code> Observations</code></strong></p>
+<ul>
+<li>Adding a <code>CupertinoDatePicker</code> is quick to do, and gives iOS users an intuitive way to enter dates and times.</li>
+</ul>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a call to build the date and time UI, to the <code>_buildSliverChildBuilderDelegate</code> function. Add the new code, as shown:</p>
+<pre><code><span class="pln">  </span><span class="typ">SliverChildBuilderDelegate</span><span class="pln"> _buildSliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+      </span><span class="typ">AppStateModel</span><span class="pln"> model</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">SliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+      </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">switch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildNameField</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">1</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildEmailField</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">2</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildLocationField</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">3</span><span class="pun">:</span><span class="pln">                </span><span class="com">// ADD FROM HERE</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+              padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">fromLTRB</span><span class="pun">(</span><span class="lit">16</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln"> </span><span class="lit">16</span><span class="pun">,</span><span class="pln"> </span><span class="lit">24</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildDateAndTimePicker</span><span class="pun">(</span><span class="pln">context</span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">                   </span><span class="com">// TO HERE</span><span class="pln">
+          </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">
+          </span><span class="com">// Do nothing. For now.</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>. Select the <strong>shopping cart</strong> tab. You should see an iOS style date picker below the text fields for gathering the customer info:</p>
+<p class="image-container"><img style="width: 321.10px" src="./Building a Cupertino app with Flutter_files/ecd9ef206f1e86c7.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-05/lib/shopping_cart_tab.dart" target="_blank"><code>lib/shopping_cart_tab.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add selected items for purchase" duration="5" step="10"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">10. Add selected items for purchase</h2>
+        <p>In this step, add the selected items to the shopping cart to complete the app.</p>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Import the product package in <code>shopping_cart_tab.dart</code>.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:intl/intl.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:scoped_model/scoped_model.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/app_state_model.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln">              </span><span class="com">// NEW</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'styles.dart'</span><span class="pun">;</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a currency format to the <code>_ShoppingCartTabState</code> class.</p>
+<p>Add the line marked NEW:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">_ShoppingCartTabState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ShoppingCartTab</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+ </span><span class="typ">String</span><span class="pln"> email</span><span class="pun">;</span><span class="pln">
+ </span><span class="typ">String</span><span class="pln"> location</span><span class="pun">;</span><span class="pln">
+ </span><span class="typ">String</span><span class="pln"> pin</span><span class="pun">;</span><span class="pln">
+ </span><span class="typ">DateTime</span><span class="pln"> dateTime </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">.</span><span class="pln">now</span><span class="pun">();</span><span class="pln">
+ </span><span class="kwd">final</span><span class="pln"> _currencyFormat </span><span class="pun">=</span><span class="pln"> </span><span class="typ">NumberFormat</span><span class="pun">.</span><span class="pln">currency</span><span class="pun">(</span><span class="pln">symbol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'\$'</span><span class="pun">);</span><span class="pln"> </span><span class="com">// NEW</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> Add a product index to the <code>_buildSliverChildBuilderDelegate</code> function.</p>
+<p>Add the line marked NEW:</p>
+<pre><code><span class="typ">SliverChildBuilderDelegate</span><span class="pln"> _buildSliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+   </span><span class="typ">AppStateModel</span><span class="pln"> model</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">SliverChildBuilderDelegate</span><span class="pun">(</span><span class="pln">
+   </span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="kwd">final</span><span class="pln"> productIndex </span><span class="pun">=</span><span class="pln"> index </span><span class="pun">-</span><span class="pln"> </span><span class="lit">4</span><span class="pun">;</span><span class="pln">    </span><span class="com">// NEW</span><span class="pln">
+     </span><span class="kwd">switch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{]</span><span class="pln">
+  </span><span class="com">// ...</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> In the same function, display the items to purchase.</p>
+<p>Add the code to the <code>default:</code> section of the switch statement, as follows:</p>
+<pre><code><span class="kwd">switch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+ </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> _buildNameField</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">1</span><span class="pun">:</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> _buildEmailField</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">2</span><span class="pun">:</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> _buildLocationField</span><span class="pun">(),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">3</span><span class="pun">:</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+     padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">fromLTRB</span><span class="pun">(</span><span class="lit">16</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln"> </span><span class="lit">16</span><span class="pun">,</span><span class="pln"> </span><span class="lit">24</span><span class="pun">),</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> _buildDateAndTimePicker</span><span class="pun">(</span><span class="pln">context</span><span class="pun">),</span><span class="pln">
+   </span><span class="pun">);</span><span class="pln">
+ </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">                      </span><span class="com">// NEW FROM HERE</span><span class="pln">
+   </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">model</span><span class="pun">.</span><span class="pln">productsInCart</span><span class="pun">.</span><span class="pln">length </span><span class="pun">&gt;</span><span class="pln"> productIndex</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ShoppingCartItem</span><span class="pun">(</span><span class="pln">
+       index</span><span class="pun">:</span><span class="pln"> index</span><span class="pun">,</span><span class="pln">
+       product</span><span class="pun">:</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">getProductById</span><span class="pun">(</span><span class="pln">
+           model</span><span class="pun">.</span><span class="pln">productsInCart</span><span class="pun">.</span><span class="pln">keys</span><span class="pun">.</span><span class="pln">toList</span><span class="pun">()[</span><span class="pln">productIndex</span><span class="pun">]),</span><span class="pln">
+       quantity</span><span class="pun">:</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">productsInCart</span><span class="pun">.</span><span class="pln">values</span><span class="pun">.</span><span class="pln">toList</span><span class="pun">()[</span><span class="pln">productIndex</span><span class="pun">],</span><span class="pln">
+       lastItem</span><span class="pun">:</span><span class="pln"> productIndex </span><span class="pun">==</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">productsInCart</span><span class="pun">.</span><span class="pln">length </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+       formatter</span><span class="pun">:</span><span class="pln"> _currencyFormat</span><span class="pun">,</span><span class="pln">
+     </span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">model</span><span class="pun">.</span><span class="pln">productsInCart</span><span class="pun">.</span><span class="pln">keys</span><span class="pun">.</span><span class="pln">length </span><span class="pun">==</span><span class="pln"> productIndex </span><span class="pun">&amp;&amp;</span><span class="pln">
+       model</span><span class="pun">.</span><span class="pln">productsInCart</span><span class="pun">.</span><span class="pln">isNotEmpty</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+       padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">20</span><span class="pun">),</span><span class="pln">
+       child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+         mainAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MainAxisAlignment</span><span class="pun">.</span><span class="kwd">end</span><span class="pun">,</span><span class="pln">
+         children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+           </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+             crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="kwd">end</span><span class="pun">,</span><span class="pln">
+             children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+               </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                 </span><span class="str">'Shipping '</span><span class="pln">
+                     </span><span class="str">'${_currencyFormat.format(model.shippingCost)}'</span><span class="pun">,</span><span class="pln">
+                 style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">productRowItemPrice</span><span class="pun">,</span><span class="pln">
+               </span><span class="pun">),</span><span class="pln">
+               </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">6</span><span class="pun">),</span><span class="pln">
+               </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                 </span><span class="str">'Tax ${_currencyFormat.format(model.tax)}'</span><span class="pun">,</span><span class="pln">
+                 style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">productRowItemPrice</span><span class="pun">,</span><span class="pln">
+               </span><span class="pun">),</span><span class="pln">
+               </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">6</span><span class="pun">),</span><span class="pln">
+               </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+                 </span><span class="str">'Total  ${_currencyFormat.format(model.totalCost)}'</span><span class="pun">,</span><span class="pln">
+                 style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Styles</span><span class="pun">.</span><span class="pln">productRowTotal</span><span class="pun">,</span><span class="pln">
+               </span><span class="pun">),</span><span class="pln">
+             </span><span class="pun">],</span><span class="pln">
+           </span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">],</span><span class="pln">
+       </span><span class="pun">),</span><span class="pln">
+     </span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">                       </span><span class="com">// TO HERE</span></code></pre>
+<p><img style="width: 24.00px" src="./Building a Cupertino app with Flutter_files/a3c16fc17be25f6c.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>. From the products tab, select a few items to purchase using the plus-sign button to the right of each item. Select the <strong>shopping cart</strong> tab. You should see the items listed in the shopping cart below the date picker:</p>
+<p class="image-container"><img style="width: 335.47px" src="./Building a Cupertino app with Flutter_files/28201e6fa0dc3102.png"></p>
+<p><strong>Problems?</strong></p>
+<p>If your app is not running correctly, look for typos. If needed, use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/googlecodelabs/flutter-cupertino-store/blob/master/step-06/lib/shopping_cart_tab.dart" target="_blank"><code>lib/shopping_cart_tab.dart</code></a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Next steps" duration="0" step="11"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">11. Next steps</h2>
+        <h2 is-upgraded="">Congratulations!</h2>
+<p>You have completed the codelab and have built a Flutter app with the Cupertino look and feel! You've also used the <code>provider</code> package to manage app state across screens. When you have time, you might want to learn more about managing state in our <a href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro" target="_blank">state management documentation</a>. </p>
+<h2 is-upgraded="">Other next steps</h2>
+<p>This codelab has built a front end for a shopping experience, but the next step in making it real is to create a back-end that handles user accounts, products, shopping carts and the like. There are multiple ways of accomplishing this goal:</p>
+<ul>
+<li>Host the product and shopping carts in <a href="https://cloud.google.com/firestore/" target="_blank">Cloud Firestore</a>, and use the <a href="https://pub.dartlang.org/packages/firebase_auth" target="_blank">Flutter plugin</a> for <a href="https://firebase.google.com/products/auth/" target="_blank">Firebase Authentication</a> for user authentication.</li>
+<li>Use <a href="https://grpc.io/docs/quickstart/dart.html" target="_blank">Dart's gRPC support</a> to talk to a cloud hosted API server, for example with <a href="https://cloud.google.com/endpoints/docs/grpc/about-grpc" target="_blank">Cloud Endpoints for gRPC</a>.</li>
+<li>If you have an API server that exports an API via JSON REST, see <a href="https://medium.com/flutter-io/some-options-for-deserializing-json-with-flutter-7481325a4450" target="_blank">Andrew Brogdon's Medium post</a> for a range of options for working with JSON REST APIs.</li>
+</ul>
+<h2 is-upgraded="">Learn more</h2>
+<p>You can find more info at the following links:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=3PdUaidHc-E" target="_blank">Flutters Cupertino package for iOS devs</a>. A video from the Flutter in Focus series.</li>
+<li><a href="https://flutter.dev/docs/development/ui/widgets/cupertino" target="_blank">Cupertino API docs</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/flutter-cupertino/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Building a Cupertino app with Flutter_files/native-shim.js"></script>
+  <script src="./Building a Cupertino app with Flutter_files/custom-elements.min.js"></script>
+  <script src="./Building a Cupertino app with Flutter_files/prettify.js"></script>
+  <script src="./Building a Cupertino app with Flutter_files/codelab-elements.js"></script>
+
+
+
+</body></html>

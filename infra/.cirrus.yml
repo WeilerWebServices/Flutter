@@ -1,0 +1,13 @@
+container:
+  image: cirrusci/flutter:latest
+
+task:
+  name: validate_config
+  env:
+    - PATH: depot_tools:$PATH
+    - SERVICE_ACCOUNT: ENCRYPTED[ded15a395c498ed9bbaaad77fe5c235b20a982451e15b7b12836ed4e26d4b57c68f223977c4fa8f5cd530c53d02723a7]  
+  install_depot_tools_script: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  luci_cfg_script: |
+    echo $SERVICE_ACCOUNT > service_account.json
+    lucicfg validate ./config/main.star -service-account-json service_account.json
+    

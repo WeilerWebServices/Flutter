@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>MDC-104 Flutter: Material Advanced Components (Flutter)</title>
+  <link rel="stylesheet" href="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/css">
+  <link rel="stylesheet" href="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/icon">
+  <link rel="stylesheet" href="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="mdc-104-flutter" environment="web" feedback-link="https://github.com/material-components/material-components-flutter-codelabs/issues" selected="0" google-codelab-ready="" codelab-title="MDC-104 Flutter: Material Advanced Components (Flutter)" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>20 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#2"><span class="step"><span>Download the codelab starter app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#3"><span class="step"><span>Add the backdrop menu</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#4"><span class="step"><span>Add a shape</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#5"><span class="step"><span>Add motion</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#6"><span class="step"><span>Add a menu on the back layer</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#7"><span class="step"><span>Add a branded icon</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#8"><span class="step"><span>Recap</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/material-components/material-components-flutter-codelabs/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">MDC-104 Flutter: Material Advanced Components (Flutter)</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>20 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="0" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <table>
+<tbody><tr><td colspan="1" rowspan="1"><p class="image-container"><img alt="logo_components_color_2x_web_96dp.png" style="width: 207.50px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/logo_components_color_2x_web_96dp.png"></p>
+</td><td colspan="1" rowspan="1"><p>Material Components (MDC) help developers implement Material Design. Created by a team of engineers and UX designers at Google, MDC features dozens of beautiful and functional UI components and is available for Android, iOS, web and Flutter.</p>
+<p>material.io/develop</p>
+</td></tr>
+</tbody></table>
+
+<p>In codelab MDC-103, you customized the color, elevation, typography, and shape of Material Components (MDC) to style your app. </p>
+<p>A component in the Material Design system performs a set of predefined tasks and has certain characteristics, like a button. However, a button is more than just a way for a user to perform an action, it's also a visual expression of shape, size, and color that lets the user know that it's interactive, and that something will happen upon touch or click.</p>
+<p>The Material Design guidelines describe components from a designer's point of view. They describe a wide range of basic functions available across platforms, as well as the anatomic elements that make up each component. For instance, a backdrop contains a back layer and its content, the front layer and its content, motion rules, and display options. Each of these components can be customized for each app's needs, use cases, and content. These pieces are, for the most part, traditional views, controls, and functions from your platform's SDK.</p>
+<p>While the Material Design guidelines name many components, not all of them are good candidates for reusable code and therefore aren't found in MDC. You can create these experiences yourself to achieve a customized style for your app, all using traditional code.</p>
+
+<h2 is-upgraded=""><strong>What you'll build</strong></h2>
+<p>In this codelab, you'll change the UI in the Shrine app to a two-level presentation called a "backdrop". The backdrop includes a menu that lists selectable categories used to filter the products shown in the asymmetrical grid. In this codelab, you'll use the following Flutter components:</p>
+<ul>
+<li>Shape</li>
+<li>Motion</li>
+<li>Flutter widgets (that you've used in the previous codelabs)</li>
+</ul>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/67e5a40449058aa6.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/3b56d70c782ea417.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/d9fa4babd1be82b8.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/f784ec1433bbc94b.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="special"><table>
+<tbody><tr><td colspan="1" rowspan="1"><p>This is the last of 4 codelabs that guide you through building an app for a product called Shrine. We recommend that you do all of the codelabs in order as they progress through tasks step-by-step.</p>
+<p>The related codelabs can be found at:</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter" target="_blank">MDC-101: Material Components (MDC) Basics</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/mdc-102-flutter" target="_blank">MDC-102: Material Design Structure and Layout</a>.</li>
+<li><a href="https://codelabs.developers.google.com/codelabs/mdc-103-flutter" target="_blank">MDC-103: Material Design Theming with Color, Shape, Elevation and Type</a></li>
+</ul>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 290.02px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/a533be3bc12ef2f7.png"></p>
+</td></tr>
+</tbody></table>
+</aside>
+<h2 is-upgraded=""><strong>MDC-Flutter component in this codelab</strong></h2>
+<ul>
+<li>Shape</li>
+</ul>
+<google-codelab-survey survey-id="mdc-104-flutter-1" upgraded="">
+
+
+<div class="survey-questions" survey-name="mdc-104-flutter-1"><div class="survey-question-wrapper"><h4>How would you rate your level of experience with Flutter development?</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="how-would-you-rate-your-level-of-experience-with-flutter-development--novice-label" for="how-would-you-rate-your-level-of-experience-with-flutter-development--novice"><span class="option-text">Novice</span><input type="radio" id="how-would-you-rate-your-level-of-experience-with-flutter-development--novice" name="How would you rate your level of experience with Flutter development?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-would-you-rate-your-level-of-experience-with-flutter-development--intermediate-label" for="how-would-you-rate-your-level-of-experience-with-flutter-development--intermediate"><span class="option-text">Intermediate</span><input type="radio" id="how-would-you-rate-your-level-of-experience-with-flutter-development--intermediate" name="How would you rate your level of experience with Flutter development?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-would-you-rate-your-level-of-experience-with-flutter-development--proficient-label" for="how-would-you-rate-your-level-of-experience-with-flutter-development--proficient"><span class="option-text">Proficient</span><input type="radio" id="how-would-you-rate-your-level-of-experience-with-flutter-development--proficient" name="How would you rate your level of experience with Flutter development?"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="2" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <h2 is-upgraded="">Before you start</h2>
+<p>To start developing mobile apps with Flutter you need to:</p>
+<ol type="1" start="1">
+<li>Download and install the Flutter SDK.</li>
+<li>Update your PATH with the Flutter SDK.</li>
+<li>Install Android Studio with the Flutter and Dart plugins, or your favorite editor.</li>
+<li>Install an Android emulator, an iOS simulator (requires a Mac with Xcode), or use a physical device.</li>
+</ol>
+<p>For more information about Flutter installation, see <a href="https://flutter.dev/docs/get-started/install" target="_blank">Get Started: Install</a>. To set up an editor, see <a href="https://flutter.dev/docs/get-started/editor?tab=androidstudio" target="_blank">Get Started: Set up an editor</a>. When installing an Android emulator, feel free to use the default options such as a Pixel 3 phone with the latest System Image. It's recommended but not required to enable VM acceleration. After the above 4 steps have been completed, you can return to the codelab. To complete this codelab, you only need to install Flutter for one platform (Android or iOS).</p>
+<h2 is-upgraded="">Ensure your Flutter SDK is in the right state</h2>
+<p>Before proceeding with this codelab, make sure that your SDK is in the right state. If the Flutter SDK was installed previously, then use <code>flutter upgrade</code> to ensure that the SDK is at the latest state.</p>
+<pre> flutter upgrade</pre>
+<p>Running <code>flutter upgrade</code> will automatically run <code>flutter doctor.</code> If this a fresh Flutter install and no upgrade was necessary, then run <code>flutter doctor</code> manually. It will report if there are any dependencies you need to install to complete the setup. Feel free to ignore the check marks that are not relevant for you (for example Xcode if you do not intend to develop for iOS).</p>
+<pre> flutter doctor</pre>
+<h3 class="faq" is-upgraded="">Frequently Asked Questions</h3>
+<ul class="faq">
+<li><a href="https://stackoverflow.com/questions/50321966/where-is-darts-sdk-located-within-flutter-folder" target="_blank">Where is Dart's SDK located within /flutter folder?</a></li>
+<li><a href="https://stackoverflow.com/questions/50706353/how-to-accept-android-licenses" target="_blank">How do I accept Android licenses?</a></li>
+<li><a href="https://developer.android.com/studio/run/managing-avds.html" target="_blank">How do I create an Android virtual device in Android Studio?</a></li>
+</ul>
+
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Download the codelab starter app" duration="0" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Download the codelab starter app</h2>
+        <h2 is-upgraded=""><strong>Continuing from MDC-103?</strong></h2>
+<p>If you completed MDC-103, your code should be ready for this codelab. Skip to step: <em>Add the backdrop menu</em>.</p>
+<h2 is-upgraded=""><strong>Starting from scratch?</strong></h2>
+
+<p><a href="https://github.com/material-components/material-components-flutter-codelabs/archive/104-starter_and_103-complete.zip" target="_blank"><paper-button class="colored" raised=""><iron-icon icon="file-download"></iron-icon>Download starter app</paper-button></a> </p>
+<p>The starter app is located in the <code>material-components-flutter-codelabs-104-starter_and_103-complete/mdc_100_series</code> directory.</p>
+<h2 is-upgraded=""><strong>...or clone it from GitHub</strong></h2>
+<p>To clone this codelab from GitHub, run the following commands:</p>
+<pre>git clone https://github.com/material-components/material-components-flutter-codelabs.git
+cd material-components-flutter-codelabs/mdc_100_series
+git checkout 104-starter_and_103-complete</pre>
+<aside class="warning"><p>For more help: <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank">Cloning a repository from GitHub</a></p>
+</aside>
+
+<aside class="special"><h2 is-upgraded=""><strong>The right branch</strong></h2>
+<p>Codelabs MDC-101 through MDC-104 consecutively build upon each other. The code for MDC-103 is the starter code for MDC-104. The code is divided across multiple branches. To list the branches in GitHub, use the following command: </p>
+<p><code>git branch --list</code></p>
+<p>To see the completed code, checkout the <code>104-complete</code> branch. </p>
+</aside>
+<h2 is-upgraded=""><strong>Set up your project</strong></h2>
+<p>The following instructions assume you're using Android Studio (IntelliJ).</p>
+<aside class="special"><p><strong>Tip: </strong>Make sure you have the <a href="https://flutter.io/get-started/editor/#androidstudio" target="_blank">plugins installed for Flutter and Dart</a>.</p>
+</aside>
+<h2 is-upgraded=""><strong>Open the project</strong></h2>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>1. Open Android Studio. </p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>2. If you see the welcome screen, click <strong>Open an existing Android Studio project</strong>.</p>
+<p class="image-container"><img style="width: 357.20px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/open an existing project.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>3. Navigate to the <code>material-components-flutter-codelabs/mdc_100_series</code> directory and click Open. The project should open. </p>
+<p><strong>You can ignore any errors you see in Dart Analysis until you've built the project once.</strong></p>
+<p class="image-container"><img style="width: 300.12px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/folder structure.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>4. If prompted: </p>
+<ul>
+<li>Install any  platform and plugin updates or FlutterRunConfigurationType.</li>
+<li>If the Dart or Flutter SDK is not configured, set the <a href="https://stackoverflow.com/questions/50321966/where-is-darts-sdk-located-within-flutter-folder" target="_blank">Flutter SDK path for the Flutter plugin</a>.</li>
+<li>Configure Android frameworks.</li>
+<li>Click on "Get dependencies" or "Run ‘flutter packages get'".</li>
+</ul>
+<p>Then restart Android Studio.</p>
+<p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/Screen Shot 2018-04-24 at 12.17.22 PM.png"></p>
+<p class="image-container"><img style="width: 298.50px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/Frameworks Detected.png"><img style="width: 610.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/packages get.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded=""><strong>Run the starter app</strong></h2>
+<p>The following instructions assume you're testing on an Android emulator or device but you can also test on an iOS Simulator or device if you have Xcode installed. </p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p> 1. Select the device or emulator.</p>
+<p>If the Android emulator is not already running, select<strong> Tools -&gt; Android -&gt; AVD Manager</strong> to <a href="https://developer.android.com/studio/run/managing-avds.html#createavd" target="_blank">create a virtual device and start the emulator</a>. If an AVD already exists, you can start the emulator directly from the device selector in Android Studio, as shown in the next step.</p>
+<p>(For the iOS Simulator, if it is not already running, launch the simulator on your development machine by selecting<strong> Flutter Device Selection -&gt; Open iOS Simulator</strong>.)</p>
+<p class="image-container"><img style="width: 482.03px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/Screenshot 2020-02-11 at 12.35.21.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>2. Start your Flutter app:</p>
+<ul>
+<li>Look for the Flutter Device Selection dropdown menu at the top of your editor screen, and select the device (for example, iPhone SE or Android SDK built for &lt;version&gt;).</li>
+<li>Press the <strong>Play</strong> icon (<img style="width: 41.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/Screen Shot 2018-04-24 at 12.52.25 PM.png">).</li>
+</ul>
+<p class="image-container"><img style="width: 610.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/Screenshot 2020-02-11 at 13.18.39.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>If you were unable to run the app successfully, stop and troubleshoot your developer environment. Try navigating to <code>material-components-flutter-codelabs</code> or if you downloaded the .zip file <code>material-components-flutter-codelabs-...</code>) in the terminal and running <code>flutter create mdc_100_series</code>.</p>
+</aside>
+
+<p>Success! You should see the Shrine login page from the previous codelabs in the simulator or emulator.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/db7176a02f403d2b.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/3dbad5e5f18308e2.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>If the app doesn't update, click the "Play" button again, or click "Stop" followed by "Play."</p>
+</aside>
+
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add the backdrop menu" duration="6" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Add the backdrop menu</h2>
+        <p>A backdrop appears behind all other content and components. It's composed of two layers: a back layer (that displays actions and filters) and a front layer (that displays content). You can use a backdrop to display interactive information and actions, such as navigation or content filters.</p>
+<h2 is-upgraded=""><strong>Remove the home app bar</strong></h2>
+<p>The HomePage widget will be the content of our front layer. Right now it has an app bar. We'll move the app bar to the back layer and the HomePage will only include the AsymmetricView.</p>
+<p>In <code>home.dart</code>, change the <code>build()</code> function to just return an AsymmetricView:</p>
+<pre><code><span class="com">// TODO: Return an AsymmetricView (104)</span><span class="pln">
+</span><span class="kwd">return</span><span class="pln">  </span><span class="typ">AsymmetricView</span><span class="pun">(</span><span class="pln">products</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ProductsRepository</span><span class="pun">.</span><span class="pln">loadProducts</span><span class="pun">(</span><span class="typ">Category</span><span class="pun">.</span><span class="pln">all</span><span class="pun">));</span></code></pre>
+<h2 is-upgraded=""><strong>Add the Backdrop widget</strong></h2>
+<p>Create a widget called <strong>Backdrop</strong> that includes the <code>frontLayer</code> and the <code>backLayer</code>.</p>
+<p>The <code>backLayer</code> includes a menu that allows you to select a category to filter the list (<code>currentCategory</code>). Since we want the menu selection to persist, we'll make Backdrop a stateful widget.</p>
+<p>Add a new file to <code>/lib</code> named <code>backdrop.dart</code>:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:meta/meta.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// TODO: Add velocity constant (104)</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Backdrop</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Category</span><span class="pln"> currentCategory</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> frontLayer</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> backLayer</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> frontTitle</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> backTitle</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Backdrop</span><span class="pun">({</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">currentCategory</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">frontLayer</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">backLayer</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">frontTitle</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">backTitle</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">})</span><span class="pln">  </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">currentCategory </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">frontLayer </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">backLayer </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">frontTitle </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">backTitle </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">_BackdropState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">_BackdropState</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// TODO: Add _FrontLayer class (104)</span><span class="pln">
+</span><span class="com">// TODO: Add _BackdropTitle class (104)</span><span class="pln">
+</span><span class="com">// TODO: Add _BackdropState class (104)</span></code></pre>
+<p>The <strong>meta</strong> package is imported in order to mark the properties <code>@required</code>. This is a best practice when you have properties in the constructor that have no default value and cannot be <code>null</code> and therefore should not be forgotten. Notice that we also have asserts after the constructor that check the values passed into those fields are indeed not <code>null</code>.</p>
+<p>Under the Backdrop class definition, add _BackdropState class:</p>
+<pre><code><span class="com">// TODO: Add _BackdropState class (104)</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_BackdropState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">Backdrop</span><span class="pun">&gt;</span><span class="pln">
+    </span><span class="kwd">with</span><span class="pln"> </span><span class="typ">SingleTickerProviderStateMixin</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">GlobalKey</span><span class="pln"> _backdropKey </span><span class="pun">=</span><span class="pln"> </span><span class="typ">GlobalKey</span><span class="pun">(</span><span class="pln">debugLabel</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Backdrop'</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// TODO: Add AnimationController widget (104)</span><span class="pln">
+
+  </span><span class="com">// TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> _buildStack</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Stack</span><span class="pun">(</span><span class="pln">
+    key</span><span class="pun">:</span><span class="pln"> _backdropKey</span><span class="pun">,</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="com">// TODO: Wrap backLayer in an ExcludeSemantics widget (104)</span><span class="pln">
+        widget</span><span class="pun">.</span><span class="pln">backLayer</span><span class="pun">,</span><span class="pln">
+        widget</span><span class="pun">.</span><span class="pln">frontLayer</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> appBar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+      brightness</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Brightness</span><span class="pun">.</span><span class="pln">light</span><span class="pun">,</span><span class="pln">
+      elevation</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">
+      titleSpacing</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">
+      </span><span class="com">// TODO: Replace leading menu icon with IconButton (104)</span><span class="pln">
+      </span><span class="com">// TODO: Remove leading property (104)</span><span class="pln">
+      </span><span class="com">// TODO: Create title with _BackdropTitle parameter (104)</span><span class="pln">
+      leading</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">menu</span><span class="pun">),</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'SHRINE'</span><span class="pun">),</span><span class="pln">
+      actions</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="com">// TODO: Add shortcut to login screen from trailing icons (104)</span><span class="pln">
+        </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+          icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+            </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">search</span><span class="pun">,</span><span class="pln">
+            semanticLabel</span><span class="pun">:</span><span class="pln"> </span><span class="str">'search'</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="com">// TODO: Add open login (104)</span><span class="pln">
+          </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+          icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+            </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">tune</span><span class="pun">,</span><span class="pln">
+            semanticLabel</span><span class="pun">:</span><span class="pln"> </span><span class="str">'filter'</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="com">// TODO: Add open login (104)</span><span class="pln">
+          </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> appBar</span><span class="pun">,</span><span class="pln">
+      </span><span class="com">// TODO: Return a LayoutBuilder widget (104)</span><span class="pln">
+      body</span><span class="pun">:</span><span class="pln"> _buildStack</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>The <code>build()</code> function returns a Scaffold with an app bar just like HomePage used to. But the body of the Scaffold is a <strong>Stack</strong>. A Stack's children can overlap. Each child's size and location is specified relative to the Stack's parent.</p>
+<p>Now add a Backdrop instance to ShrineApp.</p>
+<p>In <code>app.dart</code>, import <code>backdrop.dart</code> and <code>model/product.dart</code>:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'backdrop.dart'</span><span class="pun">;</span><span class="pln"> </span><span class="com">// New code</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'colors.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'home.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'login.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln"> </span><span class="com">// New code</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'supplemental/cut_corners_border.dart'</span><span class="pun">;</span></code></pre>
+<p>In <code>app.dart,</code> modify the ShrineApp's <code>build()</code> function. Change <code>home:</code> to a Backdrop that has a HomePage as its <code>frontLayer</code>:</p>
+<pre><code><span class="pln">      </span><span class="com">// TODO: Change home: to a Backdrop with a HomePage frontLayer (104)</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Backdrop</span><span class="pun">(</span><span class="pln">
+        </span><span class="com">// TODO: Make currentCategory field take _currentCategory (104)</span><span class="pln">
+        currentCategory</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">all</span><span class="pun">,</span><span class="pln">
+        </span><span class="com">// TODO: Pass _currentCategory for frontLayer (104)</span><span class="pln">
+        frontLayer</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HomePage</span><span class="pun">(),</span><span class="pln">
+        </span><span class="com">// TODO: Change backLayer field value to CategoryMenuPage (104)</span><span class="pln">
+        backLayer</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> kShrinePink100</span><span class="pun">),</span><span class="pln">
+        frontTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'SHRINE'</span><span class="pun">),</span><span class="pln">
+        backTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'MENU'</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span></code></pre>
+<p>If you hit the Play button, you should see that our home page is showing up and so is the app bar:</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/ef310842a47febe9.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/793042691a079aa1.png"></p>
+</td></tr>
+</tbody></table>
+<p>The backLayer shows the pink area in a new layer behind the frontLayer home page. </p>
+<p>You can use the <a href="https://flutter.io/inspector/" target="_blank">Flutter Inspector</a> to verify that the Stack indeed has a Container behind a HomePage. It should similar to this:</p>
+<p class="image-container"><img style="width: 309.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/ad988a22875b5e82.png"></p>
+<p>You can now adjust the design and content of the two layers.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add a shape" duration="6" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add a shape</h2>
+        <p>In this step, you'll style the front layer to add a cut in the upper left corner. </p>
+<p>Material Design refers to this type of customization as a shape. Material surfaces can have arbitrary shapes. Shapes add emphasis and style to surfaces and can be used to express branding. Ordinary rectangular shapes can be customized with curved or angled corners and edges, and any number of sides. They can be symmetrical or irregular.</p>
+<h2 is-upgraded=""><strong>Add a shape to the front layer</strong></h2>
+<p>The angled Shrine logo inspired the shape story for the Shrine app. The shape story is the common use of shapes that are applied throughout an app. For example, the logo shape is echoed in the login page elements that have shape applied to them. In this step, you'll style the front layer with an angled cut in the upper-left corner.</p>
+<p>In <code>backdrop.dart</code>, add a new class <strong>_FrontLayer</strong>:</p>
+<pre><code><span class="com">// TODO: Add _FrontLayer class (104)</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_FrontLayer</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// TODO: Add on-tap callback (104)</span><span class="pln">
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">_FrontLayer</span><span class="pun">({</span><span class="pln">
+    </span><span class="typ">Key</span><span class="pln"> key</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">child</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">})</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">(</span><span class="pln">key</span><span class="pun">:</span><span class="pln"> key</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> child</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Material</span><span class="pun">(</span><span class="pln">
+      elevation</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">,</span><span class="pln">
+      shape</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BeveledRectangleBorder</span><span class="pun">(</span><span class="pln">
+        borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="typ">BorderRadius</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">topLeft</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Radius</span><span class="pun">.</span><span class="pln">circular</span><span class="pun">(</span><span class="lit">46.0</span><span class="pun">)),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+        crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">stretch</span><span class="pun">,</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="com">// TODO: Add a GestureDetector (104)</span><span class="pln">
+          </span><span class="typ">Expanded</span><span class="pun">(</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> child</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Then, in _BackdropState's <code>_buildStack()</code> function, wrap the front layer in a _FrontLayer:</p>
+<pre><code><span class="pln">  </span><span class="typ">Widget</span><span class="pln"> _buildStack</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// TODO: Create a RelativeRectTween Animation (104)</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Stack</span><span class="pun">(</span><span class="pln">
+    key</span><span class="pun">:</span><span class="pln"> _backdropKey</span><span class="pun">,</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="com">// TODO: Wrap backLayer in an ExcludeSemantics widget (104)</span><span class="pln">
+        widget</span><span class="pun">.</span><span class="pln">backLayer</span><span class="pun">,</span><span class="pln">
+        </span><span class="com">// TODO: Add a PositionedTransition (104)</span><span class="pln">
+        </span><span class="com">// TODO: Wrap front layer in _FrontLayer (104)</span><span class="pln">
+          </span><span class="typ">_FrontLayer</span><span class="pun">(</span><span class="pln">child</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">frontLayer</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>Reload.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/afa8d5710d5d6114.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/aa72fe8f8c8004b7.png"></p>
+</td></tr>
+</tbody></table>
+<p>We've given Shrine's primary surface a custom shape. Because of the surface elevation, users can see that there is something just behind the front white layer. Let's add motion so that users can see the backdrop's back layer.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add motion" duration="0" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Add motion</h2>
+        <p>Motion is a way to bring your app to life. It can be big and dramatic, subtle and minimal, or anywhere in between. But keep in mind that the type of motion you use should be suitable to the situation. Motion that's applied to repeated, regular actions should be small and subtle, so that the actions don't distract the user or take up too much time on a regular basis. But there are appropriate situations, like the first time a user opens an app, that can be more eye-catching, and some animations can help educate the user about how to use your app. </p>
+<h2 is-upgraded=""><strong>Add reveal motion to the menu button</strong></h2>
+<p>At the top of <code>backdrop.dart</code>, outside the scope of any class or function, add a constant to represent the velocity we want our animation to have:</p>
+<pre><code><span class="com">// TODO: Add velocity constant (104)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> _kFlingVelocity </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2.0</span><span class="pun">;</span></code></pre>
+<p>Add an <strong>AnimationController</strong> widget to _BackdropState, instantiate it in the <code>initState()</code> function, and dispose of it in the state's <code>dispose()</code> function:</p>
+<pre><code><span class="pln">  </span><span class="com">// TODO: Add AnimationController widget (104)</span><span class="pln">
+  </span><span class="typ">AnimationController</span><span class="pln"> _controller</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="kwd">void</span><span class="pln"> initState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">initState</span><span class="pun">();</span><span class="pln">
+    _controller </span><span class="pun">=</span><span class="pln"> </span><span class="typ">AnimationController</span><span class="pun">(</span><span class="pln">
+      duration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Duration</span><span class="pun">(</span><span class="pln">milliseconds</span><span class="pun">:</span><span class="pln"> </span><span class="lit">300</span><span class="pun">),</span><span class="pln">
+      value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">
+      vsync</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="com">// TODO: Add override for didUpdateWidget (104)</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="kwd">void</span><span class="pln"> dispose</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _controller</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="com">// TODO: Add functions to get and change front layer visibility (104)</span></code></pre>
+<aside class="special"><h2 is-upgraded="">The widget lifecycle</h2>
+<p>The <code>initState()</code> method is only called once, before the widget is part of its render tree. The <code>dispose()</code> method is also only called once, when the widget is removed from its tree for good.</p>
+</aside>
+<p>The AnimationController coordinates Animations and gives you API to play, reverse, and stop the animation. Now we need functions that make it move.</p>
+<p>Add functions that determine as well as change the visibility of the front layer:</p>
+<pre><code><span class="pln">  </span><span class="com">// TODO: Add functions to get and change front layer visibility (104)</span><span class="pln">
+  </span><span class="kwd">bool</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> _frontLayerVisible </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">AnimationStatus</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> _controller</span><span class="pun">.</span><span class="pln">status</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> status </span><span class="pun">==</span><span class="pln"> </span><span class="typ">AnimationStatus</span><span class="pun">.</span><span class="pln">completed </span><span class="pun">||</span><span class="pln">
+        status </span><span class="pun">==</span><span class="pln"> </span><span class="typ">AnimationStatus</span><span class="pun">.</span><span class="pln">forward</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">void</span><span class="pln"> _toggleBackdropLayerVisibility</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _controller</span><span class="pun">.</span><span class="pln">fling</span><span class="pun">(</span><span class="pln">
+        velocity</span><span class="pun">:</span><span class="pln"> _frontLayerVisible </span><span class="pun">?</span><span class="pln"> </span><span class="pun">-</span><span class="pln">_kFlingVelocity </span><span class="pun">:</span><span class="pln"> _kFlingVelocity</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>Wrap the backLayer in an ExcludeSemantics widget. This widget will exclude the backLayer's menu items from the semantics tree when the back layer isn't visible.</p>
+<pre><code><span class="pln">    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Stack</span><span class="pun">(</span><span class="pln">
+      key</span><span class="pun">:</span><span class="pln"> _backdropKey</span><span class="pun">,</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="com">// TODO: Wrap backLayer in an ExcludeSemantics widget (104)</span><span class="pln">
+        </span><span class="typ">ExcludeSemantics</span><span class="pun">(</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">backLayer</span><span class="pun">,</span><span class="pln">
+          excluding</span><span class="pun">:</span><span class="pln"> _frontLayerVisible</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">...</span></code></pre>
+<p>Change the _buildStack() function to take a BuildContext and BoxConstraints. Also, include a PositionedTransition that takes a RelativeRectTween Animation:</p>
+<pre><code><span class="pln">  </span><span class="com">// TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> _buildStack</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BoxConstraints</span><span class="pln"> constraints</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> layerTitleHeight </span><span class="pun">=</span><span class="pln"> </span><span class="lit">48.0</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Size</span><span class="pln"> layerSize </span><span class="pun">=</span><span class="pln"> constraints</span><span class="pun">.</span><span class="pln">biggest</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> layerTop </span><span class="pun">=</span><span class="pln"> layerSize</span><span class="pun">.</span><span class="pln">height </span><span class="pun">-</span><span class="pln"> layerTitleHeight</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// TODO: Create a RelativeRectTween Animation (104)</span><span class="pln">
+    </span><span class="typ">Animation</span><span class="pun">&lt;</span><span class="typ">RelativeRect</span><span class="pun">&gt;</span><span class="pln"> layerAnimation </span><span class="pun">=</span><span class="pln"> </span><span class="typ">RelativeRectTween</span><span class="pun">(</span><span class="pln">
+      </span><span class="kwd">begin</span><span class="pun">:</span><span class="pln"> </span><span class="typ">RelativeRect</span><span class="pun">.</span><span class="pln">fromLTRB</span><span class="pun">(</span><span class="pln">
+          </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln"> layerTop</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln"> layerTop </span><span class="pun">-</span><span class="pln"> layerSize</span><span class="pun">.</span><span class="pln">height</span><span class="pun">),</span><span class="pln">
+      </span><span class="kwd">end</span><span class="pun">:</span><span class="pln"> </span><span class="typ">RelativeRect</span><span class="pun">.</span><span class="pln">fromLTRB</span><span class="pun">(</span><span class="lit">0.0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">).</span><span class="pln">animate</span><span class="pun">(</span><span class="pln">_controller</span><span class="pun">.</span><span class="pln">view</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Stack</span><span class="pun">(</span><span class="pln">
+      key</span><span class="pun">:</span><span class="pln"> _backdropKey</span><span class="pun">,</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="com">// TODO: Wrap backLayer in an ExcludeSemantics widget (104)</span><span class="pln">
+        </span><span class="typ">ExcludeSemantics</span><span class="pun">(</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">backLayer</span><span class="pun">,</span><span class="pln">
+          excluding</span><span class="pun">:</span><span class="pln"> _frontLayerVisible</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        </span><span class="com">// TODO: Add a PositionedTransition (104)</span><span class="pln">
+        </span><span class="typ">PositionedTransition</span><span class="pun">(</span><span class="pln">
+          rect</span><span class="pun">:</span><span class="pln"> layerAnimation</span><span class="pun">,</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">_FrontLayer</span><span class="pun">(</span><span class="pln">
+            </span><span class="com">// TODO: Implement onTap property on _BackdropState (104)</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">frontLayer</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>Finally, instead of calling the _buildStack function for the body of the Scaffold, return a <strong>LayoutBuilder</strong> widget that uses _buildStack as its builder:</p>
+<pre><code><span class="pln">    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> appBar</span><span class="pun">,</span><span class="pln">
+      </span><span class="com">// TODO: Return a LayoutBuilder widget (104)</span><span class="pln">
+      body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">LayoutBuilder</span><span class="pun">(</span><span class="pln">builder</span><span class="pun">:</span><span class="pln"> _buildStack</span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span></code></pre>
+<p>We've delayed the build of the front/back layer stack until layout time using LayoutBuilder so that we can incorporate the backdrop's actual overall height. LayoutBuilder is a special widget whose builder callback provides size constraints.</p>
+<aside class="special"><h2 is-upgraded="">LayoutBuilder</h2>
+<p>The widget tree performs layout by traversing towards the leaves. Constraints are passed down the tree but sizes usually aren't calculated until the leaf returns its size based on the constraints. If a leaf needed to know its parent's size, it couldn't since it's not yet calculated.</p>
+<p>LayoutBuilder is used when a widget must know its parent widget's size in order to lay itself out (and the parent size does not depend on the child.)  LayoutBuilder takes a function that returns a Widget.</p>
+<p>For more information, see the <a href="https://docs.flutter.io/flutter/widgets/LayoutBuilder-class.html" target="_blank">LayoutBuilder class</a> documentation.</p>
+</aside>
+<p>In the <code>build()</code> function, turn the leading menu icon in the app bar into an IconButton and use it to toggle the visibility of the front layer when the button is tapped.</p>
+<pre><code><span class="pln">      </span><span class="com">// TODO: Replace leading menu icon with IconButton (104)</span><span class="pln">
+      leading</span><span class="pun">:</span><span class="pln"> </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+        icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">menu</span><span class="pun">),</span><span class="pln">
+        onPressed</span><span class="pun">:</span><span class="pln"> _toggleBackdropLayerVisibility</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span></code></pre>
+<p>Reload then tap the menu button in the simulator.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/372adc0683163a5f.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/1bc2493d09826b60.png"></p>
+</td></tr>
+</tbody></table>
+<p>The front layer animates (slides) down. But if you look down, there's a red error and an overflow error. This is because the AsymmetricView is squeezed and becomes smaller by this animation, which in turn gives less room to the Columns. Eventually, the Columns can't lay themselves out with the space given and they result in an error. If we replace the Columns with ListViews, the column size should remain as they animate.</p>
+<h2 is-upgraded="">Wrap product columns in a ListView</h2>
+<p>In <code>supplemental/product_columns.dart</code>, replace the Column in <code>OneProductCardColumn</code> with a ListView:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">OneProductCardColumn</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">OneProductCardColumn</span><span class="pun">({</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">product</span><span class="pun">});</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Product</span><span class="pln"> product</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// TODO: Replace Column with a ListView (104)</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">
+      physics</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">ClampingScrollPhysics</span><span class="pun">(),</span><span class="pln">
+      reverse</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">
+          height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">40.0</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        </span><span class="typ">ProductCard</span><span class="pun">(</span><span class="pln">
+          product</span><span class="pun">:</span><span class="pln"> product</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>The Column includes <code>MainAxisAlignment.end</code>. To begin the layout from the bottom, mark <code>reverse: true</code>.  The order of the children is reversed to compensate for the change.</p>
+<p>Reload and then tap the menu button.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/4be9b401606fc274.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/2928bb81e94eae7f.png"></p>
+</td></tr>
+</tbody></table>
+<p>The gray overflow warning on OneProductCardColumn is gone! Now let's fix the other.</p>
+<p>In <code>supplemental/product_columns.dart</code>, change the way the <code>imageAspectRatio</code> is calculated, and replace the Column in <code>TwoProductCardColumn</code> with a ListView:</p>
+<pre><code><span class="pln">      </span><span class="com">// TODO: Change imageAspectRatio calculation (104)</span><span class="pln">
+      </span><span class="kwd">double</span><span class="pln"> imageAspectRatio </span><span class="pun">=</span><span class="pln"> heightOfImages </span><span class="pun">&gt;=</span><span class="pln"> </span><span class="lit">0.0</span><span class="pln">
+          </span><span class="pun">?</span><span class="pln"> constraints</span><span class="pun">.</span><span class="pln">biggest</span><span class="pun">.</span><span class="pln">width </span><span class="pun">/</span><span class="pln"> heightOfImages
+          </span><span class="pun">:</span><span class="pln"> </span><span class="lit">49.0</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> </span><span class="lit">33.0</span><span class="pun">;</span></code></pre>
+<pre><code><span class="pln">      </span><span class="com">// TODO: Replace Column with a ListView (104)</span><span class="pln">
+      </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">
+        physics</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">ClampingScrollPhysics</span><span class="pun">(),</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+            padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsetsDirectional</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">start</span><span class="pun">:</span><span class="pln"> </span><span class="lit">28.0</span><span class="pun">),</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> top </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+                </span><span class="pun">?</span><span class="pln"> </span><span class="typ">ProductCard</span><span class="pun">(</span><span class="pln">
+                    imageAspectRatio</span><span class="pun">:</span><span class="pln"> imageAspectRatio</span><span class="pun">,</span><span class="pln">
+                    product</span><span class="pun">:</span><span class="pln"> top</span><span class="pun">,</span><span class="pln">
+                  </span><span class="pun">)</span><span class="pln">
+                </span><span class="pun">:</span><span class="pln"> </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">
+                    height</span><span class="pun">:</span><span class="pln"> heightOfCards</span><span class="pun">,</span><span class="pln">
+                  </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> spacerHeight</span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+            padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsetsDirectional</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="kwd">end</span><span class="pun">:</span><span class="pln"> </span><span class="lit">28.0</span><span class="pun">),</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ProductCard</span><span class="pun">(</span><span class="pln">
+              imageAspectRatio</span><span class="pun">:</span><span class="pln"> imageAspectRatio</span><span class="pun">,</span><span class="pln">
+              product</span><span class="pun">:</span><span class="pln"> bottom</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">);</span></code></pre>
+<p>We also added some safety to <code>imageAspectRatio</code>.</p>
+<p>Reload. Then tap the menu button.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/78fdd693feda08da.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/891cb163223d472a.png"></p>
+</td></tr>
+</tbody></table>
+<p>No more overflows.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add a menu on the back layer" duration="6" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Add a menu on the back layer</h2>
+        <p>A menu is a list of tappable text items that notify listeners when the text items are touched. In this step, you'll add a category filtering menu.</p>
+<h2 is-upgraded=""><strong>Add the menu</strong></h2>
+<p>Add the menu to the front layer and the interactive buttons to the back layer.</p>
+<p>Create a new file called <code>lib/category_menu_page.dart</code>:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:meta/meta.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'colors.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">CategoryMenuPage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Category</span><span class="pln"> currentCategory</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">ValueChanged</span><span class="pun">&lt;</span><span class="typ">Category</span><span class="pun">&gt;</span><span class="pln"> onCategoryTap</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Category</span><span class="pun">&gt;</span><span class="pln"> _categories </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">values</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">CategoryMenuPage</span><span class="pun">({</span><span class="pln">
+    </span><span class="typ">Key</span><span class="pln"> key</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">currentCategory</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">onCategoryTap</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">})</span><span class="pln">  </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">currentCategory </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">onCategoryTap </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="typ">Widget</span><span class="pln"> _buildCategory</span><span class="pun">(</span><span class="typ">Category</span><span class="pln"> category</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> categoryString </span><span class="pun">=</span><span class="pln">
+        category</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">().</span><span class="pln">replaceAll</span><span class="pun">(</span><span class="str">'Category.'</span><span class="pun">,</span><span class="pln"> </span><span class="str">''</span><span class="pun">).</span><span class="pln">toUpperCase</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">ThemeData</span><span class="pln"> theme </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">GestureDetector</span><span class="pun">(</span><span class="pln">
+      onTap</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> onCategoryTap</span><span class="pun">(</span><span class="pln">category</span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> category </span><span class="pun">==</span><span class="pln"> currentCategory
+        </span><span class="pun">?</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+              categoryString</span><span class="pun">,</span><span class="pln">
+              style</span><span class="pun">:</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">textTheme</span><span class="pun">.</span><span class="pln">body2</span><span class="pun">,</span><span class="pln">
+              textAlign</span><span class="pun">:</span><span class="pln"> </span><span class="typ">TextAlign</span><span class="pun">.</span><span class="pln">center</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">14.0</span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+              width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">70.0</span><span class="pun">,</span><span class="pln">
+              height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2.0</span><span class="pun">,</span><span class="pln">
+              color</span><span class="pun">:</span><span class="pln"> kShrinePink400</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">:</span><span class="pln"> </span><span class="typ">Padding</span><span class="pun">(</span><span class="pln">
+        padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">),</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+          categoryString</span><span class="pun">,</span><span class="pln">
+          style</span><span class="pun">:</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">textTheme</span><span class="pun">.</span><span class="pln">body2</span><span class="pun">.</span><span class="pln">copyWith</span><span class="pun">(</span><span class="pln">
+              color</span><span class="pun">:</span><span class="pln"> kShrineBrown900</span><span class="pun">.</span><span class="pln">withAlpha</span><span class="pun">(</span><span class="lit">153</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          textAlign</span><span class="pun">:</span><span class="pln"> </span><span class="typ">TextAlign</span><span class="pun">.</span><span class="pln">center</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Center</span><span class="pun">(</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+        padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">40.0</span><span class="pun">),</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> kShrinePink100</span><span class="pun">,</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> _categories
+            </span><span class="pun">.</span><span class="pln">map</span><span class="pun">((</span><span class="typ">Category</span><span class="pln"> c</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _buildCategory</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln"> context</span><span class="pun">))</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">toList</span><span class="pun">()),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>It's a <strong>GestureDetector</strong> wrapping a Column whose children are the category names. An underline is used to indicate the selected category.</p>
+<p>In <code>app.dart</code>, convert the ShrineApp widget from stateless to stateful.</p>
+<ol type="1" start="1">
+<li>Highlight <code>ShrineApp.</code></li>
+<li>Press alt (option) + enter.</li>
+<li>Select "Convert to StatefulWidget".</li>
+<li>Change the ShrineAppState class to private (_ShrineAppState). To do this from the IDE main menu, select Refactor &gt; Rename. Alternatively, from within the code, you can highlight the class name, ShrineAppState, then right-click and select Refactor &gt; Rename. Enter _ShrineAppState to make the class private.</li>
+</ol>
+<p>In <code>app.dart</code>, add a variable to _ShrineAppState for the selected Category and a callback when it's tapped:</p>
+<pre><code><span class="com">// TODO: Convert ShrineApp to stateful widget (104)</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_ShrineAppState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ShrineApp</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Category</span><span class="pln"> _currentCategory </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">all</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">void</span><span class="pln"> _onCategoryTap</span><span class="pun">(</span><span class="typ">Category</span><span class="pln"> category</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _currentCategory </span><span class="pun">=</span><span class="pln"> category</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>Then change the back layer to a CategoryMenuPage.</p>
+<p>In <code>app.dart</code>, import the CategoryMenuPage:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'backdrop.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'colors.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'home.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'login.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'category_menu_page.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'supplemental/cut_corners_border.dart'</span><span class="pun">;</span></code></pre>
+<p>In the <code>build()</code> function, change the backlayer field to CategoryMenuPage and the currentCategory field to take the instance variable.</p>
+<pre><code><span class="pln">      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Backdrop</span><span class="pun">(</span><span class="pln">
+        </span><span class="com">// TODO: Make currentCategory field take _currentCategory (104)</span><span class="pln">
+        currentCategory</span><span class="pun">:</span><span class="pln"> _currentCategory</span><span class="pun">,</span><span class="pln">
+        </span><span class="com">// TODO: Pass _currentCategory for frontLayer (104)</span><span class="pln">
+        frontLayer</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HomePage</span><span class="pun">(),</span><span class="pln">
+        </span><span class="com">// TODO: Change backLayer field value to CategoryMenuPage (104)</span><span class="pln">
+        backLayer</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CategoryMenuPage</span><span class="pun">(</span><span class="pln">
+          currentCategory</span><span class="pun">:</span><span class="pln"> _currentCategory</span><span class="pun">,</span><span class="pln">
+          onCategoryTap</span><span class="pun">:</span><span class="pln"> _onCategoryTap</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        frontTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'SHRINE'</span><span class="pun">),</span><span class="pln">
+        backTitle</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'MENU'</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span></code></pre>
+<p>Reload and then tap the Menu button.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/9134f8de6fda6eee.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/12ba788e54bfff8e.png"></p>
+</td></tr>
+</tbody></table>
+<p>If you tap a menu option, nothing happens...yet. Let's fix that.</p>
+<p>In <code>home.dart</code>, add a variable for Category and pass it to the AsymmetricView.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/products_repository.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'model/product.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'supplemental/asymmetric_view.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">HomePage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// TODO: Add a variable for Category (104)</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Category</span><span class="pln"> category</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">HomePage</span><span class="pun">({</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">category</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Category</span><span class="pun">.</span><span class="pln">all</span><span class="pun">});</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// TODO: Pass Category variable to AsymmetricView (104)</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">AsymmetricView</span><span class="pun">(</span><span class="pln">products</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ProductsRepository</span><span class="pun">.</span><span class="pln">loadProducts</span><span class="pun">(</span><span class="pln">category</span><span class="pun">));</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>In <code>app.dart</code>, pass the <code>_currentCategory</code> for <code>frontLayer</code>:.</p>
+<pre><code><span class="pln">        </span><span class="com">// TODO: Pass _currentCategory for frontLayer (104)</span><span class="pln">
+        frontLayer</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HomePage</span><span class="pun">(</span><span class="pln">category</span><span class="pun">:</span><span class="pln"> _currentCategory</span><span class="pun">),</span></code></pre>
+<p>Reload. Tap the menu button in the simulator and select a Category.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/3c62a01b7a9aa38.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/ad9d601bf19cc4f2.png"></p>
+</td></tr>
+</tbody></table>
+<p>Tap the menu icon to view the products. They're filtered!</p>
+<h2 is-upgraded=""><strong>Close</strong><strong> the front layer after a menu selection</strong></h2>
+<p>In <code>backdrop.dart</code>, add an override for the <code>didUpdateWidget()</code> function in _BackdropState:</p>
+<pre><code><span class="pln">  </span><span class="com">// TODO: Add override for didUpdateWidget() (104)</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="kwd">void</span><span class="pln"> didUpdateWidget</span><span class="pun">(</span><span class="typ">Backdrop</span><span class="pln"> old</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">didUpdateWidget</span><span class="pun">(</span><span class="pln">old</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">widget</span><span class="pun">.</span><span class="pln">currentCategory </span><span class="pun">!=</span><span class="pln"> old</span><span class="pun">.</span><span class="pln">currentCategory</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _toggleBackdropLayerVisibility</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(!</span><span class="pln">_frontLayerVisible</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _controller</span><span class="pun">.</span><span class="pln">fling</span><span class="pun">(</span><span class="pln">velocity</span><span class="pun">:</span><span class="pln"> _kFlingVelocity</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>Hot reload then tap the menu icon and select a category. The menu should close automatically and your should see the category of items selected. Now you'll add that functionality to the front layer too.</p>
+<h2 is-upgraded=""><strong>Toggle the front layer</strong></h2>
+<p>In <code>backdrop.dart</code>, add an on-tap callback to the backdrop layer:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">_FrontLayer</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// TODO: Add on-tap callback (104)</span><span class="pln">
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">_FrontLayer</span><span class="pun">({</span><span class="pln">
+    </span><span class="typ">Key</span><span class="pln"> key</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">onTap</span><span class="pun">,</span><span class="pln"> </span><span class="com">// New code</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">child</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">})</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">(</span><span class="pln">key</span><span class="pun">:</span><span class="pln"> key</span><span class="pun">);</span><span class="pln">
+ 
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">VoidCallback</span><span class="pln"> onTap</span><span class="pun">;</span><span class="pln"> </span><span class="com">// New code</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> child</span><span class="pun">;</span></code></pre>
+<p>Then add a GestureDetector to the _FrontLayer's child: Column's children:.</p>
+<pre><code><span class="pln">      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+        crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">stretch</span><span class="pun">,</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="com">// TODO: Add a GestureDetector (104)</span><span class="pln">
+          </span><span class="typ">GestureDetector</span><span class="pun">(</span><span class="pln">
+            behavior</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HitTestBehavior</span><span class="pun">.</span><span class="pln">opaque</span><span class="pun">,</span><span class="pln">
+            onTap</span><span class="pun">:</span><span class="pln"> onTap</span><span class="pun">,</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+              height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">40.0</span><span class="pun">,</span><span class="pln">
+              alignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AlignmentDirectional</span><span class="pun">.</span><span class="pln">centerStart</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="typ">Expanded</span><span class="pun">(</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> child</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span></code></pre>
+<p>Then implement the new <code>onTap</code> property on the _BackdropState in the <code>_buildStack()</code> function:</p>
+<pre><code><span class="pln">          </span><span class="typ">PositionedTransition</span><span class="pun">(</span><span class="pln">
+            rect</span><span class="pun">:</span><span class="pln"> layerAnimation</span><span class="pun">,</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">_FrontLayer</span><span class="pun">(</span><span class="pln">
+              </span><span class="com">// TODO: Implement onTap property on _BackdropState (104)</span><span class="pln">
+              onTap</span><span class="pun">:</span><span class="pln"> _toggleBackdropLayerVisibility</span><span class="pun">,</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">frontLayer</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span></code></pre>
+<p>Reload and then tap on the top of the front layer. The layer should open and close each time you tap the top of the front layer. </p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add a branded icon" duration="0" step="8"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">8. Add a branded icon</h2>
+        <p>Branded iconography extends to familiar icons too. Let's make the reveal icon custom and merge it with our title for a unique, branded look.</p>
+<h2 is-upgraded=""><strong>Change the menu button icon</strong></h2>
+
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/67e5a40449058aa6.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/3b56d70c782ea417.png"></p>
+</td></tr>
+</tbody></table>
+<p>In <code>backdrop.dart</code>, create a new class _BackdropTitle.</p>
+<pre><code><span class="com">// TODO: Add _BackdropTitle class (104)</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_BackdropTitle</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">AnimatedWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Function</span><span class="pln"> onPress</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> frontTitle</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Widget</span><span class="pln"> backTitle</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">_BackdropTitle</span><span class="pun">({</span><span class="pln">
+    </span><span class="typ">Key</span><span class="pln"> key</span><span class="pun">,</span><span class="pln">
+    </span><span class="typ">Listenable</span><span class="pln"> listenable</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">onPress</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">frontTitle</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">@required</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">backTitle</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">})</span><span class="pln">  </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">frontTitle </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">assert</span><span class="pun">(</span><span class="pln">backTitle </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">super</span><span class="pun">(</span><span class="pln">key</span><span class="pun">:</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> listenable</span><span class="pun">:</span><span class="pln"> listenable</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Animation</span><span class="str">&lt;double&gt;</span><span class="pln"> animation </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">listenable</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">DefaultTextStyle</span><span class="pun">(</span><span class="pln">
+      style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">primaryTextTheme</span><span class="pun">.</span><span class="pln">title</span><span class="pun">,</span><span class="pln">
+      softWrap</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+      overflow</span><span class="pun">:</span><span class="pln"> </span><span class="typ">TextOverflow</span><span class="pun">.</span><span class="pln">ellipsis</span><span class="pun">,</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="com">// branded icon</span><span class="pln">
+        </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">
+          width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">72.0</span><span class="pun">,</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+            padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">right</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+            onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">onPress</span><span class="pun">,</span><span class="pln">
+            icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Stack</span><span class="pun">(</span><span class="pln">children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+              </span><span class="typ">Opacity</span><span class="pun">(</span><span class="pln">
+                opacity</span><span class="pun">:</span><span class="pln"> animation</span><span class="pun">.</span><span class="pln">value</span><span class="pun">,</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ImageIcon</span><span class="pun">(</span><span class="typ">AssetImage</span><span class="pun">(</span><span class="str">'assets/slanted_menu.png'</span><span class="pun">)),</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+              </span><span class="typ">FractionalTranslation</span><span class="pun">(</span><span class="pln">
+                translation</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Tween</span><span class="pun">&lt;</span><span class="typ">Offset</span><span class="pun">&gt;(</span><span class="pln">
+                  </span><span class="kwd">begin</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Offset</span><span class="pun">.</span><span class="pln">zero</span><span class="pun">,</span><span class="pln">
+                  </span><span class="kwd">end</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Offset</span><span class="pun">(</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">),</span><span class="pln">
+                </span><span class="pun">).</span><span class="pln">evaluate</span><span class="pun">(</span><span class="pln">animation</span><span class="pun">),</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ImageIcon</span><span class="pun">(</span><span class="typ">AssetImage</span><span class="pun">(</span><span class="str">'assets/diamond.png'</span><span class="pun">)),</span><span class="pln">
+              </span><span class="pun">)]),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        </span><span class="com">// Here, we do a custom cross fade between backTitle and frontTitle.</span><span class="pln">
+        </span><span class="com">// This makes a smooth animation between the two texts.</span><span class="pln">
+        </span><span class="typ">Stack</span><span class="pun">(</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="typ">Opacity</span><span class="pun">(</span><span class="pln">
+              opacity</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CurvedAnimation</span><span class="pun">(</span><span class="pln">
+                parent</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ReverseAnimation</span><span class="pun">(</span><span class="pln">animation</span><span class="pun">),</span><span class="pln">
+                curve</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Interval</span><span class="pun">(</span><span class="lit">0.5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">),</span><span class="pln">
+              </span><span class="pun">).</span><span class="pln">value</span><span class="pun">,</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FractionalTranslation</span><span class="pun">(</span><span class="pln">
+                translation</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Tween</span><span class="pun">&lt;</span><span class="typ">Offset</span><span class="pun">&gt;(</span><span class="pln">
+                  </span><span class="kwd">begin</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Offset</span><span class="pun">.</span><span class="pln">zero</span><span class="pun">,</span><span class="pln">
+                  </span><span class="kwd">end</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Offset</span><span class="pun">(</span><span class="lit">0.5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">),</span><span class="pln">
+                </span><span class="pun">).</span><span class="pln">evaluate</span><span class="pun">(</span><span class="pln">animation</span><span class="pun">),</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> backTitle</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">Opacity</span><span class="pun">(</span><span class="pln">
+              opacity</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CurvedAnimation</span><span class="pun">(</span><span class="pln">
+                parent</span><span class="pun">:</span><span class="pln"> animation</span><span class="pun">,</span><span class="pln">
+                curve</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Interval</span><span class="pun">(</span><span class="lit">0.5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">),</span><span class="pln">
+              </span><span class="pun">).</span><span class="pln">value</span><span class="pun">,</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">FractionalTranslation</span><span class="pun">(</span><span class="pln">
+                translation</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Tween</span><span class="pun">&lt;</span><span class="typ">Offset</span><span class="pun">&gt;(</span><span class="pln">
+                  </span><span class="kwd">begin</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Offset</span><span class="pun">(-</span><span class="lit">0.25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">),</span><span class="pln">
+                  </span><span class="kwd">end</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Offset</span><span class="pun">.</span><span class="pln">zero</span><span class="pun">,</span><span class="pln">
+                </span><span class="pun">).</span><span class="pln">evaluate</span><span class="pun">(</span><span class="pln">animation</span><span class="pun">),</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> frontTitle</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">]),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>The <code>_BackdropTitle</code> is a custom widget that will replace the plain <code>Text</code> widget for the <code>AppBar</code> widget's <code>title</code> parameter. It has an animated menu icon and animated transitions between the front title and back title. The animated menu icon will use a new asset. The reference to the new <code>slanted_menu.png</code> must be added to the <code>pubspec.yaml</code>.</p>
+<pre><code><span class="pln">assets</span><span class="pun">:</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln"> assets</span><span class="pun">/</span><span class="pln">diamond</span><span class="pun">.</span><span class="pln">png
+    </span><span class="com"># TODO: Add slanted menu asset (104)</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln"> assets</span><span class="pun">/</span><span class="pln">slanted_menu</span><span class="pun">.</span><span class="pln">png
+    </span><span class="pun">-</span><span class="pln"> packages</span><span class="pun">/</span><span class="pln">shrine_images</span><span class="pun">/</span><span class="lit">0</span><span class="pun">-</span><span class="lit">0.jpg</span></code></pre>
+<p>Remove the <code>leading</code> property in the <code>AppBar</code> builder. Removal is necessary for the custom branded icon to be rendered in the original <code>leading</code> widget's place. The animation <code>listenable</code> and the <code>onPress</code> handler for the branded icon are passed to the <code>_BackdropTitle</code>. The <code>frontTitle</code> and <code>backTitle</code> are also passed so that they can be rendered within the backdrop title. The <code>title</code> parameter of the <code>AppBar</code> should look like this:</p>
+<pre><code><span class="com">// TODO: Create title with _BackdropTitle parameter (104)</span><span class="pln">
+title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">_BackdropTitle</span><span class="pun">(</span><span class="pln">
+  listenable</span><span class="pun">:</span><span class="pln"> _controller</span><span class="pun">.</span><span class="pln">view</span><span class="pun">,</span><span class="pln">
+  onPress</span><span class="pun">:</span><span class="pln"> _toggleBackdropLayerVisibility</span><span class="pun">,</span><span class="pln">
+  frontTitle</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">frontTitle</span><span class="pun">,</span><span class="pln">
+  backTitle</span><span class="pun">:</span><span class="pln"> widget</span><span class="pun">.</span><span class="pln">backTitle</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">),</span></code></pre>
+<p>The branded icon is created in the <code>_BackdropTitle.</code> It contains  a <code>Stack</code> of animated icons: a slanted menu and a diamond, which is wrapped in an <code>IconButton</code> so that it can be pressed. The <code>IconButton</code> is then wrapped in a <code>SizedBox</code> in order to make room for the horizontal icon motion.</p>
+<p>Flutter's "everything is a widget" architecture allows the layout of the default <code>AppBar</code> to be altered without having to create an entirely new custom <code>AppBar</code> widget. The <code>title</code> parameter, which is originally a <code>Text</code> widget, can be replaced with a more complex <code>_BackdropTitle</code>. Since the <code>_BackdropTitle</code> also includes the custom icon, it takes the place of the <code>leading</code> property, which can be now be omitted. This simple widget substitution is accomplished without changing any of the other parameters, such as the action icons, which continue to function on their own.</p>
+<h2 is-upgraded="">Add a shortcut back to the login screen</h2>
+<p>In <code>backdrop.dart,</code>add a shortcut back to the login screen from the two trailing icons in the app bar: Change the semantic labels of the icons to reflect their new purpose.</p>
+<pre><code><span class="pln">        </span><span class="com">// TODO: Add shortcut to login screen from trailing icons (104)</span><span class="pln">
+        </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+          icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+            </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">search</span><span class="pun">,</span><span class="pln">
+            semanticLabel</span><span class="pun">:</span><span class="pln"> </span><span class="str">'login'</span><span class="pun">,</span><span class="pln"> </span><span class="com">// New code</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="com">// TODO: Add open login (104)</span><span class="pln">
+            </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">
+              context</span><span class="pun">,</span><span class="pln">
+              </span><span class="typ">MaterialPageRoute</span><span class="pun">(</span><span class="pln">builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">LoginPage</span><span class="pun">()),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+          icon</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="pln">
+            </span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">tune</span><span class="pun">,</span><span class="pln">
+            semanticLabel</span><span class="pun">:</span><span class="pln"> </span><span class="str">'login'</span><span class="pun">,</span><span class="pln"> </span><span class="com">// New code</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="com">// TODO: Add open login (104)</span><span class="pln">
+            </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">
+              context</span><span class="pun">,</span><span class="pln">
+              </span><span class="typ">MaterialPageRoute</span><span class="pun">(</span><span class="pln">builder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">LoginPage</span><span class="pun">()),</span><span class="pln">
+            </span><span class="pun">);</span><span class="pln">
+          </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">),</span></code></pre>
+<p>You'll get an error if you try a reload. Import <code>login.dart</code> to fix the error:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'login.dart'</span><span class="pun">;</span></code></pre>
+<p>Reload the app and tap the search or tune buttons to return to the login screen. </p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Recap" duration="0" step="9"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">9. Recap</h2>
+        <p>Over the course of these four codelabs, you've seen how to use Material Components to build unique, elegant user experiences that express brand personality and style. </p>
+<aside class="special"><p>The completed MDC-104 app is available in the <code>104-complete</code> branch. </p>
+<p>You can test your version of the page against the app in that branch.</p>
+</aside>
+<h2 is-upgraded=""><strong>Next steps</strong></h2>
+<p>This codelab, MDC-104, completes this sequence of codelabs. You can explore even more components in MDC-Flutter by visiting the <a href="https://flutter.io/widgets/" target="_blank">Flutter Widgets Catalog</a>. </p>
+<p>For a stretch goal, try replacing the branded icon with an <a href="https://docs.flutter.io/flutter/material/AnimatedIcon-class.html" target="_blank">AnimatedIcon</a> that animates between two icons when the backdrop is made visible.</p>
+<p>To learn how to connect an app to Firebase for a working backend, see the codelab <a href="http://codelabs.developers.google.com/codelabs/flutter-firebase" target="_blank">Firebase for Flutter</a>.</p>
+<google-codelab-survey survey-id="mdc-104-flutter-2" upgraded="">
+
+
+
+
+<div class="survey-questions" survey-name="mdc-104-flutter-2"><div class="survey-question-wrapper"><h4>I was able to complete this codelab with a reasonable amount of time and effort</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-agree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-agree"><span class="option-text">Strongly agree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-agree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--agree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--agree"><span class="option-text">Agree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--agree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--neutral-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--neutral"><span class="option-text">Neutral</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--neutral" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--disagree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--disagree"><span class="option-text">Disagree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--disagree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-disagree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-disagree"><span class="option-text">Strongly disagree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-disagree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label></div></div><div class="survey-question-wrapper"><h4>I would like to continue using Material Components in the future</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-agree-label" for="i-would-like-to-continue-using-material-components-in-the-future--strongly-agree"><span class="option-text">Strongly agree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-agree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--agree-label" for="i-would-like-to-continue-using-material-components-in-the-future--agree"><span class="option-text">Agree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--agree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--neutral-label" for="i-would-like-to-continue-using-material-components-in-the-future--neutral"><span class="option-text">Neutral</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--neutral" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--disagree-label" for="i-would-like-to-continue-using-material-components-in-the-future--disagree"><span class="option-text">Disagree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--disagree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-disagree-label" for="i-would-like-to-continue-using-material-components-in-the-future--strongly-disagree"><span class="option-text">Strongly disagree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-disagree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/native-shim.js"></script>
+  <script src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/custom-elements.min.js"></script>
+  <script src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/prettify.js"></script>
+  <script src="./MDC-104 Flutter_ Material Advanced Components (Flutter)_files/codelab-elements.js"></script>
+
+
+
+</body></html>

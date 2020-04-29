@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://flutter.dev/docs/get-started/codelab-web -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Write your first Flutter app on the web  - Flutter </title>
+  <link rel="shortcut icon" href="https://flutter.dev/images/favicon.png">
+
+  <!-- Google Optimize -->
+  <script async="" src="./Write your first Flutter app on the web - Flutter_files/analytics.js"></script><script async="" src="./Write your first Flutter app on the web - Flutter_files/gtm.js"></script><script src="./Write your first Flutter app on the web - Flutter_files/optimize.js"></script>
+  <!-- End Google Optimize -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-ND4LWWZ');</script>
+  <!-- End Google Tag Manager -->
+
+  
+  <meta name="description" content="How to create a Flutter web app.">
+  <meta name="keywords" content=" ">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@flutterdev">
+
+  <meta property="og:title" content="Write your first Flutter app on the web">
+  <meta property="og:url" content="https://flutter.dev/docs/get-started/codelab-web">
+  <meta property="og:description" content="How to create a Flutter web app.">
+  
+  <meta property="og:image" content="https://flutter.dev/images/flutter-logo-sharing.png">
+
+  <link href="./Write your first Flutter app on the web - Flutter_files/css(1)" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./Write your first Flutter app on the web - Flutter_files/main-094812bce4cc4b3c1ece24851a2ac506e83ffa17701779ac96ca5c4d659423e5.css" integrity="sha256-CUgSvOTMSzweziSFGirFBug/+hdwF3mslspcTWWUI+U=" crossorigin="anonymous">
+  
+  <script src="./Write your first Flutter app on the web - Flutter_files/clipboard.min.js"></script>
+  <script src="./Write your first Flutter app on the web - Flutter_files/main-19728c3bc90c91b99b0a44c295d6a18fcf4a8333bed7d7517d611043c6d16948.js" type="text/javascript" integrity="sha256-GXKMO8kMkbmbCkTCldahj89KgzO+19dRfWEQQ8bRaUg=" crossorigin="anonymous"></script>
+  <script defer="" src="./Write your first Flutter app on the web - Flutter_files/inject_embed.dart.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67589403-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <meta name="google-site-verification" content="HFqxhSbf9YA_0rBglNLzDiWnrHiK_w4cqDh2YD2GEY4">
+  <meta name="google-site-verification" content="Zom-prnFykfYycmI_nzRWYx5r6Z9OwR-yEsgElRz_Ug">
+</head>
+<body class=" hasGoogleVoiceExt">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND4LWWZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="overlay-under-drawer"></div>
+
+    <header class="site-header">
+  <nav class="navbar navbar-expand-md justify-content-start justify-content-md-between">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="material-icons">menu</i>
+    </button>
+
+    <a class="navbar-brand" href="https://flutter.dev/">
+      <img alt="Flutter logo" height="37" width="129" class="align-middle" src="./Write your first Flutter app on the web - Flutter_files/flutter-lockup-c13da9c9303e26b8d5fc208d2a1fa20c1ef47eb021ecadf27046dea04c0cebf6.png" integrity="sha256-wT2pyTA+JrjV/CCNKh+iDB70frAh7K3ycEbeoEwM6/Y=" crossorigin="anonymous">
+    </a>
+
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div class="site-header__sheet-bg" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></div>
+      <div class="site-header__sheet">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://flutter.dev/docs">Docs</a>
+          </li>
+          <div class="site-sidebar site-sidebar--header d-md-none">
+            <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-1" role="button" aria-expanded="true" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-2" role="button" aria-expanded="false" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/showcase">Showcase</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/community">Community</a>
+          </li>
+        </ul>
+        <form action="https://flutter.dev/search/" class="site-header__search form-inline">
+          <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+    <div class="site-header__social navbar-nav flex-row">
+      <a class="nav-item nav-link" href="https://twitter.com/flutterdev" aria-label="Twittter"><i class="fab fa-twitter fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://www.youtube.com/flutterdev" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://github.com/flutter" aria-label="Github"><i class="fab fa-github fa-lg"></i></a>
+    </div>
+    <a class="site-header__cta btn btn-primary" href="https://flutter.dev/docs/get-started/install/">Get started</a>
+    </nav>
+</header>
+<!---->
+  <div class="site-banner site-banner--default" role="alert">
+    Learn Flutter in this <a href="https://www.appbrewery.co/p/intro-to-flutter?utm_source=google&amp;utm_medium=website%20banner&amp;utm_campaign=app_brewery">online class by the App Brewery</a>.
+    If you sign up by July 8, it's free.<br>
+    Do you design UIs for your Flutter apps?
+    We're excited to announce that
+    <a href="https://medium.com/flutter/announcing-codepen-support-for-flutter-bb346406fe50?utm_source=google&amp;utm_medium=website%20banner&amp;utm_campaign=codepen">CodePen now supports Flutter</a>.
+  </div>
+<div class="container-fluid position-relative">
+  <div class="row flex-xl-nowrap">
+    <div class="fixed-col site-sidebar site-sidebar--fixed col-12 col-md-3 col-xl-2 d-none d-md-block" data-fixed-column="" style="position: fixed; max-height: 18355.6px; top: 196px;">
+      <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-1" role="button" aria-expanded="true" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-2" role="button" aria-expanded="false" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/get-started/codelab-web#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+    </div>
+    <div id="site-toc--side" class="site-toc site-toc--side fixed-col col-xl-2 order-3" data-fixed-column="" style="position: fixed; max-height: 18355.6px; top: 196px;">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    </header>
+  <ul class="section-nav nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#step-0-get-the-starter-web-app">Step 0: Get the starter web app</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#step-1-show-the-welcome-screen">Step 1: Show the Welcome screen</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#step-2-enable-sign-in-progress-tracking">Step 2: Enable sign in progress tracking</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#step-25-launch-dart-devtools">Step 2.5: Launch Dart DevTools</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#step-3-add-animation-for-sign-in-progress">Step 3: Add animation for sign in progress</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#complete-sample">Complete Sample</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/get-started/codelab-web#what-next">What next?</a></li>
+</ul>
+</div>
+<main class="site-content col-12 col-md-9 offset-md-3 col-xl-8 offset-xl-2 col-xxl-8 offset-xxl-2" role="main">
+      <div class="container">
+        
+        
+        <header class="site-content__title">
+          <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/flutter/website/tree/master/src/docs/get-started/codelab-web.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/flutter/website/issues/new?title=%27Write%20your%20first%20Flutter%20app%20on%20the%20web%27%20page%20issue&amp;body=Page%20URL:%20https://flutter.dev/docs/get-started/codelab-web.html%0D%0APage%20source:%20https://github.com/flutter/website/tree/master/src/docs/get-started/codelab-web.md%0D%0A%0D%0AFound%20a%20typo?%20You%20can%20fix%20it%20yourself%20by%20going%20to%20the%20page%20source%20and%20clicking%20the%20pencil%20icon.%20Or%20finish%20creating%20this%20issue.%0D%0A%0D%0ADescription%20of%20issue:" class="btn no-automatic-external" title="Report an issue with this page" target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+          <h1>Write your first Flutter app on the web</h1>
+          
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+  <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><a href="https://flutter.dev/docs" property="item" typeof="WebPage"><span property="name">Docs</span>
+      </a>
+      <meta property="position" content="1">
+    </li>
+  <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><a href="https://flutter.dev/docs/get-started" property="item" typeof="WebPage"><span property="name">Get started</span>
+      </a>
+      <meta property="position" content="2">
+    </li>
+  <li class="breadcrumb-item active" property="itemListElement" typeof="ListItem" aria-current="page"><a href="https://flutter.dev/docs/get-started/codelab-web.html" property="item" typeof="WebPage"><span property="name">Write your first web app</span>
+      </a>
+      <meta property="position" content="3">
+    </li>
+  
+  </ol>
+</nav>
+          </header>
+        <div id="site-toc--inline" class="site-toc site-toc--inline ">
+  <header class="site-toc__title">
+    Contents
+    </header>
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/get-started/codelab-web#step-0-get-the-starter-web-app">Step 0: Get the starter web app</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/get-started/codelab-web#step-1-show-the-welcome-screen">Step 1: Show the Welcome screen</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/get-started/codelab-web#step-2-enable-sign-in-progress-tracking">Step 2: Enable sign in progress tracking</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/get-started/codelab-web#step-25-launch-dart-devtools">Step 2.5: Launch Dart DevTools</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/get-started/codelab-web#step-3-add-animation-for-sign-in-progress">Step 3: Add animation for sign in progress</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/get-started/codelab-web#complete-sample">Complete Sample</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/get-started/codelab-web#what-next">What next?</a></li>
+</ul>
+</div>
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  This codelab walks you through writing your first Flutter
+  app on the web. You might prefer to try
+  <a href="https://flutter.dev/docs/get-started/codelab">writing your first Flutter app on mobile</a>.
+  <strong>Note that if you have downloaded and configured
+  Android and iOS tooling,
+  the completed app just works on all of these devices!</strong></p>
+</aside>
+
+<p><img alt="The web app that you&#39;ll be building" class="site-image-right" src="./Write your first Flutter app on the web - Flutter_files/sign-up-d0da8b98f2408e0881bc5110fc59b9d2cebcc494dd0311a5fc3177807ee71768.gif" integrity="sha256-0NqLmPJAjgiBvFEQ/Fm50s68xJTdAxGl/DF3gH7nF2g=" crossorigin="anonymous"></p>
+
+<p>This is a guide to creating your first Flutter <strong>web</strong> app.
+If you are familiar with object-oriented programming,
+and concepts such as variables, loops, and conditionals,
+you can complete this tutorial.
+You don’t need previous experience with Dart,
+mobile, or web programming.</p>
+
+<h2 class="no_toc" id="what-youll-build">What you’ll build</h2>
+
+<p>You’ll implement a simple web app that displays a sign in screen.
+The screen contains three text fields:  first name,
+last name, and username. As the user fills out the fields,
+a progress bar animates along the top of the sign in area.
+When all three fields are filled in, the progress bar displays
+in green along the full width of the sign in area,
+and the <strong>Sign up</strong> button becomes enabled.
+Clicking the <strong>Sign up</strong> button causes a welcome screen
+to animate in from the bottom of the screen.</p>
+
+<p>The animated GIF shows how the app works at the completion of this lab.</p>
+
+<aside class="alert alert-secondary" role="alert">
+  <h4 class="no_toc">What you’ll learn</h4>
+
+  <ul>
+    <li>How to write a Flutter app that looks natural on the web.</li>
+    <li>Basic structure of a Flutter app.</li>
+    <li>How to implement a Tween animation.</li>
+    <li>How to implement a stateful widget.</li>
+    <li>How to use the debugger to set breakpoints.</li>
+  </ul>
+</aside>
+
+<aside class="alert alert-secondary" role="alert">
+  <h4 class="no_toc">What you'll use</h4>
+
+  <p>You need three pieces of software to complete this lab:</p>
+
+  <ul>
+    <li><a href="https://flutter.dev/docs/get-started/install">Flutter SDK</a></li>
+    <li><a href="https://www.google.com/chrome/?brand=CHBD&amp;gclid=CjwKCAiAws7uBRAkEiwAMlbZjlVMZCxJDGAHjoSpoI_3z_HczSbgbMka5c9Z521R89cDoBM3zAluJRoCdCEQAvD_BwE&amp;gclsrc=aw.ds">Chrome browser</a></li>
+    <li><a href="https://flutter.dev/docs/get-started/editor">Text editor or IDE</a></li>
+  </ul>
+
+  <p>For a web-only codelab,
+  we recommend either <a href="https://flutter.dev/docs/get-started/editor">IntelliJ IDEA or VS Code</a>.
+  Android Studio and Xcode aren’t required.
+  You can also use a text editor, if you prefer.</p>
+
+  <p>While developing, run your web app in Chrome
+  so you can debug with Dart DevTools.</p>
+</aside>
+
+<h2 id="step-0-get-the-starter-web-app">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#step-0-get-the-starter-web-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 0: Get the starter web app</h2>
+
+<p>You’ll start with a simple web app that we provide for you.</p>
+
+<ol>
+<li>
+    <p>Enable web development.<br>
+At the command line, perform the following commands to
+make sure that you have the latest web support and that
+it is enabled. You only need to run <code class="highlighter-rouge">flutter config</code> once
+to enable Flutter support for web.
+If you see “flutter: command not found”,
+then make sure that you have installed the
+<a href="https://flutter.dev/docs/get-started/install">Flutter SDK</a> and that it’s in your path.</p>
+
+    <div class="language-terminal highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-0" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-0"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>flutter channel beta
+<span class="gp">$</span><span class="w"> </span>flutter upgrade
+<span class="gp">$</span><span class="w"> </span>flutter config <span class="nt">--enable-web</span>
+</code></pre></div></div></div>    </div>
+
+    <p>If you have problems enabling web development,
+see <a href="https://flutter.dev/docs/get-started/web">Building a web application with Flutter</a>.</p>
+  </li>
+
+<li>
+    <p>Run <code class="highlighter-rouge">flutter doctor</code>.<br>
+The <code class="highlighter-rouge">flutter doctor</code> command reports the status of the installation.
+You should see something like the following:</p>
+
+    <div class="language-terminal highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-1" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-1"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>flutter doctor
+<span class="go">
+[✓] Flutter: is fully installed. (Channel dev, v1.9.5, on Mac OS X 10.14.6 18G87, locale en-US)
+[✗] Android toolchain - develop for Android devices: is not installed.
+[✗] Xcode - develop for iOS and macOS: is not installed.
+[✓] Chrome - develop for the web: is fully installed.
+[!] Android Studio: is not available. (not installed)
+[✓] Connected device: is fully installed. (1 available)
+</span></code></pre></div></div></div>    </div>
+
+    <p>It’s okay if the Android toolchain, Android Studio,
+and the Xcode tools are not installed,
+since our app is intended for the web only.
+If you later want this app to work on mobile,
+you will need to do additional installation and setup.</p>
+  </li>
+
+<li>
+    <p>List the devices.<br>
+To ensure that web <em>is</em> installed,
+list the devices available.
+You should see something like the following:</p>
+
+    <div class="language-terminal highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-2" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-2"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>flutter devices
+<span class="go">2 connected devices:
+
+Chrome     • chrome     • web-javascript • Google Chrome 78.0.3904.108
+Web Server • web-server • web-javascript • Flutter Tools
+</span></code></pre></div></div></div>    </div>
+
+    <p>The <strong>Chrome</strong> device automatically starts Chrome.
+The <strong>Web Server</strong> starts a server that hosts the app
+so that you can load it from any browser.
+Use the Chrome device during development so that you can use DevTools,
+and the web server when you want to test on other browsers.</p>
+  </li>
+
+<li>
+    <p>The starting app is displayed in the following DartPad.</p>
+
+    <!-- skip -->
+    <div><iframe src="./Write your first Flutter app on the web - Flutter_files/embed-flutter.html" style="width: 100%; height: 600px;"></iframe></div>
+
+    <aside class="alert alert-warning" role="alert">
+      <p><i class="fas fa-exclamation-circle"></i> <strong>Important:</strong>
+  This page uses an embedded version of <a href="https://dartpad.dev/">DartPad</a>
+  to display examples and exercises.
+  If you see empty boxes instead of DartPads,
+  go to the <a href="https://dart.dev/tools/dartpad/troubleshoot">DartPad troubleshooting page</a>.</p>
+    </aside>
+  </li>
+
+<li>
+    <p>Run the example.<br>
+Click the <strong>Run</strong> button to run the example.
+Note that you can type into the text fields,
+but the Sign up button is disabled.</p>
+  </li>
+
+<li>
+    <p>Copy the code.<br>
+Click the clipboard icon in the upper right of the
+code pane to copy the Dart code to your clipboard.</p>
+  </li>
+
+<li>
+    <p>Create a new Flutter project.<br>
+From your IDE, editor, or at the command line,
+<a href="https://flutter.dev/docs/get-started/test-drive">create a new Flutter project</a> and name it <code class="highlighter-rouge">signin_example</code>.</p>
+  </li>
+
+<li>
+    <p>Replace the contents of <code class="highlighter-rouge">lib/main.dart</code>
+                 with the contents of the clipboard.<br></p>
+  </li>
+</ol>
+
+<h3 class="no_toc" id="observations">Observations</h3>
+
+<ul>
+  <li>The entire code for this example lives in the
+<code class="highlighter-rouge">lib/main.dart</code> file.</li>
+  <li>If you know Java, the Dart language should feel very familiar.</li>
+  <li>All of the app’s UI is created in Dart code.
+For more information, see <a href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>.</li>
+  <li>The app’s UI adheres <a href="https://material.io/design/introduction/#">Material Design</a>,
+a visual design language that runs on any device or platform.
+You can customize the Material Design widgets,
+but if you prefer something else,
+Flutter also offers the Cupertino widget library,
+which implements the current iOS design language.
+Or you can create your own custom widget library.</li>
+  <li>In Flutter, most everything is a <a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>.
+Even the app itself is a widget.
+The app’s UI can be described as a widget tree.</li>
+</ul>
+
+<h2 id="step-1-show-the-welcome-screen">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#step-1-show-the-welcome-screen" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Show the Welcome screen</h2>
+
+<p>The <code class="highlighter-rouge">LoginForm</code> class is a stateful widget.
+This simply means that the widget stores information that can change,
+such as user input, or data from a feed.
+Since widgets themselves are immutable (can’t be modified once created),
+Flutter stores state information in a companion class,
+called the <code class="highlighter-rouge">State</code> class. In this lab,
+all of your edits will be made to the private <code class="highlighter-rouge">_LoginFormState</code> class.</p>
+
+<aside class="alert alert-secondary" role="alert">
+  <h4 class="no_toc">Fun fact</h4>
+  <p>The Dart compiler enforces privacy for any identifier
+prefixed with an underscore. For more information,
+see the <a href="https://dart.dev/guides/language/effective-dart/style#dont-use-a-leading-underscore-for-identifiers-that-arent-private">Effective Dart Style Guide</a>.</p>
+</aside>
+
+<p>First, add the following class definition for the <code class="highlighter-rouge">WelcomeScreen</code> widget:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-3" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-3"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">WelcomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="o">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">Scaffold</span><span class="o">(</span>
+      <span class="nl">body:</span> <span class="n">Center</span><span class="o">(</span>
+        <span class="nl">child:</span> <span class="n">Text</span><span class="o">(</span><span class="s">'Welcome!'</span><span class="o">,</span> <span class="nl">style:</span> <span class="n">Theme</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">textTheme</span><span class="o">.</span><span class="na">display3</span><span class="o">),</span>
+      <span class="o">),</span>
+    <span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div></div></div>
+
+<p>Next, you will enable the button to display the screen and create a method to
+display it.</p>
+
+<ol>
+<li>
+    <p>Open the <code class="highlighter-rouge">lib/main.dart</code> file.</p>
+  </li>
+
+<li>
+    <p>Locate <code class="highlighter-rouge">build()</code> method for the <code class="highlighter-rouge">_SignUpFormState</code> class.
+This is the part of the code that builds the SignUp button.
+Notice how the button is defined:
+It’s a <code class="highlighter-rouge">FlatButton</code> with a blue background,
+white text that says <strong>Sign up</strong> and, when pressed,
+does nothing.</p>
+  </li>
+
+<li>
+    <p>Update the <code class="highlighter-rouge">onPressed</code> property.<br>
+Change the <code class="highlighter-rouge">onPressed</code> property to call the (non-existent)
+method that will display the welcome screen.</p>
+
+    <p>Change <code class="highlighter-rouge">onPressed: null</code> to the following:</p>
+
+    <!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-4" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-4"><pre class="highlight"><code><span class="nl">onPressed:</span> <span class="n">_showWelcomeScreen</span><span class="o">,</span>
+</code></pre></div></div></div>    </div>
+  </li>
+
+<li>
+    <p>Add the <code class="highlighter-rouge">_showWelcomeScreen</code> method.<br>
+Fix the error reported by the analyzer that <code class="highlighter-rouge">_showWelcomeScreen</code>
+is not defined. Directly above the <code class="highlighter-rouge">build()</code> method,
+add the following function:</p>
+
+    <!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-5" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-5"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">_showWelcomeScreen</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">Navigator</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">pushNamed</span><span class="o">(</span><span class="s">'/welcome'</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div></div>    </div>
+  </li>
+
+<li>
+    <p>Run the app.<br>
+The <strong>Sign up</strong> button should now be enabled.
+Click it to bring up the welcome screen.
+Note how it animates in from the bottom.
+You get that behavior for free.</p>
+  </li>
+
+</ol>
+
+<h3 class="no_toc" id="observations-1">Observations</h3>
+
+<ul>
+  <li>The <code class="highlighter-rouge">_showWelcomeScreen()</code> function is used in the <code class="highlighter-rouge">build()</code>
+method as a callback function. Callback functions are often
+used in Dart code and, in this case, this means
+“call this method when the button is pressed”.</li>
+  <li>Flutter has only one <code class="highlighter-rouge">Navigator</code> object.
+This widget manages Flutter’s screens
+(also called <em>routes</em> or <em>pages</em>) inside a stack.
+The screen at the top of the stack is the view that
+is currently displayed. Pushing a new screen to this
+stack switches the display to that new screen.
+This is why the <code class="highlighter-rouge">_showWelcomeScreen</code> function pushes
+the <code class="highlighter-rouge">WelcomeScreen</code> onto the Navigator’s stack.
+The user clicks the button and, voila, the welcome screen appears.
+Likewise, calling <code class="highlighter-rouge">pop()</code> on the <code class="highlighter-rouge">Navigator</code> returns to the previous screen.
+Because Flutter’s navigation is integrated into the browser’s navigation,
+this happens implicitly when clicking the browser’s back arrow button.</li>
+</ul>
+
+<h2 id="step-2-enable-sign-in-progress-tracking">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#step-2-enable-sign-in-progress-tracking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Enable sign in progress tracking</h2>
+
+<p>This sign in screen has three fields.
+Next, you will enable the ability to track the
+user’s progress on filling in the form fields,
+and update the app’s UI when the form is complete.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  This example does <strong>not</strong> validate the accuracy of the user input.
+  That is something you can add later using form validation, if you like.</p>
+</aside>
+
+<ol>
+<li>
+    <p>Add a method to to update <code class="highlighter-rouge">_formProgress</code>.
+In the <code class="highlighter-rouge">_SignUpFormState</code> class, add a new method called
+<code class="highlighter-rouge">_updateFormProgress()</code>:</p>
+
+    <!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-6" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-6"><pre class="highlight"><code><span class="o">...</span>
+<span class="kt">void</span> <span class="nf">_updateFormProgress</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kd">var</span> <span class="n">progress</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+  <span class="kd">var</span> <span class="n">controllers</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="n">_firstNameTextController</span><span class="o">,</span>
+    <span class="n">_lastNameTextController</span><span class="o">,</span>
+    <span class="n">_usernameTextController</span>
+  <span class="o">];</span>
+
+  <span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">controller</span> <span class="k">in</span> <span class="n">controllers</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">controller</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">isNotEmpty</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">progress</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">controllers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="n">setState</span><span class="o">(()</span> <span class="o">{</span>
+    <span class="n">_formProgress</span> <span class="o">=</span> <span class="n">progress</span><span class="o">;</span>
+  <span class="o">});</span>
+<span class="o">}</span>
+<span class="o">...</span>
+</code></pre></div></div></div>    </div>
+
+    <p>This method updates <code class="highlighter-rouge">_formProgress</code> based on the the number of non-empty text
+fields.</p>
+
+  </li>
+
+<li>
+    <p>Call <code class="highlighter-rouge">_updateFormProgress()</code> when the form changes<br>
+In the <code class="highlighter-rouge">build()</code> method of the <code class="highlighter-rouge">_SignUpFormState</code> class, add a callback
+to the <code class="highlighter-rouge">Form</code> widget’s <code class="highlighter-rouge">onChanged</code> argument:
+Add the code below marked as NEW:</p>
+
+    <!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-7" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-7"><pre class="highlight"><code><span class="o">...</span>
+<span class="k">return</span> <span class="nf">Form</span><span class="p">(</span>
+  <span class="nl">onChanged:</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="n">_updateFormProgress</span><span class="o">(),</span> <span class="c1">// NEW</span>
+  <span class="nl">child:</span> <span class="n">Column</span><span class="o">(</span>
+<span class="o">...</span>
+</code></pre></div></div></div>    </div>
+  </li>
+
+<li>
+    <p>Update the <code class="highlighter-rouge">onPressed</code> property (again).<br>
+In <code class="highlighter-rouge">step 1</code>, you modified the <code class="highlighter-rouge">onPressed</code> property for the
+<strong>Sign up</strong> button to display the welcome screen.
+Now, update that button to display the welcome
+screen only when the form is completely filled in:</p>
+
+    <!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-8" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-8"><pre class="highlight"><code><span class="o">...</span>
+<span class="n">FlatButton</span><span class="o">(</span>
+  <span class="nl">color:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blue</span><span class="o">,</span>
+  <span class="nl">textColor:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">white</span><span class="o">,</span>
+  <span class="nl">onPressed:</span> <span class="n">_formProgress</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">_showWelcomeScreen</span> <span class="o">:</span> <span class="kc">null</span><span class="o">,</span> <span class="c1">// UPDATED</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="o">(</span><span class="s">'Sign up'</span><span class="o">),</span>
+<span class="o">),</span>
+<span class="o">...</span>
+
+</code></pre></div></div></div>    </div>
+  </li>
+
+<li>
+    <p>Run the app.<br>
+The <strong>Sign up</strong> button is initially disabled,
+but becomes enabled when all three text fields contain (any) text.</p>
+  </li>
+</ol>
+
+<h3 class="no_toc" id="observations-2">Observations</h3>
+
+<ul>
+  <li>Calling a widget’s <code class="highlighter-rouge">setState()</code> method tells Flutter that the
+widget needs to be updated on screen.
+The framework then disposes of the previous immutable widget
+(and its children), creates a new one
+(with its accompanying child widget tree),
+and renders it to screen. For this to work seamlessly,
+Flutter needs to be fast.
+The new widget tree must be created and rendered to screen
+in less than 1/60th of a second to create a smooth visual
+transition—especially for an animation.
+Luckily Flutter <em>is</em> fast.</li>
+  <li>The <code class="highlighter-rouge">progress</code> field is defined as a floating value,
+and is updated in the <code class="highlighter-rouge">_updateFormProgress</code> method.
+When all three fields are filled in, <code class="highlighter-rouge">_formProgress</code> is set to 1.0.
+When <code class="highlighter-rouge">_formProgress</code> is set to 1.0, the <code class="highlighter-rouge">onPressed</code> callback is set to the
+<code class="highlighter-rouge">_showWelcomeScreen</code> method. The button is enabled when it’s <code class="highlighter-rouge">onPressed</code>
+argument is non-null.</li>
+  <li>Notice that the <code class="highlighter-rouge">_updateFormProgress</code> passes a function to <code class="highlighter-rouge">setState()</code>.
+This is called an anonymous
+function and has the following syntax:
+<!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-9" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-9"><pre class="highlight"><code><span class="n">methodName</span><span class="o">(()</span> <span class="o">{...});</span>
+</code></pre></div></div></div>    </div>
+    <p>Where <code class="highlighter-rouge">methodName</code> is a named function that takes an anonymous
+callback function as an argument.</p>
+  </li>
+  <li>The Dart syntax in the last step that displays the
+welcome screen is:
+<!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-10" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-10"><pre class="highlight"><code><span class="nl">onPressed:</span> <span class="n">_formProgress</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">_showWelcomeScreen</span> <span class="o">:</span> <span class="kc">null</span><span class="o">,</span>
+</code></pre></div></div></div>    </div>
+    <p>This is a Dart conditional assignment and has the syntax: 
+<code class="highlighter-rouge">condition ? expression1 : expression2</code>. 
+If the expression <code class="highlighter-rouge">_formProgress == 1</code> is true, the entire expression results
+in the value on the left hand side of the <code class="highlighter-rouge">:</code>, which is the
+<code class="highlighter-rouge">_showWelcomeScreen</code> method in this case.</p>
+  </li>
+</ul>
+
+<h2 id="step-25-launch-dart-devtools">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#step-25-launch-dart-devtools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2.5: Launch Dart DevTools</h2>
+
+<p>How do you debug a Flutter web app?
+It’s not too different from debugging any Flutter app.
+You want to use <a href="https://flutter.dev/docs/development/tools/devtools/overview">Dart DevTools</a>!
+(Not to be confused with Chrome DevTools.)</p>
+
+<p>Our app currently has no bugs, but let’s check it out anyway.
+The following instructions for launching DevTools applies to any workflow,
+but there is a short cut if you’re using IntelliJ.
+See the tip at the end of this section for more information.</p>
+
+<ol>
+<li>
+    <p>Run the app.<br>
+If your app isn’t currently running, launch it.
+From the command line, use <code class="highlighter-rouge">flutter run -d chrome</code>,
+or select the <strong>Chrome</strong> device from the pull down
+and launch it from your IDE.</p>
+  </li>
+
+<li>
+    <p>Get the web socket info for DevTools.<br>
+At the command line, or in the IDE,
+you should see a message stating something like the following:</p>
+
+    <div class="language-terminal highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-11" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-11"><pre class="highlight"><code><span class="go">Launching lib/main.dart on Chrome in debug mode...
+Building application for the web...                                11.7s
+Attempting to connect to browser instance..
+Debug service listening on **ws://127.0.0.1:54998/pJqWWxNv92s=**
+</span></code></pre></div></div></div>    </div>
+    <p>Copy the address of the debug service, shown in bold.
+You will need that to launch DevTools.</p>
+  </li>
+
+<li>
+    <p>Ensure that DevTools is installed.<br>
+Do you have <a href="https://flutter.dev/docs/development/tools/devtools/overview#how-do-i-install-devtools">DevTools installed</a>?
+If you are using an IDE,
+make sure you have the Flutter and Dart plugins set up,
+as described in the <a href="https://flutter.dev/docs/development/tools/devtools/vscode">VS Code</a> and
+<a href="https://flutter.dev/docs/development/tools/devtools/android-studio">Android Studio and IntelliJ</a> pages.
+If you are working at the command line,
+launch the DevTools server as explained in the
+<a href="https://flutter.dev/docs/development/tools/devtools/cli">DevTools command line</a> page.</p>
+  </li>
+
+<li>
+    <p>Connect to DevTools.<br>
+When DevTools launches, you should see something like the following:</p>
+
+    <div class="language-terminal highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-12" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-12"><pre class="highlight"><code><span class="go">Serving DevTools at http://127.0.0.1:9100
+</span></code></pre></div></div></div>    </div>
+    <p>Go to this URL in a Chrome browser. You should see the DevTools
+launch screen. It should look like the following:</p>
+
+    <p><img src="./Write your first Flutter app on the web - Flutter_files/devtools-launch-screen-4ae7b8f3db32b3e8dd7a10c0778970ec2740efa9fcc3f6fa4c3f86a4e0b6d4d4.png" alt="Screenshot of the DevTools launch screen" width="100%"></p>
+  </li>
+
+<li>
+    <p>Connect to running app.<br>
+Under <strong>Connect to a running site</strong>,
+paste the ws location that you copied in step 2,
+and click Connect. You should now see Dart DevTools
+running successfully in your Chrome browser:</p>
+
+    <p><img src="./Write your first Flutter app on the web - Flutter_files/devtools-running-858cb89db0372f1c8ee1ce2b1d06404bb8e98bcc59a39305b2af578d3039d721.png" alt="Screenshot of DevTools running screen" width="100%"></p>
+
+    <p>Congratulations, you are now running Dart DevTools!</p>
+  </li>
+</ol>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  This is not the only way to launch DevTools.
+  If you are using IntelliJ,
+  you can open DevTools by going to
+  <strong>Flutter Inspector</strong> -&gt; <strong>More Actions</strong> -&gt; <strong>Open DevTools</strong>:</p>
+
+  <p><img src="./Write your first Flutter app on the web - Flutter_files/intellij-devtools-76785fa8e60d7bd572182c23d6220f5f756e5f485e11480d59094c7d5c01945d.png" alt="Screenshot of Flutter inspector with DevTools menu" width="100%"></p>
+</aside>
+
+<ol>
+<li>
+    <p>Set a breakpoint.<br>
+Now that you have DevTools running,
+select the <strong>Debugger</strong> tab in the blue bar along the top.
+The debugger pane appears and, in the lower left,
+see a list of libraries used in the example.
+Select <code class="highlighter-rouge">signin/main.dart</code> to display your Dart code
+in the center pane.</p>
+
+    <p><img src="./Write your first Flutter app on the web - Flutter_files/devtools-debugging-ac708fea36890a97c850ba722054cedf5daa5ec2987c2dae516872f59a474843.png" alt="Screenshot of the DevTools debugger" width="100%"></p>
+  </li>
+
+<li>
+    <p>Set a breakpoint.<br>
+In the Dart code,
+scroll down to where <code class="highlighter-rouge">progress</code> is updated:</p>
+
+    <!-- skip -->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-13" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-13"><pre class="highlight"><code>    <span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">controller</span> <span class="k">in</span> <span class="n">controllers</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">controller</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">isNotEmpty</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">progress</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">controllers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div></div></div>    </div>
+
+    <p>Place a breakpoint on the line with the for loop by clicking to the
+left of the line number. The breakpoint now appears
+in the <strong>Breakpoints</strong> section to the left of the window.</p>
+  </li>
+
+<li>
+    <p>Trigger the breakpoint.<br>
+In the running app, click one of the text fields to gain focus.
+The app hits the breakpoint and pauses.
+In the DevTools screen, you can see on the left
+the value of <code class="highlighter-rouge">progress</code>, which is 0. This is to be expected,
+since none of the fields are filled in. Step through the for loop to see
+the program execution.</p>
+  </li>
+
+<li>
+    <p>Resume the app.<br>
+Resume the app by clicking the green <strong>Resume</strong>
+button in the DevTools window.</p>
+  </li>
+
+<li>
+    <p>Delete the breakpoint.<br>
+Delete the breakpoint by clicking it again, and resume the app.</p>
+  </li>
+</ol>
+
+<p>This gives you a tiny glimpse of what is possible using DevTools,
+but there is lots more! For more information,
+see the <a href="https://flutter.dev/docs/development/tools/devtools">DevTools documentation</a>.</p>
+
+<h2 id="step-3-add-animation-for-sign-in-progress">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#step-3-add-animation-for-sign-in-progress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3: Add animation for sign in progress</h2>
+
+<p>It’s time to add animation! In this final step, you’ll create the animation for
+the LinearProgressIndicator at the top of the sign in area. The animation has
+the following behavior:</p>
+
+<ul>
+  <li>When the app starts,
+a tiny red bar appears across the top of the sign in area.</li>
+  <li>When one text field contains text,
+the red bar turns orange and animates one-third
+of the way across the sign in area.</li>
+  <li>When two text fields contain text,
+the orange bar turns yellow and animates two-thirds
+of the way across the sign in area.</li>
+  <li>When all three text fields contain text,
+the orange bar turns green and animates all the
+way across the sign in area.
+Also, the <strong>Sign up</strong> button becomes enabled.</li>
+</ul>
+
+<ol>
+<li>
+    <p>Add an AnimatedProgressIndicator.<br>
+At the bottom of the file, add this widget:</p>
+
+    <!--skip-->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-14" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-14"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AnimatedProgressIndicator</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="o">{</span>
+  <span class="kd">final</span> <span class="kt">double</span> <span class="n">value</span><span class="o">;</span>
+
+  <span class="n">AnimatedProgressIndicator</span><span class="o">({</span>
+    <span class="nd">@required</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">,</span>
+  <span class="o">});</span>
+
+  <span class="nd">@override</span>
+  <span class="n">State</span><span class="o">&lt;</span><span class="n">StatefulWidget</span><span class="o">&gt;</span> <span class="n">createState</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">_AnimatedProgressIndicatorState</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">_AnimatedProgressIndicatorState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">AnimatedProgressIndicator</span><span class="o">&gt;</span>
+    <span class="k">with</span> <span class="n">SingleTickerProviderStateMixin</span> <span class="o">{</span>
+  <span class="n">AnimationController</span> <span class="n">_controller</span><span class="o">;</span>
+  <span class="n">Animation</span><span class="o">&lt;</span><span class="n">Color</span><span class="o">&gt;</span> <span class="n">_colorAnimation</span><span class="o">;</span>
+  <span class="n">Animation</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">_curveAnimation</span><span class="o">;</span>
+
+  <span class="kt">void</span> <span class="n">initState</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="na">initState</span><span class="o">();</span>
+    <span class="n">_controller</span> <span class="o">=</span> <span class="n">AnimationController</span><span class="o">(</span>
+        <span class="nl">duration:</span> <span class="n">Duration</span><span class="o">(</span><span class="nl">milliseconds:</span> <span class="mi">1200</span><span class="o">),</span> <span class="nl">vsync:</span> <span class="k">this</span><span class="o">);</span>
+
+    <span class="kd">var</span> <span class="n">colorTween</span> <span class="o">=</span> <span class="n">TweenSequence</span><span class="o">([</span>
+      <span class="n">TweenSequenceItem</span><span class="o">(</span>
+        <span class="nl">tween:</span> <span class="n">ColorTween</span><span class="o">(</span><span class="nl">begin:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">red</span><span class="o">,</span> <span class="nl">end:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">orange</span><span class="o">),</span>
+        <span class="nl">weight:</span> <span class="mi">1</span><span class="o">,</span>
+      <span class="o">),</span>
+      <span class="n">TweenSequenceItem</span><span class="o">(</span>
+        <span class="nl">tween:</span> <span class="n">ColorTween</span><span class="o">(</span><span class="nl">begin:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">orange</span><span class="o">,</span> <span class="nl">end:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">yellow</span><span class="o">),</span>
+        <span class="nl">weight:</span> <span class="mi">1</span><span class="o">,</span>
+      <span class="o">),</span>
+      <span class="n">TweenSequenceItem</span><span class="o">(</span>
+        <span class="nl">tween:</span> <span class="n">ColorTween</span><span class="o">(</span><span class="nl">begin:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">yellow</span><span class="o">,</span> <span class="nl">end:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">green</span><span class="o">),</span>
+        <span class="nl">weight:</span> <span class="mi">1</span><span class="o">,</span>
+      <span class="o">),</span>
+    <span class="o">]);</span>
+
+    <span class="n">_colorAnimation</span> <span class="o">=</span> <span class="n">_controller</span><span class="o">.</span><span class="na">drive</span><span class="o">(</span><span class="n">colorTween</span><span class="o">);</span>
+    <span class="n">_curveAnimation</span> <span class="o">=</span> <span class="n">_controller</span><span class="o">.</span><span class="na">drive</span><span class="o">(</span><span class="n">CurveTween</span><span class="o">(</span><span class="nl">curve:</span> <span class="n">Curves</span><span class="o">.</span><span class="na">easeIn</span><span class="o">));</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="n">didUpdateWidget</span><span class="o">(</span><span class="n">oldWidget</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="na">didUpdateWidget</span><span class="o">(</span><span class="n">oldWidget</span><span class="o">);</span>
+    <span class="n">_controller</span><span class="o">.</span><span class="na">animateTo</span><span class="o">(</span><span class="n">widget</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">AnimatedBuilder</span><span class="o">(</span>
+      <span class="nl">animation:</span> <span class="n">_controller</span><span class="o">,</span>
+      <span class="nl">builder:</span> <span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">child</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">LinearProgressIndicator</span><span class="o">(</span>
+        <span class="nl">value:</span> <span class="n">_curveAnimation</span><span class="o">.</span><span class="na">value</span><span class="o">,</span>
+        <span class="nl">valueColor:</span> <span class="n">_colorAnimation</span><span class="o">,</span>
+        <span class="nl">backgroundColor:</span> <span class="n">_colorAnimation</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">withOpacity</span><span class="o">(</span><span class="mf">0.4</span><span class="o">),</span>
+      <span class="o">),</span>
+    <span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div></div>    </div>
+  </li>
+
+<li>
+    <p>Use the new AnimatedProgressIndicator.<br>
+Then, replace the <code class="highlighter-rouge">LinearProgressIndicator</code> in the Form with this new
+<code class="highlighter-rouge">AnimatedProgressIndicator</code>:</p>
+
+    <!--skip-->
+    <div class="language-dart highlighter-rouge">
+<div class="highlight"><div class="code-excerpt__code"><button class="code-excerpt__copy-btn" type="button" data-toggle="tooltip" title="" data-clipboard-target="#code-excerpt-15" data-original-title="Copy code">  <i class="material-icons">content_copy</i></button><div id="code-excerpt-15"><pre class="highlight"><code><span class="o">...</span>
+      <span class="nl">child:</span> <span class="n">Column</span><span class="o">(</span>
+        <span class="nl">mainAxisSize:</span> <span class="n">MainAxisSize</span><span class="o">.</span><span class="na">min</span><span class="o">,</span>
+        <span class="nl">children:</span> <span class="o">[</span>
+          <span class="n">AnimatedProgressIndicator</span><span class="o">(</span><span class="nl">value:</span> <span class="n">_formProgress</span><span class="o">),</span> <span class="c1">// NEW</span>
+          <span class="n">Text</span><span class="o">(</span><span class="s">'Sign Up'</span><span class="o">,</span> <span class="nl">style:</span> <span class="n">Theme</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">textTheme</span><span class="o">.</span><span class="na">display1</span><span class="o">),</span>
+          <span class="n">Padding</span><span class="o">(</span>
+<span class="o">...</span>
+</code></pre></div></div></div>    </div>
+
+    <p>This widget uses an <code class="highlighter-rouge">AnimatedBuilder</code> to animate the progress indicator to the
+latest value.</p>
+  </li>
+
+<li>
+    <p>Run the app.<br>
+Type anything into the three fields to verify that the animation works,
+and that clicking the <strong>Sign up</strong> button brings up the Welcome screen.</p>
+  </li>
+</ol>
+
+<h3 id="complete-sample">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#complete-sample" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complete Sample</h3>
+
+<!-- skip -->
+<div><iframe src="./Write your first Flutter app on the web - Flutter_files/embed-flutter(1).html" style="width: 100%; height: 600px;"></iframe></div>
+
+<h3 class="no_toc" id="observations-3">Observations</h3>
+
+<ul>
+  <li>You can use an <code class="highlighter-rouge">AnimationController</code> to run any animation.</li>
+  <li>
+<code class="highlighter-rouge">AnimatedBuilder</code> rebuilds the widget tree when the value
+of an <code class="highlighter-rouge">Animation</code> changes.</li>
+  <li>Using a <code class="highlighter-rouge">Tween</code>, you can interpolate between almost any value,
+in this case, <code class="highlighter-rouge">Color</code>.</li>
+</ul>
+
+<h2 id="what-next">
+<a class="anchor" href="https://flutter.dev/docs/get-started/codelab-web#what-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What next?</h2>
+
+<p>Congratulations!
+You have created your first web app using Flutter!</p>
+
+<p>If you’d like to continue playing with this example,
+perhaps you could add form validation.
+For advice on how to do this,
+see the <a href="https://flutter.dev/docs/cookbook/forms/validation">Building a form with validation</a>
+recipe in the <a href="https://flutter.dev/docs/cookbook">Flutter cookbook</a>.</p>
+
+<p>For more information on Flutter web apps,
+Dart DevTools, or Flutter animations, see the following:</p>
+
+<ul>
+  <li><a href="https://flutter.dev/docs/development/ui/animations">Animation docs</a></li>
+  <li><a href="https://flutter.dev/docs/development/tools/devtools/overview">Dart DevTools</a></li>
+  <li>
+<a href="https://flutter.dev/docs/codelabs/implicit-animations">Implicit animations</a> codelab</li>
+  <li><a href="https://github.com/flutter/samples/tree/master/web">Web samples</a></li>
+</ul>
+
+
+        
+      </div>
+    </main>
+  </div>
+</div>
+
+
+    <footer class="site-footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 site-footer__wrapper">
+        <div class="site-footer__logo">
+          <img src="./Write your first Flutter app on the web - Flutter_files/flutter-mono-81x100.png" alt="Flutter Logo" width="81" height="100">
+        </div>
+        <div class="site-footer__content">
+          <ul class="site-footer__link-list">
+              <li><a href="https://groups.google.com/forum/#!forum/flutter-dev">flutter-dev@</a></li>
+              <li><a href="https://flutter.dev/tos">terms</a></li>
+              <li><a href="https://flutter.dev/security">security</a></li>
+              <li><a href="https://www.google.com/intl/en/policies/privacy">privacy</a></li>
+              <li><a href="https://flutter-es.io/">español</a></li>
+              <li><a href="https://flutter.cn/" class="text-nowrap">社区中文资源</a></li>
+          </ul>
+
+          <p class="licenses">
+            Except as otherwise noted,
+            this work is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0">Creative
+            Commons Attribution 4.0 International License</a>,
+            and code samples are licensed under the BSD License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    <script async="" defer="" src="./Write your first Flutter app on the web - Flutter_files/f.txt"></script>
+  
+
+</body></html>

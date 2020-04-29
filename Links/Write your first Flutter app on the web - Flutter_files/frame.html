@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://dartpad.dev/scripts/frame.html#/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <style>
+        body {
+            font-size: 12pt;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+    <script>
+        replaceJavaScript = function (value) {
+            // Remove the old node.
+            var oldNode = document.getElementById('compiledJsScript');
+            if (oldNode && oldNode.parentNode) {
+                oldNode.parentNode.removeChild(oldNode);
+            }
+
+            // Create a new node.
+            var scriptNode = document.createElement('script');
+            scriptNode.setAttribute('id', 'compiledJsScript');
+            scriptNode.text = value;
+            document.head.appendChild(scriptNode);
+        };
+
+        messageHandler = function (e) {
+            var obj = e.data;
+            var command = obj.command;
+            var body = document.body;
+
+            if (command === 'setCss') {
+                document.getElementById('styleId').innerHTML = obj.css;
+            } else if (command === 'setHtml') {
+                body.innerHTML = obj.html;
+            } else if (command === 'execute') {
+                // Replace all three.
+                body.innerHTML = obj.html;
+                document.getElementById('styleId').innerHTML = obj.css;
+                replaceJavaScript(obj.js);
+            }
+        };
+
+        window.addEventListener('load', function () {
+            window.addEventListener('message', messageHandler, false);
+            parent.postMessage({'sender': 'frame', 'type': 'ready'}, '*');
+        });
+    </script>
+    <style id="styleId"></style>
+    <script src="./require.js"></script>
+    
+<script id="compiledJsScript">var testKey = '__TESTRESULT__ ';
+
+function dartPrint(message) {
+  if (message.startsWith(testKey)) {
+    var resultMsg = JSON.parse(message.substring(testKey.length));
+    resultMsg.sender = 'frame';
+    resultMsg.type = 'testResult';
+    parent.postMessage(resultMsg, '*');
+  } else {
+    parent.postMessage(
+      {'sender': 'frame', 'type': 'stdout', 'message': message.toString()}, '*');
+  }
+}
+// Unload previous version.
+require.undef('dartpad_main');
+
+var _thrownDartMainRunner = false;
+
+window.onerror = function(message, url, lineNumber, colno, error) {
+  if (!_thrownDartMainRunner) {
+    var errorMessage = '';
+    if (error != null) {
+      errorMessage = 'Error: ' + error;
+    } 
+    parent.postMessage(
+      {'sender': 'frame', 'type': 'stderr', 'message': message + errorMessage}, '*');
+  }
+  _thrownDartMainRunner = false;
+};
+
+require.config({
+  "baseUrl": "https://storage.googleapis.com/compilation_artifacts/2.9.0-edge.b0d35855d88ca656abd97e914becc2bea740b1a8/",
+  "waitSeconds": 60
+});
+
+define('dartpad_main', ['dart_sdk', 'flutter_web'], function(dart_sdk, flutter_web) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const app = flutter_web.src__material__app;
+  const framework = flutter_web.src__widgets__framework;
+  const scaffold = flutter_web.src__material__scaffold;
+  const colors = flutter_web.src__material__colors;
+  const basic = flutter_web.src__widgets__basic;
+  const card = flutter_web.src__material__card;
+  const editable_text = flutter_web.src__widgets__editable_text;
+  const form = flutter_web.src__widgets__form;
+  const flex = flutter_web.src__rendering__flex;
+  const progress_indicator = flutter_web.src__material__progress_indicator;
+  const text = flutter_web.src__widgets__text;
+  const theme = flutter_web.src__material__theme;
+  const edge_insets = flutter_web.src__painting__edge_insets;
+  const text_form_field = flutter_web.src__material__text_form_field;
+  const input_decorator = flutter_web.src__material__input_decorator;
+  const flat_button = flutter_web.src__material__flat_button;
+  const binding = flutter_web.src__widgets__binding;
+  var bootstrap = Object.create(dart.library);
+  var main = Object.create(dart.library);
+  var $map = dartx.map;
+  var $join = dartx.join;
+  var LoginScreenL = () => (LoginScreenL = dart.constFn(dart.legacy(main.LoginScreen)))();
+  var BuildContextL = () => (BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))();
+  var BuildContextLToLoginScreenL = () => (BuildContextLToLoginScreenL = dart.constFn(dart.fnType(LoginScreenL(), [BuildContextL()])))();
+  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
+  var WidgetL = () => (WidgetL = dart.constFn(dart.legacy(framework.Widget)))();
+  var BuildContextLToWidgetL = () => (BuildContextLToWidgetL = dart.constFn(dart.fnType(WidgetL(), [BuildContextL()])))();
+  var BuildContextLToLWidgetL = () => (BuildContextLToLWidgetL = dart.constFn(dart.legacy(BuildContextLToWidgetL())))();
+  var IdentityMapOfStringL$BuildContextLToLWidgetL = () => (IdentityMapOfStringL$BuildContextLToLWidgetL = dart.constFn(_js_helper.IdentityMap$(StringL(), BuildContextLToLWidgetL())))();
+  var JSArrayOfWidgetL = () => (JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(WidgetL())))();
+  var StringLToStringL = () => (StringLToStringL = dart.constFn(dart.fnType(StringL(), [StringL()])))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var ListOfStringL = () => (ListOfStringL = dart.constFn(core.List$(StringL())))();
+  var ListLOfStringL = () => (ListLOfStringL = dart.constFn(dart.legacy(ListOfStringL())))();
+  var boolLAndListLOfStringLTovoid = () => (boolLAndListLOfStringLTovoid = dart.constFn(dart.fnType(dart.void, [boolL()], [ListLOfStringL()])))();
+  const CT = Object.create(null);
+  var L0 = "file:///tmp/dartpadJITOBM/main.dart";
+  dart.defineLazy(CT, {
+    get C0() {
+      return C0 = dart.fn(main._result, boolLAndListLOfStringLTovoid());
+    }
+  }, false);
+  bootstrap.main = function main$() {
+    return async.async(dart.void, function* main$() {
+      yield ui.webOnlyInitializePlatform();
+      main.main();
+    });
+  };
+  main.LoginApp = class LoginApp extends framework.StatelessWidget {
+    build(context) {
+      return new app.MaterialApp.new({routes: new (IdentityMapOfStringL$BuildContextLToLWidgetL()).from(["/", dart.fn(context => new main.LoginScreen.new(), BuildContextLToLoginScreenL())])});
+    }
+  };
+  (main.LoginApp.new = function() {
+    main.LoginApp.__proto__.new.call(this);
+    ;
+  }).prototype = main.LoginApp.prototype;
+  dart.addTypeTests(main.LoginApp);
+  dart.addTypeCaches(main.LoginApp);
+  dart.setMethodSignature(main.LoginApp, () => ({
+    __proto__: dart.getMethods(main.LoginApp.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(main.LoginApp, L0);
+  main.LoginScreen = class LoginScreen extends framework.StatelessWidget {
+    build(context) {
+      return new scaffold.Scaffold.new({backgroundColor: colors.Colors.grey._get(200), body: new basic.Center.new({child: new basic.SizedBox.new({width: 400.0, child: new card.Card.new({child: new main.LoginForm.new()})})})});
+    }
+  };
+  (main.LoginScreen.new = function() {
+    main.LoginScreen.__proto__.new.call(this);
+    ;
+  }).prototype = main.LoginScreen.prototype;
+  dart.addTypeTests(main.LoginScreen);
+  dart.addTypeCaches(main.LoginScreen);
+  dart.setMethodSignature(main.LoginScreen, () => ({
+    __proto__: dart.getMethods(main.LoginScreen.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(main.LoginScreen, L0);
+  main.LoginForm = class LoginForm extends framework.StatefulWidget {
+    createState() {
+      return new main._LoginFormState.new();
+    }
+  };
+  (main.LoginForm.new = function() {
+    main.LoginForm.__proto__.new.call(this);
+    ;
+  }).prototype = main.LoginForm.prototype;
+  dart.addTypeTests(main.LoginForm);
+  dart.addTypeCaches(main.LoginForm);
+  dart.setMethodSignature(main.LoginForm, () => ({
+    __proto__: dart.getMethods(main.LoginForm.__proto__),
+    createState: dart.fnType(dart.legacy(main._LoginFormState), [])
+  }));
+  dart.setLibraryUri(main.LoginForm, L0);
+  var _firstNameTextController = dart.privateName(main, "_firstNameTextController");
+  var _lastNameTextController = dart.privateName(main, "_lastNameTextController");
+  var _usernameTextController = dart.privateName(main, "_usernameTextController");
+  var _formProgress = dart.privateName(main, "_formProgress");
+  main._LoginFormState = class _LoginFormState extends framework.State$(dart.legacy(main.LoginForm)) {
+    build(context) {
+      return new form.Form.new({child: new basic.Column.new({mainAxisSize: flex.MainAxisSize.min, children: JSArrayOfWidgetL().of([new progress_indicator.LinearProgressIndicator.new({value: this[_formProgress]}), new text.Text.new("Sign Up", {style: theme.Theme.of(context).textTheme.display1}), new basic.Padding.new({padding: new edge_insets.EdgeInsets.all(8.0), child: new text_form_field.TextFormField.new({controller: this[_firstNameTextController], decoration: new input_decorator.InputDecoration.new({hintText: "First name"})})}), new basic.Padding.new({padding: new edge_insets.EdgeInsets.all(8.0), child: new text_form_field.TextFormField.new({controller: this[_lastNameTextController], decoration: new input_decorator.InputDecoration.new({hintText: "Last name"})})}), new basic.Padding.new({padding: new edge_insets.EdgeInsets.all(8.0), child: new text_form_field.TextFormField.new({controller: this[_usernameTextController], decoration: new input_decorator.InputDecoration.new({hintText: "Username"})})}), new flat_button.FlatButton.new({color: colors.Colors.blue, textColor: colors.Colors.white, onPressed: null, child: new text.Text.new("Sign up")})])})});
+    }
+  };
+  (main._LoginFormState.new = function() {
+    this[_firstNameTextController] = new editable_text.TextEditingController.new();
+    this[_lastNameTextController] = new editable_text.TextEditingController.new();
+    this[_usernameTextController] = new editable_text.TextEditingController.new();
+    this[_formProgress] = 0.0;
+    main._LoginFormState.__proto__.new.call(this);
+    ;
+  }).prototype = main._LoginFormState.prototype;
+  dart.addTypeTests(main._LoginFormState);
+  dart.addTypeCaches(main._LoginFormState);
+  dart.setMethodSignature(main._LoginFormState, () => ({
+    __proto__: dart.getMethods(main._LoginFormState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(main._LoginFormState, L0);
+  dart.setFieldSignature(main._LoginFormState, () => ({
+    __proto__: dart.getFields(main._LoginFormState.__proto__),
+    [_firstNameTextController]: dart.finalFieldType(dart.legacy(editable_text.TextEditingController)),
+    [_lastNameTextController]: dart.finalFieldType(dart.legacy(editable_text.TextEditingController)),
+    [_usernameTextController]: dart.finalFieldType(dart.legacy(editable_text.TextEditingController)),
+    [_formProgress]: dart.fieldType(dart.legacy(core.double))
+  }));
+  main.main = function main$0() {
+    return binding.runApp(new main.LoginApp.new());
+  };
+  main._result = function _result(success, messages = null) {
+    let t0, t0$, t0$0;
+    let joinedMessages = (t0$0 = (t0$ = (t0 = messages, t0 == null ? null : t0[$map](StringL(), dart.fn(m => "\"" + dart.str(m) + "\"", StringLToStringL()))), t0$ == null ? null : t0$[$join](",")), t0$0 == null ? "" : t0$0);
+    core.print("__TESTRESULT__ {\"success\": " + dart.str(success) + ", \"messages\": [" + dart.str(joinedMessages) + "]}");
+  };
+  var C0;
+  dart.defineLazy(main, {
+    /*main.resultFunction*/get resultFunction() {
+      return C0 || CT.C0;
+    },
+    set resultFunction(_) {}
+  }, true);
+  dart.trackLibraries("dartpad_main", {
+    "file:///tmp/dartpadJITOBM/bootstrap.dart": bootstrap,
+    "file:///tmp/dartpadJITOBM/main.dart": main
+  }, {
+  }, null);
+  // Exports:
+  return {
+    tmp__dartpadJITOBM__bootstrap: bootstrap,
+    tmp__dartpadJITOBM__main: main
+  };
+});
+
+//# sourceMappingURL=main.dart.js.map
+
+require(['dart_sdk'],
+  function(sdk) {
+    'use strict';
+    sdk.developer._extensions.clear();
+    sdk.dart.hotRestart();
+});
+
+require(["dartpad_main", "dart_sdk"], function(dartpad_main, dart_sdk) {
+    // SDK initialization.
+    dart_sdk.dart.setStartAsyncSynchronously(true);
+    dart_sdk._isolate_helper.startRootIsolate(() => {}, []);
+
+    // Loads the `dartpad_main` module and runs its bootstrapped main method.
+    //
+    // DDK provides the user's code in a RequireJS module, which exports an
+    // object that looks something like this:
+    //
+    // {
+    //       [random_tokens]__bootstrap: bootstrap,
+    //       [random_tokens]__main: main
+    // }
+    //
+    // The first of those properties holds the compiled code for the bootstrap
+    // Dart file, which the server uses to wrap the user's code and wait on a
+    // call to dart:ui's `webOnlyInitializePlatform` before executing any of it.
+    //
+    // The loop below iterates over the properties of the exported object,
+    // looking for one that ends in "__bootstrap". Once found, it executes the
+    // bootstrapped main method, which calls the user's main method, which
+    // (presumably) calls runApp and starts Flutter's rendering. 
+
+    for (var prop in dartpad_main) {
+          if (prop.endsWith("__bootstrap")) {
+            dartpad_main[prop].main();
+          }
+    }});</script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="dart_sdk" src="./dart_sdk.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="flutter_web" src="./flutter_web.js"></script><style></style><meta flt-viewport="" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><meta id="flutterweb-theme" name="theme-color" content="#2196f3"></head>
+<body class=" hasGoogleVoiceExt" spellcheck="false" style="position: fixed; top: 0px; right: 0px; bottom: 0px; left: 0px; overflow: hidden; padding: 0px; margin: 0px; user-select: none; touch-action: none; font: 14px sans-serif; color: red;"><flt-glass-pane style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"><flt-semantics-placeholder role="button" aria-live="true" tabindex="0" aria-label="Enable accessibility" style="position: absolute; left: -1px; top: -1px; width: 1px; height: 1px;"></flt-semantics-placeholder><flt-scene-host aria-hidden="true" style="pointer-events: none;"><flt-scene flt-layer-state="updated" style="position: absolute;"><flt-transform flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px;"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-clip flt-layer-state="updated" clip-type="physical-shape" style="position: absolute; overflow: hidden; background-color: rgb(238, 238, 238); box-shadow: none; left: 0px; top: 0px; width: 527px; height: 550px; border-radius: 0px;"><flt-clip-interior style="position: absolute; left: 0px; top: 0px;"><flt-clip flt-layer-state="updated" clip-type="physical-shape" style="position: absolute; overflow: hidden; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.4) 0.333333px 0.666667px 1.57167px 0px; left: 67.5px; top: 132px; width: 392px; height: 286px; border-radius: 4px;"><flt-clip-interior style="position: absolute; left: -67.5px; top: -132px;"><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(66px, 131px);"><canvas width="788" height="210" style="position: absolute; width: 394px; height: 105px; z-index: -1;"></canvas><p style="font-size: 16px; font-weight: normal; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.54); position: absolute; white-space: pre; overflow-wrap: break-word; overflow: hidden; height: 19px; width: 376px; text-overflow: ellipsis; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 9.5, 69.5);">First name</p></flt-canvas></flt-picture><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(75.5px, 200.5px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-dom-canvas style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"><draw-rect flt-rect="Rect.fromLTRB(0.0, 2.0, 2.0, 17.0)" flt-paint="Instance of &#39;SurfacePaintData&#39;" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 2px); width: 2px; height: 15px; background-color: rgba(66, 133, 244, 0);"></draw-rect><p style="font-size: 16px; font-weight: normal; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.867); position: absolute; white-space: pre-wrap; overflow-wrap: break-word; overflow: hidden; height: 19px; width: 373px; transform-origin: 0px 0px 0px;"></p></flt-dom-canvas></flt-picture><flt-transform flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 19);"></flt-transform></flt-offset><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(73px, 263px);"><canvas width="760" height="73" style="position: absolute; width: 380px; height: 36.5px; z-index: -1;"></canvas><p style="font-size: 16px; font-weight: normal; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.54); position: absolute; white-space: pre; overflow-wrap: break-word; overflow: hidden; height: 19px; width: 376px; text-overflow: ellipsis; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 2.5, 1.5);">Last name</p></flt-canvas></flt-picture><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(75.5px, 264.5px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-dom-canvas style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"><draw-rect flt-rect="Rect.fromLTRB(0.0, 2.0, 2.0, 17.0)" flt-paint="Instance of &#39;SurfacePaintData&#39;" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 2px); width: 2px; height: 15px; background-color: rgba(66, 133, 244, 0);"></draw-rect><p style="font-size: 16px; font-weight: normal; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.867); position: absolute; white-space: pre-wrap; overflow-wrap: break-word; overflow: hidden; height: 19px; width: 373px; transform-origin: 0px 0px 0px;"></p></flt-dom-canvas></flt-picture><flt-transform flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 19);"></flt-transform></flt-offset><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture flt-layer-state="new" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(73px, 327px);"><canvas width="760" height="73" style="position: absolute; width: 380px; height: 36.5px; z-index: -1;"></canvas><p style="font-size: 16px; font-weight: normal; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.54); position: absolute; white-space: pre; overflow-wrap: break-word; overflow: hidden; height: 19px; width: 376px; text-overflow: ellipsis; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 2.5, 1.5);">Username</p></flt-canvas></flt-picture><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(75.5px, 328.5px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-dom-canvas style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"><draw-rect flt-rect="Rect.fromLTRB(0.0, 2.0, 2.0, 17.0)" flt-paint="Instance of &#39;SurfacePaintData&#39;" style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 2px); width: 2px; height: 15px; background-color: rgba(66, 133, 244, 0);"></draw-rect><p style="font-size: 16px; font-weight: normal; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.867); position: absolute; white-space: pre-wrap; overflow-wrap: break-word; overflow: hidden; height: 19px; width: 373px; transform-origin: 0px 0px 0px;"></p></flt-dom-canvas></flt-picture><flt-transform flt-layer-state="updated" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 19);"></flt-transform></flt-offset><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-dom-canvas style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"><p style="font-size: 14px; font-weight: 500; font-family: Roboto, Arial, sans-serif; color: rgba(0, 0, 0, 0.38); position: absolute; white-space: pre-wrap; overflow-wrap: break-word; overflow: hidden; height: 16px; width: 47px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 240, 386);">Sign up</p></flt-dom-canvas></flt-picture></flt-clip-interior></flt-clip><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-clip-interior></flt-clip></flt-offset></flt-offset><flt-picture flt-layer-state="updated" style="position: absolute; transform: translate(0px, 0px);"><flt-dom-canvas style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"><draw-rect flt-rect="Rect.fromLTRB(-40.0, 28.0, 40.0, 40.0)" flt-paint="Instance of &#39;SurfacePaintData&#39;" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, 478.917, -8.48528); filter: blur(3.9641px); width: 80px; height: 12px; background-color: rgba(0, 0, 0, 0.498);"></draw-rect><draw-rect flt-rect="Rect.fromLTRB(-40.0, 28.0, 40.0, 40.0)" flt-paint="Instance of &#39;SurfacePaintData&#39;" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, 478.917, -8.48528); width: 80px; height: 12px; background-color: rgba(183, 28, 28, 0.627);"></draw-rect><p style="text-align: center; line-height: 1; font-size: 10px; font-weight: 900; font-family: sans-serif; color: rgb(255, 255, 255); position: absolute; white-space: pre-wrap; overflow-wrap: break-word; overflow: hidden; height: 10px; width: 80px; transform-origin: 0px 0px 0px; transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, 478.21, -7.77817);">DEBUG</p></flt-dom-canvas></flt-picture></flt-transform></flt-scene></flt-scene-host></flt-glass-pane><flt-ruler-host style="position: fixed; visibility: hidden; overflow: hidden; top: 0px; left: 0px; width: 0px; height: 0px;"><div data-ruler="single-line" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-family: sans-serif; white-space: pre;">_</p><div></div></div><div data-ruler="min-intrinsic" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; margin: 0px; border: 0px; padding: 0px;"><p style="font-family: sans-serif; flex: 0 1 0%; display: inline; white-space: pre-line;">_</p></div><div data-ruler="constrained" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-family: sans-serif; display: block; overflow-wrap: break-word; width: 60.5px; white-space: pre-wrap;">_</p></div><div data-ruler="single-line" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 34px; font-family: Roboto, Arial, sans-serif; font-weight: normal; white-space: pre;">Sign Up</p><div></div></div><div data-ruler="min-intrinsic" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 34px; font-family: Roboto, Arial, sans-serif; font-weight: normal; flex: 0 1 0%; display: inline; white-space: pre-line;">Sign Up</p></div><div data-ruler="constrained" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 34px; font-family: Roboto, Arial, sans-serif; font-weight: normal; display: block; overflow-wrap: break-word; width: 116.5px; white-space: pre-wrap;">Sign Up</p></div><div data-ruler="single-line" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 16px; font-family: Roboto, Arial, sans-serif; font-weight: normal; white-space: pre;">Username</p><div></div></div><div data-ruler="min-intrinsic" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 16px; font-family: Roboto, Arial, sans-serif; font-weight: normal; flex: 0 1 0%; display: inline; white-space: pre-line;">Username</p></div><div data-ruler="constrained" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 16px; font-family: Roboto, Arial, sans-serif; font-weight: normal; display: block; overflow-wrap: break-word; overflow: hidden; text-overflow: ellipsis; width: 376.5px; white-space: pre;">Username</p></div><div data-ruler="single-line" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 16px; font-family: Roboto, Arial, sans-serif; font-weight: normal; white-space: pre;"> </p><div></div></div><div data-ruler="min-intrinsic" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 16px; font-family: Roboto, Arial, sans-serif; font-weight: normal; flex: 0 1 0%; display: inline; white-space: pre-line;"> </p></div><div data-ruler="constrained" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 16px; font-family: Roboto, Arial, sans-serif; font-weight: normal; display: block; overflow-wrap: break-word; white-space: pre;"> </p></div><div data-ruler="single-line" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 14px; font-family: Roboto, Arial, sans-serif; font-weight: 500; white-space: pre;">Sign up</p><div></div></div><div data-ruler="min-intrinsic" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 14px; font-family: Roboto, Arial, sans-serif; font-weight: 500; flex: 0 1 0%; display: inline; white-space: pre-line;">Sign up</p></div><div data-ruler="constrained" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 14px; font-family: Roboto, Arial, sans-serif; font-weight: 500; display: block; overflow-wrap: break-word; width: 47.5px; white-space: pre-wrap;">Sign up</p></div><div data-ruler="single-line" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 10px; font-family: sans-serif; font-weight: 900; line-height: 1; white-space: pre;">DEBUG</p><div></div></div><div data-ruler="min-intrinsic" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 10px; font-family: sans-serif; font-weight: 900; line-height: 1; flex: 0 1 0%; display: inline; white-space: pre-line;">DEBUG</p></div><div data-ruler="constrained" style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><p style="font-size: 10px; font-family: sans-serif; font-weight: 900; line-height: 1; display: block; overflow-wrap: break-word; width: 80.5px; white-space: pre-wrap;">DEBUG</p></div></flt-ruler-host></body></html>

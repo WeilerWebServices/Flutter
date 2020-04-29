@@ -1,0 +1,20 @@
+<svg width="334px" height="88px" viewBox="0 0 334 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Artboard" transform="translate(-1028.000000, -295.000000)" fill-rule="nonzero">
+            <g id="iPhone_X_Clay_Black" transform="translate(0.000000, 68.000000)">
+                <g id="Group-Copy-4" transform="translate(1028.000000, 227.000000)">
+                    <rect id="Rectangle" fill="#004DFF" x="0" y="0" width="334" height="88" rx="7.74074074"></rect>
+                    <g id="Group-4" opacity="0.400000006" transform="translate(184.500000, 44.500000) scale(1, -1) translate(-184.500000, -44.500000) translate(94.000000, 24.000000)" fill="#FFFFFF">
+                        <rect id="Rectangle-2" x="0.913875598" y="0.6" width="94" height="12" rx="6"></rect>
+                        <rect id="Rectangle-2-Copy" x="0.913875598" y="28.6" width="180" height="12" rx="6"></rect>
+                    </g>
+                    <g id="Group-5-Copy" transform="translate(21.000000, 19.000000)">
+                        <circle id="Oval" fill="#FFFFFF" opacity="0.400000006" cx="25" cy="25" r="25"></circle>
+                        <g id="icon1" transform="translate(9.558824, 18.382353)" fill="#004DFF">
+                            <rect id="Rectangle" x="12.5" y="11.7647059" width="13.9705882" height="1.47058824"></rect>
+                            <path d="M9.76336367,3.14571661 L9.76336367,9.76336367 L8.29277544,9.76336367 L8.29277544,3.14571661 L1.67512838,3.14571661 L1.67512838,1.67512838 L9.76336367,1.67512838 L9.76336367,3.14571661 Z" id="Combined-Shape" transform="translate(5.719246, 5.719246) rotate(45.000000) translate(-5.719246, -5.719246) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+</svg>

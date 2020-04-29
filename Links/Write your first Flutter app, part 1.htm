@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Write your first Flutter app, part 1</title>
+  <link rel="stylesheet" href="./Write your first Flutter app, part 1_files/css">
+  <link rel="stylesheet" href="./Write your first Flutter app, part 1_files/icon">
+  <link rel="stylesheet" href="./Write your first Flutter app, part 1_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Write your first Flutter app, part 1_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="first-flutter-app-pt1" environment="web" feedback-link="https://github.com/flutter/flutter/issues" selected="0" google-codelab-ready="" codelab-title="Write your first Flutter app, part 1" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>43 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#2"><span class="step"><span>Create the starter Flutter app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#3"><span class="step"><span>Use an external package</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#4"><span class="step"><span>Add a stateful widget</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#5"><span class="step"><span>Create an infinite scrolling ListView</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#6"><span class="step"><span>Next steps</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/flutter/flutter/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Write your first Flutter app, part 1</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>43 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="1" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <p>Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.</p>
+<p>In this codelab, you'll create a simple mobile Flutter app. If you're familiar with object-oriented code and basic programming concepts—such as variables, loops, and conditionals—then you can complete the codelab. You don't need previous experience with Dart or mobile programming.</p>
+<h2 is-upgraded="">What you'll learn in part 1</h2>
+<ul>
+<li>How to write a Flutter app that looks natural on iOS, Android, and the web</li>
+<li>Basic structure of a Flutter app</li>
+<li>Finding and using packages to extend functionality</li>
+<li>Using hot reload for a quicker development cycle</li>
+<li>How to implement a stateful widget</li>
+<li>How to create an infinite, lazily loaded list</li>
+</ul>
+<p>In <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/index.html?index=..%2F..%2Findex#0" target="_blank">part 2</a> of this codelab, you'll add interactivity, modify the app's theme, and add the ability to navigate to a new page (called a route in Flutter).</p>
+<h2 is-upgraded="">What you'll build in part 1</h2>
+<p>You'll implement a simple mobile app that generates proposed names for a startup company. The user can select and unselect names, saving the best ones. The code lazily generates 10 names at a time. As the user scrolls, new batches of names are generated. The user can scroll forever with new names being continually generated.</p>
+<p>The following animated GIF shows how the app works at the completion of part:</p>
+<p class="image-container"><img style="width: 454.00px" src="./Write your first Flutter app, part 1_files/6556f8b61acd6a89.gif"></p>
+<google-codelab-survey survey-id="first-flutter-app-pt1-1" upgraded="">
+
+
+<div class="survey-questions" survey-name="first-flutter-app-pt1-1"><div class="survey-question-wrapper"><h4>What is your level of experience with building mobile apps?</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps-label" for="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps"><span class="option-text">Never built mobile apps</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only"><span class="option-text">Built apps for the mobile web only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only"><span class="option-text">Built apps for Android only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only"><span class="option-text">Built apps for iOS only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios"><span class="option-text">Built apps for Android and iOS</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios"><span class="option-text">Built apps for mobile web, Android, and iOS</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="10" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <p>You need two pieces of software—the <a href="https://flutter.io/get-started/install/" target="_blank">Flutter SDK</a> and <a href="https://flutter.io/get-started/editor/" target="_blank">an editor</a>. (The codelab assumes that you're using Android Studio, but you can use your preferred editor.)</p>
+<p>You can run the codelab by using any of the following devices:</p>
+<ul>
+<li>A physical <a href="https://flutter.io/setup-macos/#set-up-your-android-device" target="_blank">Android</a> or <a href="https://flutter.io/setup-macos/#deploy-to-ios-devices" target="_blank">iOS</a> device connected to your computer and set to developer mode</li>
+<li>The<a href="https://flutter.io/setup-macos/#set-up-the-ios-simulator" target="_blank"> iOS simulator</a> (requires installing Xcode tools)</li>
+<li>The <a href="https://flutter.io/setup-macos/#set-up-the-android-emulator" target="_blank">Android Emulator</a> (requires setup in Android Studio)</li>
+<li>A browser (Chrome is required for debugging)</li>
+</ul>
+<p>If you want to compile your app to run on the web, you must enable this feature (which is currently in beta). To enable web support, use the following instructions:</p>
+<pre><code><span class="pln">$ flutter channel beta
+$ flutter upgrade
+$ flutter config </span><span class="pun">--</span><span class="pln">enable</span><span class="pun">-</span><span class="pln">web</span></code></pre>
+<p>You need only run the <code>config</code> command once. After enabling web support, every Flutter app you create also compiles for the web. In your IDE under the <strong>devices</strong> pulldown, or at the command line using <code>flutter devices</code>, you should now see <strong>Chrome</strong> and <strong>Web server</strong> listed. The <strong>Chrome</strong> device automatically starts Chrome. The <strong>Web server</strong> starts a server that hosts the app so that you can load it from any browser. Use the <strong>Chrome</strong> device during development so that you can use DevTools, and the web server when you want to test on other browsers. For more information, see <a href="https://flutter.dev/docs/get-started/web" target="_blank">Building a web application with Flutter</a> and <a href="https://flutter.dev/docs/get-started/codelab-web" target="_blank">Write your first Flutter app on the web</a>.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create the starter Flutter app" duration="5" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Create the starter Flutter app</h2>
+        <p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png">Create a simple, templated Flutter app by using the instructions in <a href="https://flutter.dev/docs/get-started/test-drive#androidstudio" target="_blank">Create the app</a>. Enter startup_namer (instead of myapp) as the project name. You'll modify the starter app to create the finished app.</p>
+<aside class="special"><p><strong>Tip:</strong> If you don't see the ability to start a new Flutter project as an option in your IDE, then make sure that you have the <a href="https://flutter.io/get-started/editor/#androidstudio" target="_blank">plugins installed for Flutter and Dart</a>.</p>
+</aside>
+<p>You'll mostly edit <strong><code>lib/main.dart</code></strong>, where the Dart code lives.</p>
+<p><img style="width: 23.73px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Replace the contents of <strong><code>lib/main.dart</code></strong>.<br>Delete all of the code from <strong><code>lib/main.dart</code></strong> and replace it with the following code, which displays "Hello World" in the center of the screen.</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">MyApp</span><span class="pun">());</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Welcome to Flutter'</span><span class="pun">,</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+        appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+          title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Welcome to Flutter'</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        body</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Center</span><span class="pun">(</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Hello World'</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Tip</strong>: When pasting code into your app, indentation can become skewed. You can fix it with the following Flutter tools:</p>
+<ul>
+<li>Android Studio/IntelliJ IDEA: Right-click the Dart code and select <strong>Reformat Code with dartfmt</strong>.</li>
+<li>VS Code: Right-click and select <strong>Format Document</strong>.</li>
+<li>Terminal: Run <code>flutter format &lt;filename&gt;</code>.</li>
+</ul>
+</aside>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Run the app</a>.  You should see either Android or iOS output, depending on your device.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 293.60px" src="./Write your first Flutter app, part 1_files/f9df7832965ede9f.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 317.44px" src="./Write your first Flutter app, part 1_files/20374605026d582.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="special"><p><strong>Tip</strong>: The first time that you run on a physical device, it can take a while to load. Afterward, you can use hot reload for quick updates. In supported IDEs, <strong>Save</strong> also performs a hot reload if the app is running. When running an app directly from the console using <code>flutter run</code>, enter <code>r</code> to perform hot reload.</p>
+</aside>
+<p><img style="width: 27.00px" src="./Write your first Flutter app, part 1_files/cf1e10b838bf60ee.png"><strong> Observations</strong></p>
+<ul>
+<li>This example creates a Material app. <a href="https://material.io/guidelines/" target="_blank">Material</a> is a visual-design language that's standard on mobile and the web. Flutter offers a rich set of Material widgets.</li>
+<li>The main method uses arrow (<code>=&gt;</code>) notation. Use arrow notation for one-line functions or methods.</li>
+<li>The app extends <code>StatelessWidget</code>, which makes the app itself a widget. In Flutter, almost everything is a widget, including alignment, padding, and layout.</li>
+<li>The <code>Scaffold</code> widget, from the Material library, provides a default app bar, a title, and a body property that holds the widget tree for the home screen. The widget subtree can be quite complex.</li>
+<li>A widget's main job is to provide a <code>build</code> method that describes how to display the widget in terms of other, lower-level widgets.</li>
+<li>The body for this example consists of a <code>Center</code> widget containing a <code>Text</code> child widget. The <code>Center</code> widget aligns its widget subtree to the center of the screen.</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Use an external package" duration="8" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Use an external package</h2>
+        <p>In this step, you'll start using an open-source package named <a href="https://pub.dartlang.org/packages/english_words" target="_blank"><strong><code>english_words</code></strong></a>, which contains a few thousand of the most-used English words, plus some utility functions.</p>
+<p>You can find the <strong><code>english_words</code></strong> package, as well as many other open-source packages, at <a href="https://pub.dev/" target="_blank">pub.dev</a>.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> The pubspec file manages the assets for a Flutter app. In <strong><code>pubspec.yaml</code></strong>, append <code>english_words: ^3.1.0</code> (<strong><code>english_words</code></strong> 3.1.0 or higher) to the dependencies list:</p>
+<pre><code><span class="pln">dependencies</span><span class="pun">:</span><span class="pln">
+  flutter</span><span class="pun">:</span><span class="pln">
+    sdk</span><span class="pun">:</span><span class="pln"> flutter
+
+  cupertino_icons</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.1</span><span class="pun">.</span><span class="lit">2</span><span class="pln">
+  english_words</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">3.1</span><span class="pun">.</span><span class="lit">0</span><span class="pln">   </span><span class="com"># add this line</span></code></pre>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> While viewing the pubspec in Android Studio's editor view, click <strong>Packages get</strong>. This pulls the package into your project. You should see the following in the console:</p>
+<pre><code><span class="pln">flutter packages </span><span class="kwd">get</span><span class="pln">
+</span><span class="typ">Running</span><span class="pln"> </span><span class="str">"flutter packages get"</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> startup_namer</span><span class="pun">...</span><span class="pln">
+</span><span class="typ">Process</span><span class="pln"> finished </span><span class="kwd">with</span><span class="pln"> </span><span class="kwd">exit</span><span class="pln"> code </span><span class="lit">0</span></code></pre>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> In <strong><code>lib/main.dar</code></strong><strong>t</strong>, import the new package:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:english_words/english_words.dart'</span><span class="pun">;</span><span class="pln">  </span><span class="com">// Add this line.</span></code></pre>
+<p>As you type, Android Studio gives you suggestions for libraries to import. It then renders the import string in gray, letting you know that the imported library is unused (so far).</p>
+<p>Next, you'll use the <strong><code>english_words</code></strong> package to generate the text instead of using "Hello World".</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png">Make the following changes:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:english_words/english_words.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">MyApp</span><span class="pun">());</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> wordPair </span><span class="pun">=</span><span class="pln"> </span><span class="typ">WordPair</span><span class="pun">.</span><span class="pln">random</span><span class="pun">();</span><span class="pln"> </span><span class="com">// Add this line.</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Welcome to Flutter'</span><span class="pun">,</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+        appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+          title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Welcome to Flutter'</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Center</span><span class="pun">(</span><span class="pln">
+          </span><span class="com">//child: Text('Hello World'),   // Replace this text...</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">wordPair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">),</span><span class="pln">  </span><span class="com">// With this text.</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Tip:</strong> Pascal case (also known as upper camel case) means that each word in the string, including the first one, begins with an uppercase letter. So, <code>upper camel case</code> becomes <code>UpperCamelCase</code>.</p>
+</aside>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> If the app is running, click <strong>Flutter Hot Reload </strong><img style="width: 13.00px" src="./Write your first Flutter app, part 1_files/e11f6ccd1560a28b.png"> to update the running app. (From the command line, you can enter <code>r</code> to hot reload.) Each time you click hot reload or save the project, you should see a different word pair, chosen at random, in the running app. That's because the word pairing is generated inside the <code>build</code> method, which runs each time the <code>MaterialApp</code> requires rendering, or when toggling the <strong>Platform</strong> in the Flutter Inspector.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 293.50px" src="./Write your first Flutter app, part 1_files/57cfbac8f2b50e5b.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write your first Flutter app, part 1_files/30ed7f83a1500fa9.png"></p>
+</td></tr>
+</tbody></table>
+<p><strong>Problems?</strong></p>
+<p>If your app isn't running correctly, look for typos. If needed, use the code at the following links to get back on track.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/b3293b5bb0c0187bdbe8112f7759f4d75f4c040a/startup_namer/step2_use_package/pubspec.yaml" target="_blank">pubspec.yaml</a> </li>
+<li><a href="https://github.com/flutter/codelabs/blob/b3293b5bb0c0187bdbe8112f7759f4d75f4c040a/startup_namer/step2_use_package/lib/main.dart" target="_blank">lib/main.dart</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add a stateful widget" duration="4" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add a stateful widget</h2>
+        <p>Stateless widgets are immutable, meaning that their properties can't change—all values are final.</p>
+<p>Stateful widgets maintain state that might change during the lifetime of the widget. Implementing a stateful widget requires at least two classes: 1) a <a href="https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html" target="_blank"><code>StatefulWidget</code></a> that creates an instance of a <a href="https://docs.flutter.io/flutter/widgets/State-class.html" target="_blank"><code>State</code></a> class. The <code>StatefulWidget</code> object is, itself, immutable, but the <code>State</code> object persists over the lifetime of the widget.</p>
+<p>In this step, you'll add a stateful widget, <code>RandomWords</code>, which creates its <code>State</code> class, <code>RandomWordsState</code>. You'll then use <code>RandomWords</code> as a child inside the existing <code>MyApp</code> stateless widget.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Create a <code>minimal state</code> class. It can go anywhere in the file outside of <code>MyApp</code>, but the solution places it at the bottom of the file. Add the following text:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">RandomWordsState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">RandomWords</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// TODO Add build method</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Notice the declaration <code>State&lt;RandomWords&gt;</code>. This indicates that you're using the generic <code>State</code> class specialized for use with <code>RandomWords</code>. Most of the app's logic and state resides here—it maintains the state for the <code>RandomWords</code> widget. This class saves the list of generated word pairs, which grows infinitely as the user scrolls, and favorite word pairs (in <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0" target="_blank">part 2</a>), as the user adds or removes them from the list by toggling the heart icon.</p>
+<p><code>RandomWordsState</code> depends on the <code>RandomWords</code> class. You'll add that next.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Add the stateful <code>RandomWords</code> widget to <strong><code>main.dart</code></strong>. The <code>RandomWords</code> widget does little else besides creating its <code>State</code> class:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">RandomWords</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">RandomWordsState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">RandomWordsState</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>After adding the state class, the IDE complains that the class is missing a build method. Next, you'll add a basic build method that generates the word pairs by moving the word generation code from <code>MyApp</code> to <code>RandomWordsState</code>.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Add the <code>build()</code> method to <code>RandomWordsState</code>, as shown here:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">RandomWordsState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">RandomWords</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">                                  </span><span class="com">// Add from this line ... </span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">WordPair</span><span class="pln"> wordPair </span><span class="pun">=</span><span class="pln"> </span><span class="typ">WordPair</span><span class="pun">.</span><span class="pln">random</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">wordPair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">                                          </span><span class="com">// ... to this line.</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.50px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Remove the word-generation code from <code>MyApp</code> by making the following changes:</p>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">WordPair</span><span class="pln"> wordPair </span><span class="pun">=</span><span class="pln"> </span><span class="typ">WordPair</span><span class="pun">.</span><span class="pln">random</span><span class="pun">();</span><span class="pln">  </span><span class="com">// Delete this line.</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Welcome to Flutter'</span><span class="pun">,</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+        appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+          title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Welcome to Flutter'</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Center</span><span class="pun">(</span><span class="pln">
+          </span><span class="com">//child: Text(wordPair.asPascalCase), // Change this line to... </span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">RandomWords</span><span class="pun">(),</span><span class="pln">                 </span><span class="com">// ... this line.</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.50px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Hot reload the app. The app should behave as before, displaying a word pairing each time you hot reload or save the app.</p>
+<aside class="special"><p><strong>Tip</strong>: If you see the following warning on a hot reload, then consider restarting the app: </p>
+<p><strong>Reloading...<br>Not all changed program elements ran during view reassembly; consider restarting.<br><br></strong>It may be a false positive, but restarting ensures that your changes are reflected in the app's UI.</p>
+</aside>
+<p><strong>Problems?</strong></p>
+<p>If your app isn't running correctly, you can use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/b3293b5bb0c0187bdbe8112f7759f4d75f4c040a/startup_namer/step3_stateful_widget/lib/main.dart" target="_blank">lib/main.dart</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Create an infinite scrolling ListView" duration="15" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Create an infinite scrolling ListView</h2>
+        <p>In this step, you'll expand <code>RandomWordsState</code> to generate and display a list of word pairings. As the user scrolls, the list (displayed in a <code>ListView</code> widget) grows infinitely. The <code>builder</code> factory constructor in <code>ListView</code> allows you to lazily build a list view on demand.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Add a <code>_suggestions</code> list to the <code>RandomWordsState</code> class for saving suggested word pairings.  Also, add a <code>_biggerFont</code> variable for making the font size larger.</p>
+<aside class="special"><p><strong>Tip: </strong>Prefixing an identifier with an underscore enforces privacy in the Dart language.</p>
+</aside>
+<pre><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">RandomWordsState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">RandomWords</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Add the next two lines.</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">WordPair</span><span class="pun">&gt;</span><span class="pln"> _suggestions </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">WordPair</span><span class="pun">&gt;[];</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pln"> _biggerFont </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">TextStyle</span><span class="pun">(</span><span class="pln">fontSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">18</span><span class="pun">);</span><span class="pln"> 
+  </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Next, you'll add a <code>_buildSuggestions()</code> function to the <code>RandomWordsState</code> class. This method builds the <code>ListView</code> that displays the suggested word pairing.</p>
+<p>The <code>ListView</code> class provides a builder property, <code>itemBuilder</code>, that's a factory builder and callback function specified as an anonymous function. Two parameters are passed to the function—the <code>BuildContext</code> and the row iterator, <code>i</code>. The iterator begins at 0 and increments each time the function is called, once for every suggested word pairing. This model allows the suggestion list to grow infinitely as the user scrolls.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Add the entire <code>_buildSuggestions</code> function to the <code>RandomWordsState</code> class (delete the comments, if you prefer):</p>
+<pre><code><span class="pln">  </span><span class="typ">Widget</span><span class="pln"> _buildSuggestions</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">.</span><span class="pln">builder</span><span class="pun">(</span><span class="pln">
+      padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="lit">16</span><span class="pun">),</span><span class="pln">
+      </span><span class="com">// The itemBuilder callback is called once per suggested </span><span class="pln">
+      </span><span class="com">// word pairing, and places each suggestion into a ListTile</span><span class="pln">
+      </span><span class="com">// row. For even rows, the function adds a ListTile row for</span><span class="pln">
+      </span><span class="com">// the word pairing. For odd rows, the function adds a </span><span class="pln">
+      </span><span class="com">// Divider widget to visually separate the entries. Note that</span><span class="pln">
+      </span><span class="com">// the divider may be difficult to see on smaller devices.</span><span class="pln">
+      itemBuilder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> _context</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">// Add a one-pixel-high divider widget before each row </span><span class="pln">
+        </span><span class="com">// in the ListView.</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">.</span><span class="pln">isOdd</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Divider</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        </span><span class="com">// The syntax "i ~/ 2" divides i by 2 and returns an </span><span class="pln">
+        </span><span class="com">// integer result.</span><span class="pln">
+        </span><span class="com">// For example: 1, 2, 3, 4, 5 becomes 0, 1, 1, 2, 2.</span><span class="pln">
+        </span><span class="com">// This calculates the actual number of word pairings </span><span class="pln">
+        </span><span class="com">// in the ListView,minus the divider widgets.</span><span class="pln">
+        </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> index </span><span class="pun">=</span><span class="pln"> i </span><span class="pun">~/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln">
+        </span><span class="com">// If you've reached the end of the available word</span><span class="pln">
+        </span><span class="com">// pairings...</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">index </span><span class="pun">&gt;=</span><span class="pln"> _suggestions</span><span class="pun">.</span><span class="pln">length</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="com">// ...then generate 10 more and add them to the </span><span class="pln">
+          </span><span class="com">// suggestions list.</span><span class="pln">
+          _suggestions</span><span class="pun">.</span><span class="pln">addAll</span><span class="pun">(</span><span class="pln">generateWordPairs</span><span class="pun">().</span><span class="pln">take</span><span class="pun">(</span><span class="lit">10</span><span class="pun">));</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> _buildRow</span><span class="pun">(</span><span class="pln">_suggestions</span><span class="pun">[</span><span class="pln">index</span><span class="pun">]);</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>The <code>_buildSuggestions</code> function calls <code>_buildRow</code> once per word pair. That function displays each new pair in a <code>ListTile</code>, which allows you to make the rows more attractive in <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/index.html?index=..%2F..index#0" target="_blank">part 2</a>.</p>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Add a <code>_buildRow</code> function to <code>RandomWordsState</code>:</p>
+<pre><code><span class="pln">  </span><span class="typ">Widget</span><span class="pln"> _buildRow</span><span class="pun">(</span><span class="typ">WordPair</span><span class="pln"> pair</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ListTile</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">
+        pair</span><span class="pun">.</span><span class="pln">asPascalCase</span><span class="pun">,</span><span class="pln">
+        style</span><span class="pun">:</span><span class="pln"> _biggerFont</span><span class="pun">,</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Update the <code>build</code> method for <code>RandomWordsState</code> to use <code>_buildSuggestions()</code>, rather than directly calling the word-generation library. (<a href="https://docs.flutter.io/flutter/material/Scaffold-class.html" target="_blank"><code>Scaffold</code></a> implements the basic Material Design visual layout.)</p>
+<pre><code><span class="pln">  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">//final wordPair = WordPair.random(); // Delete these... </span><span class="pln">
+    </span><span class="com">//return Text(wordPair.asPascalCase); // ... two lines.</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pln"> </span><span class="pun">(</span><span class="pln">                   </span><span class="com">// Add from here... </span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+        title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Startup Name Generator'</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      body</span><span class="pun">:</span><span class="pln"> _buildSuggestions</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">                                      </span><span class="com">// ... to here.</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Update the <code>build</code> method for <code>MyApp</code>, changing the title, and changing the home property to a <code>RandomWords</code> widget.</p>
+<pre><code><span class="pln">  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Startup Name Generator'</span><span class="pun">,</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">RandomWords</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p><img style="width: 24.00px" src="./Write your first Flutter app, part 1_files/b2f84ff91b0e1396.png"> Restart the app. You should see a list of word pairings no matter how far you scroll.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write your first Flutter app, part 1_files/df2b3cb779e0020e.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Write your first Flutter app, part 1_files/ae47ef0ac2f492b8.png"></p>
+</td></tr>
+</tbody></table>
+<p><strong>Problems?</strong></p>
+<p>If your app isn't running correctly, you can use the code at the following link to get back on track.</p>
+<ul>
+<li><a href="https://github.com/flutter/codelabs/blob/b3293b5bb0c0187bdbe8112f7759f4d75f4c040a/startup_namer/step4_infinite_list/lib/main.dart" target="_blank">lib/main.dart</a></li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Next steps" duration="0" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Next steps</h2>
+        <h2 is-upgraded="">Congratulations!</h2>
+<p>You have completed part 1 of this codelab! If you'd like to extend this app, proceed to <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0" target="_blank">part 2</a>, where you will modify the app as follows:</p>
+<ul>
+<li>Add interactivity.</li>
+<li>Add the ability to navigate to a new route.</li>
+<li>Modify the theme color.</li>
+</ul>
+<p>When part 2 is completed, the app will look like this:</p>
+<p class="image-container"><img style="width: 454.00px" src="./Write your first Flutter app, part 1_files/7fcab088cd22cff7.gif"></p>
+<h2 is-upgraded="">Other next steps</h2>
+<p>Learn more about the Flutter SDK with the following resources:</p>
+<ul>
+<li><a href="https://flutter.dev/docs/development/ui/layout" target="_blank">Layouts in Flutter</a></li>
+<li><a href="https://flutter.dev/docs/development/ui/interactive" target="_blank">Add interactivity tutorial</a> </li>
+<li><a href="https://flutter.dev/docs/development/ui/widgets-intro" target="_blank">Introduction to widgets</a></li>
+<li><a href="https://flutter.dev/docs/get-started/flutter-for/android-devs" target="_blank">Flutter for Android developers</a></li>
+<li><a href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs" target="_blank">Flutter for React Native developers</a></li>
+<li><a href="https://flutter.dev/docs/get-started/flutter-for/web-devs" target="_blank">Flutter for web developers</a></li>
+<li><a href="https://www.youtube.com/flutterdev" target="_blank">Flutter Youtube channel</a></li>
+</ul>
+<p>Other resources include the following:</p>
+<ul>
+<li><a href="https://www.udacity.com/course/build-native-mobile-apps-with-flutter--ud905" target="_blank">Build Native Mobile Apps with Flutter</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/from-java-to-dart/#1" target="_blank">From Java to Dart codelab</a></li>
+<li><a href="https://flutter.dev/cookbook/" target="_blank">Flutter cookbook</a></li>
+<li><a href="https://flutter.dev/bootstrap-into-dart/" target="_blank">Bootstrap into Dart</a>: learn more about the language</li>
+</ul>
+<p>Please reach out to us at our <a href="mailto:flutter-dev@googlegroups.com" target="_blank">mailing list</a>. We'd love to hear from you!</p>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Write your first Flutter app, part 1_files/native-shim.js"></script>
+  <script src="./Write your first Flutter app, part 1_files/custom-elements.min.js"></script>
+  <script src="./Write your first Flutter app, part 1_files/prettify.js"></script>
+  <script src="./Write your first Flutter app, part 1_files/codelab-elements.js"></script>
+
+
+
+</body></html>

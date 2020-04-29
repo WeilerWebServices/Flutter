@@ -1,0 +1,16 @@
+.dart_tool
+.DS_Store
+*~
+*.pyc
+packages
+.packages
+.pub
+app/build
+config.yaml
+.flutter-plugins-dependencies
+# IntelliJ
+.idea
+*.iml
+
+# VSCode
+.vscode/

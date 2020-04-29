@@ -1,0 +1,18 @@
+- name: Get Started
+  description: Set up your environment and start building.
+  url: /docs/get-started/install
+- name: Widgets Catalog
+  description: Dip into the rich set of Flutter widgets available in the SDK.
+  url: /docs/development/ui/widgets/catalog
+- name: API Docs
+  description: Bookmark the API reference docs for the Flutter framework.
+  url: https://api.flutter.dev/
+- name: Cookbook
+  description: Browse the cookbook for many easy Flutter recipes.
+  url: /docs/cookbook
+- name: Samples
+  description: Check out the Flutter examples.
+  url: https://github.com/flutter/samples/blob/master/INDEX.md
+- name: Videos
+  description: View the many videos on the Flutter Youtube channel.
+  url: https://www.youtube.com/flutterdev

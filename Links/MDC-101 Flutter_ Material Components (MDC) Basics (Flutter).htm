@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>MDC-101 Flutter: Material Components (MDC) Basics (Flutter)</title>
+  <link rel="stylesheet" href="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/css">
+  <link rel="stylesheet" href="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/icon">
+  <link rel="stylesheet" href="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="mdc-101-flutter" environment="web" feedback-link="https://github.com/material-components/material-components-flutter-codelabs/issues" selected="0" google-codelab-ready="" codelab-title="MDC-101 Flutter: Material Components (MDC) Basics (Flutter)" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>14 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#2"><span class="step"><span>Download the codelab starter app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#3"><span class="step"><span>Add TextField widgets</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#4"><span class="step"><span>Add buttons</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#5"><span class="step"><span>All done</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/material-components/material-components-flutter-codelabs/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">MDC-101 Flutter: Material Components (MDC) Basics (Flutter)</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>14 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="0" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <h2 is-upgraded=""><strong>What are Material Design and Material Components for Flutter?</strong></h2>
+<p><strong>Material Design</strong> is a system for building bold and beautiful digital products. By uniting style, branding, interaction, and motion under a consistent set of principles and components, product teams can realize their greatest design potential.</p>
+
+<p><strong>Material Components for Flutter </strong>(<strong>MDC-Flutter</strong>) unite design and engineering with a library of components that create a  consistent user experience across apps and platforms. As the Material Design system evolves, these components are updated to ensure consistent pixel-perfect implementation, adhering to Google's front-end development standards. MDC is also available for Android, iOS, and the  web.</p>
+<p>In this codelab, you'll build a login page using several of MDC Flutter's components.</p>
+<h2 is-upgraded=""><strong>What you'll build</strong></h2>
+<p>This codelab is the first of four codelabs that will guide you through building an app called <strong>Shrine</strong>, an e-commerce app that sells clothing and home goods. It will demonstrate how you can customize components to reflect any brand or style using MDC-Flutter. </p>
+<p>In this codelab, you'll build a login page for Shrine that contains:</p>
+<ul>
+<li>An image of Shrine's logo</li>
+<li>The name of the app (Shrine)</li>
+<li>Two text fields, one for entering a username and the other for a password</li>
+<li>Two buttons</li>
+</ul>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/61b1e8713b49d00a.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/7c6dc28cdc4e643b.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="special"><table>
+<tbody><tr><td colspan="1" rowspan="1"><p>By the end of MDC-104, you'll build an app that looks like this:</p>
+<p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/e23a024b60357e32.png"></p>
+</td><td colspan="1" rowspan="1"><p>The related codelabs can be found at: </p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/mdc-102-flutter/" target="_blank">MDC-102: Material Design Structure and Layout</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/mdc-103-flutter" target="_blank">MDC-103: Material Design Theming with Color, Shape, Elevation and Type</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/mdc-104-flutter" target="_blank">MDC-104: Material Design Advanced Components</a></li>
+</ul>
+</td></tr>
+</tbody></table>
+</aside>
+<h2 is-upgraded=""><strong>MDC components in this codelab</strong></h2>
+<ul>
+<li>Text field</li>
+<li>Button</li>
+<li>Ripple (it is a visual form of feedback for touch events)</li>
+</ul>
+<aside class="special"><p>In this codelab you'll use the default components provided by MDC-Flutter. You'll learn to customize them in <a href="https://codelabs.developers.google.com/codelabs/mdc-103-flutter" target="_blank">MDC-103: Material Design Theming with Color, Shape, Elevation and Type</a>.</p>
+</aside>
+<google-codelab-survey survey-id="mdc-101-flutter-1" upgraded="">
+
+
+<div class="survey-questions" survey-name="mdc-101-flutter-1"><div class="survey-question-wrapper"><h4>How would you rate your level of experience with Flutter development?</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="how-would-you-rate-your-level-of-experience-with-flutter-development--novice-label" for="how-would-you-rate-your-level-of-experience-with-flutter-development--novice"><span class="option-text">Novice</span><input type="radio" id="how-would-you-rate-your-level-of-experience-with-flutter-development--novice" name="How would you rate your level of experience with Flutter development?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-would-you-rate-your-level-of-experience-with-flutter-development--intermediate-label" for="how-would-you-rate-your-level-of-experience-with-flutter-development--intermediate"><span class="option-text">Intermediate</span><input type="radio" id="how-would-you-rate-your-level-of-experience-with-flutter-development--intermediate" name="How would you rate your level of experience with Flutter development?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="how-would-you-rate-your-level-of-experience-with-flutter-development--proficient-label" for="how-would-you-rate-your-level-of-experience-with-flutter-development--proficient"><span class="option-text">Proficient</span><input type="radio" id="how-would-you-rate-your-level-of-experience-with-flutter-development--proficient" name="How would you rate your level of experience with Flutter development?"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="2" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <h2 is-upgraded="">Before you start</h2>
+<p>To start developing mobile apps with Flutter you need to:</p>
+<ol type="1" start="1">
+<li>Download and install the Flutter SDK.</li>
+<li>Update your PATH with the Flutter SDK.</li>
+<li>Install Android Studio with the Flutter and Dart plugins, or your favorite editor.</li>
+<li>Install an Android emulator, an iOS simulator (requires a Mac with Xcode), or use a physical device.</li>
+</ol>
+<p>For more information about Flutter installation, see <a href="https://flutter.dev/docs/get-started/install" target="_blank">Get Started: Install</a>. To set up an editor, see <a href="https://flutter.dev/docs/get-started/editor?tab=androidstudio" target="_blank">Get Started: Set up an editor</a>. When installing an Android emulator, feel free to use the default options such as a Pixel 3 phone with the latest System Image. It's recommended but not required to enable VM acceleration. After the above 4 steps have been completed, you can return to the codelab. To complete this codelab, you only need to install Flutter for one platform (Android or iOS).</p>
+<h2 is-upgraded="">Ensure your Flutter SDK is in the right state</h2>
+<p>Before proceeding with this codelab, make sure that your SDK is in the right state. If the Flutter SDK was installed previously, then use <code>flutter upgrade</code> to ensure that the SDK is at the latest state.</p>
+<pre> flutter upgrade</pre>
+<p>Running <code>flutter upgrade</code> will automatically run <code>flutter doctor.</code> If this a fresh Flutter install and no upgrade was necessary, then run <code>flutter doctor</code> manually. It will report if there are any dependencies you need to install to complete the setup. Feel free to ignore the check marks that are not relevant for you (for example Xcode if you do not intend to develop for iOS).</p>
+<pre> flutter doctor</pre>
+<h3 class="faq" is-upgraded="">Frequently Asked Questions</h3>
+<ul class="faq">
+<li><a href="https://stackoverflow.com/questions/50321966/where-is-darts-sdk-located-within-flutter-folder" target="_blank">Where is Dart's SDK located within /flutter folder?</a></li>
+<li><a href="https://stackoverflow.com/questions/50706353/how-to-accept-android-licenses" target="_blank">How do I accept Android licenses?</a></li>
+<li><a href="https://developer.android.com/studio/run/managing-avds.html" target="_blank">How do I create an Android virtual device in Android Studio?</a></li>
+</ul>
+
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Download the codelab starter app" duration="0" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Download the codelab starter app</h2>
+        <p><a href="https://github.com/material-components/material-components-flutter-codelabs/archive/101-starter.zip" target="_blank"><paper-button class="colored" raised=""><iron-icon icon="file-download"></iron-icon>Download starter project</paper-button></a> </p>
+<p>The starter project is located in the <code>material-components-flutter-codelabs-101-starter/mdc_100_series</code> directory.</p>
+<h2 is-upgraded=""><strong>...or clone it from GitHub</strong></h2>
+<p>To clone this codelab from GitHub, run the following commands:</p>
+<pre>git clone https://github.com/material-components/material-components-flutter-codelabs.git
+cd material-components-flutter-codelabs/mdc_100_series
+git checkout 101-starter</pre>
+<aside class="warning"><p>For more help: <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank">Cloning a repository from GitHub</a></p>
+</aside>
+
+<aside class="special"><h2 is-upgraded=""><strong>The right branch</strong></h2>
+<p>Codelabs MDC-101 through 104 consecutively build upon each other. So when you finish the code for 101, it becomes the starter code for 102! The code is divided across different branches, and you can list them all with this command: </p>
+<p><code>git branch --list</code></p>
+<p>To see the completed code, checkout the <code>102-starter_and_101-complete</code> branch. </p>
+</aside>
+<h2 is-upgraded=""><strong>Set up your project</strong></h2>
+<p>The following instructions assume you're using Android Studio (IntelliJ).</p>
+<aside class="special"><p><strong>Tip: </strong>Make sure you have the <a href="https://flutter.io/get-started/editor/#androidstudio" target="_blank">plugins installed for Flutter and Dart</a>.</p>
+</aside>
+<h2 is-upgraded=""><strong>Open the project</strong></h2>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>1. Open Android Studio. </p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>2. If you see the welcome screen, click <strong>Open an existing Android Studio project</strong>.</p>
+<p class="image-container"><img style="width: 357.20px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/open an existing project.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>3. Navigate to the <code>material-components-flutter-codelabs/mdc_100_series</code> directory and click Open. The project should open. </p>
+<p><strong>You can ignore any errors you see in Dart Analysis until you've built the project once.</strong></p>
+<p class="image-container"><img style="width: 300.12px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/folder structure.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>4. If prompted: </p>
+<ul>
+<li>Install any  platform and plugin updates or FlutterRunConfigurationType.</li>
+<li>If the Dart or Flutter SDK is not configured, set the <a href="https://stackoverflow.com/questions/50321966/where-is-darts-sdk-located-within-flutter-folder" target="_blank">Flutter SDK path for the Flutter plugin</a>.</li>
+<li>Configure Android frameworks.</li>
+<li>Click on "Get dependencies" or "Run ‘flutter packages get'".</li>
+</ul>
+<p>Then restart Android Studio.</p>
+<p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/Screen Shot 2018-04-24 at 12.17.22 PM.png"></p>
+<p class="image-container"><img style="width: 298.50px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/Frameworks Detected.png"><img style="width: 610.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/packages get.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded=""><strong>Run the starter app</strong></h2>
+<p>The following instructions assume you're testing on an Android emulator or device but you can also test on an iOS Simulator or device if you have Xcode installed. </p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p> 1. Select the device or emulator.</p>
+<p>If the Android emulator is not already running, select<strong> Tools -&gt; Android -&gt; AVD Manager</strong> to <a href="https://developer.android.com/studio/run/managing-avds.html#createavd" target="_blank">create a virtual device and start the emulator</a>. If an AVD already exists, you can start the emulator directly from the device selector in Android Studio, as shown in the next step.</p>
+<p>(For the iOS Simulator, if it is not already running, launch the simulator on your development machine by selecting<strong> Flutter Device Selection -&gt; Open iOS Simulator</strong>.)</p>
+<p class="image-container"><img style="width: 482.03px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/Screenshot 2020-02-11 at 12.35.21.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>2. Start your Flutter app:</p>
+<ul>
+<li>Look for the Flutter Device Selection dropdown menu at the top of your editor screen, and select the device (for example, iPhone SE or Android SDK built for &lt;version&gt;).</li>
+<li>Press the <strong>Play</strong> icon (<img style="width: 41.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/Screen Shot 2018-04-24 at 12.52.25 PM.png">).</li>
+</ul>
+<p class="image-container"><img style="width: 610.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/Screenshot 2020-02-11 at 13.18.39.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>If you were unable to run the app successfully, stop and troubleshoot your developer environment. Try navigating to <code>material-components-flutter-codelabs</code> or if you downloaded the .zip file <code>material-components-flutter-codelabs-...</code>) in the terminal and running <code>flutter create mdc_100_series</code>.</p>
+</aside>
+
+<p>Success! The starter code for Shrine's login page should be running in your simulator. You should see the Shrine logo and the name "Shrine" just below it.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/1c8d3201185ff7d7.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/9a6d552fce01b037.png"></p>
+</td></tr>
+</tbody></table>
+<p>Let's look at the code.</p>
+<h2 is-upgraded=""><strong>Widgets in </strong><strong><code>login.dart</code></strong></h2>
+<p>Open up <code>login.dart</code>. It should contain this:</p>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">LoginPage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">_LoginPageState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">_LoginPageState</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_LoginPageState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">LoginPage</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// TODO: Add text editing controllers (101)</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">SafeArea</span><span class="pun">(</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">(</span><span class="pln">
+          padding</span><span class="pun">:</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">24.0</span><span class="pun">),</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">80.0</span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+              children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+                </span><span class="typ">Image</span><span class="pun">.</span><span class="pln">asset</span><span class="pun">(</span><span class="str">'assets/diamond.png'</span><span class="pun">),</span><span class="pln">
+                </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">),</span><span class="pln">
+                </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'SHRINE'</span><span class="pun">),</span><span class="pln">
+              </span><span class="pun">],</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">120.0</span><span class="pun">),</span><span class="pln">
+            </span><span class="com">// TODO: Wrap Username with AccentColorOverride (103)</span><span class="pln">
+            </span><span class="com">// TODO: Remove filled: true values (103)</span><span class="pln">
+            </span><span class="com">// TODO: Wrap Password with AccentColorOverride (103)</span><span class="pln">
+            </span><span class="com">// TODO: Add TextField widgets (101)</span><span class="pln">
+            </span><span class="com">// TODO: Add button bar (101)</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// TODO: Add AccentColorOverride (103)</span></code></pre>
+<p>Notice that it contains an <code>import</code> statement and two new classes: </p>
+<ul>
+<li>The <code>import</code> statement brings Material Components into this file. </li>
+<li>The <code>LoginPage</code> class represents the entire page displayed in the simulator. </li>
+<li>The <code>_LoginPageState</code> class's <code>build()</code> function controls how all the widgets in our UI are created. </li>
+</ul>
+<aside class="special"><p>For more of the basics of the Flutter UI and what widgets are, you can take a <a href="https://flutter.io/widgets-intro/" target="_blank">Tour of the Flutter Widget Framework</a> or do the codelab <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1" target="_blank">Write Your First Flutter App, part 1</a>.</p>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add TextField widgets" duration="6" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Add TextField widgets</h2>
+        <p>To begin, we'll add two text fields to our login page, where users enter their username and password. We'll use the TextField widget, which displays a floating label and activates a touch ripple.</p>
+<aside class="special"><p>Material's text fields have been greatly enhanced to improve brand flexibility, with improvements backed by extensive user experience (UX) research for better usability and visual design. </p>
+<p>Learn more about the new text fields in their <a href="https://material.io/design/components/text-fields.html" target="_blank">article</a> of the Material Guidelines.</p>
+</aside>
+<p>This page is structured primarily with a <strong>ListView</strong>, which arranges its children in a scrollable column. Let's place text fields at the bottom.</p>
+<h2 is-upgraded=""><strong>Add the TextField widgets</strong></h2>
+<aside class="special"><p>The TODOs in the code include numbers, these refer to codelab number in which you will implement the change.</p>
+</aside>
+<p>Add two new text fields and a spacer after <code>SizedBox(height: 120.0)</code>.</p>
+<pre><code><span class="com">// TODO: Add TextField widgets (101)</span><span class="pln">
+</span><span class="com">// [Name]</span><span class="pln">
+</span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+  decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">(</span><span class="pln">
+    filled</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+    labelText</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Username'</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">),</span><span class="pln">
+</span><span class="pun">),</span><span class="pln">
+</span><span class="com">// spacer</span><span class="pln">
+</span><span class="typ">SizedBox</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">12.0</span><span class="pun">),</span><span class="pln">
+</span><span class="com">// [Password]</span><span class="pln">
+</span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+  decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">(</span><span class="pln">
+    filled</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+    labelText</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Password'</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">),</span><span class="pln">
+  obscureText</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">),</span></code></pre>
+<p>The text fields each have a <code>decoration:</code> field that takes an <strong>InputDecoration</strong> widget. The <code>filled:</code> field means the background of the text field is lightly filled in to help people recognize the tap or touch target area of the text field. The second text field's <code>obscureText: true</code> value automatically replaces the input that the user types with bullets, which is appropriate for passwords.</p>
+<p>Save your project (with the keystroke: command + s) which performs a hot reload. </p>
+<p>You should now see a page with two text fields for Username and Password! Check out the floating label and ink ripple animations:</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/a5756a6cc6ccf3a0.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/e7aedfe7937681c5.png"></p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>If the app doesn't update, click the "Play" button again, or click "Stop" followed by "Play."</p>
+</aside>
+
+<aside class="special"><p>TextField features include:</p>
+<ul>
+<li>The TextField widget's look can be easily changed. For the decoration field,  specify an InputDecoration value.</li>
+<li>The MDC text field displays touch feedback (called the MDC ripple or "ink") by default.</li>
+<li>The FormField is a similar widget that has special features for embedding fields in Forms.</li>
+<li><a href="https://docs.flutter.io/flutter/material/TextField-class.html" target="_blank">TextField class documentation</a></li>
+</ul>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add buttons" duration="6" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add buttons</h2>
+        <p>Next, we'll add two buttons to our login page: "Cancel" and "Next." We'll use two kinds of MDC button widgets: the <strong>FlatButton</strong> (called the "Text Button" in the Material Guidelines) and the <strong>RaisedButton</strong> (referred to as the "Contained Button").</p>
+<aside class="special"><h2 is-upgraded=""><strong>Choosing between text and c</strong><strong>ontained</strong><strong> buttons</strong></h2>
+<p>Why not simply display two contained buttons? Each button type indicates which actions are more important than others. </p>
+<p>A layout should contain a single prominent button. This makes it clear that other buttons have less importance. This prominent button represents the action we most want our users to take in order to advance through our app. </p>
+<p>The action we'd least like them to take is cancelling the login. Because a contained button draws the eye with its raised appearance, it should be used for the more important action. By comparison, the plain text button to the left of it looks less emphasized. </p>
+<p>Learn more about button hierarchy in the <a href="https://material.io/design/components/buttons.html" target="_blank">Buttons</a> article of the Material Guidelines.</p>
+</aside>
+<h2 is-upgraded=""><strong>Add the ButtonBar</strong></h2>
+<p>After the text fields, add the <code>ButtonBar</code> to the <code>ListView</code>'s children:</p>
+<pre><code><span class="com">// TODO: Add button bar (101)</span><span class="pln">
+</span><span class="typ">ButtonBar</span><span class="pun">(</span><span class="pln">
+  </span><span class="com">// TODO: Add a beveled rectangular border to CANCEL (103)</span><span class="pln">
+  children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+    </span><span class="com">// TODO: Add buttons (101)</span><span class="pln">
+  </span><span class="pun">],</span><span class="pln">
+</span><span class="pun">),</span></code></pre>
+<p>The <strong>ButtonBar</strong> arranges its children in a row.</p>
+<h2 is-upgraded=""><strong>Add the buttons</strong></h2>
+<p>Then add two buttons to the ButtonBar's list of <code>children</code>:</p>
+<pre><code><span class="pln">    </span><span class="com">// TODO: Add buttons (101)</span><span class="pln">
+    </span><span class="typ">FlatButton</span><span class="pun">(</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'CANCEL'</span><span class="pun">),</span><span class="pln">
+      onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">// TODO: Clear the text fields (101)</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+    </span><span class="com">// TODO: Add an elevation to NEXT (103)</span><span class="pln">
+    </span><span class="com">// TODO: Add a beveled rectangular border to NEXT (103)</span><span class="pln">
+    </span><span class="typ">RaisedButton</span><span class="pun">(</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'NEXT'</span><span class="pun">),</span><span class="pln">
+      onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// TODO: Show the next page (101) </span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">),</span></code></pre>
+<aside class="special"><h2 is-upgraded=""><strong>Why do we have empty blocks for the onPressed: fields? </strong></h2>
+<p>If we passed null, or didn't include the field (which then defaults to null), the buttons would become disabled. There would be no feedback on touch and we couldn't get a good idea of their enabled behavior. Using empty blocks prevents them from being disabled.</p>
+<p>For more information on buttons and their interactions, see <a href="https://flutter.io/tutorials/interactive/" target="_blank">Adding Interactivity to Your App</a>.</p>
+</aside>
+<p>Save your project. Under the last text field, you should see two buttons appear:</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/61b1e8713b49d00a.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/7c6dc28cdc4e643b.png"></p>
+</td></tr>
+</tbody></table>
+<p>The ButtonBar handles the layout work for you. It positions the buttons horizontally, so they appear next to one another, according to the padding in the current <strong>ButtonTheme</strong>. (You'll learn more about that in codelab <a href="http://go/mdc-103-flutter" target="_blank">MDC-103</a>.)</p>
+<p>Touching a button initiates an ink ripple animation, without causing anything else to happen. Let's add functionality into the anonymous <code>onPressed:</code> functions, so that the cancel button clears the text fields, and the next button dismisses the screen:</p>
+<h2 is-upgraded=""><strong>Add TextEditingControllers</strong></h2>
+<p>To make it possible to clear the text fields' values, we'll add <strong>TextEditingControllers </strong>to control their text. </p>
+<p>Right under the <code>_LoginPageState</code> class's declaration, add the controllers as <code>final</code> variables.</p>
+<pre><code><span class="pln">  </span><span class="com">// TODO: Add text editing controllers (101)</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> _usernameController </span><span class="pun">=</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">();</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> _passwordController </span><span class="pun">=</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">();</span></code></pre>
+<p>On the first text field's <code>controller:</code> field, set the <code>_usernameController</code>:</p>
+<pre><code><span class="com">// [Name]</span><span class="pln">
+</span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+  controller</span><span class="pun">:</span><span class="pln"> _usernameController</span><span class="pun">,</span></code></pre>
+<p>On the second text field's <code>controller:</code> field, now set the <code>_passwordController</code>:</p>
+<pre><code><span class="com">// [Password]</span><span class="pln">
+</span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+  controller</span><span class="pun">:</span><span class="pln"> _passwordController</span><span class="pun">,</span></code></pre>
+<h2 is-upgraded=""><strong>Edit onPressed</strong></h2>
+<p>Add a command to clear each controller in the FlatButton's <code>onPressed:</code> function:</p>
+<pre><code><span class="pln">    </span><span class="com">// TODO: Clear the text fields (101)</span><span class="pln">
+    _usernameController</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+    _passwordController</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span></code></pre>
+<p>Save your project. Now when you type something into the text fields, hitting cancel clears each field again.</p>
+<p>This login form is in good shape! Let's advance our users to the rest of the Shrine app.</p>
+<h2 is-upgraded=""><strong>Pop </strong></h2>
+<p>To dismiss this view, we want to <strong>pop </strong>(or remove) this page (which Flutter calls a <strong>route</strong>) off the navigation stack. </p>
+<aside class="special"><p><strong>Navigator</strong> maintains a stack of routes just like UINavigationController on iOS. <em>Pushing</em> a route places it at the top of the stack. <em>Popping</em> the stack removes the most recently added route. In <code>app.dart</code> of our app, calling <code>initialRoute: '/login',</code> adds the login screen to the Navigator, on top of what is passed in <code>home:</code>.</p>
+<p>Learn more about routes and navigation in <a href="https://flutter.io/cookbook/navigation/navigation-basics/" target="_blank">Navigation Basics</a>.</p>
+</aside>
+<p>In the RaisedButton's <code>onPressed:</code> function, pop the most recent route from the Navigator:</p>
+<pre><code><span class="pln">        </span><span class="com">// TODO: Show the next page (101) </span><span class="pln">
+        </span><span class="typ">Navigator</span><span class="pun">.</span><span class="pln">pop</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span></code></pre>
+<p>Lastly, open up <code>home.dart</code> and set <code>resizeToAvoidBottomInset</code> to <code>false</code> in the <code>Scaffold</code>:</p>
+<pre><code><span class="pln">    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      </span><span class="com">// TODO: Add app bar (102)</span><span class="pln">
+      </span><span class="com">// TODO: Add a grid view (102)</span><span class="pln">
+      body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Center</span><span class="pun">(</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'You did it!'</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+      </span><span class="com">// TODO: Set resizeToAvoidBottomInset (101)</span><span class="pln">
+      resizeToAvoidBottomInset</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">);</span></code></pre>
+<p>Doing this ensures that the keyboard's appearance does not alter the size of the home page or its widgets.</p>
+<p>That's it! Save the project. Go ahead and click "Next."</p>
+<p> You did it! </p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>Android</p>
+</td><td colspan="1" rowspan="1"><p>iOS</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/5e2e8d0b6020b497.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/9b53d5ce551a8c0b.png"></p>
+</td></tr>
+</tbody></table>
+<p>This screen is the starting point for our next codelab, which you'll work on in MDC-102.</p>
+<aside class="special"><p>About Buttons:</p>
+<ul>
+<li>In addition to FlatButton and RaisedButton, there's OutlineButton, FloatingActionButton IconButton, and more.</li>
+<li>Browse buttons and their documentation in the <a href="https://flutter.io/widgets/material" target="_blank">MDC Widgets catalog</a>.</li>
+</ul>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="All done" duration="0" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. All done</h2>
+        <p>We added text fields and buttons and hardly had to consider layout code. Material Components for Flutter come with a lot of style and can be placed on screen almost effortlessly.</p>
+<aside class="special"><p>The completed MDC-101 app is available in the <code>102-starter_and_101-complete</code> branch. </p>
+<p>You can test your version of the app against the app in that branch.</p>
+</aside>
+<h2 is-upgraded=""><strong>Next steps</strong></h2>
+<p>Text fields and buttons are two core components in the Material System, but there are many more! You can also explore the rest of the <a href="https://flutter.io/widgets/material/" target="_blank">widgets in Flutter's Material Components library</a>.</p>
+<p>Alternatively, head over to <a href="https://codelabs.developers.google.com/codelabs/mdc-102-flutter" target="_blank">MDC-102: Material Design Structure and Layout</a> to learn about the components covered in MDC-102 for Flutter.</p>
+<p><a href="https://codelabs.developers.google.com/codelabs/mdc-102-flutter" target="_blank"><paper-button class="colored" raised="">Next codelab</paper-button></a></p>
+<google-codelab-survey survey-id="mdc-101-flutter-2" upgraded="">
+
+
+
+
+<div class="survey-questions" survey-name="mdc-101-flutter-2"><div class="survey-question-wrapper"><h4>I was able to complete this codelab with a reasonable amount of time and effort</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-agree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-agree"><span class="option-text">Strongly agree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-agree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--agree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--agree"><span class="option-text">Agree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--agree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--neutral-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--neutral"><span class="option-text">Neutral</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--neutral" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--disagree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--disagree"><span class="option-text">Disagree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--disagree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-disagree-label" for="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-disagree"><span class="option-text">Strongly disagree</span><input type="radio" id="i-was-able-to-complete-this-codelab-with-a-reasonable-amount-of-time-and-effort--strongly-disagree" name="I was able to complete this codelab with a reasonable amount of time and effort"><span class="custom-radio-button"></span></label></div></div><div class="survey-question-wrapper"><h4>I would like to continue using Material Components in the future</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-agree-label" for="i-would-like-to-continue-using-material-components-in-the-future--strongly-agree"><span class="option-text">Strongly agree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-agree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--agree-label" for="i-would-like-to-continue-using-material-components-in-the-future--agree"><span class="option-text">Agree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--agree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--neutral-label" for="i-would-like-to-continue-using-material-components-in-the-future--neutral"><span class="option-text">Neutral</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--neutral" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--disagree-label" for="i-would-like-to-continue-using-material-components-in-the-future--disagree"><span class="option-text">Disagree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--disagree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-disagree-label" for="i-would-like-to-continue-using-material-components-in-the-future--strongly-disagree"><span class="option-text">Strongly disagree</span><input type="radio" id="i-would-like-to-continue-using-material-components-in-the-future--strongly-disagree" name="I would like to continue using Material Components in the future"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/mdc-101-flutter/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/native-shim.js"></script>
+  <script src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/custom-elements.min.js"></script>
+  <script src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/prettify.js"></script>
+  <script src="./MDC-101 Flutter_ Material Components (MDC) Basics (Flutter)_files/codelab-elements.js"></script>
+
+
+
+</body></html>

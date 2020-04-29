@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Adding Google Maps to a Flutter App</title>
+  <link rel="stylesheet" href="./Adding Google Maps to a Flutter App_files/css">
+  <link rel="stylesheet" href="./Adding Google Maps to a Flutter App_files/icon">
+  <link rel="stylesheet" href="./Adding Google Maps to a Flutter App_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Adding Google Maps to a Flutter App_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="google-maps-in-flutter" environment="web" feedback-link="https://github.com/googlecodelabs/google-maps-in-flutter/issues" selected="0" google-codelab-ready="" codelab-title="Adding Google Maps to a Flutter App" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>35 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#0"><span class="step"><span>Introduction</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#2"><span class="step"><span>Getting started</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#3"><span class="step"><span>Adding Google Maps to the app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#4"><span class="step"><span>Upgrading to Google Maps SDK for iOS 3.0</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#5"><span class="step"><span>Put Google on the Map</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#6"><span class="step"><span>Next steps</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/googlecodelabs/google-maps-in-flutter/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Adding Google Maps to a Flutter App</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>35 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Introduction" duration="0" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Introduction</h2>
+        <p>Flutter is Google's mobile app SDK for crafting high-quality native experiences on iOS and Android in record time.</p>
+<p>With the <a href="https://pub.dartlang.org/packages/google_maps_flutter" target="_blank">Google Maps Flutter plugin</a>, you can add maps based on Google maps data to your application. The plugin automatically handles access to the Google Maps servers, map display, and response to user gestures such as clicks and drags. You can also add markers to your map. These objects provide additional information for map locations, and allow the user to interact with the map.</p>
+<h2 is-upgraded=""><strong>What you'll build</strong></h2>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p>In this codelab, you'll build a mobile app featuring a Google Map using the Flutter SDK. Your app will:</p>
+<ul>
+<li>Display a Google Map</li>
+<li>Retrieve map data from a web service</li>
+<li>Display this data as markers on the Map</li>
+</ul>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Adding Google Maps to a Flutter App_files/ce32c492a689e181.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded="">What is Flutter?</h2>
+<p>Flutter is:</p>
+<ul>
+<li><strong>Fast to develop</strong>: Build your Android and iOS applications in milliseconds with Stateful Hot Reload.</li>
+<li><strong>Expressive and flexible</strong>: Quickly ship features with a focus on native end-user experiences.</li>
+<li><strong>Native performance on both iOS and Android</strong>: Flutter's widgets incorporate all critical platform differences — such as scrolling, navigation, icons, and fonts — to provide full native performance.</li>
+</ul>
+<p>Google Maps has:</p>
+<ul>
+<li><strong>99% coverage of the world</strong>: Build with reliable, comprehensive data for over 200 countries and territories.</li>
+<li><strong>25 million updates daily</strong>: Count on accurate, real-time location information.</li>
+<li><strong>1 billion monthly active users</strong>: Scale confidently, backed by Google Maps' infrastructure.</li>
+</ul>
+<p>This codelab walks you through creating a Google Maps experience in a Flutter app for both iOS and Android.</p>
+<h2 class="checklist" is-upgraded=""><strong>What you'll learn</strong></h2>
+<ul class="checklist">
+<li>How to create a new Flutter application.</li>
+<li>How to configure a Google Maps Flutter plugin.</li>
+<li>How to add Markers to a map, using location data from a web service.</li>
+</ul>
+<p>This codelab focuses on adding a Google map to a Flutter app. Non-relevant concepts and code blocks are glossed over and are provided for you to simply copy and paste.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="10" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <p>You need two pieces of software to complete this lab: the <a href="https://flutter.io/get-started/install/" target="_blank">Flutter SDK</a>, and <a href="https://flutter.io/get-started/editor/" target="_blank">an editor</a>. This codelab assumes Android Studio, but you can use your preferred editor.</p>
+<p>You can run this codelab using any of the following devices:</p>
+<ul>
+<li>A physical device (Android or iOS) connected to your computer and set to developer mode.</li>
+<li>The iOS simulator.  (Requires installing Xcode tools.)</li>
+<li>The Android emulator. (Requires setup in Android Studio.)</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Getting started" duration="5" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Getting started</h2>
+        <h2 is-upgraded=""><strong>Getting started with Flutter</strong></h2>
+<p>The easiest way to get started with Flutter is to use the flutter command line tool to create all the required code for a simple getting started experience. </p>
+<pre>$ flutter create google_maps_in_flutter
+Creating project google_maps_in_flutter...
+[Listing of created files elided]
+Running "flutter packages get" in google_maps_in_flutter...         6.1s
+Wrote 66 files.
+
+All done!
+[✓] Flutter (Channel dev, v1.5.0, on Mac OS X 10.14.3 18D109, locale en-AU)
+[✓] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+[✓] iOS toolchain - develop for iOS devices (Xcode 10.2)
+[✓] Android Studio is fully installed. (version 3.1)
+[✓] IntelliJ IDEA Community Edition (version 2018.3.5)
+[✓] VS Code (version 1.33.1)
+[✓] Connected device is fully installed. (1 available)
+
+In order to run your application, type:
+
+  $ cd google_maps_in_flutter
+  $ flutter run
+
+Your application code is in google_maps_in_flutter/lib/main.dart.</pre>
+<h2 is-upgraded=""><strong>Adding Google Maps Flutter plugin as a dependency</strong></h2>
+<p>Adding additional capability to a Flutter app is easy using <a href="https://pub.dartlang.org/flutter" target="_blank">Pub packages</a>. In this codelab you introduce the <a href="https://pub.dartlang.org/packages/google_maps_flutter" target="_blank">Google Maps Flutter plugin</a> by adding a single line to the <code>pubspec.yaml</code> file.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-3/pubspec.yaml" target="_blank">pubspec.yaml</a></h3>
+<pre><code><span class="pln">name</span><span class="pun">:</span><span class="pln"> google_maps_in_flutter
+description</span><span class="pun">:</span><span class="pln"> A </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flutter</span><span class="pln"> project</span><span class="pun">.</span><span class="pln">
+version</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.0.0+1</span><span class="pln">
+
+environment</span><span class="pun">:</span><span class="pln">
+  sdk</span><span class="pun">:</span><span class="pln"> </span><span class="str">"&gt;=2.2.0 &lt;3.0.0"</span><span class="pln">
+
+dependencies</span><span class="pun">:</span><span class="pln">
+  flutter</span><span class="pun">:</span><span class="pln">
+    sdk</span><span class="pun">:</span><span class="pln"> flutter
+  </span><span class="com"># Add the following line</span><span class="pln">
+  google_maps_flutter</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.5</span><span class="pun">.</span><span class="lit">11</span><span class="pln">
+
+flutter</span><span class="pun">:</span><span class="pln">
+  uses</span><span class="pun">-</span><span class="pln">material</span><span class="pun">-</span><span class="pln">design</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span></code></pre>
+<p>Download the package with the following command:: </p>
+<pre>$ flutter packages get
+Running "flutter packages get" in google_maps_in_flutter...         0.9s </pre>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Adding Google Maps to the app" duration="5" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Adding Google Maps to the app</h2>
+        <h2 is-upgraded=""><strong>It's all about the API keys</strong></h2>
+<p>To use Google Maps in your Flutter app, you need to configure an API project with the <a href="https://cloud.google.com/maps-platform/" target="_blank">Google Maps Platform</a>, following both the <a href="https://developers.google.com/maps/documentation/android-sdk/signup" target="_blank">Maps SDK for Android's Get API key</a>, and <a href="https://developers.google.com/maps/documentation/ios-sdk/get-api-key" target="_blank">Maps SDK for iOS' Get API key</a> processes. With API keys in hand, carry out the following steps to configure both Android and iOS applications.</p>
+<h2 is-upgraded=""><strong>Adding an API key for an Android app</strong></h2>
+<p>To add an API key to the Android app, edit the <code>AndroidManifest.xml</code> file in <code>android/app/src/main</code>. Add a single meta-data entry containing the API key created in the previous step.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-4/android/app/src/main/AndroidManifest.xml" target="_blank">android/app/src/main/AndroidManifest.xml</a></h3>
+<pre><code><span class="tag">&lt;manifest</span><span class="pln"> </span><span class="atn">xmlns:android</span><span class="pun">=</span><span class="atv">"http://schemas.android.com/apk/res/android"</span><span class="pln">
+    </span><span class="atn">package</span><span class="pun">=</span><span class="atv">"com.example.google_maps_in_flutter"</span><span class="tag">&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;application</span><span class="pln">
+        </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"io.flutter.app.FlutterApplication"</span><span class="pln">
+        </span><span class="atn">android:label</span><span class="pun">=</span><span class="atv">"google_maps_in_flutter"</span><span class="pln">
+        </span><span class="atn">android:icon</span><span class="pun">=</span><span class="atv">"@mipmap/ic_launcher"</span><span class="tag">&gt;</span><span class="pln">
+
+        </span><span class="com">&lt;!-- Add the following entry, with your API key --&gt;</span><span class="pln">
+        </span><span class="tag">&lt;meta-data</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"com.google.android.geo.API_KEY"</span><span class="pln">
+               </span><span class="atn">android:value</span><span class="pun">=</span><span class="atv">"YOUR-KEY-HERE"</span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;activity</span><span class="pln">
+            </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">".MainActivity"</span><span class="pln">
+            </span><span class="atn">android:launchMode</span><span class="pun">=</span><span class="atv">"singleTop"</span><span class="pln">
+            </span><span class="atn">android:theme</span><span class="pun">=</span><span class="atv">"@style/LaunchTheme"</span><span class="pln">
+            </span><span class="atn">android:configChanges</span><span class="pun">=</span><span class="atv">"orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"</span><span class="pln">
+            </span><span class="atn">android:hardwareAccelerated</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+            </span><span class="atn">android:windowSoftInputMode</span><span class="pun">=</span><span class="atv">"adjustResize"</span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;meta-data</span><span class="pln">
+                </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"io.flutter.app.android.SplashScreenUntilFirstFrame"</span><span class="pln">
+                </span><span class="atn">android:value</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+            </span><span class="tag">&lt;intent-filter&gt;</span><span class="pln">
+                </span><span class="tag">&lt;action</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.intent.action.MAIN"</span><span class="tag">/&gt;</span><span class="pln">
+                </span><span class="tag">&lt;category</span><span class="pln"> </span><span class="atn">android:name</span><span class="pun">=</span><span class="atv">"android.intent.category.LAUNCHER"</span><span class="tag">/&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/intent-filter&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/activity&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/application&gt;</span><span class="pln">
+</span><span class="tag">&lt;/manifest&gt;</span></code></pre>
+<h2 is-upgraded=""><strong>Adding an API key for an iOS app</strong></h2>
+<p>To add an API key to the iOS app, edit the <code>AppDelegate.m</code> file in <code>ios/Runner</code>. Unlike Android, adding an API key on iOS requires changes to the source code of the Runner app. The AppDelegate is the core singleton that is part of the app initialization process.</p>
+<p>Make two changes to this file. First, add an <code>#import</code> statement to pull in the Google Maps headers, and then call the <code>provideAPIKey()</code> method of the <code>GMSServices</code> singleton. This API key enables Google Maps to correctly serve map tiles.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-4/ios/Runner/AppDelegate.m" target="_blank">ios/Runner/AppDelegate.m</a></h3>
+<pre><code><span class="com">#import "AppDelegate.h"</span><span class="pln">
+</span><span class="com">#import "GeneratedPluginRegistrant.h"</span><span class="pln">
+</span><span class="com">// Add the following import.</span><span class="pln">
+</span><span class="com">#import "GoogleMaps/GoogleMaps.h"</span><span class="pln">
+
+</span><span class="lit">@implementation</span><span class="pln"> </span><span class="typ">AppDelegate</span><span class="pln">
+
+</span><span class="pun">-</span><span class="pln"> </span><span class="pun">(</span><span class="pln">BOOL</span><span class="pun">)</span><span class="pln">application</span><span class="pun">:(</span><span class="typ">UIApplication</span><span class="pln"> </span><span class="pun">*)</span><span class="pln">application
+    didFinishLaunchingWithOptions</span><span class="pun">:(</span><span class="typ">NSDictionary</span><span class="pln"> </span><span class="pun">*)</span><span class="pln">launchOptions </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">[</span><span class="typ">GeneratedPluginRegistrant</span><span class="pln"> registerWithRegistry</span><span class="pun">:</span><span class="kwd">self</span><span class="pun">];</span><span class="pln">
+  </span><span class="com">// Add the following line, with your API key</span><span class="pln">
+  </span><span class="pun">[</span><span class="typ">GMSServices</span><span class="pln"> provideAPIKey</span><span class="pun">:</span><span class="pln"> </span><span class="pun">@</span><span class="str">"YOUR-API-KEY"</span><span class="pun">];</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">[</span><span class="kwd">super</span><span class="pln"> application</span><span class="pun">:</span><span class="pln">application didFinishLaunchingWithOptions</span><span class="pun">:</span><span class="pln">launchOptions</span><span class="pun">];</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="lit">@end</span></code></pre>
+<p>You also need to add a setting to <code>ios/Runner/Info.plist</code>. This entry forces Flutter on iOS into a single threaded mode, which is required for the platform view embedding to work. This technical restriction is being worked on and will be lifted before Google Maps moves out of Developer Preview.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-4/ios/Runner/Info.plist" target="_blank">ios/Runner/Info.plist</a></h3>
+<pre><code><span class="pun">&lt;?</span><span class="pln">xml version</span><span class="pun">=</span><span class="str">"1.0"</span><span class="pln"> encoding</span><span class="pun">=</span><span class="str">"UTF-8"</span><span class="pun">?&gt;</span><span class="pln">
+</span><span class="dec">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span><span class="pln">
+</span><span class="tag">&lt;plist</span><span class="pln"> </span><span class="atn">version</span><span class="pun">=</span><span class="atv">"1.0"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;dict&gt;</span><span class="pln">
+        </span><span class="com">&lt;!-- Add the following entry, from here, --&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">io.flutter.embedded_views_preview</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;true/&gt;</span><span class="pln">
+        </span><span class="com">&lt;!-- to here. --&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleDevelopmentRegion</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">en</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleExecutable</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">$(EXECUTABLE_NAME)</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleIdentifier</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">$(PRODUCT_BUNDLE_IDENTIFIER)</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleInfoDictionaryVersion</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">6.0</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleName</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">google_maps_in_flutter</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundlePackageType</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">APPL</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleShortVersionString</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">$(FLUTTER_BUILD_NAME)</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleSignature</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">????</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">CFBundleVersion</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">$(FLUTTER_BUILD_NUMBER)</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">LSRequiresIPhoneOS</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;true/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">UILaunchStoryboardName</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">LaunchScreen</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">UIMainStoryboardFile</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;string&gt;</span><span class="pln">Main</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">UISupportedInterfaceOrientations</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;array&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationPortrait</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationLandscapeLeft</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationLandscapeRight</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/array&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">UISupportedInterfaceOrientations~ipad</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;array&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationPortrait</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationPortraitUpsideDown</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationLandscapeLeft</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">UIInterfaceOrientationLandscapeRight</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/array&gt;</span><span class="pln">
+        </span><span class="tag">&lt;key&gt;</span><span class="pln">UIViewControllerBasedStatusBarAppearance</span><span class="tag">&lt;/key&gt;</span><span class="pln">
+        </span><span class="tag">&lt;false/&gt;</span><span class="pln">
+</span><span class="tag">&lt;/dict&gt;</span><span class="pln">
+</span><span class="tag">&lt;/plist&gt;</span></code></pre>
+<h2 is-upgraded=""><strong>Putting a map on the screen</strong></h2>
+<p>Now it's time to get a map on the screen. Update <code>lib/main.dart</code> as follows:.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-4/lib/main.dart" target="_blank">lib/main.dart</a></h3>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:google_maps_flutter/google_maps_flutter.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">MyApp</span><span class="pun">());</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">_MyAppState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">_MyAppState</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_MyAppState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">MyApp</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">GoogleMapController</span><span class="pln"> mapController</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">LatLng</span><span class="pln"> _center </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">LatLng</span><span class="pun">(</span><span class="lit">45.521563</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">122.677433</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">void</span><span class="pln"> _onMapCreated</span><span class="pun">(</span><span class="typ">GoogleMapController</span><span class="pln"> controller</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    mapController </span><span class="pun">=</span><span class="pln"> controller</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+        appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+          title</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Maps Sample App'</span><span class="pun">),</span><span class="pln">
+          backgroundColor</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">green</span><span class="pun">[</span><span class="lit">700</span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">GoogleMap</span><span class="pun">(</span><span class="pln">
+          onMapCreated</span><span class="pun">:</span><span class="pln"> _onMapCreated</span><span class="pun">,</span><span class="pln">
+          initialCameraPosition</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CameraPosition</span><span class="pun">(</span><span class="pln">
+            target</span><span class="pun">:</span><span class="pln"> _center</span><span class="pun">,</span><span class="pln">
+            zoom</span><span class="pun">:</span><span class="pln"> </span><span class="lit">11.0</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded=""><strong>Running the app</strong></h2>
+<p>Run the Flutter app in either iOS or Android to see a single map view, centered on Portland. Feel free to modify the map center to represent your hometown, or somewhere that is important to you.</p>
+<pre>$ flutter run</pre>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 329.58px" src="./Adding Google Maps to a Flutter App_files/e9d9d7f8c362b546.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 261.77px" src="./Adding Google Maps to a Flutter App_files/6b2f9d88226616f6.png"></p>
+</td></tr>
+</tbody></table>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Upgrading to Google Maps SDK for iOS 3.0" duration="5" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Upgrading to Google Maps SDK for iOS 3.0</h2>
+        <h2 is-upgraded=""><strong>Using the latest version of Maps for iOS</strong></h2>
+<p>When running the app in the previous step on iOS, you may have seen a warning on the console about the version of the Google Maps for iOS plugin was old. This is due to a minimum version mismatch: Flutter supports a minimum of iOS version 8, while the latest version of Google Maps SDK for iOS supports a minimum iOS version 9. The version that CocoaPods installed by default was the last version of Google Maps SDK for iOS that supports iOS version 8. In this step, you change the iOS Runner project to use the latest version of Google Maps SDK for iOS.</p>
+<p>Please note, this step only applies to iOS, and uses Xcode to make changes to the iOS target. If you are on Windows or Linux, then this step doesn't apply to you. Please skip ahead to the next step.</p>
+<h2 is-upgraded=""><strong>Set a declared platform for CocoaPods</strong></h2>
+<p>Edit <code>ios/Podfile</code> to declare a minimum platform version.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-5/ios/Podfile" target="_blank">ios/Podfile</a></h3>
+<pre><code><span class="com"># Uncomment the following line</span><span class="pln">
+platform </span><span class="pun">:</span><span class="pln">ios</span><span class="pun">,</span><span class="pln"> </span><span class="str">'9.0'</span><span class="pln">
+
+</span><span class="com"># CocoaPods analytics sends network stats synchronously affecting flutter build latency.</span><span class="pln">
+ENV</span><span class="pun">[</span><span class="str">'COCOAPODS_DISABLE_STATS'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">'true'</span><span class="pln">
+
+project </span><span class="str">'Runner'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="str">'Debug'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">:</span><span class="pln">debug</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">'Profile'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">:</span><span class="pln">release</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">'Release'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">:</span><span class="pln">release</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com"># And ignore the rest of this file... </span></code></pre>
+<h2 is-upgraded=""><strong>Update the CocoaPod dependency </strong></h2>
+<p>Run CocoaPods to pull the up-to-date version of Google Maps SDK for iOS:</p>
+<pre>$ (cd ios &amp;&amp; pod update)
+Analyzing dependencies
+Fetching podspec for `Flutter` from `.symlinks/flutter/ios`
+Fetching podspec for `google_maps_flutter` from `.symlinks/plugins/google_maps_flutter/ios`
+Downloading dependencies
+Using Flutter (1.0.0)
+Installing GoogleMaps 3.0.3
+Using google_maps_flutter (0.0.1)
+Generating Pods project
+Integrating client project
+Pod installation complete! There are 2 dependencies from the Podfile and 3 total pods installed.</pre>
+<h2 is-upgraded=""><strong>Set the deployment target in Xcode </strong></h2>
+<p>Configure the deployment target iOS version in the iOS Runner Xcode project so that the binary versions of the Runner and Google Maps match. Open the Runner project from the command line as follows.</p>
+<pre>$ open ios/Runner.xcworkspace/</pre>
+<p>This opens up the Xcode workspace for the iOS Runner project. Configure the Deployment Target for Runner in the General preferences pane.</p>
+<p class="image-container"><img style="width: 624.00px" src="./Adding Google Maps to a Flutter App_files/dc5ceca8418fe726.png"></p>
+<h2 is-upgraded=""><strong>Running the app, again</strong></h2>
+<p>Run the Flutter app in iOS, this time using the latest version of Google Maps SDK for iOS.</p>
+<pre>$ flutter run
+Launching lib/main.dart on iPhone XR in debug mode...
+Running pod install...                                              1.2s
+Running Xcode build...                                                  
+ ├─Assembling Flutter resources...                           1.3s
+ └─Compiling, linking and signing...                         4.5s
+Xcode build done.                                            7.6s
+Google Maps SDK for iOS version: 3.0.33124.0                            
+Syncing files to device iPhone XR...                             1,267ms
+
+🔥  To hot reload changes while running, press "r". To hot restart (and rebuild state), press "R".
+</pre>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Put Google on the Map" duration="10" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Put Google on the Map</h2>
+        <p>Google has many offices around the world, from <a href="https://about.google/locations/?region=north-america" target="_blank">North America</a>, <a href="https://about.google/locations/?region=latin-america" target="_blank">Latin America</a>, <a href="https://about.google/locations/?region=europe" target="_blank">Europe</a>, <a href="https://about.google/locations/?region=asia-pacific" target="_blank">Asia Pacific</a>, to <a href="https://about.google/locations/?region=africa-middle-east" target="_blank">Africa &amp; Middle East</a>. The nice thing about these maps, if you investigate them, is that they have an easily usable <a href="https://about.google/static/data/locations.json" target="_blank">API endpoint</a> for supplying the office location information in JSON format. In this step, you put these office locations on the map.</p>
+<p>As you grow your codebase, it's time to start using tooling that Dart provides to make the code more readable and maintainable. In this step, you use code generation to parse JSON, and code linting to surface potential <a href="https://en.wikipedia.org/wiki/Code_smell" target="_blank">code smells</a>.</p>
+<p>To use these capabilities, add some new dependencies to the <code>pubspec.yaml</code> file. These dependencies provide access to http requests, the ability to mechanize JSON parsing, a configuration of useful lint rules used widely at Google, and a build runner that ties all of it together. Edit the dependencies stanza of your <code>pubspec.yaml</code> file as follows:</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-6/pubspec.yaml" target="_blank">pubspec.yaml</a></h3>
+<pre><code><span class="pln">name</span><span class="pun">:</span><span class="pln"> google_maps_in_flutter
+description</span><span class="pun">:</span><span class="pln"> A </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flutter</span><span class="pln"> project</span><span class="pun">.</span><span class="pln">
+version</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.0.0+1</span><span class="pln">
+
+environment</span><span class="pun">:</span><span class="pln">
+  sdk</span><span class="pun">:</span><span class="pln"> </span><span class="str">"&gt;=2.2.0 &lt;3.0.0"</span><span class="pln">
+
+dependencies</span><span class="pun">:</span><span class="pln">
+  flutter</span><span class="pun">:</span><span class="pln">
+    sdk</span><span class="pun">:</span><span class="pln"> flutter
+  google_maps_flutter</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.5</span><span class="pun">.</span><span class="lit">11</span><span class="pln">
+  </span><span class="com"># Add the following two lines</span><span class="pln">
+  http</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">0.12.0+1</span><span class="pln">
+  json_serializable</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">2.0</span><span class="pun">.</span><span class="lit">2</span><span class="pln">
+
+</span><span class="com"># Add the following three lines</span><span class="pln">
+dev_dependencies</span><span class="pun">:</span><span class="pln">
+  pedantic</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">1.4</span><span class="pun">.</span><span class="lit">0</span><span class="pln">
+  build_runner</span><span class="pun">:</span><span class="pln"> </span><span class="pun">^</span><span class="lit">1.2</span><span class="pun">.</span><span class="lit">7</span><span class="pln">
+  
+flutter</span><span class="pun">:</span><span class="pln">
+  uses</span><span class="pun">-</span><span class="pln">material</span><span class="pun">-</span><span class="pln">design</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span></code></pre>
+<p>Run <code>flutter packages get</code> on the command line to retrieve these new dependencies, and to prepare the app for the next stages.</p>
+<pre>$ flutter packages get 
+Running "flutter packages get" in google_maps_in_flutter...         0.5s
+$</pre>
+<h2 is-upgraded="">Using the providing tooling</h2>
+<p>Two of the nice additions to programming languages in recent years are pragmatic defaults for code formatting, and linting for known problematic code patterns. For code formatting, you can use <code>flutter format</code>, although you can probably configure your code editor to run this on a certain key combination, or on file save.</p>
+<pre>$ flutter format .
+Formatting directory .:
+Unchanged test/widget_test.dart
+Skipping link ios/Pods/Headers/Public/google_maps_flutter/GoogleMapMarkerController.h
+Skipping link ios/Pods/Headers/Public/google_maps_flutter/GoogleMapController.h
+Skipping link ios/Pods/Headers/Public/google_maps_flutter/GoogleMapsPlugin.h
+Skipping link ios/Pods/Headers/Private/google_maps_flutter/GoogleMapMarkerController.h
+Skipping link ios/Pods/Headers/Private/google_maps_flutter/GoogleMapController.h
+Skipping link ios/Pods/Headers/Private/google_maps_flutter/GoogleMapsPlugin.h
+Skipping link ios/.symlinks/plugins/google_maps_flutter
+Skipping link ios/.symlinks/flutter
+Unchanged lib/main.dart
+Unchanged lib/src/locations.g.dart
+Unchanged lib/src/locations.dart
+Skipping hidden path .dart_tool
+$</pre>
+<p>For linting, Dart provides the ability to <a href="https://www.dartlang.org/guides/language/analysis-options" target="_blank">configure a customized code linter</a>. In this step, you add a handful of linters to the app, but the full list of available lints is specified in the <a href="https://dart-lang.github.io/linter/lints/" target="_blank">Linter for Dart documentation</a>.</p>
+<p>Add a file to the root of the project called <code>analysis_options.yaml</code> and fill it with the following content.</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-6/analysis_options.yaml" target="_blank">analysis_options.yaml</a></h3>
+<pre><code><span class="pln">include</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">package</span><span class="pun">:</span><span class="pln">pedantic</span><span class="pun">/</span><span class="pln">analysis_options</span><span class="pun">.</span><span class="pln">yaml
+
+analyzer</span><span class="pun">:</span><span class="pln">
+  exclude</span><span class="pun">:</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln"> lib</span><span class="pun">/</span><span class="pln">src</span><span class="pun">/</span><span class="pln">locations</span><span class="pun">.</span><span class="pln">g</span><span class="pun">.</span><span class="pln">dart
+
+linter</span><span class="pun">:</span><span class="pln">
+  rules</span><span class="pun">:</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln"> always_declare_return_types
+    </span><span class="pun">-</span><span class="pln"> camel_case_types
+    </span><span class="pun">-</span><span class="pln"> empty_constructor_bodies
+    </span><span class="pun">-</span><span class="pln"> annotate_overrides
+    </span><span class="pun">-</span><span class="pln"> avoid_init_to_null
+    </span><span class="pun">-</span><span class="pln"> constant_identifier_names
+    </span><span class="pun">-</span><span class="pln"> one_member_abstracts
+    </span><span class="pun">-</span><span class="pln"> slash_for_doc_comments
+    </span><span class="pun">-</span><span class="pln"> sort_constructors_first
+    </span><span class="pun">-</span><span class="pln"> unnecessary_brace_in_string_interps</span></code></pre>
+<p>The first line includes a default set of rules used widely at Google, and the linter rules section gives a taste of what is possible. The <code>exclude</code> line references a file that hasn't been generated yet. To run the lint rules, analyze the code as follows:</p>
+<pre>$ flutter analyze
+Analyzing google_maps_in_flutter...                                     
+No issues found! (ran in 1.8s)
+$</pre>
+<p>If the analyzer issues warnings, don't worry, you will fix them shortly.</p>
+<h2 is-upgraded=""><strong>Parsing JSON with code generation</strong></h2>
+<p>You might notice that the JSON data returned from the API endpoint has a regular structure. It would be handy to generate the code to marshal that data into objects that you can use in code. While Dart provides a variety of options for de-serializing JSON data (from build-it-yourself, to signing the data and using <code>built_value</code>), this step uses JSON annotations.</p>
+<p>In the <code>lib/src</code> directory, create a <code>locations.dart</code> file and describe the structure of the returned JSON data as follows:</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-6/lib/src/locations.dart" target="_blank">lib/src/locations.dart</a></h3>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'dart:convert'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'dart:io'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:http/http.dart'</span><span class="pln"> </span><span class="kwd">as</span><span class="pln"> http</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:json_annotation/json_annotation.dart'</span><span class="pun">;</span><span class="pln">
+
+part </span><span class="str">'locations.g.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="lit">@JsonSerializable</span><span class="pun">()</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">LatLng</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">LatLng</span><span class="pun">({</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">lat</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">lng</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  factory </span><span class="typ">LatLng</span><span class="pun">.</span><span class="pln">fromJson</span><span class="pun">(</span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> json</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$LatLngFromJson</span><span class="pun">(</span><span class="pln">json</span><span class="pun">);</span><span class="pln">
+  </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> toJson</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$LatLngToJson</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> lat</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> lng</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="lit">@JsonSerializable</span><span class="pun">()</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Region</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Region</span><span class="pun">({</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">coords</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">id</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">name</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">zoom</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  factory </span><span class="typ">Region</span><span class="pun">.</span><span class="pln">fromJson</span><span class="pun">(</span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> json</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$RegionFromJson</span><span class="pun">(</span><span class="pln">json</span><span class="pun">);</span><span class="pln">
+  </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> toJson</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$RegionToJson</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">LatLng</span><span class="pln"> coords</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> id</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> zoom</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="lit">@JsonSerializable</span><span class="pun">()</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Office</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Office</span><span class="pun">({</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">address</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">id</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">image</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">lat</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">lng</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">name</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">phone</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">region</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  factory </span><span class="typ">Office</span><span class="pun">.</span><span class="pln">fromJson</span><span class="pun">(</span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> json</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$OfficeFromJson</span><span class="pun">(</span><span class="pln">json</span><span class="pun">);</span><span class="pln">
+  </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> toJson</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$OfficeToJson</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> address</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> id</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> image</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> lat</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">double</span><span class="pln"> lng</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> phone</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> region</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="lit">@JsonSerializable</span><span class="pun">()</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Locations</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">Locations</span><span class="pun">({</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">offices</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">regions</span><span class="pun">,</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+  factory </span><span class="typ">Locations</span><span class="pun">.</span><span class="pln">fromJson</span><span class="pun">(</span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> json</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln">
+      _$LocationsFromJson</span><span class="pun">(</span><span class="pln">json</span><span class="pun">);</span><span class="pln">
+  </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">dynamic</span><span class="pun">&gt;</span><span class="pln"> toJson</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _$LocationsToJson</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Office</span><span class="pun">&gt;</span><span class="pln"> offices</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Region</span><span class="pun">&gt;</span><span class="pln"> regions</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="typ">Future</span><span class="pun">&lt;</span><span class="typ">Locations</span><span class="pun">&gt;</span><span class="pln"> getGoogleOffices</span><span class="pun">()</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">const</span><span class="pln"> googleLocationsURL </span><span class="pun">=</span><span class="pln"> </span><span class="str">'https://about.google/static/data/locations.json'</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="com">// Retrieve the locations of Google offices</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> response </span><span class="pun">=</span><span class="pln"> await http</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">googleLocationsURL</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">statusCode </span><span class="pun">==</span><span class="pln"> </span><span class="lit">200</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Locations</span><span class="pun">.</span><span class="pln">fromJson</span><span class="pun">(</span><span class="pln">json</span><span class="pun">.</span><span class="pln">decode</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">body</span><span class="pun">));</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">throw</span><span class="pln"> </span><span class="typ">HttpException</span><span class="pun">(</span><span class="pln">
+        </span><span class="str">'Unexpected status code ${response.statusCode}:'</span><span class="pln">
+        </span><span class="str">' ${response.reasonPhrase}'</span><span class="pun">,</span><span class="pln">
+        uri</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Uri</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln">googleLocationsURL</span><span class="pun">));</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Once you've added this code, your IDE (if you are using one) should display some red squiggles, as it references a nonexistent sibling file, <code>locations.g.dart.</code> This generated file converts between untyped JSON structures and named objects. Create it by running the <code>build_runner</code>:</p>
+<pre>$ flutter packages pub run build_runner build
+[INFO] Generating build script...
+[INFO] Generating build script completed, took 291ms
+
+[INFO] Initializing inputs
+[INFO] Reading cached asset graph...
+[INFO] Reading cached asset graph completed, took 65ms
+
+[INFO] Checking for updates since last build...
+[INFO] Checking for updates since last build completed, took 595ms
+
+[INFO] Running build...
+[INFO] 1.2s elapsed, 0/1 actions completed.
+[INFO] Running build completed, took 1.2s
+
+[INFO] Caching finalized dependency graph...
+[INFO] Caching finalized dependency graph completed, took 27ms
+
+[INFO] Succeeded after 1.2s with 1 outputs (1 actions)
+
+$</pre>
+<p>Your code should now analyze cleanly again. </p>
+<p>Modify the <code>main.dart</code> file to request the map data, and then use the returned info to add offices to the map:</p>
+<h3 is-upgraded=""><a href="https://github.com/googlecodelabs/google-maps-in-flutter/blob/master/step-6/lib/main.dart" target="_blank">lib/main.dart</a></h3>
+<pre><code><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:google_maps_flutter/google_maps_flutter.dart'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'src/locations.dart'</span><span class="pln"> </span><span class="kwd">as</span><span class="pln"> locations</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> runApp</span><span class="pun">(</span><span class="typ">MyApp</span><span class="pun">());</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">_MyAppState</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">_MyAppState</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">_MyAppState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">MyApp</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Map</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Marker</span><span class="pun">&gt;</span><span class="pln"> _markers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{};</span><span class="pln">
+  </span><span class="typ">Future</span><span class="str">&lt;void&gt;</span><span class="pln"> _onMapCreated</span><span class="pun">(</span><span class="typ">GoogleMapController</span><span class="pln"> controller</span><span class="pun">)</span><span class="pln"> async </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> googleOffices </span><span class="pun">=</span><span class="pln"> await locations</span><span class="pun">.</span><span class="pln">getGoogleOffices</span><span class="pun">();</span><span class="pln">
+    setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      _markers</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+      </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">final</span><span class="pln"> office </span><span class="kwd">in</span><span class="pln"> googleOffices</span><span class="pun">.</span><span class="pln">offices</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">final</span><span class="pln"> marker </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Marker</span><span class="pun">(</span><span class="pln">
+          markerId</span><span class="pun">:</span><span class="pln"> </span><span class="typ">MarkerId</span><span class="pun">(</span><span class="pln">office</span><span class="pun">.</span><span class="pln">name</span><span class="pun">),</span><span class="pln">
+          position</span><span class="pun">:</span><span class="pln"> </span><span class="typ">LatLng</span><span class="pun">(</span><span class="pln">office</span><span class="pun">.</span><span class="pln">lat</span><span class="pun">,</span><span class="pln"> office</span><span class="pun">.</span><span class="pln">lng</span><span class="pun">),</span><span class="pln">
+          infoWindow</span><span class="pun">:</span><span class="pln"> </span><span class="typ">InfoWindow</span><span class="pun">(</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> office</span><span class="pun">.</span><span class="pln">name</span><span class="pun">,</span><span class="pln">
+            snippet</span><span class="pun">:</span><span class="pln"> office</span><span class="pun">.</span><span class="pln">address</span><span class="pun">,</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+        _markers</span><span class="pun">[</span><span class="pln">office</span><span class="pun">.</span><span class="pln">name</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> marker</span><span class="pun">;</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+        home</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+          appBar</span><span class="pun">:</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">'Google Office Locations'</span><span class="pun">),</span><span class="pln">
+            backgroundColor</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">green</span><span class="pun">[</span><span class="lit">700</span><span class="pun">],</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">GoogleMap</span><span class="pun">(</span><span class="pln">
+            onMapCreated</span><span class="pun">:</span><span class="pln"> _onMapCreated</span><span class="pun">,</span><span class="pln">
+            initialCameraPosition</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CameraPosition</span><span class="pun">(</span><span class="pln">
+              target</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">LatLng</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">),</span><span class="pln">
+              zoom</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            markers</span><span class="pun">:</span><span class="pln"> _markers</span><span class="pun">.</span><span class="pln">values</span><span class="pun">.</span><span class="pln">toSet</span><span class="pun">(),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>This code performs several operations: </p>
+<ul>
+<li>In <code>_onMapCreated</code>, it uses the JSON parsing code from the previous step, <code>await</code>ing until it's loaded. It then uses the returned data to create <code>Marker</code>s inside a <code>setState()</code> callback. Once the app receives new markers, setState flags Flutter to repaint the screen, causing the office locations to display.</li>
+<li>The markers are stored in a <code>Map</code> that is associated with the <code>GoogleMap</code> widget. This links the markers to the correct map. You could, of course, have multiple maps and display different markers in each. </li>
+</ul>
+<p class="image-container"><img style="width: 306.15px" src="./Adding Google Maps to a Flutter App_files/ce32c492a689e181.png"></p>
+<p>Here's a screenshot of what you have accomplished. There are many interesting additions that can be made at this point. For example, you could add a list view of the offices that moves and zooms the map when the user clicks an office but, as they say, this exercise is left to the reader!</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Next steps" duration="0" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Next steps</h2>
+        <h2 is-upgraded="">Congratulations!</h2>
+<p>You have completed the codelab and have built a Flutter app with a Google Map! You've also interacted with a JSON Web Service.</p>
+<h2 is-upgraded="">Other next steps</h2>
+<p>This codelab has built an experience to visualise a number of points on a map. There are a number of mobile apps that build on this capability to serve a lot of different user needs. There are other resources that can help you take this further:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=RpQLFAFqMlw" target="_blank">Build Mobile Apps With Flutter and Google Maps</a> (a talk given at Cloud Next '19)</li>
+<li>Hadrien Lejard's <a href="https://pub.dev/packages/google_maps_webservice" target="_blank"><code>google_maps_webservice</code></a> package which makes the Google Maps Web Services, like <a href="https://developers.google.com/maps/documentation/directions/start" target="_blank">Directions API</a>, <a href="https://developers.google.com/maps/documentation/distance-matrix/start" target="_blank">Distance Matrix API</a>, and <a href="https://cloud.google.com/maps-platform/places/" target="_blank">Places API</a> really easy to use.</li>
+<li>If you want to look at different options for using an API via JSON REST, see <a href="https://medium.com/flutter-io/some-options-for-deserializing-json-with-flutter-7481325a4450" target="_blank">Andrew Brogdon's Medium post</a> for a range of options for working with JSON REST APIs.</li>
+</ul>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/google-maps-in-flutter/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Adding Google Maps to a Flutter App_files/native-shim.js"></script>
+  <script src="./Adding Google Maps to a Flutter App_files/custom-elements.min.js"></script>
+  <script src="./Adding Google Maps to a Flutter App_files/prettify.js"></script>
+  <script src="./Adding Google Maps to a Flutter App_files/codelab-elements.js"></script>
+
+
+
+</body></html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://codelabs.developers.google.com/codelabs/flutter/#0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>Building Beautiful UIs with Flutter</title>
+  <link rel="stylesheet" href="./Building Beautiful UIs with Flutter_files/css">
+  <link rel="stylesheet" href="./Building Beautiful UIs with Flutter_files/icon">
+  <link rel="stylesheet" href="./Building Beautiful UIs with Flutter_files/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+<script src="./Building Beautiful UIs with Flutter_files/analytics.js"></script></head>
+<body class=" hasGoogleVoiceExt">
+  <google-codelab-analytics gaid="UA-49880327-14" environment="web" category="null"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="flutter" environment="web" feedback-link="https://github.com/flutter/flutter/issues" selected="0" google-codelab-ready="" codelab-title="Building Beautiful UIs with Flutter" anayltics-ready="anayltics-ready"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>75 mins remaining</div></div><div class="steps"><ol><li completed="" selected=""><a href="https://codelabs.developers.google.com/codelabs/flutter/#0"><span class="step"><span>Overview</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#1"><span class="step"><span>Set up your Flutter environment</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#2"><span class="step"><span>Start a new Flutter project</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#3"><span class="step"><span>Build the main user interface</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#4"><span class="step"><span>Add a UI for composing messages</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#5"><span class="step"><span>Add a UI for displaying messages</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#6"><span class="step"><span>Animate your app</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#7"><span class="step"><span>Apply finishing touches</span></span></a></li><li><a href="https://codelabs.developers.google.com/codelabs/flutter/#8"><span class="step"><span>Next steps</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="https://github.com/flutter/flutter/issues"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs.developers.google.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs.developers.google.com/codelabs/flutter/#" id="menu"><i class="material-icons">menu</i></a></div><h1 class="title">Building Beautiful UIs with Flutter</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>75 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="Overview" duration="1" step="1" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. Overview</h2>
+        <p>Flutter is an open source SDK for creating high-performance, high-fidelity mobile apps for iOS and Android. The Flutter framework makes it easy for you to build user interfaces that react smoothly in your app, while reducing the amount of code required to synchronize and update your app's view.</p>
+<p>Flutter makes it easy to get started building beautiful apps, with its rich set of <a href="https://material.io/" target="_blank">Material Design</a> and Cupertino (iOS) widgets and behaviors. Your users will love your app's natural look and feel, because Flutter implements platform-specific scrolling, navigational patterns, fonts, and more. You'll feel powerful and productive with Flutter's functional-reactive framework and our extremely fast hot reloads on devices and emulators.</p>
+<p>You'll write your Flutter apps in <a href="https://www.dartlang.org/" target="_blank">Dart</a>. Dart syntax should look familiar if you already know Java, JavaScript, C#, or Swift. Dart is compiled using the standard <a href="https://flutter.io/faq/#run-android" target="_blank">Android</a> and <a href="https://flutter.io/faq/#run-ios" target="_blank">iOS</a> toolchains for the specific mobile platform where your app needs to run. You get all the benefits of the Dart language, including familiar and concise <a href="https://www.dartlang.org/guides/language/language-tour" target="_blank">syntax</a>, <a href="https://www.dartlang.org/guides/language/language-tour#functions" target="_blank">first-class functions</a>, <a href="https://www.dartlang.org/articles/language/await-async" target="_blank">async/await</a>, <a href="https://www.dartlang.org/guides/libraries/library-tour" target="_blank">rich standard libraries</a>, and more.</p>
+<p>This codelab provides a deeper dive into Flutter than <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1" target="_blank">Write Your First Flutter App, part 1</a>, and <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2" target="_blank">part 2</a>. If you want a gentler introduction to Flutter, start with those.</p>
+<h3 class="checklist" is-upgraded=""><strong>What you'll learn</strong></h3>
+<ul class="checklist">
+<li>How to write a Flutter app that looks natural on both iOS and Android.</li>
+<li>How to debug your Flutter app.</li>
+<li>How to run your Flutter app on a simulator/emulator and on a device.</li>
+</ul>
+<google-codelab-survey survey-id="flutter-1" upgraded="">
+
+
+<div class="survey-questions" survey-name="flutter-1"><div class="survey-question-wrapper"><h4>What is your level of experience with building mobile apps?</h4><div class="survey-question-options"><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps-label" for="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps"><span class="option-text">Never built mobile apps</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--never-built-mobile-apps" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only"><span class="option-text">Built apps for the mobile web only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-the-mobile-web-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only"><span class="option-text">Built apps for Android only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only"><span class="option-text">Built apps for iOS only</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-ios-only" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios"><span class="option-text">Built apps for Android and iOS</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-android-and-ios" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label><label class="survey-option-wrapper" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios-label" for="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios"><span class="option-text">Built apps for mobile web, Android, and iOS</span><input type="radio" id="what-is-your-level-of-experience-with-building-mobile-apps--built-apps-for-mobile-web-android-and-ios" name="What is your level of experience with building mobile apps?"><span class="custom-radio-button"></span></label></div></div></div></google-codelab-survey>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Set up your Flutter environment" duration="10" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. Set up your Flutter environment</h2>
+        <p>You need two pieces of software to complete this lab: the <a href="https://flutter.io/get-started/install/" target="_blank">Flutter SDK</a>, and <a href="https://flutter.io/get-started/editor/" target="_blank">an editor</a>. This codelab assumes Android Studio, but you can use your preferred editor.</p>
+<p>You can run this codelab using any of the following devices:</p>
+<ul>
+<li>A physical device (Android or iOS) connected to your computer and set to developer mode.</li>
+<li>The iOS simulator.  (Requires installing Xcode tools.)</li>
+<li>The Android emulator. (Requires setup in Android Studio.)</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Start a new Flutter project" duration="2" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Start a new Flutter project</h2>
+        <p>Create a simple templated Flutter app, using the instructions in <a href="https://flutter.io/get-started/test-drive/#androidstudio" target="_blank">Getting Started with your first Flutter app</a>. Name the project <strong>friendlychat</strong> (instead of <em>myapp</em>). You'll be modifying this starter app to create the finished app.</p>
+<aside class="special"><p><strong>Tip:</strong> If you don't see "New Flutter Project" as an option in your IDE, make sure you have the <a href="https://flutter.io/get-started/editor/#androidstudio" target="_blank">plugins installed for Flutter and Dart</a>.</p>
+</aside>
+<p>In these codelabs, you'll mostly be editing <strong>lib/main.dart</strong>, where the Dart code lives.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Build the main user interface" duration="15" step="4"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Build the main user interface</h2>
+        <p>In this section, you'll begin modifying the default sample app into a chat app. The goal is to use <a href="https://flutter.io/" target="_blank">Flutter</a> to build Friendlychat, a simple, extensible chat app with these features:</p>
+<ul>
+<li>The app displays text messages in real time.</li>
+<li>Users can enter a text string message and send it either by pressing the return key or the <strong>Send </strong>icon.</li>
+<li>The UI runs on both iOS and Android devices.</li>
+</ul>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/4b9f6a6bb0e6734c.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/9d2366169e72a4a6.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded="">Create the main app scaffold</h2>
+<p>The first element you'll add is a simple <a href="https://www.google.com/design/spec/layout/structure.html#structure-app-bar" target="_blank">app bar</a> that shows a static title for the app. As you progress through subsequent sections of this codelab, you'll incrementally add more responsive and stateful UI elements to the app.</p>
+<p>The <code>main.dart</code> file is located under the <code>lib</code> directory in your Flutter project and contains the <a href="https://www.dartlang.org/docs/dart-up-and-running/ch02.html#the-main-function" target="_blank"><code>main()</code></a> function that starts the execution of your app. </p>
+<p>The <a href="https://www.dartlang.org/docs/dart-up-and-running/ch02.html#the-main-function" target="_blank"><code>main()</code></a> and <a href="http://docs.flutter.io/flutter/widgets/runApp.html" target="_blank"><code>runApp()</code></a> function definitions are the same as in the default app. The <a href="http://docs.flutter.io/flutter/widgets/runApp.html" target="_blank"><code>runApp()</code></a> function takes as its argument a <a href="https://docs.flutter.io/flutter/widgets/Widget-class.html" target="_blank"><code>Widget</code></a> which the Flutter framework expands and displays to the screen of the app at run time. Since the app uses Material Design elements in the UI, create a new <a href="http://docs.flutter.io/flutter/material/MaterialApp/MaterialApp.html" target="_blank"><code>MaterialApp</code></a> object and pass it to the <a href="http://docs.flutter.io/flutter/widgets/runApp.html" target="_blank"><code>runApp()</code></a> function; this widget becomes the root of your widget tree. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_1_main_user_interface/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Replace the code in main.dart with the following.</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  runApp</span><span class="pun">(</span><span class="pln">
+    </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Friendlychat"</span><span class="pun">,</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+        appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+          title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>To specify the default screen that users see in your app, set the <code>home</code> argument in your <a href="http://docs.flutter.io/flutter/material/MaterialApp/MaterialApp.html" target="_blank"><code>MaterialApp</code></a> definition. The <code>home</code> argument references a widget that defines the main UI for this app. The widget consists of a  <a href="http://docs.flutter.io/flutter/material/Scaffold-class.html" target="_blank"><code>Scaffold</code></a> widget that has a simple <a href="http://docs.flutter.io/flutter/material/AppBar/AppBar.html" target="_blank"><code>AppBar</code></a> as its child widget. </p>
+<p>If you run the app (<img style="width: 24.00px" src="./Building Beautiful UIs with Flutter_files/afdb56a70d8aaf27.png">), you should see a single screen that looks like this.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/24eb39eb92c69829.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/73578e6f634848d3.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded="">Build the chat screen</h2>
+<p>To lay the groundwork for interactive components, you'll break the simple app into two different subclasses of widget: a root-level <code>FriendlychatApp</code> widget that never changes, and a child  <code>ChatScreen</code> widget that can rebuild when messages are sent and internal state changes. For now, both these classes can extend <a href="https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html" target="_blank"><code>StatelessWidget</code></a>. Later, we'll modify <code>ChatScreen</code> to extend <a href="https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html" target="_blank"><code>StatefulWidget</code></a> and manage state.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_1_main_user_interface/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Replace the code in main.dart with the following.</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/material.dart'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  runApp</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FriendlychatApp</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">FriendlychatApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Friendlychat"</span><span class="pun">,</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChatScreen</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreen</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">)),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>This step introduces several key concepts of the Flutter framework:</p>
+<ul>
+<li>You describe the part of the user interface represented by a widget in its build method. The framework calls the <code>build()</code> methods for <code>FriendlychatApp</code> or <code>ChatScreen</code> when inserting these widgets into the widget hierarchy and when their dependencies change. </li>
+<li><a href="https://api.dartlang.org/stable/1.24.2/dart-core/override-constant.html" target="_blank"><code>@override</code></a> is a Dart annotation that indicates that the tagged method overrides a superclass's method.</li>
+<li>Some widgets, like <a href="https://docs.flutter.io/flutter/material/Scaffold-class.html" target="_blank"><code>Scaffold</code></a> and <a href="https://docs.flutter.io/flutter/material/AppBar-class.html" target="_blank"><code>AppBar</code></a>, are specific to <a href="https://material.io/" target="_blank">Material Design</a> apps. Other widgets, like <a href="https://docs.flutter.io/flutter/widgets/Text-class.html" target="_blank"><code>Text</code></a>, are generic and can be used in any app. Widgets from different libraries in the Flutter framework are compatible and can work together in a single app. </li>
+</ul>
+<p>Click the hot reload (<img style="width: 9.00px" src="./Building Beautiful UIs with Flutter_files/c222adb5b39f083a.png">) button to see the changes almost instantly. After dividing the UI into separate classes and modifying the root widget, you should see no change:</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/24eb39eb92c69829.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/73578e6f634848d3.png"></p>
+</td></tr>
+</tbody></table>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add a UI for composing messages" duration="15" step="5"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">5. Add a UI for composing messages</h2>
+        <p>In this section, you'll learn how to build a user control that enables the user to enter and send text messages. </p>
+<p class="image-container"><img alt="g6097.png" style="width: 477.65px" src="./Building Beautiful UIs with Flutter_files/f2b3d3ceb61962c4.png"></p>
+<p>On a device, clicking on the text field brings up a soft keyboard. Users can send chat messages by typing a non-empty string and pressing the Return key on the soft keyboard. Alternatively, users can send their typed messages by pressing the graphical <strong>Send </strong>button next to the input field.</p>
+<p>For now, the UI for composing messages is at the top of the chat screen but after we add the UI for displaying messages in the next step, it will move to the bottom of the chat screen. </p>
+<h2 is-upgraded="">Add an interactive text input field</h2>
+<p>The Flutter framework provides a Material Design widget called <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a>. It's a stateful widget (a widget that has mutable state) with properties for customizing the behavior of the input field. State is information that can be read synchronously when the widget is built and that might change during the lifetime of the widget. Adding the first stateful widget to Friendlychat requires making a few modifications. </p>
+<p>In Flutter, if you want to visually present stateful data in a widget, you should encapsulate this data in a <a href="http://docs.flutter.io/flutter/widgets/State-class.html" target="_blank"><code>State</code></a> object. You can then associate your <a href="http://docs.flutter.io/flutter/widgets/State-class.html" target="_blank"><code>State</code></a> object with a widget that extends the <a href="http://docs.flutter.io/flutter/widgets/StatefulWidget-class.html" target="_blank"><code>StatefulWidget</code></a> class. </p>
+<p>The following code snippet shows how you might start to define a class in your <code>main.dart</code> file to add the interactive text input field. First you'll change the <code>ChatScreen</code> class to subclass <a href="http://docs.flutter.io/flutter/widgets/StatefulWidget-class.html" target="_blank"><code>StatefulWidget</code></a> instead of <a href="https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html" target="_blank"><code>StatelessWidget</code></a>. While <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> handles the mutable text content, state belongs at this level of the widget hierarchy because <code>ChatScreen</code> will have a text controller object. You'll also define a new <code>ChatScreenState</code> class that implements the <a href="http://docs.flutter.io/flutter/widgets/State-class.html" target="_blank"><code>State</code></a> object. </p>
+<p>Override the <a href="https://docs.flutter.io/flutter/widgets/StatefulWidget/createState.html" target="_blank"><code>createState()</code></a> method as shown to attach the <code>ChatScreenState</code> class. You'll use the new class to build the stateful <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> widget.</p>
+<p>Add a line above the <a href="https://docs.flutter.io/flutter/widgets/State/build.html" target="_blank"><code>build</code></a><a href="http://docs.flutter.io/flutter/material/State/build.html" target="_blank"><code>()</code></a> method to define the <code>ChatScreenState</code> class:</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the ChatScreen class definition to extend StatefulWidget.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreen</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatefulWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">                     </span><span class="com">//modified</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">                                                        </span><span class="com">//new</span><span class="pln">
+  </span><span class="typ">State</span><span class="pln"> createState</span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChatScreenState</span><span class="pun">();</span><span class="pln">                    </span><span class="com">//new</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> 
+
+</span><span class="com">// Add the ChatScreenState class definition in main.dart.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreenState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ChatScreen</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">                  </span><span class="com">//new</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">                                                        </span><span class="com">//new</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">)),</span><span class="pln">
+
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Now the <a href="https://docs.flutter.io/flutter/widgets/State/build.html" target="_blank"><code>build</code></a><a href="http://docs.flutter.io/flutter/material/State/build.html" target="_blank"><code>()</code></a> method for <code>ChatScreenState</code> should include all the widgets formerly in the <code>ChatScreen</code> part of the widget tree. When the framework calls the <a href="https://docs.flutter.io/flutter/widgets/State/build.html" target="_blank"><code>build()</code></a> method to refresh the UI, it can rebuild <code>ChatScreenState</code> with its tree of children widgets.</p>
+<aside class="special"><p><strong>Tip:</strong> It's often useful to view the source code definition of Flutter's framework APIs to get a better understanding of what's going on behind the scenes. You can do this easily from IntelliJ's editor panel by selecting a class or method name, then right-clicking and selecting the <strong>Go to Declaration</strong> option. Depending on the OS, you can also click while pressing the Command or Control button on the keyboard. <a href="https://flutter.io/intellij-ide/#tips-and-tricks" target="_blank">See more options and keyboard shortcuts</a>.</p>
+</aside>
+<p>Now that your app has the ability to manage state, you can build out the <code>ChatScreenState</code> class with an input field and send button. </p>
+<p>To manage interactions with the text field, it's helpful to use a <a href="https://docs.flutter.io/flutter/widgets/TextEditingController-class.html" target="_blank"><code>TextEditingController</code></a> object. You'll use it for reading the contents of the input field, and for clearing the field after the text message is sent. Add a line to the <code>ChatScreenState</code> class definition to create this object.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code in the ChatScreenState class definition.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreenState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ChatScreen</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pln"> _textController </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">();</span><span class="pln"> </span><span class="com">//new</span></code></pre>
+<p>The following code snippet shows how you can define a private method called <code>_buildTextComposer()</code> that returns a <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> widget with a configured <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> widget. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code in the ChatScreenState class definition.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> _buildTextComposer</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+    margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+    child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+      controller</span><span class="pun">:</span><span class="pln"> _textController</span><span class="pun">,</span><span class="pln">
+      onSubmitted</span><span class="pun">:</span><span class="pln"> _handleSubmitted</span><span class="pun">,</span><span class="pln">
+      decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">.</span><span class="pln">collapsed</span><span class="pun">(</span><span class="pln">
+        hintText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Send a message"</span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Start with a <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> widget that adds a horizontal margin between the edge of the screen and each side of the input field. The units here are logical pixels that get translated into a specific number of physical pixels, depending on a device's pixel ratio. You might be familiar with the equivalent term for iOS (<em>points</em>) or for Android (<em>density-independent pixels</em>).</p>
+<p>Add a <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> widget and configure it as follows to manage user interactions:</p>
+<ul>
+<li>To have control over the contents of the text field, we'll provide the <code>TextField</code> constructor with a <code>TextEditingController</code>. This controller can also be used to clear the field or read its value.</li>
+<li>To be notified when the user submits a message, use the <a href="https://docs.flutter.io/flutter/material/TextField/onSubmitted.html" target="_blank"><code>onSubmitted</code></a> argument to provide a private callback method <code>_handleSubmitted()</code>. For now, this method will just clear the field, and later on we'll add more to code to send the message. Define this method as follows:</li>
+</ul>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code in the ChatScreenState class definition.</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  _textController</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Tip: </strong>Prefixing an identifier with an _ (underscore) makes it private to its class. The Dart compiler enforces privacy. See dartlang.org for more details on <a href="https://www.dartlang.org/guides/language/language-tour#libraries-and-visibility" target="_blank">libraries and visibility</a> in Dart.</p>
+</aside>
+<h2 is-upgraded="">Place the text composer widget</h2>
+<p>Now, tell the app how to display the text input user control. In the <a href="http://docs.flutter.io/flutter/material/State/build.html" target="_blank"><code>build()</code></a> method of your  <code>ChatScreenState</code> class, attach a private method called _<code>buildTextComposer</code> to the <a href="https://docs.flutter.io/flutter/material/Scaffold/body.html" target="_blank"><code>body</code></a> property. The <code>_buildTextComposer</code>  method returns a widget that encapsulates the text input field.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the code in the ChatScreenState class definition as follows.</span><span class="pln">
+
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+      appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">)),</span><span class="pln">
+
+      body</span><span class="pun">:</span><span class="pln"> _buildTextComposer</span><span class="pun">(),</span><span class="pln"> </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span></code></pre>
+<p>Hot reload the app. You should see a single screen that looks like this.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/49a2e4c351ed9b79.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/f3d84c5c828febff.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded="">Add a responsive Send button</h2>
+<p>Next, we'll add a 'Send' button to the right of the text field. Since we want to display the button adjacent to the input field, we'll use a <a href="https://docs.flutter.io/flutter/widgets/Row-class.html" target="_blank"><code>Row</code></a> widget as the parent. </p>
+<p>Then wrap the <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> widget in a <a href="https://docs.flutter.io/flutter/widgets/Flexible-class.html" target="_blank"><code>Flexible</code></a> widget. This tells the <a href="https://docs.flutter.io/flutter/widgets/Row-class.html" target="_blank"><code>Row</code></a> to automatically size the text field to use the remaining space that isn't used by the button. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the _buildTextComposer method with the code below to arrange the </span><span class="pln">
+</span><span class="com">// text input field and send button.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> _buildTextComposer</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+    margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+    child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">                                            </span><span class="com">//new</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">                                      </span><span class="com">//new</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flexible</span><span class="pun">(</span><span class="pln">                                          </span><span class="com">//new</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+            controller</span><span class="pun">:</span><span class="pln"> _textController</span><span class="pun">,</span><span class="pln">
+            onSubmitted</span><span class="pun">:</span><span class="pln"> _handleSubmitted</span><span class="pun">,</span><span class="pln">
+            decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">.</span><span class="pln">collapsed</span><span class="pun">(</span><span class="pln">
+              hintText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Send a message"</span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">                                                      </span><span class="com">//new</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">                                                        </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">                                                          </span><span class="com">//new</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>You can now create an <a href="http://docs.flutter.io/flutter/material/IconButton-class.html" target="_blank"><code>IconButton</code></a> widget that displays the <strong>Send </strong>icon. In the <code>icon</code> property, use the <a href="https://docs.flutter.io/flutter/material/Icons/send-constant.html" target="_blank"><code>Icons.send</code></a> constant to create a new <a href="https://docs.flutter.io/flutter/material/Icons-class.html" target="_blank"><code>Icon</code></a> instance. This constant indicates that your widget uses the following ‘Send' icon provided by the material icons library.</p>
+<p class="image-container"><img style="width: 40.00px" src="./Building Beautiful UIs with Flutter_files/715252632482fc96.png"></p>
+<aside class="special"><p><strong>Tip:</strong> For a list of the standard Material Design icons, refer to the <a href="https://material.io/icons/" target="_blank">Material Icons</a> site and the constants in the <a href="http://docs.flutter.io/flutter/material/Icons-class.html" target="_blank"><code>Icons</code></a> class.</p>
+</aside>
+<p>Put your <a href="http://docs.flutter.io/flutter/material/IconButton-class.html" target="_blank"><code>IconButton</code></a> widget inside another <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> parent widget; this lets you customize the margin spacing of the button so that it visually fits better next to your input field. For the <a href="https://docs.flutter.io/flutter/material/IconButton/onPressed.html" target="_blank"><code>onPressed</code></a> property, use an anonymous function to also invoke the <code>_handleSubmitted()</code> method and use <code>_textController</code> to pass it the contents of the message. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the _buildTextComposer method with the code below to define the </span><span class="pln">
+</span><span class="com">// send button.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> _buildTextComposer</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+    margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+    child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flexible</span><span class="pun">(</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+            controller</span><span class="pun">:</span><span class="pln"> _textController</span><span class="pun">,</span><span class="pln">
+            onSubmitted</span><span class="pun">:</span><span class="pln"> _handleSubmitted</span><span class="pun">,</span><span class="pln">
+            decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">.</span><span class="pln">collapsed</span><span class="pun">(</span><span class="pln">
+              hintText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Send a message"</span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">                                                 </span><span class="com">//new</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4.0</span><span class="pun">),</span><span class="pln">           </span><span class="com">//new</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">                                       </span><span class="com">//new</span><span class="pln">
+            icon</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">send</span><span class="pun">),</span><span class="pln">                                </span><span class="com">//new</span><span class="pln">
+            onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="pln">_textController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)),</span><span class="pln">  </span><span class="com">//new</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">                                                             </span><span class="com">//new</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<aside class="special"><p><strong>Tip:</strong> In Dart syntax, the fat arrow function declaration  <code>=&gt; expression</code> is shorthand for <code>{ return expression; }</code>.</p>
+<p>For an overview of Dart function support, including anonymous and nested functions, see the <a href="https://www.dartlang.org/guides/language/language-tour" target="_blank">Dart Language Tour</a>.</p>
+</aside>
+<p>The color of the button is black, from the default Material Design theme. To give the icons in your app an accent color, pass the color argument to IconButton. Alternatively, you can apply a different theme. </p>
+<p>Icons inherit their color, opacity, and size from an <a href="https://docs.flutter.io/flutter/material/IconTheme-class.html" target="_blank"><code>IconTheme</code></a> widget, which uses an <a href="https://docs.flutter.io/flutter/material/IconThemeData-class.html" target="_blank"><code>IconThemeData</code></a> object to define these characteristics. Wrap all the widgets in the <code>_buildTextComposer()</code> method in an <a href="https://docs.flutter.io/flutter/material/IconTheme-class.html" target="_blank"><code>IconTheme</code></a> widget, and use its <a href="https://docs.flutter.io/flutter/material/IconTheme/data.html" target="_blank"><code>data</code></a> property to specify the <a href="https://docs.flutter.io/flutter/material/ThemeData-class.html" target="_blank"><code>ThemeData</code></a> object of the current theme. This gives the button (and any other icons in this part of the widget tree) the accent color of the current theme.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-steps/blob/master/offline_steps/step_2_composing_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the _buildTextComposer method with the code below to give the </span><span class="pln">
+</span><span class="com">// send button the current theme's accent color.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> _buildTextComposer</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconTheme</span><span class="pun">(</span><span class="pln">                                            </span><span class="com">//new</span><span class="pln">
+    data</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconThemeData</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">accentColor</span><span class="pun">),</span><span class="pln"> </span><span class="com">//new</span><span class="pln">
+    child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">                                     </span><span class="com">//modified</span><span class="pln">
+      margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flexible</span><span class="pun">(</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+              controller</span><span class="pun">:</span><span class="pln"> _textController</span><span class="pun">,</span><span class="pln">
+              onSubmitted</span><span class="pun">:</span><span class="pln"> _handleSubmitted</span><span class="pun">,</span><span class="pln">
+              decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">.</span><span class="pln">collapsed</span><span class="pun">(</span><span class="pln">
+                hintText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Send a message"</span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+            margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4.0</span><span class="pun">),</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+              icon</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">send</span><span class="pun">),</span><span class="pln">
+              onPressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="pln">_textController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">                                                             </span><span class="com">//new</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>A  <a href="https://docs.flutter.io/flutter/widgets/BuildContext-class.html" target="_blank"><code>BuildContext</code></a> object is a handle to the location of a widget in your app's widget tree. Each widget has its own <a href="https://docs.flutter.io/flutter/widgets/BuildContext-class.html" target="_blank"><code>BuildContext</code></a>, which becomes the parent of the widget returned by the <a href="https://docs.flutter.io/flutter/widgets/StatelessWidget/build.html" target="_blank"><code>StatelessWidget.build</code></a> or <a href="https://docs.flutter.io/flutter/widgets/State/build.html" target="_blank"><code>State.build</code></a> function. This means the <code>_buildTextComposer()</code> method can access the <a href="https://docs.flutter.io/flutter/widgets/BuildContext-class.html" target="_blank"><code>BuildContext</code></a> object from its encapsulating <a href="https://docs.flutter.io/flutter/widgets/State-class.html" target="_blank"><code>State</code></a> object; you don't need to pass the context to the method explicitly.</p>
+<p>Hot reload the app. You should see a screen that looks like this.</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/a8a7e5397c559eb4.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/184bae7b7095aab4.png"></p>
+</td></tr>
+</tbody></table>
+<h2 is-upgraded="">Debug your app with IntelliJ</h2>
+<p>The IntelliJ IDE enables you to debug Flutter apps running on a simulator/emulator or on a device. With the IntelliJ editor, you can:</p>
+<ul>
+<li>Select a device or simulator to debug your app on.</li>
+<li>View the console messages.</li>
+<li>Set breakpoints in your code.</li>
+<li>Examine variables and evaluate expressions at run time.</li>
+</ul>
+<aside class="special"><p><strong>Tip:</strong> In addition to using IntelliJ, there are several other tools, commands, and techniques you can use to debug your Flutter app. To learn more, see <a href="https://flutter.io/debugging/" target="_blank">Debugging Flutter Applications</a>.</p>
+</aside>
+<p>The IntelliJ editor shows the system log while your app is running and provides a Debugger UI to work with breakpoints and control the execution flow.</p>
+<p class="image-container"><img style="width: 624.00px" src="./Building Beautiful UIs with Flutter_files/9ea1e0f6c7c6fea0.png"></p>
+<h3 is-upgraded="">Work with breakpoints</h3>
+<p>To debug your Flutter app using breakpoints:</p>
+<ol type="1" start="1">
+<li>Open the source file in which you want to set a breakpoint.</li>
+<li>Locate the line where you want to set a breakpoint, click on it, then select <strong>Run &gt; Toggle Line Breakpoint</strong> in the menu. Alternatively, you can click in the gutter (to the right of the line number) to toggle a breakpoint.</li>
+<li>If you weren't previously running in debug mode, stop the app.</li>
+<li>Restart the app using <strong>Run &gt; Debug </strong>in the menu.</li>
+</ol>
+<p>The IntelliJ editor launches the Debugger UI and pauses the execution of your app when it reaches the breakpoint. You can then use the controls in the Debugger UI to identify the cause of the error.</p>
+<p>Practice using the debugger by setting breakpoints on the <code>build()</code> methods in your Friendlychat app, then run and debug the app. You can inspect the stack frames to see the history of method calls by your app. </p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Add a UI for displaying messages" duration="15" step="6"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">6. Add a UI for displaying messages</h2>
+        <p>With the basic app scaffolding and screen in place, now you're ready to define the area where chat messages will be displayed. </p>
+<p class="image-container"><img alt="image3921.png" style="width: 444.11px" src="./Building Beautiful UIs with Flutter_files/f4cf92b9610298f4.png"></p>
+<h2 is-upgraded="">Implement a message list</h2>
+<p>In this section, you'll create a widget that displays users' chat messages. You'll do this using composition, by creating and combining multiple smaller widgets. Start with a widget that represents a single chat message, nest that widget in a parent scrollable list, and nest the scrollable list in the basic app scaffold. </p>
+<p>First, we need a widget that represents a single chat message. Define a <a href="http://docs.flutter.io/flutter/widgets/StatelessWidget-class.html" target="_blank"><code>StatelessWidget</code></a> called <code>ChatMessage</code> as follows. Its <a href="http://docs.flutter.io/flutter/widgets/StatelessWidget/build.html" target="_blank"><code>build()</code></a> method returns a <a href="https://docs.flutter.io/flutter/widgets/Row-class.html" target="_blank"><code>Row</code></a> widget that displays a simple graphical avatar to represent the user who sent the message, a <a href="https://docs.flutter.io/flutter/widgets/Column-class.html" target="_blank"><code>Column</code></a> widget containing the sender's name, and the text of the message.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_3_displaying_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following class definition to main.dart.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatMessage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">ChatMessage</span><span class="pun">({</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">text</span><span class="pun">});</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> text</span><span class="pun">;</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+      margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10.0</span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+        crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+            margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">right</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">),</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">CircleAvatar</span><span class="pun">(</span><span class="pln">child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">_name</span><span class="pun">[</span><span class="lit">0</span><span class="pun">])),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+            crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+            children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+              </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">_name</span><span class="pun">,</span><span class="pln"> style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">textTheme</span><span class="pun">.</span><span class="pln">subhead</span><span class="pun">),</span><span class="pln">
+              </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+                margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5.0</span><span class="pun">),</span><span class="pln">
+                child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">text</span><span class="pun">),</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">],</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Define the <code>_name</code> variable as shown, replacing <code>Your Name</code> with your own name. We'll use this variable to label each chat message with the sender's name. In this codelab, you hard-code the value for simplicity but most apps will retrieve the sender's name via authentication, as shown in the <a href="http://codelabs.developers.google.com/codelabs/flutter-firebase/" target="_blank">Firebase for Flutter</a> codelab.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_3_displaying_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code to main.dart.</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> _name </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Your Name"</span><span class="pun">;</span></code></pre>
+<p>To personalize the <a href="https://docs.flutter.io/flutter/material/CircleAvatar-class.html" target="_blank"><code>CircleAvatar</code></a> widget, label it with the user's first initial by passing the first character of the <code>_name</code> variable's value to a child <a href="https://docs.flutter.io/flutter/widgets/Text-class.html" target="_blank"><code>Text</code></a> widget. We'll use <a href="https://docs.flutter.io/flutter/rendering/CrossAxisAlignment-class.html" target="_blank"><code>CrossAxisAlignment.start</code></a> as the <code>crossAxisAlignment</code> argument of the <code>Row</code> constructor to position the avatar and messages relative to their parent widgets. </p>
+<p>For the avatar, the parent is a <a href="https://docs.flutter.io/flutter/widgets/Row-class.html" target="_blank"><code>Row</code></a> widget whose main axis is horizontal, so <code>CrossAxisAlignment.start</code> gives it the highest position along the vertical axis. For messages, the parent is a <a href="https://docs.flutter.io/flutter/widgets/Column-class.html" target="_blank"><code>Column</code></a> widget whose main axis is vertical, so <code>CrossAxisAlignment.start</code> aligns the text at the furthest left position along the horizontal axis.</p>
+<p>Next to the avatar, align two <a href="https://docs.flutter.io/flutter/widgets/Text-class.html" target="_blank"><code>Text</code></a> widgets vertically to display the sender's name on top and the text of the message below. To style the sender's name and make it larger than the message text, you'll need to use <code>Theme.of(context)</code>to obtain an appropriate <a href="https://docs.flutter.io/flutter/material/ThemeData-class.html" target="_blank"><code>ThemeData</code></a> object. Its <a href="https://docs.flutter.io/flutter/material/ThemeData/textTheme.html" target="_blank"><code>textTheme</code></a> property gives you access to Material Design logical styles for text like <a href="https://docs.flutter.io/flutter/material/TextTheme/subhead.html" target="_blank"><code>subhead</code></a>, so you can avoid hard-coding font sizes and other text attributes.</p>
+<p>We haven't specified a theme for this app, so <code>Theme.of(context)</code>retrieves the default Flutter theme. In a later step, you'll override this default theme to style your app differently for Android vs. iOS.</p>
+<h2 is-upgraded="">Implement a chat message list</h2>
+<p>The next refinement is to get the list of chat messages and show it in the UI. We want this list to be scrollable so that users can view the chat history. The list should also present the messages in chronological order, with the most recent message displayed at the bottom-most row of the visible list. </p>
+<p>In your <code>ChatScreenState</code> widget definition, add a <a href="https://api.dartlang.org/stable/1.22.1/dart-core/List-class.html" target="_blank"><code>List</code></a> member called <code>_messages</code> to represent each chat message. Each list item is a <code>ChatMessage</code> instance. You need to initialize the message list to an empty <code>List</code>.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_3_displaying_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code to the ChatScreenState class definition.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreenState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ChatScreen</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">ChatMessage</span><span class="pun">&gt;</span><span class="pln"> _messages </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">ChatMessage</span><span class="pun">&gt;[];</span><span class="pln">             </span><span class="com">// new</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pln"> _textController </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">();</span></code></pre>
+<p>When the current user sends a message from the text field, your app should add the new message to the message list. Modify your <code>_handleSubmitted()</code> method as follows to implement this behavior. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_3_displaying_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the code in the _handleSubmitted method definition.</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  _textController</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+    </span><span class="typ">ChatMessage</span><span class="pln"> message </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChatMessage</span><span class="pun">(</span><span class="pln">                         </span><span class="com">//new</span><span class="pln">
+      text</span><span class="pun">:</span><span class="pln"> text</span><span class="pun">,</span><span class="pln">                                                  </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">                                                             </span><span class="com">//new</span><span class="pln">
+    setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">                                                  </span><span class="com">//new</span><span class="pln">
+      _messages</span><span class="pun">.</span><span class="pln">insert</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> message</span><span class="pun">);</span><span class="pln">                                </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">                                                            </span><span class="com">//new</span><span class="pln">
+ </span><span class="pun">}</span></code></pre>
+<p>You call <a href="https://docs.flutter.io/flutter/widgets/State/setState.html" target="_blank"><code>setState()</code></a>to modify <code>_messages</code> and to let the framework know this part of the widget tree has changed and it needs to rebuild the UI. Only synchronous operations should be performed in <a href="https://docs.flutter.io/flutter/widgets/State/setState.html" target="_blank"><code>setState()</code></a>, because otherwise the framework could rebuild the widgets before the operation finishes.</p>
+<p>In general, it is possible to call <a href="https://docs.flutter.io/flutter/widgets/State/setState.html" target="_blank"><code>setState()</code></a> with an empty closure after some private data changed outside of this method call. However, updating data inside <a href="https://docs.flutter.io/flutter/widgets/State/setState.html" target="_blank"><code>setState()</code></a>'s closure is preferred, so you don't forget to call it afterwards.</p>
+<h2 is-upgraded="">Place the message list</h2>
+<p>You're now ready to display the list of chat messages. We'll get the <code>ChatMessage</code> widgets from the <code>_messages</code> list and put them in a <a href="https://docs.flutter.io/flutter/widgets/ListView-class.html" target="_blank"><code>ListView</code></a> widget, for a scrollable list.  </p>
+<p>In the <a href="http://docs.flutter.io/flutter/material/State/build.html" target="_blank"><code>build()</code></a> method of your <code>ChatScreenState</code> class, add a <a href="https://docs.flutter.io/flutter/widgets/ListView-class.html" target="_blank"><code>ListView</code></a> widget for the message list. We choose the <a href="https://docs.flutter.io/flutter/widgets/ListView/ListView.builder.html" target="_blank"><code>ListView.builder</code></a> constructor because the default constructor doesn't automatically detect mutations of its <code>children</code> argument.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_3_displaying_messages/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the code in the ChatScreenState class definition as follows.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+    appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">)),</span><span class="pln">
+    body</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">                                        </span><span class="com">//modified</span><span class="pln">
+      children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">                                         </span><span class="com">//new</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flexible</span><span class="pun">(</span><span class="pln">                                             </span><span class="com">//new</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">.</span><span class="pln">builder</span><span class="pun">(</span><span class="pln">                            </span><span class="com">//new </span><span class="pln">
+            padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">                     </span><span class="com">//new</span><span class="pln">
+            reverse</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">                                        </span><span class="com">//new</span><span class="pln">
+            itemBuilder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">_</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _messages</span><span class="pun">[</span><span class="pln">index</span><span class="pun">],</span><span class="pln">      </span><span class="com">//new</span><span class="pln">
+            itemCount</span><span class="pun">:</span><span class="pln"> _messages</span><span class="pun">.</span><span class="pln">length</span><span class="pun">,</span><span class="pln">                          </span><span class="com">//new</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">                                                      </span><span class="com">//new</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">                                                        </span><span class="com">//new</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Divider</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">),</span><span class="pln">                                 </span><span class="com">//new</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">                                            </span><span class="com">//new</span><span class="pln">
+          decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">
+            color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">cardColor</span><span class="pun">),</span><span class="pln">                  </span><span class="com">//new</span><span class="pln">
+          child</span><span class="pun">:</span><span class="pln"> _buildTextComposer</span><span class="pun">(),</span><span class="pln">                       </span><span class="com">//modified</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">                                                        </span><span class="com">//new</span><span class="pln">
+      </span><span class="pun">],</span><span class="pln">                                                          </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">                                                            </span><span class="com">//new</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>The <code>body</code> property of the <a href="http://docs.flutter.io/flutter/material/Scaffold-class.html" target="_blank"><code>Scaffold</code></a> widget now contains the list of incoming messages as well as the input field and send button. We are using the following layout widgets:</p>
+<ul>
+<li><a href="https://docs.flutter.io/flutter/widgets/Column-class.html" target="_blank"><code>Column</code></a>, which lays out its direct children vertically.  <a href="https://docs.flutter.io/flutter/widgets/Column-class.html" target="_blank"><code>Column</code></a> can take multiple child widgets, which will be a scrolling list and a row for an input field. </li>
+<li><a href="https://docs.flutter.io/flutter/widgets/Flexible-class.html" target="_blank"><code>Flexible</code></a>, as a parent of <a href="https://docs.flutter.io/flutter/widgets/ListView-class.html" target="_blank"><code>ListView</code></a>. This tells the framework to let the list of received messages expand to fill the <a href="https://docs.flutter.io/flutter/widgets/Column-class.html" target="_blank"><code>Column</code></a> height while <a href="https://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> remains a fixed size. </li>
+<li><a href="https://docs.flutter.io/flutter/material/Divider-class.html" target="_blank"><code>Divider</code></a>, to draw a horizontal rule between the UI for displaying messages and the text input field for composing messages.</li>
+<li><a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a>, as a parent of the text composer, which is useful for defining background images, padding, margins, and other common layout details. Use <a href="https://docs.flutter.io/flutter/widgets/Container/decoration.html" target="_blank"><code>decoration</code></a> to create a new <a href="https://docs.flutter.io/flutter/painting/BoxDecoration-class.html" target="_blank"><code>BoxDecoration</code></a> object that defines the background color. In this case we're using the <a href="https://docs.flutter.io/flutter/material/ThemeData/cardColor.html" target="_blank"><code>cardColor</code></a> defined by the <a href="https://docs.flutter.io/flutter/material/ThemeData-class.html" target="_blank"><code>ThemeData</code></a> object of the default theme. This gives the UI for composing messages a different background from the messages list.</li>
+</ul>
+<p>Pass arguments to the <a href="https://docs.flutter.io/flutter/widgets/ListView-class.html" target="_blank"><code>ListView.builder</code></a> constructor to customize the list contents and appearance: </p>
+<ul>
+<li><a href="https://docs.flutter.io/flutter/widgets/BoxScrollView/padding.html" target="_blank"><code>padding</code></a> for white space around the message text </li>
+<li><a href="https://docs.flutter.io/flutter/widgets/ScrollView/reverse.html" target="_blank"><code>reverse</code></a> to make the <a href="https://docs.flutter.io/flutter/widgets/ListView-class.html" target="_blank"><code>ListView</code></a> start from the bottom of the screen</li>
+<li><code>itemCount</code> to specify the number of messages in the list</li>
+<li><code>itemBuilder</code> for a function that builds each widget in <code>[index]</code>. Since we don't need the current build context, we can ignore the first argument of <a href="https://docs.flutter.io/flutter/widgets/IndexedWidgetBuilder.html" target="_blank"><code>IndexedWidgetBuilder</code></a>. Naming the argument <code>_</code> (underscore) is a convention to indicate that it won't be used. </li>
+</ul>
+<p>Hot reload the app. You should see a single screen that looks as follows:</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/6b53a3082de2ffbc.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/e0d2040d6e682ae3.png"></p>
+</td></tr>
+</tbody></table>
+<p>Now, try sending a few messages using the UIs for composing and displaying that you just built!</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/ffcb0e5e26037c5.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/f6d7e6c541283309.png"></p>
+</td></tr>
+</tbody></table>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Animate your app" duration="15" step="7"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">7. Animate your app</h2>
+        <p>You can add animation effects to your widgets to make the user experience of your app more fluid and intuitive. In this section, we'll go over how to add a basic animation effect to your chat message list. </p>
+<p>When the user sends a new message, instead of simply displaying it in the message list, we'll animate the message to ease out vertically from the bottom of the list. </p>
+<p>Animations in Flutter are encapsulated as <a href="http://docs.flutter.io/flutter/animation/Animation-class.html" target="_blank"><code>Animation</code></a> objects that contain a typed value and a status (such as <em>forward</em>, <em>backward</em>, <em>completed</em>, and <em>dismissed</em>). You can attach an animation object to a widget or listen for changes to the animation object. Based on changes to the animation object's properties, the framework can modify the way your widget appears and rebuild the widget tree.  </p>
+<h2 is-upgraded="">Specify an animation controller</h2>
+<p>Use the <a href="http://docs.flutter.io/flutter/animation/AnimationController-class.html" target="_blank"><code>AnimationController</code></a>  class to specify how the animation should run. The <a href="http://docs.flutter.io/flutter/animation/AnimationController-class.html" target="_blank"><code>AnimationController</code></a> class lets you define important characteristics of the animation, such as its duration and playback direction (forward or reverse). </p>
+<p>When creating an <a href="http://docs.flutter.io/flutter/animation/AnimationController-class.html" target="_blank"><code>AnimationController</code></a>, you must pass it a <code>vsync</code> argument. The <code>vsync</code> prevents animations that are offscreen from consuming unnecessary resources. To use your <code>ChatScreenState</code> as the <code>vsync</code>, include a <a href="https://docs.flutter.io/flutter/widgets/TickerProviderStateMixin-mixin.html" target="_blank"><code>TickerProviderStateMixin</code></a> mixin in the <code>ChatScreenState</code> class definition.</p>
+<aside class="special"><p><strong>Tip:</strong> In Dart, a mixin allows a class body to be reused in multiple class hierarchies. For more information, see <a href="https://www.dartlang.org/articles/language/mixins" target="_blank">Classes</a>, a section in the <a href="https://www.dartlang.org/guides/language/language-tour" target="_blank">Dart Language Tour</a>.</p>
+</aside>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_4_animate/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the code in the ChatScreenState class definition as follows.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreenState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ChatScreen</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">with</span><span class="pln"> </span><span class="typ">TickerProviderStateMixin</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// modified</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">ChatMessage</span><span class="pun">&gt;</span><span class="pln"> _messages </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">ChatMessage</span><span class="pun">&gt;[];</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pln"> _textController </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">();</span></code></pre>
+<p>In the <code>ChatMessage</code> class definition, add a member variable to store the animation controller.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_4_animate/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the ChatMessage class definition as follows.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatMessage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">ChatMessage</span><span class="pun">({</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">text</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">animationController</span><span class="pun">});</span><span class="pln">         </span><span class="com">//modified</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> text</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">AnimationController</span><span class="pln"> animationController</span><span class="pun">;</span><span class="pln">                   </span><span class="com">//new</span></code></pre>
+<p>Modify the  <code>_handleSubmitted()</code> method  in your <code>ChatScreenState</code> class as follows. In this method, instantiate an <a href="http://docs.flutter.io/flutter/animation/AnimationController-class.html" target="_blank"><code>AnimationController</code></a> object and specify the animation's runtime duration to be 700 milliseconds. (We picked this longer duration period to slow down the animation effect so you can see the transition happen more gradually; in practice, you'll probably want to set a shorter duration period and <a href="https://flutter.io/faq/#my-app-has-a-slow-mode-bannerribbon-in-the-upper-right-why-am-i-seeing-that" target="_blank">disable slow mode</a> when running your app.)  </p>
+<p>Attach the animation controller to a new <code>ChatMessage</code> instance, and specify that the animation should play forward whenever a new message is added to the chat list</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_4_animate/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the _handleSubmittted method definition as follows.</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  _textController</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+  </span><span class="typ">ChatMessage</span><span class="pln"> message </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChatMessage</span><span class="pun">(</span><span class="pln">
+    text</span><span class="pun">:</span><span class="pln"> text</span><span class="pun">,</span><span class="pln">
+    animationController</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AnimationController</span><span class="pun">(</span><span class="pln">                  </span><span class="com">//new</span><span class="pln">
+      duration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Duration</span><span class="pun">(</span><span class="pln">milliseconds</span><span class="pun">:</span><span class="pln"> </span><span class="lit">700</span><span class="pun">),</span><span class="pln">                   </span><span class="com">//new</span><span class="pln">
+      vsync</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">,</span><span class="pln">                                                 </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">                                                             </span><span class="com">//new</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">                                                               </span><span class="com">//new</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _messages</span><span class="pun">.</span><span class="pln">insert</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> message</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+  message</span><span class="pun">.</span><span class="pln">animationController</span><span class="pun">.</span><span class="pln">forward</span><span class="pun">();</span><span class="pln">                           </span><span class="com">//new</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded="">Add a SizeTransition widget</h2>
+<p>Modify the <code>ChatMessage</code> object's <code>build()</code> method to return a <a href="https://docs.flutter.io/flutter/widgets/SizeTransition-class.html" target="_blank"><code>SizeTransition</code></a> widget that wraps the <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> child widget we previously defined. The <a href="https://docs.flutter.io/flutter/widgets/SizeTransition-class.html" target="_blank"><code>SizeTransition</code></a> class provides an animation effect where the width or height of its child is multiplied by a given size factor value.</p>
+<p>The <a href="https://docs.flutter.io/flutter/animation/CurvedAnimation-class.html" target="_blank"><code>CurvedAnimation</code></a> object, in conjunction with the <a href="http://docs.flutter.io/flutter/widgets/SizeTransition-class.html" target="_blank"><code>SizeTransition</code></a> class, produces an ease-out animation effect. The ease-out effect causes the message to slide in quickly at the beginning of the animation and slow down until it comes to a stop.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_4_animate/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the build() method for the ChatMessage class as follows.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatMessage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="typ">ChatMessage</span><span class="pun">({</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">text</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">animationController</span><span class="pun">});</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> text</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">AnimationController</span><span class="pln"> animationController</span><span class="pun">;</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">SizeTransition</span><span class="pun">(</span><span class="pln">                                    </span><span class="com">//new</span><span class="pln">
+    sizeFactor</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">CurvedAnimation</span><span class="pun">(</span><span class="pln">                              </span><span class="com">//new</span><span class="pln">
+        parent</span><span class="pun">:</span><span class="pln"> animationController</span><span class="pun">,</span><span class="pln"> curve</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Curves</span><span class="pun">.</span><span class="pln">easeOut</span><span class="pun">),</span><span class="pln">      </span><span class="com">//new</span><span class="pln">
+    axisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">                                           </span><span class="com">//new</span><span class="pln">
+    child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">                                    </span><span class="com">//modified</span><span class="pln">
+      margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">vertical</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10.0</span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+          crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+              margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">right</span><span class="pun">:</span><span class="pln"> </span><span class="lit">16.0</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">CircleAvatar</span><span class="pun">(</span><span class="pln">child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">_name</span><span class="pun">[</span><span class="lit">0</span><span class="pun">])),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">
+              crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+              children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+                </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">_name</span><span class="pun">,</span><span class="pln"> style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">textTheme</span><span class="pun">.</span><span class="pln">subhead</span><span class="pun">),</span><span class="pln">
+                </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+                  margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5.0</span><span class="pun">),</span><span class="pln">
+                  child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">text</span><span class="pun">),</span><span class="pln">
+                </span><span class="pun">),</span><span class="pln">
+              </span><span class="pun">],</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">)</span><span class="pln">                                                           </span><span class="com">//new</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<h2 is-upgraded="">Dispose the animation</h2>
+<p>It's good practice to dispose of your animation controllers to free up your resources when they are no longer needed. The following code snippet shows how you can implement this operation by overriding the <a href="https://docs.flutter.io/flutter/widgets/State/dispose.html" target="_blank"><code>dispose()</code></a> method in <code>ChatScreenState</code>. In the current app, the framework does not call the <a href="https://docs.flutter.io/flutter/widgets/State/dispose.html" target="_blank"><code>dispose()</code></a>method since the app only has a single screen. In a more complex app with multiple screens, the framework would invoke the method when the <code>ChatScreenState</code> object was no longer in use.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_4_animate/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code to the ChatScreenState class definition.</span><span class="pln">
+
+</span><span class="lit">@override</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> dispose</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">                                                   </span><span class="com">//new</span><span class="pln">
+  </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="typ">ChatMessage</span><span class="pln"> message </span><span class="kwd">in</span><span class="pln"> _messages</span><span class="pun">)</span><span class="pln">                           </span><span class="com">//new</span><span class="pln">
+    message</span><span class="pun">.</span><span class="pln">animationController</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">                         </span><span class="com">//new</span><span class="pln">
+  </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">                                                 </span><span class="com">//new</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">                                                                  </span><span class="com">//new</span></code></pre>
+<p>To see the animation effect, restart your app and enter a few messages. Using restart rather than hot reload clears any existing messages that do not have an animation controller.</p>
+<p>If you want to experiment further with animations, here are a few ideas to try:</p>
+<ul>
+<li>Speed up or slow down the animation effect by modifying the <a href="https://docs.flutter.io/flutter/animation/AnimationController/duration.html" target="_blank"><code>duration</code></a> value specified in the <code>_handleSubmitted()</code> method. </li>
+<li>Specify different animation curves by using the constants defined in the <a href="http://docs.flutter.io/flutter/animation/Curves-class.html" target="_blank"><code>Curves</code></a> class. </li>
+<li>Create a fade-in animation effect by wrapping the <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> in a <a href="https://docs.flutter.io/flutter/widgets/FadeTransition-class.html" target="_blank"><code>FadeTransition</code></a> widget instead of a <code>SizeTransition</code>.</li>
+</ul>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Apply finishing touches" duration="0" step="8"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">8. Apply finishing touches</h2>
+        <p>In this optional step, you'll give your app a few sophisticated details, like making the Send button enabled only when there's text to send, wrapping longer messages, and adding native-looking customizations for iOS and Android.</p>
+<h2 is-upgraded="">Make the Send button context-aware</h2>
+<p>Currently, the Send button appears enabled even when there is no text in the input field. You might want the button's appearance to change depending on whether the field contains text to send. </p>
+<p>Define <code>_isComposing</code>, a private member variable that is true whenever the user is typing in the input field.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code in the ChatScreenState class definition.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ChatScreenState</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">State</span><span class="pun">&lt;</span><span class="typ">ChatScreen</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">with</span><span class="pln"> </span><span class="typ">TickerProviderStateMixin</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">ChatMessage</span><span class="pun">&gt;</span><span class="pln"> _messages </span><span class="pun">=</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">ChatMessage</span><span class="pun">&gt;[];</span><span class="pln">
+  </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pln"> _textController </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextEditingController</span><span class="pun">();</span><span class="pln">
+  </span><span class="kwd">bool</span><span class="pln"> _isComposing </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">                                      </span><span class="com">//new</span></code></pre>
+<p>To be notified about changes to the text as the user interacts with the field, pass an <a href="https://docs.flutter.io/flutter/material/TextField/onChanged.html" target="_blank"><code>onChanged</code></a> callback to the TextField constructor. <a href="http://docs.flutter.io/flutter/material/TextField-class.html" target="_blank"><code>TextField</code></a> calls this method whenever its value changes with the current value of the field. In your <code>onChanged</code> callback, call <a href="https://docs.flutter.io/flutter/widgets/State/setState.html" target="_blank"><code>setState()</code></a> to change the value of <code>_isComposing</code> to true when the field contains some text.</p>
+<p>Then modify the <code>onPressed</code> argument to be <code>null</code> when <code>_isComposing</code> is false.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the _buildTextComposer method with the code below</span><span class="pln">
+</span><span class="com">// to add the onChanged() and onPressed() callbacks.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> _buildTextComposer</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconTheme</span><span class="pun">(</span><span class="pln">
+    data</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconThemeData</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">accentColor</span><span class="pun">),</span><span class="pln">
+    child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+      margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+      child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Row</span><span class="pun">(</span><span class="pln">
+        children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+          </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flexible</span><span class="pun">(</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextField</span><span class="pun">(</span><span class="pln">
+              controller</span><span class="pun">:</span><span class="pln"> _textController</span><span class="pun">,</span><span class="pln">
+              onChanged</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="typ">String</span><span class="pln"> text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">          </span><span class="com">//new</span><span class="pln">
+                setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">                     </span><span class="com">//new</span><span class="pln">
+                  _isComposing </span><span class="pun">=</span><span class="pln"> text</span><span class="pun">.</span><span class="pln">length </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> </span><span class="com">//new</span><span class="pln">
+                </span><span class="pun">});</span><span class="pln">                               </span><span class="com">//new</span><span class="pln">
+              </span><span class="pun">},</span><span class="pln">                                  </span><span class="com">//new</span><span class="pln">
+              onSubmitted</span><span class="pun">:</span><span class="pln"> _handleSubmitted</span><span class="pun">,</span><span class="pln">
+              decoration</span><span class="pun">:</span><span class="pln">
+                  </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">InputDecoration</span><span class="pun">.</span><span class="pln">collapsed</span><span class="pun">(</span><span class="pln">hintText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Send a message"</span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+          </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+            margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4.0</span><span class="pun">),</span><span class="pln">
+            child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">
+              icon</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">send</span><span class="pun">),</span><span class="pln">
+              onPressed</span><span class="pun">:</span><span class="pln"> _isComposing
+                  </span><span class="pun">?</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="pln">_textController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)</span><span class="pln">    </span><span class="com">//modified</span><span class="pln">
+                  </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">                                           </span><span class="com">//modified</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">),</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Modify <code>_handleSubmitted</code> to update <code>_isComposing</code> to false when the text field is cleared.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_4_animate/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the _handleSubmittted method definition as follows.</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> _handleSubmitted</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  _textController</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">                                                    </span><span class="com">//new</span><span class="pln">
+    _isComposing </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">                                          </span><span class="com">//new</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">                                                              </span><span class="com">//new</span><span class="pln">
+  </span><span class="typ">ChatMessage</span><span class="pln"> message </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChatMessage</span><span class="pun">(</span><span class="pln">
+    text</span><span class="pun">:</span><span class="pln"> text</span><span class="pun">,</span><span class="pln">
+    animationController</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AnimationController</span><span class="pun">(</span><span class="pln">
+      duration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Duration</span><span class="pun">(</span><span class="pln">milliseconds</span><span class="pun">:</span><span class="pln"> </span><span class="lit">700</span><span class="pun">),</span><span class="pln">
+      vsync</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">),</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+  setState</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    _messages</span><span class="pun">.</span><span class="pln">insert</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> message</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+  message</span><span class="pun">.</span><span class="pln">animationController</span><span class="pun">.</span><span class="pln">forward</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>The <code>_isComposing</code> variable now controls the behavior and the visual appearance of the <strong>Send</strong> button. </p>
+<ul>
+<li>If the user types a string in the text field, <code>_isComposing</code> is <code>true</code> and the button's color is set to <code>Theme.of(context).accentColor</code>. When the user presses the button, the system invokes <code>_handleSubmitted()</code>.</li>
+<li>If the user types nothing in the text field, <code>_isComposing</code> is <code>false</code> and the widget's <a href="http://docs.flutter.io/flutter/material/IconButton/onPressed.html" target="_blank"><code>onPressed</code></a> property is set to <code>null</code>, disabling the send button. The framework will automatically change the button's color to <code>Theme.of(context).disabledColor</code>.</li>
+</ul>
+<h2 is-upgraded="">Wrap longer lines</h2>
+<p>When a user sends a text that exceeds the width of the UI for displaying messages, the lines should wrap so the entire message displays. Right now, lines that overflow are truncated and a error message is displayed. A simple way of making sure the text wraps correctly is to add an <a href="https://docs.flutter.io/flutter/widgets/Expanded-class.html" target="_blank"><code>Expanded</code></a> widget.</p>
+<p>In this step, you'll wrap the Column widget where messages are displayed in an Expanded widget. Expanded allows a widget like Column to impose layout constraints (in this case the Column's width), on a child widget. Here it constrains the width of the <a href="https://docs.flutter.io/flutter/widgets/Text-class.html" target="_blank"><code>Text</code></a> widget, which is normally determined by its contents.</p>
+<p>This part of the widget hierarchy is defined by the <code>build()</code> method of the <code>ChatMessage</code> class. We'll try out a couple of handy IntelliJ shortcuts to add a parent widget:</p>
+<ol type="1" start="1">
+<li>Place the cursor in the <code>new Column</code> expression. </li>
+<li>Click the lightbulb icon in the left margin and select <strong>Wrap with new widget</strong> from the popup menu. IntelliJ adds a generic <code>new widget</code> expression, correctly formatted, for you to customize. This quick way of adding expressions and nesting widgets is even faster when you use the keyboard shortcut, option+return (macOS) or alt+enter (Linux, Windows).</li>
+<li>With the cursor over the highlighted <code>widget</code> keyword placeholder, press the key combination for smart code completion. If you need to look it up, see the <a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank">IntelliJ IDEA reference</a>.</li>
+<li>Select <strong>Expanded</strong> from the list of possible objects that can be a parent of Column. It should be the first item on the list.</li>
+</ol>
+<p class="image-container"><img style="width: 565.50px" src="./Building Beautiful UIs with Flutter_files/9ccd4f42017afaa7.gif"></p>
+<p>The following code snippet shows how the <code>ChatMessage</code> class looks after making this change: </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">//Modify the ChatMessage class definition in main.dart.</span><span class="pln">
+
+</span><span class="pun">...</span><span class="pln">
+
+</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Expanded</span><span class="pun">(</span><span class="pln">                                               </span><span class="com">//new</span><span class="pln">
+  child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">                                   </span><span class="com">//modified</span><span class="pln">
+    crossAxisAlignment</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CrossAxisAlignment</span><span class="pun">.</span><span class="pln">start</span><span class="pun">,</span><span class="pln">
+    children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+      </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">_name</span><span class="pun">,</span><span class="pln"> style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">textTheme</span><span class="pun">.</span><span class="pln">subhead</span><span class="pun">),</span><span class="pln">
+      </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+        margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">only</span><span class="pun">(</span><span class="pln">top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5.0</span><span class="pun">),</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="pln">text</span><span class="pun">),</span><span class="pln">
+      </span><span class="pun">),</span><span class="pln">
+    </span><span class="pun">],</span><span class="pln">
+  </span><span class="pun">),</span><span class="pln">
+</span><span class="pun">),</span><span class="pln">                                                          </span><span class="com">//new</span><span class="pln">
+
+</span><span class="pun">...</span></code></pre>
+<h2 is-upgraded="">Customize for iOS and Android </h2>
+<p>To give your app's UI a natural look and feel, you can add a theme and some simple logic to the <a href="https://docs.flutter.io/flutter/widgets/StatelessWidget/build.html" target="_blank"><code>build()</code></a> method for the <code>FriendlychatApp</code> class. In this step, you define a platform theme that applies a different set of primary and accent colors. You also customize the Send button to use a <a href="https://docs.flutter.io/flutter/cupertino/CupertinoButton-class.html" target="_blank"><code>CupertinoButton</code></a> on iOS and a Material Design <a href="https://docs.flutter.io/flutter/material/IconButton-class.html" target="_blank"><code>IconButton</code></a>  on Android. </p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>iOS</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Android</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/18cebc58e2a81ec5.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="./Building Beautiful UIs with Flutter_files/256abe6fd13d552c.png"></p>
+</td></tr>
+</tbody></table>
+<p>First, define a new <a href="https://docs.flutter.io/flutter/material/ThemeData-class.html" target="_blank"><code>ThemeData</code></a> object named <code>kIOSTheme</code> with colors for iOS (light grey with orange accents) and another <a href="https://docs.flutter.io/flutter/material/ThemeData-class.html" target="_blank"><code>ThemeData</code></a> object <code>kDefaultTheme</code> with colors for Android (purple with orange accents).</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code to main.dart.</span><span class="pln">
+
+</span><span class="kwd">final</span><span class="pln"> </span><span class="typ">ThemeData</span><span class="pln"> kIOSTheme </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ThemeData</span><span class="pun">(</span><span class="pln">
+  primarySwatch</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">orange</span><span class="pun">,</span><span class="pln">
+  primaryColor</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">grey</span><span class="pun">[</span><span class="lit">100</span><span class="pun">],</span><span class="pln">
+  primaryColorBrightness</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Brightness</span><span class="pun">.</span><span class="pln">light</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">final</span><span class="pln"> </span><span class="typ">ThemeData</span><span class="pln"> kDefaultTheme </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ThemeData</span><span class="pun">(</span><span class="pln">
+  primarySwatch</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">purple</span><span class="pun">,</span><span class="pln">
+  accentColor</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">orangeAccent</span><span class="pun">[</span><span class="lit">400</span><span class="pun">],</span><span class="pln">
+</span><span class="pun">);</span></code></pre>
+<p>Modify the <code>FriendlychatApp</code> class to vary the theme using the <a href="https://docs.flutter.io/flutter/material/MaterialApp/theme.html" target="_blank"><code>theme</code></a> property of your app's <a href="https://docs.flutter.io/flutter/material/MaterialApp-class.html" target="_blank"><code>MaterialApp</code></a> widget. Use the top-level <a href="https://docs.flutter.io/flutter/foundation/defaultTargetPlatform.html" target="_blank"><code>defaultTargetPlatform</code></a> property and <a href="https://www.dartlang.org/guides/language/language-tour#operators" target="_blank">conditional operators</a> to build an expression for selecting a theme. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code to main.dart.</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/foundation.dart'</span><span class="pun">;</span><span class="pln">                        </span><span class="com">//new</span><span class="pln">
+
+</span><span class="com">// Modify the FriendlychatApp class definition in main.dart.</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">FriendlychatApp</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">StatelessWidget</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@override</span><span class="pln">
+  </span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">MaterialApp</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Friendlychat"</span><span class="pun">,</span><span class="pln">
+      theme</span><span class="pun">:</span><span class="pln"> defaultTargetPlatform </span><span class="pun">==</span><span class="pln"> </span><span class="typ">TargetPlatform</span><span class="pun">.</span><span class="pln">iOS         </span><span class="com">//new</span><span class="pln">
+        </span><span class="pun">?</span><span class="pln"> kIOSTheme                                              </span><span class="com">//new</span><span class="pln">
+        </span><span class="pun">:</span><span class="pln"> kDefaultTheme</span><span class="pun">,</span><span class="pln">                                         </span><span class="com">//new</span><span class="pln">
+      home</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChatScreen</span><span class="pun">(),</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>We can apply the selected theme to the <a href="https://docs.flutter.io/flutter/material/AppBar-class.html" target="_blank"><code>AppBar</code></a> widget (the banner at the top of your app's UI). The <code>elevation</code> property defines the z-coordinates of the <a href="https://docs.flutter.io/flutter/material/AppBar-class.html" target="_blank"><code>AppBar</code></a>. A z-coordinate value of <code>0.0</code> has no shadow (iOS) and a value of <code>4.0</code> has a defined shadow (Android).</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the build() method of the ChatScreenState class.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+    appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+      title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">),</span><span class="pln">                                 </span><span class="com">//modified</span><span class="pln">
+      elevation</span><span class="pun">:</span><span class="pln">
+         </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">platform </span><span class="pun">==</span><span class="pln"> </span><span class="typ">TargetPlatform</span><span class="pun">.</span><span class="pln">iOS </span><span class="pun">?</span><span class="pln"> </span><span class="lit">0.0</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="lit">4.0</span><span class="pun">,</span><span class="pln"> </span><span class="com">//new</span><span class="pln">
+   </span><span class="pun">),</span></code></pre>
+<p>Customize the Send icon by modifying its <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> parent widget in the <code>_buildTextComposer</code> method. Use the <a href="https://docs.flutter.io/flutter/widgets/Container/child.html" target="_blank"><code>child</code></a> property and <a href="https://www.dartlang.org/guides/language/language-tour#operators" target="_blank">conditional operators</a> to build an expression for selecting a button. </p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Add the following code to main.dart.</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'package:flutter/cupertino.dart'</span><span class="pun">;</span><span class="pln">                      </span><span class="com">//new</span><span class="pln">
+
+</span><span class="com">// Modify the _buildTextComposer method.</span><span class="pln">
+
+</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+   margin</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">symmetric</span><span class="pun">(</span><span class="pln">horizontal</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4.0</span><span class="pun">),</span><span class="pln">
+   child</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">platform </span><span class="pun">==</span><span class="pln"> </span><span class="typ">TargetPlatform</span><span class="pun">.</span><span class="pln">iOS </span><span class="pun">?</span><span class="pln">  </span><span class="com">//modified</span><span class="pln">
+   </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">CupertinoButton</span><span class="pun">(</span><span class="pln">                                       </span><span class="com">//new</span><span class="pln">
+     child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Send"</span><span class="pun">),</span><span class="pln">                                 </span><span class="com">//new</span><span class="pln">
+     onPressed</span><span class="pun">:</span><span class="pln"> _isComposing                                  </span><span class="com">//new</span><span class="pln">
+         </span><span class="pun">?</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln">  _handleSubmitted</span><span class="pun">(</span><span class="pln">_textController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)</span><span class="pln">      </span><span class="com">//new</span><span class="pln">
+         </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,)</span><span class="pln"> </span><span class="pun">:</span><span class="pln">                                           </span><span class="com">//new</span><span class="pln">
+   </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IconButton</span><span class="pun">(</span><span class="pln">                                            </span><span class="com">//modified</span><span class="pln">
+       icon</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Icon</span><span class="pun">(</span><span class="typ">Icons</span><span class="pun">.</span><span class="pln">send</span><span class="pun">),</span><span class="pln">
+       onPressed</span><span class="pun">:</span><span class="pln"> _isComposing </span><span class="pun">?</span><span class="pln">
+           </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln">  _handleSubmitted</span><span class="pun">(</span><span class="pln">_textController</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">
+       </span><span class="pun">)</span><span class="pln">
+   </span><span class="pun">),</span></code></pre>
+<p>Wrap the top-level <code>Column</code> in a <a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank"><code>Container</code></a> widget to give it a light grey border on its upper edge. This border will help visually distinguish the app bar from the body of the app on iOS.  To hide the border on Android, apply the same logic used for the app bar in the previous snippet.</p>
+<h3 is-upgraded=""><a href="https://github.com/flutter/friendlychat-flutter/blob/master/offline_steps/step_5_finishing_touches/lib/main.dart" target="_blank"><strong>main.dart</strong></a></h3>
+<pre><code><span class="com">// Modify the following lines in main.dart.</span><span class="pln">
+
+</span><span class="typ">Widget</span><span class="pln"> build</span><span class="pun">(</span><span class="typ">BuildContext</span><span class="pln"> context</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Scaffold</span><span class="pun">(</span><span class="pln">
+    appBar</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AppBar</span><span class="pun">(</span><span class="pln">
+        title</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Text</span><span class="pun">(</span><span class="str">"Friendlychat"</span><span class="pun">),</span><span class="pln">
+        elevation</span><span class="pun">:</span><span class="pln">
+            </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">platform </span><span class="pun">==</span><span class="pln"> </span><span class="typ">TargetPlatform</span><span class="pun">.</span><span class="pln">iOS </span><span class="pun">?</span><span class="pln"> </span><span class="lit">0.0</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="lit">4.0</span><span class="pun">),</span><span class="pln">
+    body</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">                                             </span><span class="com">//modified</span><span class="pln">
+        child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Column</span><span class="pun">(</span><span class="pln">                                           </span><span class="com">//modified</span><span class="pln">
+          children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="typ">Widget</span><span class="pun">&gt;[</span><span class="pln">
+            </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Flexible</span><span class="pun">(</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ListView</span><span class="pun">.</span><span class="pln">builder</span><span class="pun">(</span><span class="pln">
+                padding</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EdgeInsets</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="lit">8.0</span><span class="pun">),</span><span class="pln">
+                reverse</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+                itemBuilder</span><span class="pun">:</span><span class="pln"> </span><span class="pun">(</span><span class="pln">_</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> _messages</span><span class="pun">[</span><span class="pln">index</span><span class="pun">],</span><span class="pln">
+                itemCount</span><span class="pun">:</span><span class="pln"> _messages</span><span class="pun">.</span><span class="pln">length</span><span class="pun">,</span><span class="pln">
+              </span><span class="pun">),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+            </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Divider</span><span class="pun">(</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">),</span><span class="pln">
+            </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Container</span><span class="pun">(</span><span class="pln">
+              decoration</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">cardColor</span><span class="pun">),</span><span class="pln">
+              child</span><span class="pun">:</span><span class="pln"> _buildTextComposer</span><span class="pun">(),</span><span class="pln">
+            </span><span class="pun">),</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">),</span><span class="pln">
+        decoration</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Theme</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">platform </span><span class="pun">==</span><span class="pln"> </span><span class="typ">TargetPlatform</span><span class="pun">.</span><span class="pln">iOS </span><span class="com">//new</span><span class="pln">
+            </span><span class="pun">?</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BoxDecoration</span><span class="pun">(</span><span class="pln">                                     </span><span class="com">//new</span><span class="pln">
+                border</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Border</span><span class="pun">(</span><span class="pln">                                  </span><span class="com">//new</span><span class="pln">
+                  top</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BorderSide</span><span class="pun">(</span><span class="pln">color</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Colors</span><span class="pun">.</span><span class="pln">grey</span><span class="pun">[</span><span class="lit">200</span><span class="pun">]),</span><span class="pln">      </span><span class="com">//new</span><span class="pln">
+                </span><span class="pun">),</span><span class="pln">                                                   </span><span class="com">//new</span><span class="pln">
+              </span><span class="pun">)</span><span class="pln">                                                      </span><span class="com">//new</span><span class="pln">
+            </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">),</span><span class="pln">                                                 </span><span class="com">//modified</span><span class="pln">
+  </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Hot reload the app. You should see different colors, shadows, and icon buttons for iOS and Android.</p>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Next steps" duration="2" step="9"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">9. Next steps</h2>
+        <p><strong>Congratulations!</strong></p>
+<p>You now know the basics of building cross-platform mobile apps with the Flutter framework.</p>
+<h3 class="checklist" is-upgraded=""><strong>What we've covered</strong></h3>
+<ul class="checklist">
+<li>How to build a Flutter app from the ground up in the IntelliJ editor.</li>
+<li>How to run, hot reload, and debug your Flutter app on a simulator/emulator and on a device.</li>
+<li>How to customize your user interface with widgets and animations.</li>
+<li>How to customize your user interface for iOS and Android.</li>
+</ul>
+<h3 is-upgraded=""><strong>What's next</strong></h3>
+<p>Try one of the other <a href="https://codelabs.developers.google.com/?cat=Flutter" target="_blank">Flutter codelabs</a>.</p>
+<p>Continue learning about Flutter:</p>
+<ul>
+<li><a href="https://flutter.io/" target="_blank">flutter.io</a>: The documentation site of the Flutter project.</li>
+<li><a href="https://www.udacity.com/course/build-native-mobile-apps-with-flutter--ud905" target="_blank">Build Native Mobile Apps with Flutter</a> (a free Udacity course)</li>
+<li>The <a href="http://docs.flutter.io/flutter/" target="_blank">Flutter API reference</a> documentation.</li>
+<li>Additional <a href="https://github.com/flutter/flutter/tree/master/examples" target="_blank">Flutter sample apps</a>, with source code. </li>
+</ul>
+<h3 is-upgraded=""><strong>Optional: Get the sample code</strong></h3>
+<p>We recommend downloading the sample if you want to view the samples as reference or start the codelab at a specific section. To get a copy of the sample code for the codelab, run this command from your terminal: </p>
+<pre> git clone https://github.com/flutter/friendlychat-steps.git</pre>
+<p>The sample code is in the <code>offline_steps</code> folder. We have created snapshots for you for each step, one snapshot per directory. Each step builds on the preceding step. </p>
+<aside class="special"><p>The steps are organized into these folders:</p>
+<ul>
+<li><img alt="android_studio_folder.png" style="width: 20.00px" src="./Building Beautiful UIs with Flutter_files/bb745dc85ae69f6b.png"> <strong>step-0</strong>—The starting code that you'll build upon in this codelab.</li>
+<li><img alt="android_studio_folder.png" style="width: 20.00px" src="./Building Beautiful UIs with Flutter_files/bb745dc85ae69f6b.png"> <strong>step-1</strong>—Display a title bar with a static text string. This is the starting code for section 5: ‘Add a UI for composing messages'.</li>
+<li><img alt="android_studio_folder.png" style="width: 20.00px" src="./Building Beautiful UIs with Flutter_files/bb745dc85ae69f6b.png"> <strong>step-2</strong>—Add an input field for users to compose messages. This is the starting code for section 6: ‘Add a UI for displaying messages'..</li>
+<li><img alt="android_studio_folder.png" style="width: 20.00px" src="./Building Beautiful UIs with Flutter_files/bb745dc85ae69f6b.png"> <strong>step-3</strong>—Add a scrollable message list. This is the starting code for section 7: ‘Animate your app'.</li>
+<li><img alt="android_studio_folder.png" style="width: 20.00px" src="./Building Beautiful UIs with Flutter_files/bb745dc85ae69f6b.png"> <strong>step-4</strong>—Add an animation to the message compose UI. This is the starting code for section 8: ‘Apply finishing touches'.</li>
+<li><img alt="android_studio_folder.png" style="width: 20.00px" src="./Building Beautiful UIs with Flutter_files/bb745dc85ae69f6b.png"> <strong>step-5</strong>—Make the Send button context-aware and customize the UI for iOS and Android.</li>
+</ul>
+</aside>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs.developers.google.com/codelabs/flutter/#" id="previous-step" title="Previous step" disappear="">Back</a><div class="spacer"></div><a href="https://codelabs.developers.google.com/codelabs/flutter/#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script src="./Building Beautiful UIs with Flutter_files/native-shim.js"></script>
+  <script src="./Building Beautiful UIs with Flutter_files/custom-elements.min.js"></script>
+  <script src="./Building Beautiful UIs with Flutter_files/prettify.js"></script>
+  <script src="./Building Beautiful UIs with Flutter_files/codelab-elements.js"></script>
+
+
+
+</body></html>

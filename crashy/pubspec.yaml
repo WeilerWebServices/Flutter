@@ -1,0 +1,13 @@
+name: crashy
+description: A Flutter app that knows how to crash in various ways.
+
+dependencies:
+  sentry: ">=3.0.0 <4.0.0"
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  test: 1.11.1
+
+flutter:
+  uses-material-design: true

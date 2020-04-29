@@ -1,0 +1,27 @@
+name: diagrams
+description: Main app for building API doc assets.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  diagram_capture:
+    path: ../diagram_capture
+  path_provider: any
+  archive: ^2.0.10
+  process: 3.0.12
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: any
+
+flutter:
+  assets:
+    - assets/blend_mode_destination.jpeg
+    - assets/blend_mode_grid.png
+    - assets/blend_mode_source.png
+
+environment:
+  sdk: ">=2.0.0-dev.61.0 <3.0.0"
+  flutter: ">=0.1.4 <2.0.0"
+

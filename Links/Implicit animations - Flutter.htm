@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://flutter.dev/docs/codelabs/implicit-animations -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Implicit animations  - Flutter </title>
+  <link rel="shortcut icon" href="https://flutter.dev/images/favicon.png">
+
+  <!-- Google Optimize -->
+  <script async="" src="./Implicit animations - Flutter_files/analytics.js"></script><script async="" src="./Implicit animations - Flutter_files/gtm.js"></script><script src="./Implicit animations - Flutter_files/optimize.js"></script>
+  <!-- End Google Optimize -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-ND4LWWZ');</script>
+  <!-- End Google Tag Manager -->
+
+  
+  <meta name="description" content="A codelab that uses interactive examples and exercises to teach  how to use Flutter&#39;s implicitly animated widgets.">
+  <meta name="keywords" content=" ">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@flutterdev">
+
+  <meta property="og:title" content="Implicit animations">
+  <meta property="og:url" content="https://flutter.dev/docs/codelabs/implicit-animations">
+  <meta property="og:description" content="A codelab that uses interactive examples and exercises to teach  how to use Flutter&#39;s implicitly animated widgets.">
+  
+  <meta property="og:image" content="https://flutter.dev/images/flutter-logo-sharing.png">
+
+  <link href="./Implicit animations - Flutter_files/css(3)" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./Implicit animations - Flutter_files/main-094812bce4cc4b3c1ece24851a2ac506e83ffa17701779ac96ca5c4d659423e5.css" integrity="sha256-CUgSvOTMSzweziSFGirFBug/+hdwF3mslspcTWWUI+U=" crossorigin="anonymous">
+  
+  <script src="./Implicit animations - Flutter_files/clipboard.min.js"></script>
+  <script src="./Implicit animations - Flutter_files/main-19728c3bc90c91b99b0a44c295d6a18fcf4a8333bed7d7517d611043c6d16948.js" type="text/javascript" integrity="sha256-GXKMO8kMkbmbCkTCldahj89KgzO+19dRfWEQQ8bRaUg=" crossorigin="anonymous"></script>
+  <script defer="" src="./Implicit animations - Flutter_files/inject_embed.dart.js"></script>
+  <script defer="" src="./Implicit animations - Flutter_files/animations_examples.js"></script>
+  <link rel="stylesheet" href="./Implicit animations - Flutter_files/github.min.css">
+<link rel="stylesheet" href="./Implicit animations - Flutter_files/diff2html.min.css">
+<script src="./Implicit animations - Flutter_files/diff2html.min.js"></script>
+<script src="./Implicit animations - Flutter_files/diff2html-ui.min.js"></script>
+<script src="./Implicit animations - Flutter_files/highlight.min.js"></script>
+<script src="./Implicit animations - Flutter_files/dart.min.js"></script>
+<script src="./Implicit animations - Flutter_files/yaml.min.js"></script>
+<script>$(document).ready(function() {
+  var diff2htmlUi = new Diff2HtmlUI();
+  diff2htmlUi.highlightCode(".d2h-wrapper");
+});</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67589403-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <meta name="google-site-verification" content="HFqxhSbf9YA_0rBglNLzDiWnrHiK_w4cqDh2YD2GEY4">
+  <meta name="google-site-verification" content="Zom-prnFykfYycmI_nzRWYx5r6Z9OwR-yEsgElRz_Ug">
+</head>
+<body class=" hasGoogleVoiceExt">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND4LWWZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="overlay-under-drawer"></div>
+
+    <header class="site-header">
+  <nav class="navbar navbar-expand-md justify-content-start justify-content-md-between">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="material-icons">menu</i>
+    </button>
+
+    <a class="navbar-brand" href="https://flutter.dev/">
+      <img alt="Flutter logo" height="37" width="129" class="align-middle" src="./Implicit animations - Flutter_files/flutter-lockup-c13da9c9303e26b8d5fc208d2a1fa20c1ef47eb021ecadf27046dea04c0cebf6.png" integrity="sha256-wT2pyTA+JrjV/CCNKh+iDB70frAh7K3ycEbeoEwM6/Y=" crossorigin="anonymous">
+    </a>
+
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div class="site-header__sheet-bg" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></div>
+      <div class="site-header__sheet">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://flutter.dev/docs">Docs</a>
+          </li>
+          <div class="site-sidebar site-sidebar--header d-md-none">
+            <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-1" role="button" aria-expanded="false" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-2" role="button" aria-expanded="true" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/showcase">Showcase</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://flutter.dev/community">Community</a>
+          </li>
+        </ul>
+        <form action="https://flutter.dev/search/" class="site-header__search form-inline">
+          <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+    <div class="site-header__social navbar-nav flex-row">
+      <a class="nav-item nav-link" href="https://twitter.com/flutterdev" aria-label="Twittter"><i class="fab fa-twitter fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://www.youtube.com/flutterdev" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+      <a class="nav-item nav-link" href="https://github.com/flutter" aria-label="Github"><i class="fab fa-github fa-lg"></i></a>
+    </div>
+    <a class="site-header__cta btn btn-primary" href="https://flutter.dev/docs/get-started/install/">Get started</a>
+    </nav>
+</header>
+<!---->
+  <div class="site-banner site-banner--default" role="alert">
+    Learn Flutter in this <a href="https://www.appbrewery.co/p/intro-to-flutter?utm_source=google&amp;utm_medium=website%20banner&amp;utm_campaign=app_brewery">online class by the App Brewery</a>.
+    If you sign up by July 8, it's free.<br>
+    Do you design UIs for your Flutter apps?
+    We're excited to announce that
+    <a href="https://medium.com/flutter/announcing-codepen-support-for-flutter-bb346406fe50?utm_source=google&amp;utm_medium=website%20banner&amp;utm_campaign=codepen">CodePen now supports Flutter</a>.
+  </div>
+<div class="container-fluid position-relative">
+  <div class="row flex-xl-nowrap">
+    <div class="fixed-col site-sidebar site-sidebar--fixed col-12 col-md-3 col-xl-2 d-none d-md-block" data-fixed-column="" style="position: fixed; max-height: 13794px; top: 196px;">
+      <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-1" role="button" aria-expanded="false" aria-controls="sidenav-1">Get started</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/install">1. Install</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/editor">2. Set up an editor</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/test-drive">3. Test drive</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/codelab">4. Write your first app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/learn-more">5. Learn more</a>
+  </li><div class="dropdown-divider"></div><li class="nav-item">
+    <a class="nav-link collapsable" data-toggle="collapse" data-target="#sidenav-1-7" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-1-7" role="button" aria-expanded="true" aria-controls="sidenav-1-7">From another platform?
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/android-devs">Flutter for Android devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/ios-devs">Flutter for iOS devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/react-native-devs">Flutter for React Native devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/web-devs">Flutter for web devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs">Flutter for Xamarin.Forms devs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/flutter-for/declarative">Introduction to declarative UI</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.dart.dev/guides/language" target="_blank" rel="noopener">Dart language overview<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/get-started/web">Building a web app</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-2" role="button" aria-expanded="true" aria-controls="sidenav-2">Samples &amp; tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/gallery/" target="_blank" rel="noopener">Flutter Gallery [updated]<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.github.io/samples/" target="_blank" rel="noopener">Sample apps on GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/cookbook">Cookbook</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="https://flutter.dev/docs/codelabs">Codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-3" role="button" aria-expanded="true" aria-controls="sidenav-3">Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1" href="https://flutter.dev/docs/development/ui" role="button" aria-expanded="false" aria-controls="sidenav-3-1">User interface
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets-intro">Introduction to widgets</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-2" href="https://flutter.dev/docs/development/ui/layout" role="button" aria-expanded="false" aria-controls="sidenav-3-1-2">Building layouts
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout">Layouts in Flutter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/responsive">Creating responsive apps</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/layout/box-constraints">Box constraints</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/interactive">Adding interactivity</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/assets-and-images">Assets and images</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/navigation">Navigation &amp; routing</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-6" href="https://flutter.dev/docs/development/ui/animations" role="button" aria-expanded="false" aria-controls="sidenav-3-1-6">Animations
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/tutorial">Tutorial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/implicit-animations">Implicit animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/hero-animations">Hero animations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/animations/staggered-animations">Staggered animations</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-1-7" href="https://flutter.dev/docs/development/ui/advanced" role="button" aria-expanded="false" aria-controls="sidenav-3-1-7">Advanced UI
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-1-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/slivers">Slivers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/gestures">Gestures</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/advanced/splash-screen">Splash screens</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ui/widgets">Widget catalog</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2" href="https://flutter.dev/docs/development/data-and-backend" role="button" aria-expanded="false" aria-controls="sidenav-3-2">Data &amp; backend
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2">
+      <li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-2-1" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt" role="button" aria-expanded="false" aria-controls="sidenav-3-2-1">State management
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-2-1">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro">Introduction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative">Think declaratively</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app">Ephemeral vs app state</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple">Simple app state management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/options">Options</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/networking">Networking &amp; http</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/json">JSON and serialization</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/data-and-backend/firebase">Firebase</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-3" href="https://flutter.dev/docs/development/accessibility-and-localization" role="button" aria-expanded="false" aria-controls="sidenav-3-3">Accessibility &amp; internationalization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/accessibility">Accessibility</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/accessibility-and-localization/internationalization">Internationalization</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-4" href="https://flutter.dev/docs/development/platform-integration" role="button" aria-expanded="false" aria-controls="sidenav-3-4">Platform integration
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/c-interop">C and C++ interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/web">Web FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/platform-integration/platform-channels">Writing platform-specific code</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-5" href="https://flutter.dev/docs/development/packages-and-plugins" role="button" aria-expanded="false" aria-controls="sidenav-3-5">Packages &amp; plugins
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-5">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/using-packages">Using packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">Developing packages &amp; plugins</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorites program</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/background-processes">Background processes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6" href="https://flutter.dev/docs/development/add-to-app" role="button" aria-expanded="false" aria-controls="sidenav-3-6">Add Flutter to existing app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app">Introduction</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-2" href="https://flutter.dev/docs/development/add-to-app/android" role="button" aria-expanded="false" aria-controls="sidenav-3-6-2">Adding to an Android app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment">Add a Flutter Fragment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/android/plugin-setup">Plugin setup</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-6-3" href="https://flutter.dev/docs/development/add-to-app/ios" role="button" aria-expanded="false" aria-controls="sidenav-3-6-3">Adding to an iOS app
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-6-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/project-setup">Project setup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/ios/add-flutter-screen">Add a single Flutter screen</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/debugging">Debugging &amp; hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/add-to-app/performance">Loading sequence and performance</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7" href="https://flutter.dev/docs/development/tools" role="button" aria-expanded="false" aria-controls="sidenav-3-7">Tools &amp; techniques
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/android-studio">Android Studio &amp; IntelliJ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/vs-code">Visual Studio Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-3" href="https://flutter.dev/docs/development/tools/devtools" role="button" aria-expanded="false" aria-controls="sidenav-3-7-3">DevTools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/overview">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/android-studio">Install from Android Studio &amp; IntelliJ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/vscode">Install from VS Code</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/cli">Install from command line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/inspector">Flutter inspector</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/timeline">Timeline view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/memory">Memory view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/performance">Performance view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/devtools/logging">Logging view</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-7-4" href="https://flutter.dev/docs/development/tools/sdk" role="button" aria-expanded="false" aria-controls="sidenav-3-7-4">Flutter SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-7-4">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/upgrading">Upgrading</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/archive">Releases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/release/breaking-changes">Breaking changes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/sdk/release-notes">Release notes</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/hot-reload">Hot reload</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/tools/formatting">Code formatting</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-3-8" href="https://flutter.dev/docs/development/androidx-migration" role="button" aria-expanded="false" aria-controls="sidenav-3-8">Migration notes
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-8">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/androidx-migration">AndroidX migration</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration">Android plugin upgrade</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/development/ios-project-migration">Xcode 11.4 support</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-4" role="button" aria-expanded="false" aria-controls="sidenav-4">Testing &amp; debugging</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/debugging">Debugging tools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/code-debugging">Debugging apps programmatically</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/oem-debuggers">Using an OEM debugger</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/build-modes">Flutter's build modes</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing/errors">Handling errors</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/testing">Testing</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-5" role="button" aria-expanded="false" aria-controls="sidenav-5">Performance &amp; optimization</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/app-size">App size</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed" data-toggle="collapse" data-target="#sidenav-5-3" href="https://flutter.dev/docs/perf/rendering" role="button" aria-expanded="false" aria-controls="sidenav-5-3">Rendering performance
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-3">
+      <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/best-practices">Performance best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/perf/rendering/ui-performance">Performance profiling</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-6" role="button" aria-expanded="false" aria-controls="sidenav-6">Deployment</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/obfuscate">Obfuscating Dart code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/flavors">Creating flavors for Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/android">Build and release an Android app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/ios">Build and release an iOS app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/web">Build and release a web app</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/deployment/cd">Continuous deployment</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-7" role="button" aria-expanded="false" aria-controls="sidenav-7">Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/bootstrap-into-dart">Dart resources</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/compatibility">Compatibility policy</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/inside-flutter">Inside Flutter</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/packages/google_fonts" target="_blank" rel="noopener">Google Fonts package<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/platform-adaptations">Platform adaptations</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/technical-overview">Technical overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/videos">Technical videos</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/resources/design-docs">Design Documents</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="https://flutter.dev/docs/codelabs/implicit-animations#sidenav-8" role="button" aria-expanded="true" aria-controls="sidenav-8">Reference</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev/docs/reference/widgets">Widget index</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://api.flutter.dev/" target="_blank" rel="noopener">API reference<i class="fas fa-external-link-alt"></i></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev/flutter" target="_blank" rel="noopener">Package site<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+    </li></ul>
+
+    </div>
+    <div id="site-toc--side" class="site-toc site-toc--side fixed-col col-xl-2 order-3" data-fixed-column="" style="position: fixed; max-height: 13794px; top: 196px;">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    </header>
+  <ul class="section-nav nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#what-are-implicit-animations">What are implicit animations?</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#example-fade-in-text-effect">Example: Fade-in text effect</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-starter-code">Fade-in (starter code)</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#animate-opacity-with-animatedopacity-widget">Animate opacity with AnimatedOpacity widget</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#1-pick-a-widget-property-to-animate">1. Pick a widget property to animate</a></li>
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#2-initialize-a-state-variable-for-the-animated-property">2. Initialize a state variable for the animated property</a></li>
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#3-set-up-a-trigger-for-the-animation-and-choose-an-end-value">3. Set up a trigger for the animation, and choose an end value</a></li>
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#4-set-the-duration-of-the-animation">4. Set the duration of the animation</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-complete">Fade-in (complete)</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#putting-it-all-together">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#example-shape-shifting-effect">Example: Shape-shifting effect</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-starter-code">Shape-shifting (starter code)</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#animate-color-borderradius-and-margin-with-animatedcontainer">Animate color, borderRadius, and margin with AnimatedContainer</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#1-add-an-implicit-animation">1. Add an implicit animation</a></li>
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#2-set-starting-values-for-animated-properties">2. Set starting values for animated properties</a></li>
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#3-set-up-a-trigger-for-the-animation">3. Set up a trigger for the animation</a></li>
+<li class="toc-entry nav-item toc-h4"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#4-set-duration">4. Set duration</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete">Shape-shifting (complete)</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#using-animation-curves">Using animation curves</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#putting-it-all-together-1">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="https://flutter.dev/docs/codelabs/implicit-animations#whats-next">What’s next?</a></li>
+</ul>
+</div>
+<main class="site-content col-12 col-md-9 offset-md-3 col-xl-8 offset-xl-2 col-xxl-8 offset-xxl-2" role="main">
+      <div class="container">
+        
+        
+        <header class="site-content__title">
+          <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/flutter/website/tree/master/src/docs/codelabs/implicit-animations.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/flutter/website/issues/new?title=%27Implicit%20animations%27%20page%20issue&amp;body=Page%20URL:%20https://flutter.dev/docs/codelabs/implicit-animations.html%0D%0APage%20source:%20https://github.com/flutter/website/tree/master/src/docs/codelabs/implicit-animations.md%0D%0A%0D%0AFound%20a%20typo?%20You%20can%20fix%20it%20yourself%20by%20going%20to%20the%20page%20source%20and%20clicking%20the%20pencil%20icon.%20Or%20finish%20creating%20this%20issue.%0D%0A%0D%0ADescription%20of%20issue:" class="btn no-automatic-external" title="Report an issue with this page" target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+          <h1>Implicit animations</h1>
+          </header>
+        <div id="site-toc--inline" class="site-toc site-toc--inline ">
+  <header class="site-toc__title">
+    Contents
+    </header>
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/implicit-animations#what-are-implicit-animations">What are implicit animations?</a></li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/implicit-animations#example-fade-in-text-effect">Example: Fade-in text effect</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-starter-code">Fade-in (starter code)</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#animate-opacity-with-animatedopacity-widget">Animate opacity with AnimatedOpacity widget</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#1-pick-a-widget-property-to-animate">1. Pick a widget property to animate</a></li>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#2-initialize-a-state-variable-for-the-animated-property">2. Initialize a state variable for the animated property</a></li>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#3-set-up-a-trigger-for-the-animation-and-choose-an-end-value">3. Set up a trigger for the animation, and choose an end value</a></li>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#4-set-the-duration-of-the-animation">4. Set the duration of the animation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-complete">Fade-in (complete)</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#putting-it-all-together">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/implicit-animations#example-shape-shifting-effect">Example: Shape-shifting effect</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-starter-code">Shape-shifting (starter code)</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#animate-color-borderradius-and-margin-with-animatedcontainer">Animate color, borderRadius, and margin with AnimatedContainer</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#1-add-an-implicit-animation">1. Add an implicit animation</a></li>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#2-set-starting-values-for-animated-properties">2. Set starting values for animated properties</a></li>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#3-set-up-a-trigger-for-the-animation">3. Set up a trigger for the animation</a></li>
+<li class="toc-entry toc-h4"><a href="https://flutter.dev/docs/codelabs/implicit-animations#4-set-duration">4. Set duration</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete">Shape-shifting (complete)</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#using-animation-curves">Using animation curves</a></li>
+<li class="toc-entry toc-h3"><a href="https://flutter.dev/docs/codelabs/implicit-animations#putting-it-all-together-1">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://flutter.dev/docs/codelabs/implicit-animations#whats-next">What’s next?</a></li>
+</ul>
+</div>
+
+<p>Welcome to the implicit animations codelab, where you learn how to use Flutter
+widgets that make it easy to create animations for a specific set of properties.</p>
+
+<p>To get the most out of this codelab, you should have basic knowledge about:</p>
+
+<ul>
+  <li>How to <a href="https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1/">make a Flutter app</a>.</li>
+  <li>How to use <a href="https://flutter.dev/docs/development/ui/interactive#stateful-and-stateless-widgets">stateful widgets</a>.</li>
+</ul>
+
+<p>This codelab covers the following material:</p>
+
+<ul>
+  <li>Using <code class="highlighter-rouge">AnimatedOpacity</code> to create a fade-in effect.</li>
+  <li>Using <code class="highlighter-rouge">AnimatedContainer</code> to animate transitions in size, color, and margin.</li>
+  <li>Overview of implicit animations and techniques for using them.</li>
+</ul>
+
+<p><strong>Estimated time to complete this codelab: 15-30 minutes.</strong></p>
+
+<h2 id="what-are-implicit-animations">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#what-are-implicit-animations" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are implicit animations?</h2>
+
+<p>With Flutter’s <a href="https://api.flutter.dev/flutter/animation/animation-library.html">animation library</a>,
+you can add motion and create visual effects
+for the widgets in your UI.
+One widget set in the library manages animations for you.
+These widgets are collectively referred to as <em>implicit animations</em>,
+or <em>implicitly animated widgets</em>, deriving their name from the
+<a href="https://api.flutter.dev/flutter/widgets/ImplicitlyAnimatedWidget-class.html">ImplicitlyAnimatedWidget</a> class that they implement.
+With implicit animations,
+you can animate a widget property by setting a target value;
+whenever that target value changes,
+the widget animates the property from the old value to the new one.
+In this way, implicit animations trade control for convenience—they
+manage animation effects so that you don’t have to.</p>
+
+<h2 id="example-fade-in-text-effect">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#example-fade-in-text-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Fade-in text effect</h2>
+
+<p>The following example shows how to add a fade-in effect to existing UI
+using an implicitly animated widget called <a href="https://api.flutter.dev/flutter/widgets/AnimatedOpacity-class.html">AnimatedOpacity</a>.
+<strong>The example begins with no animation code</strong>—it
+consists of a <a href="https://api.flutter.dev/flutter/material/MaterialApp-class.html">Material App</a> home screen containing:</p>
+
+<ul>
+  <li>A photograph of an owl.</li>
+  <li>One <strong>Show details</strong> button that does nothing when clicked.</li>
+  <li>Description text of the owl in the photograph.</li>
+</ul>
+
+<h3 id="fade-in-starter-code">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-starter-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fade-in (starter code)</h3>
+
+<p>Click the <strong>Run</strong> button to run the example:</p>
+
+<!-- Vanilla AnimatedOpacity https://gist.github.com/d7b09149ffee2f0535bb0c04d96987f5 -->
+<div><iframe src="./Implicit animations - Flutter_files/embed-flutter.html" style="width: 100%; height: 500px;"></iframe></div>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="fas fa-exclamation-circle"></i> <strong>Important:</strong>
+  This page uses an embedded version of <a href="https://dartpad.dev/">DartPad</a> to display
+  examples and exercises.
+  If you see empty boxes instead of DartPads, go to the
+  <a href="https://dart.dev/tools/dartpad/troubleshoot">DartPad troubleshooting page</a>.</p>
+</aside>
+
+<h3 id="animate-opacity-with-animatedopacity-widget">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#animate-opacity-with-animatedopacity-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Animate opacity with AnimatedOpacity widget</h3>
+
+<p>This section contains a list of steps you can use to add an
+  implicit animation to the
+  <a href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-starter-code">fade-in starter code</a>. After the steps, you can also run the
+  <a href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-complete">fade-in complete</a> code with the the changes already made.
+  The steps outline how to use the <code class="highlighter-rouge">AnimatedOpacity</code>
+  widget to add the following animation feature:</p>
+
+<ul>
+  <li>The owl’s description text remains hidden until the user clicks the
+<strong>Show details</strong> button.</li>
+  <li>When the user clicks the <strong>Show details</strong> button,
+the owl’s description text fades in.</li>
+</ul>
+
+<h4 id="1-pick-a-widget-property-to-animate">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#1-pick-a-widget-property-to-animate" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Pick a widget property to animate</h4>
+
+<p>To create a fade-in effect, you can animate the <code class="highlighter-rouge">opacity</code> property using the
+<code class="highlighter-rouge">AnimatedOpacity</code> widget. Change the <code class="highlighter-rouge">Container</code> widget to an
+<code class="highlighter-rouge">AnimatedOpacity</code> widget:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-503260" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{opacity1 → opacity2}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -21,7 +21,7 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">21</div>
+<div class="line-num2">21</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            style: TextStyle(color: Colors.blueAccent),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">22</div>
+<div class="line-num2">22</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">23</div>
+<div class="line-num2">23</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          onPressed: () =&gt; <span class="hljs-keyword">null</span>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">24</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart">      <del>Container</del>(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">24</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">      <ins>AnimatedOpacity</ins>(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">25</div>
+<div class="line-num2">25</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        child: Column(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">26</div>
+<div class="line-num2">26</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          children: &lt;Widget&gt;[</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">27</div>
+<div class="line-num2">27</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            Text(<span class="hljs-string">'Type: Owl'</span>),</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i>
+  You can reference the line numbers in the example code to help track
+  where to make these changes.</p>
+</aside>
+
+<h4 id="2-initialize-a-state-variable-for-the-animated-property">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#2-initialize-a-state-variable-for-the-animated-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Initialize a state variable for the animated property</h4>
+
+<p>To hide the text before the user clicks <strong>Show details</strong>, set
+the starting value for <code class="highlighter-rouge">opacity</code> to zero:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-423420" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{opacity2 → opacity3}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -11,6 +11,8 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">11</div>
+<div class="line-num2">11</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">}</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">12</div>
+<div class="line-num2">12</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_FadeInDemoState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">FadeInDemo</span>&gt; </span>{</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">13</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">  <span class="hljs-built_in">double</span> opacity = <span class="hljs-number">0.0</span>;</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">14</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">13</div>
+<div class="line-num2">15</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">  <span class="hljs-meta">@override</span></span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">14</div>
+<div class="line-num2">16</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">  Widget build(BuildContext context) {</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">15</div>
+<div class="line-num2">17</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">    <span class="hljs-keyword">return</span> Column(children: &lt;Widget&gt;[</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -22,6 +24,8 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">22</div>
+<div class="line-num2">24</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">23</div>
+<div class="line-num2">25</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          onPressed: () =&gt; <span class="hljs-keyword">null</span>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">24</div>
+<div class="line-num2">26</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">      AnimatedOpacity(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">27</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">        duration: <span class="hljs-built_in">Duration</span>(seconds: <span class="hljs-number">3</span>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">28</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">        opacity: opacity,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">25</div>
+<div class="line-num2">29</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        child: Column(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">26</div>
+<div class="line-num2">30</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          children: &lt;Widget&gt;[</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">27</div>
+<div class="line-num2">31</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            Text(<span class="hljs-string">'Type: Owl'</span>),</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<h4 id="3-set-up-a-trigger-for-the-animation-and-choose-an-end-value">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#3-set-up-a-trigger-for-the-animation-and-choose-an-end-value" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Set up a trigger for the animation, and choose an end value</h4>
+
+<p>Configure the animation to trigger when the user clicks the <strong>Show details</strong>
+button. To do this, change <code class="highlighter-rouge">opacity</code> state using the <code class="highlighter-rouge">onPressed()</code> handler for
+<code class="highlighter-rouge">MaterialButton</code>. To make the <code class="highlighter-rouge">FadeInDemo</code> widget become fully visible when
+the user clicks the <strong>Show details</strong> button, use the <code class="highlighter-rouge">onPressed()</code> handler
+to set <code class="highlighter-rouge">opacity</code> to 1:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-263740" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{opacity4 → opacity5}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -18,11 +18,14 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">18</div>
+<div class="line-num2">18</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">    <span class="hljs-keyword">return</span> Column(children: &lt;Widget&gt;[</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">19</div>
+<div class="line-num2">19</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">      Image.network(owl_url),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">20</div>
+<div class="line-num2">20</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">      MaterialButton(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">21</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart"><del>          </del>child: Text(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">22</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart"><del>            </del><span class="hljs-string">'Show Details'</span>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">23</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart"><del>            </del>style: TextStyle(color: Colors.blueAccent),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">24</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart"><del>          </del>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">25</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart"><del>          </del>onPressed: () =&gt; <del><span class="hljs-keyword">null</span></del>)<del>,</del></span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">21</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart"><ins>        </ins>child: Text(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">22</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart"><ins>          </ins><span class="hljs-string">'Show Details'</span>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">23</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart"><ins>          </ins>style: TextStyle(color: Colors.blueAccent),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">24</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart"><ins>        </ins>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">25</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart"><ins>        </ins>onPressed: () =&gt; <ins>setState((</ins>)<ins> {</ins></span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">26</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">          opacity = <span class="hljs-number">1</span>;</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">27</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">        }),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">28</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">      ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">26</div>
+<div class="line-num2">29</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">      AnimatedOpacity(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">27</div>
+<div class="line-num2">30</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        duration: <span class="hljs-built_in">Duration</span>(seconds: <span class="hljs-number">2</span>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">28</div>
+<div class="line-num2">31</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        opacity: opacity,</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<aside class="alert alert-secondary" role="alert">
+  <p>Notice that you only need to set the start and end values of <code class="highlighter-rouge">opacity</code>.
+  The <code class="highlighter-rouge">AnimatedOpacity</code> widget manages everything in between.</p>
+</aside>
+
+<h4 id="4-set-the-duration-of-the-animation">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#4-set-the-duration-of-the-animation" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Set the duration of the animation</h4>
+
+<p>In addition to an <code class="highlighter-rouge">opacity</code> parameter, <code class="highlighter-rouge">AnimatedOpacity</code> requires a
+<a href="https://api.flutter.dev/flutter/widgets/ImplicitlyAnimatedWidget/duration.html">duration</a> to use for its animation. For this example,
+you can start with 2 seconds:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-343580" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{opacity3 → opacity4}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -24,7 +24,7 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">24</div>
+<div class="line-num2">24</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">25</div>
+<div class="line-num2">25</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          onPressed: () =&gt; <span class="hljs-keyword">null</span>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">26</div>
+<div class="line-num2">26</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">      AnimatedOpacity(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">27</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart">        duration: <span class="hljs-built_in">Duration</span>(seconds: <del><span class="hljs-number">3</span></del>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">27</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">        duration: <span class="hljs-built_in">Duration</span>(seconds: <ins><span class="hljs-number">2</span></ins>),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">28</div>
+<div class="line-num2">28</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        opacity: opacity,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">29</div>
+<div class="line-num2">29</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        child: Column(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">30</div>
+<div class="line-num2">30</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          children: &lt;Widget&gt;[</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<h3 id="fade-in-complete">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-complete" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fade-in (complete)</h3>
+
+<p>Here’s the example with the completed changes you’ve made—run this
+example and click the <strong>Show details</strong> button to trigger the animation.</p>
+
+<!-- AnimatedOpacity https://gist.github.com/4207fea3975b2d329e81d9c9ba84d271 -->
+<div><iframe src="./Implicit animations - Flutter_files/embed-flutter(1).html" style="width: 100%; height: 500px;"></iframe></div>
+
+<h3 id="putting-it-all-together">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#putting-it-all-together" aria-hidden="true"><span class="octicon octicon-link"></span></a>Putting it all together</h3>
+
+<p>The <a href="https://flutter.dev/docs/codelabs/implicit-animations#example-fade-in-text-effect">Fade-in text effect</a> example demonstrates the following features
+of <code class="highlighter-rouge">AnimatedOpacity</code>:</p>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">AnimatedOpacity</code> listens for state changes in its <code class="highlighter-rouge">opacity</code> property.</li>
+  <li>Whenever <code class="highlighter-rouge">opacity</code> changes, <code class="highlighter-rouge">AnimatedOpacity</code> automatically animates the
+widget’s transition to the new value for <code class="highlighter-rouge">opacity</code>.</li>
+  <li>
+<code class="highlighter-rouge">AnimatedOpacity</code> requires a <code class="highlighter-rouge">duration</code> parameter to define the time it takes
+to animate the transition between an old <code class="highlighter-rouge">opacity</code> value and a new one.</li>
+</ul>
+
+<aside class="alert alert-secondary" role="alert">
+  <p>Note that Implicit animations can only animate properties of a parent
+  <code class="highlighter-rouge">StatefulWidget</code>, so this example begins with the <code class="highlighter-rouge">FadeInDemo</code> widget that
+  extends <code class="highlighter-rouge">StatefulWidget</code>.</p>
+
+  <p>Notice also that <code class="highlighter-rouge">AnimatedOpacity</code> animates a single property: <code class="highlighter-rouge">opacity</code>.
+  Some implicitly animated widgets can animate many properties, as the following
+  example illustrates.</p>
+</aside>
+
+<h2 id="example-shape-shifting-effect">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#example-shape-shifting-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Shape-shifting effect</h2>
+
+<p>The following example shows how to use the <a href="https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html">AnimatedContainer</a> widget to
+animate multiple properties (<code class="highlighter-rouge">margin</code>, <code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">color</code>) with
+different types (<code class="highlighter-rouge">double</code> and <code class="highlighter-rouge">Color</code>).
+<strong>The example begins with no animation code</strong>—it starts with a
+<a href="https://api.flutter.dev/flutter/material/MaterialApp-class.html">Material App</a> home screen that contains:</p>
+
+<ul>
+  <li>A <code class="highlighter-rouge">Container</code> with <code class="highlighter-rouge">borderRadius</code>, <code class="highlighter-rouge">margin</code>, and <code class="highlighter-rouge">color</code> properties that are
+different each time you run the example.</li>
+  <li>A <strong>Change</strong> button that does nothing when clicked.</li>
+</ul>
+
+<h3 id="shape-shifting-starter-code">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-starter-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shape-shifting (starter code)</h3>
+
+<p>Click the <strong>Run</strong> button to run the example:</p>
+
+<!-- Vanilla Animated Container: https://gist.github.com/8501583cb789504d75317a5ba1ca6930 -->
+<div><iframe src="./Implicit animations - Flutter_files/embed-flutter(2).html" style="width: 100%; height: 500px;"></iframe></div>
+
+<h3 id="animate-color-borderradius-and-margin-with-animatedcontainer">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#animate-color-borderradius-and-margin-with-animatedcontainer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Animate color, borderRadius, and margin with AnimatedContainer</h3>
+
+<p>This section contains a list of steps you can use to add an
+  implicit animation to the <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-starter-code">shape-shifting starter code</a>.
+  After the steps, you can also run the
+  <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete">shape-shifting complete</a> example with the changes already made.</p>
+
+<p>In the <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-starter-code">shape-shifting starter code</a>,
+each property in the <code class="highlighter-rouge">Container</code> widget (<code class="highlighter-rouge">color</code>,
+<code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">margin</code>)
+is assigned a value by an associated function (<code class="highlighter-rouge">randomColor()</code>,
+<code class="highlighter-rouge">randomBorderRadius()</code>, and <code class="highlighter-rouge">randomMargin()</code> respectively).
+By using an <code class="highlighter-rouge">AnimatedContainer</code> widget,
+you can refactor this code to do the following:</p>
+
+<ul>
+  <li>Generate new values for <code class="highlighter-rouge">color</code>, <code class="highlighter-rouge">borderRadius</code>,
+and <code class="highlighter-rouge">margin</code> whenever the user clicks the <strong>Change</strong> button.</li>
+  <li>Animate the transition to the new values for <code class="highlighter-rouge">color</code>,
+<code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">margin</code> whenever they are set.</li>
+</ul>
+
+<h4 id="1-add-an-implicit-animation">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#1-add-an-implicit-animation" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Add an implicit animation</h4>
+
+<p>Change the <code class="highlighter-rouge">Container</code> widget to an <code class="highlighter-rouge">AnimatedContainer</code> widget:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-202596" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{container1 → container2}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -44,7 +44,7 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">44</div>
+<div class="line-num2">44</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            SizedBox(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">45</div>
+<div class="line-num2">45</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">              width: <span class="hljs-number">128</span>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">46</div>
+<div class="line-num2">46</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">              height: <span class="hljs-number">128</span>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">47</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart">              child: <del>Container</del>(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">47</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">              child: <ins>AnimatedContainer</ins>(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">48</div>
+<div class="line-num2">48</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                margin: EdgeInsets.all(margin),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">49</div>
+<div class="line-num2">49</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                decoration: BoxDecoration(</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">50</div>
+<div class="line-num2">50</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                  color: color,</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i>
+  You can reference the line numbers in the example code to help track where to
+  make these changes in <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-starter-code">shape-shifting starter code</a></p>
+</aside>
+
+<h4 id="2-set-starting-values-for-animated-properties">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#2-set-starting-values-for-animated-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Set starting values for animated properties</h4>
+
+<p><code class="highlighter-rouge">AnimatedContainer</code> automatically animates between old and new values of
+its properties when they change. Create a <code class="highlighter-rouge">change()</code> method that defines the
+behavior triggered when the user clicks the <strong>Change</strong> button.
+The <code class="highlighter-rouge">change()</code> method can use <code class="highlighter-rouge">setState()</code> to set new values
+for the <code class="highlighter-rouge">color</code>, <code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">margin</code> state variables:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-770116" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{container2 → container3}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -35,6 +35,14 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">35</div>
+<div class="line-num2">35</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">    margin = randomMargin();</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">36</div>
+<div class="line-num2">36</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">  }</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">37</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">  <span class="hljs-keyword">void</span> change() {</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">38</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">    setState(() {</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">39</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">      color = randomColor();</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">40</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">      borderRadius = randomBorderRadius();</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">41</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">      margin = randomMargin();</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">42</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">    });</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">43</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">  }</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">44</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">37</div>
+<div class="line-num2">45</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">  <span class="hljs-meta">@override</span></span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">38</div>
+<div class="line-num2">46</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">  Widget build(BuildContext context) {</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">39</div>
+<div class="line-num2">47</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">    <span class="hljs-keyword">return</span> Scaffold(</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<h4 id="3-set-up-a-trigger-for-the-animation">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#3-set-up-a-trigger-for-the-animation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Set up a trigger for the animation</h4>
+<p>To set the animation to trigger whenever the user presses the <strong>Change</strong> button,
+invoke the <code class="highlighter-rouge">change()</code> method in the <code class="highlighter-rouge">onPressed()</code> handler:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-337636" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{container3 → container4}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -66,7 +66,7 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">66</div>
+<div class="line-num2">66</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                <span class="hljs-string">'change'</span>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">67</div>
+<div class="line-num2">67</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                style: TextStyle(color: Colors.white),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">68</div>
+<div class="line-num2">68</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">              ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-del">
+      <div class="line-num1">69</div>
+<div class="line-num2"></div>
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-line d2h-del">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn hljs dart">              onPressed: () =&gt; <del><span class="hljs-keyword">null</span></del>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">69</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">              onPressed: () =&gt; <ins>change()</ins>,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">70</div>
+<div class="line-num2">70</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">71</div>
+<div class="line-num2">71</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">          ],</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">72</div>
+<div class="line-num2">72</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">        ),</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<h4 id="4-set-duration">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#4-set-duration" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Set duration</h4>
+<p>Finally, set the <code class="highlighter-rouge">duration</code> of the animation that powers the transition
+between the old and new values:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-905156" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{container4 → container5}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -6,6 +6,8 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">6</div>
+<div class="line-num2">6</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">7</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart"><span class="hljs-keyword">const</span> _duration = <span class="hljs-built_in">Duration</span>(milliseconds: <span class="hljs-number">400</span>);</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">8</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">7</div>
+<div class="line-num2">9</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart"><span class="hljs-built_in">double</span> randomBorderRadius() {</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">8</div>
+<div class="line-num2">10</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">  <span class="hljs-keyword">return</span> Random().nextDouble() * <span class="hljs-number">64</span>;</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">9</div>
+<div class="line-num2">11</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">}</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -58,6 +60,7 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">58</div>
+<div class="line-num2">60</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                  color: color,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">59</div>
+<div class="line-num2">61</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                  borderRadius: BorderRadius.circular(borderRadius),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">60</div>
+<div class="line-num2">62</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">63</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">                duration: _duration,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">61</div>
+<div class="line-num2">64</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">              ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">62</div>
+<div class="line-num2">65</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">63</div>
+<div class="line-num2">66</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            MaterialButton(</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<h3 id="shape-shifting-complete">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shape-shifting (complete)</h3>
+
+<p>Here’s the example with the completed changes you’ve made—run the code
+and click the <strong>Change</strong> button to trigger the animation. Notice that each time
+you click the <strong>Change</strong> button, the shape animates to its new values
+for <code class="highlighter-rouge">margin</code>, <code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">color</code>.</p>
+
+<!-- Animated Container: https://gist.github.com/ddfbc68ec9dc28a48703d29248f5366f -->
+<div><iframe src="./Implicit animations - Flutter_files/embed-flutter(3).html" style="width: 100%; height: 500px;"></iframe></div>
+
+<h3 id="using-animation-curves">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#using-animation-curves" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using animation curves</h3>
+
+<p>The preceding examples show how implicit animations allow you to animate
+changes in values for specific widget properties, and how the
+<code class="highlighter-rouge">duration</code> parameter allows you to set the amount of time an
+animation takes to complete. Implicit animations also allow you to
+control changes to <strong>the rate</strong> of an animation within the <code class="highlighter-rouge">duration</code>.
+The parameter you use to define this change in rate is <a href="https://api.flutter.dev/flutter/animation/Curve-class.html">curve</a>.</p>
+
+<p>The preceding examples do not specify a <code class="highlighter-rouge">curve</code>,
+so the implicit animations apply a <a href="https://api.flutter.dev/flutter/animation/Curves/linear-constant.html">linear animation curve</a> by default.
+Add a <code class="highlighter-rouge">curve</code> parameter to the <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete">shape-shifting complete</a>
+and watch how the animation changes when you pass the
+<a href="https://api.flutter.dev/flutter/animation/Curves/easeInOutBack-constant.html">easeInOutBack</a> constant for <code class="highlighter-rouge">curve</code>:</p>
+
+<div class="d2h-wrapper">
+    <div id="d2h-472676" class="d2h-file-wrapper" data-lang="dart">
+    <div class="d2h-file-header">
+    <span class="d2h-file-name-wrapper">
+    <svg aria-hidden="true" class="d2h-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+        <path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z"></path>
+    </svg>    <span class="d2h-file-name">{container5 → container6}/lib/main.dart</span>
+    </span>
+    </div>
+    <div class="d2h-file-diff">
+        <div class="d2h-code-wrapper">
+            <table class="d2h-diff-table">
+                <tbody class="d2h-diff-tbody">
+                <tr>
+    <td class="d2h-code-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-line d2h-info">@@ -61,6 +61,7 @@</div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">61</div>
+<div class="line-num2">61</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                  borderRadius: BorderRadius.circular(borderRadius),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">62</div>
+<div class="line-num2">62</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">63</div>
+<div class="line-num2">63</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">                duration: _duration,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-ins">
+      <div class="line-num1"></div>
+<div class="line-num2">64</div>
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-line d2h-ins">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn hljs dart">                curve: Curves.easeInOutBack,</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">64</div>
+<div class="line-num2">65</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">              ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">65</div>
+<div class="line-num2">66</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            ),</span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="d2h-code-linenumber d2h-cntx">
+      <div class="line-num1">66</div>
+<div class="line-num2">67</div>
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-line d2h-cntx">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn hljs dart">            MaterialButton(</span>
+        </div>
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<p>Now that you have passed <code class="highlighter-rouge">easeInOutBack</code> as the value for <code class="highlighter-rouge">curve</code> to
+<code class="highlighter-rouge">AnimatedContainer</code>, notice that the rates of change for <code class="highlighter-rouge">margin</code>,
+<code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">color</code> follow the curve defined by the
+<code class="highlighter-rouge">easeInOutBack</code> curve:</p>
+
+<div id="animation_1_play_button_"></div>
+<video id="animation_1" style="width:464px; height:192px;" loop="">
+  <source src="https://flutter.github.io/assets-for-api-docs/assets/animation/curve_ease_in_out_back.mp4" type="video/mp4">
+</video>
+
+<aside class="alert alert-secondary" role="alert">
+  <p>The <code class="highlighter-rouge">easeInOutBack</code> constant is only one of many that you can
+  pass for the <code class="highlighter-rouge">curve</code> parameter. Explore the
+  <a href="https://api.flutter.dev/flutter/animation/Curves-class.html">list of curve constants</a> to discover more ways
+  to use <code class="highlighter-rouge">curve</code> to modify the look and feel of your animations.</p>
+</aside>
+
+<h3 id="putting-it-all-together-1">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#putting-it-all-together-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Putting it all together</h3>
+
+<p>The <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete">shape-shifting complete</a> example animates transitions between values for
+<code class="highlighter-rouge">margin</code>, <code class="highlighter-rouge">borderRadius</code>, and <code class="highlighter-rouge">color</code> properties.
+Note that <code class="highlighter-rouge">AnimatedContainer</code> animates changes to any of its properties,
+including those you didn’t use such as <code class="highlighter-rouge">padding</code>, <code class="highlighter-rouge">transform</code>,
+and even <code class="highlighter-rouge">child</code> and <code class="highlighter-rouge">alignment</code>!
+The <a href="https://flutter.dev/docs/codelabs/implicit-animations#shape-shifting-complete">shape-shifting complete</a> example builds upon <a href="https://flutter.dev/docs/codelabs/implicit-animations#fade-in-complete">fade-in complete</a> by showing
+additional capabilities of implicit animations:</p>
+
+<ul>
+  <li>Some implicit animations (for example,
+<code class="highlighter-rouge">AnimatedOpacity</code>) only animate a single
+property, while others (like <code class="highlighter-rouge">AnimatedContainer</code>)
+can animate many properties.</li>
+  <li>Implicit animations automatically animate between the old and
+new values of properties when they change using the provided
+<code class="highlighter-rouge">curve</code> and <code class="highlighter-rouge">duration</code>.</li>
+  <li>If you do not specify a <code class="highlighter-rouge">curve</code>,
+implicit animations default to a <a href="https://api.flutter.dev/flutter/animation/Curves/linear-constant.html">linear curve</a>.</li>
+</ul>
+
+<h2 id="whats-next">
+<a class="anchor" href="https://flutter.dev/docs/codelabs/implicit-animations#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s next?</h2>
+
+<p>Congratulations, you’ve finished the codelab! If you’d like to learn more,
+here are some suggestions for where to go next:</p>
+
+<ul>
+  <li>Try the <a href="https://flutter.dev/docs/development/ui/animations/tutorial">animations tutorial</a>.</li>
+  <li>Learn about <a href="https://flutter.dev/docs/development/ui/animations/hero-animations">hero animations</a> and <a href="https://flutter.dev/docs/development/ui/animations/staggered-animations">staggered animations</a>.</li>
+  <li>Checkout the <a href="https://api.flutter.dev/flutter/animation/animation-library.html">animation library</a>.</li>
+  <li>Try another <a href="https://flutter.dev/docs/codelabs">codelab</a>.</li>
+</ul>
+
+<iframe src="./Implicit animations - Flutter_files/viewform.html" width="100%" height="1726" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+
+        
+      </div>
+    </main>
+  </div>
+</div>
+
+
+    <footer class="site-footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 site-footer__wrapper">
+        <div class="site-footer__logo">
+          <img src="./Implicit animations - Flutter_files/flutter-mono-81x100.png" alt="Flutter Logo" width="81" height="100">
+        </div>
+        <div class="site-footer__content">
+          <ul class="site-footer__link-list">
+              <li><a href="https://groups.google.com/forum/#!forum/flutter-dev">flutter-dev@</a></li>
+              <li><a href="https://flutter.dev/tos">terms</a></li>
+              <li><a href="https://flutter.dev/security">security</a></li>
+              <li><a href="https://www.google.com/intl/en/policies/privacy">privacy</a></li>
+              <li><a href="https://flutter-es.io/">español</a></li>
+              <li><a href="https://flutter.cn/" class="text-nowrap">社区中文资源</a></li>
+          </ul>
+
+          <p class="licenses">
+            Except as otherwise noted,
+            this work is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0">Creative
+            Commons Attribution 4.0 International License</a>,
+            and code samples are licensed under the BSD License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    <script async="" defer="" src="./Implicit animations - Flutter_files/f.txt"></script>
+  
+
+</body></html>
